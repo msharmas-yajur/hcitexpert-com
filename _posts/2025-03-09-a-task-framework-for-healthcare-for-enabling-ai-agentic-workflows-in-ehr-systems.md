@@ -1,4 +1,5 @@
 ---
+featured: true
 title: "A Task Framework for Healthcare: Enabling Agentic AI Workflows in Healthcare EHR Systems by Manish Sharma, Yajur Healthcare"
 date: 2025-03-09 07:39:34 +0000
 author: Manish Sharma

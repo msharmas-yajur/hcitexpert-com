@@ -3,10 +3,10 @@ layout: default
 title: HCITExperts — Healthcare IT Blog
 ---
 
-{% assign featured = paginator.posts | first %}
+{% assign featured = site.posts | where: "featured", true | first %}
+{% unless featured %}{% assign featured = paginator.posts | first %}{% endunless %}
 {% assign fwords = featured.content | strip_html | number_of_words %}
 {% assign frt = fwords | divided_by: 200 | plus: 1 %}
-{% assign fthumb = featured.content | split: 'src="' | last | split: '"' | first %}
 
 <!-- Hero / Featured -->
 <section class="hero">

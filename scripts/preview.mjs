@@ -123,8 +123,8 @@ function cardHtml(post, large = false) {
 }
 
 function homeHtml(posts) {
-  const featured = posts[0];
-  const rest = posts.slice(1, 21);
+  const featured = posts.find(p => p.meta.featured === 'true') || posts[0];
+  const rest = posts.filter(p => p !== featured).slice(0, 20);
   const img = featured ? thumb(featured.body) : null;
   const cat = featured?.meta.categories ? featured.meta.categories.split(',')[0].trim() : 'Healthcare IT';
   const author = featured?.meta.author || 'Team HCITExperts';
@@ -217,6 +217,13 @@ const server = http.createServer((req, res) => {
   }
 
   const posts = getPosts();
+
+  // home
+  if (pathname === '/') {
+    res.writeHead(200, { 'Content-Type': 'text/html' });
+    res.end(homeHtml(posts));
+    return;
+  }
 
   if (pathname.startsWith('/post/')) {
     const slug = pathname.replace('/post/', '').replace(/\/$/, '');
