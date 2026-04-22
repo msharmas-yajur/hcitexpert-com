@@ -34,8 +34,8 @@ function parseFrontMatter(raw) {
   return { meta, body };
 }
 
-const LOGO_SVG = fs.existsSync(path.join(ROOT, 'assets/images/logo.svg'))
-  ? fs.readFileSync(path.join(ROOT, 'assets/images/logo.svg'), 'utf8')
+const LOGO_SVG = fs.existsSync(path.join(ROOT, 'assets/images/logo.png'))
+  ? fs.readFileSync(path.join(ROOT, 'assets/images/logo.png'), 'utf8')
   : '';
 
 function shell(title, content) {
@@ -47,7 +47,7 @@ function shell(title, content) {
 <header class="site-header">
   <div class="header-inner">
     <a class="site-logo" href="/">
-      <img src="/assets/images/logo.svg" alt="HCITExperts" height="32">
+      <img src="/assets/images/logo.png" alt="HCITExperts" height="32">
     </a>
     <nav class="header-nav">
       <a href="/">Blog</a>
@@ -59,7 +59,7 @@ function shell(title, content) {
 <footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-left">
-      <img src="/assets/images/logo.svg" alt="HCITExperts" height="26">
+      <img src="/assets/images/logo.png" alt="HCITExperts" height="26">
       <p>Healthcare IT insights by Yajur Healthcare since 2013.</p>
     </div>
   </div>

@@ -5,6 +5,10 @@ permalink: /about-hcitexpert/
 original_url: https://hcitexpert.com/about-hcitexpert/
 ---
 
+<div style="text-align:center; margin-bottom: 2.5rem;">
+  <img src="/assets/images/logo-full.png" alt="HCITExperts — The Healthcare IT Experts Blog by Yajur Healthcare" style="max-width:480px; width:100%; height:auto;">
+</div>
+
 <h2>About HCITExperts Blog</h2>
 The Healthcare IT Expert Blog, was launched in 2013, is focussed on Digital Health, HealthTech, Healthcare Information Technology and Medical Informatics innovations from India. The Blog looks to share insights from experts from India who are driving innovations and enabling new business models in Healthcare with the use of technology driven solutions.&nbsp;
 
