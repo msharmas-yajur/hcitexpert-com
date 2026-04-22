@@ -13,11 +13,6 @@ title: HCITExperts — Healthcare IT Blog
   <div class="hero-inner">
     <p class="hero-tag">Featured</p>
     <a href="{{ featured.url | relative_url }}" class="hero-link">
-      {% if fthumb contains 'http' %}
-      <div class="hero-image-wrap">
-        <img src="{{ fthumb }}" alt="{{ featured.title | escape }}" class="hero-image" loading="eager">
-      </div>
-      {% endif %}
       <div class="hero-body">
         {% if featured.categories.size > 0 %}
         <span class="cat-badge">{{ featured.categories.first }}</span>
@@ -47,34 +42,21 @@ title: HCITExperts — Healthcare IT Blog
       {% for post in paginator.posts offset:1 %}
         {% assign words = post.content | strip_html | number_of_words %}
         {% assign rt = words | divided_by: 200 | plus: 1 %}
-        {% assign thumb = post.content | split: 'src="' | last | split: '"' | first %}
 
         <article class="post-card">
-          {% if thumb contains 'http' %}
-          <a href="{{ post.url | relative_url }}" class="card-image-link">
-            <img src="{{ thumb }}" alt="{{ post.title | escape }}" class="card-image" loading="lazy">
-          </a>
-          {% endif %}
           <div class="card-body">
             <div class="card-top-meta">
-              <span class="meta-avatar small">{{ post.author | default: 'T' | slice: 0 }}</span>
-              <span class="meta-author">{{ post.author | default: 'Team HCITExperts' }}</span>
+              <span>{{ post.date | date: "%b %-d, %Y" }}</span>
               {% if post.categories.size > 0 %}
               <span class="meta-sep">&middot;</span>
               <span class="card-cat">{{ post.categories.first }}</span>
               {% endif %}
+              <span class="meta-sep">&middot;</span>
+              <span>{{ rt }} min read</span>
             </div>
             <a href="{{ post.url | relative_url }}" class="card-title-link">
               <h2 class="card-title">{{ post.title | escape }}</h2>
             </a>
-            {% if post.excerpt %}
-            <p class="card-excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</p>
-            {% endif %}
-            <div class="card-bottom-meta">
-              <span>{{ post.date | date: "%b %-d, %Y" }}</span>
-              <span class="meta-sep">&middot;</span>
-              <span>{{ rt }} min read</span>
-            </div>
           </div>
         </article>
       {% endfor %}
