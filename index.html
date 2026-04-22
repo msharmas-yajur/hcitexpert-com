@@ -4,125 +4,94 @@ title: HCITExperts — Healthcare IT Blog
 ---
 
 {% assign featured = paginator.posts | first %}
-{% assign words = featured.content | strip_html | number_of_words %}
-{% assign read_time = words | divided_by: 200 | plus: 1 %}
-{% assign thumb = featured.content | split: 'src="' | last | split: '"' | first %}
+{% assign fwords = featured.content | strip_html | number_of_words %}
+{% assign frt = fwords | divided_by: 200 | plus: 1 %}
+{% assign fthumb = featured.content | split: 'src="' | last | split: '"' | first %}
 
-<!-- Masthead -->
-<section class="masthead">
-  <div class="masthead-inner">
-    <p class="masthead-kicker">HEALTHCARE IT &middot; DIGITAL HEALTH &middot; AI IN MEDICINE</p>
-    <h1 class="masthead-wordmark">HCITEXPERTS</h1>
-    <p class="masthead-sub">India's healthcare technology knowledge hub — since 2013</p>
-  </div>
-</section>
-
-<!-- Featured post -->
-<section class="featured-wrap">
-  <div class="featured-inner">
-    <div class="section-kicker">FEATURED</div>
-    <article class="featured-card">
-      {% if thumb contains 'http' %}
-      <a href="{{ featured.url | relative_url }}" class="featured-image-link">
-        <img src="{{ thumb }}" alt="{{ featured.title | escape }}" loading="eager" class="featured-image">
-      </a>
+<!-- Hero / Featured -->
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-tag">Featured</p>
+    <a href="{{ featured.url | relative_url }}" class="hero-link">
+      {% if fthumb contains 'http' %}
+      <div class="hero-image-wrap">
+        <img src="{{ fthumb }}" alt="{{ featured.title | escape }}" class="hero-image" loading="eager">
+      </div>
       {% endif %}
-      <div class="featured-body">
+      <div class="hero-body">
         {% if featured.categories.size > 0 %}
-        <div class="tile-kicker">{{ featured.categories.first | upcase }}</div>
+        <span class="cat-badge">{{ featured.categories.first }}</span>
         {% endif %}
-        <a href="{{ featured.url | relative_url }}" class="tile-title-link">
-          <h2 class="featured-title">{{ featured.title | escape }}</h2>
-        </a>
+        <h1 class="hero-title">{{ featured.title | escape }}</h1>
         {% if featured.excerpt %}
-        <p class="featured-deck">{{ featured.excerpt | strip_html | truncate: 200 }}</p>
+        <p class="hero-deck">{{ featured.excerpt | strip_html | truncate: 220 }}</p>
         {% endif %}
-        <div class="tile-meta">
-          <span>{{ featured.author | default: 'Team HCITExperts' | upcase }}</span>
-          <span class="meta-dot">&middot;</span>
-          <span>{{ featured.date | date: "%b %-d, %Y" | upcase }}</span>
-          <span class="meta-dot">&middot;</span>
-          <span>{{ read_time }} MIN READ</span>
+        <div class="post-meta">
+          <span class="meta-avatar">{{ featured.author | default: 'T' | slice: 0 }}</span>
+          <span class="meta-author">{{ featured.author | default: 'Team HCITExperts' }}</span>
+          <span class="meta-sep">&middot;</span>
+          <span>{{ featured.date | date: "%b %-d, %Y" }}</span>
+          <span class="meta-sep">&middot;</span>
+          <span>{{ frt }} min read</span>
         </div>
       </div>
-    </article>
+    </a>
   </div>
 </section>
 
-<!-- StoryStream -->
-<section class="stream-wrap">
-  <div class="stream-inner">
-    <div class="section-kicker">LATEST STORIES</div>
+<!-- Two-column post grid -->
+<section class="posts-section">
+  <div class="posts-inner">
 
-    <div class="stream-layout">
-      <div class="stream-feed">
-        <div class="stream-rail"></div>
-        {% for post in paginator.posts offset:1 %}
-          {% assign thumb = post.content | split: 'src="' | last | split: '"' | first %}
-          {% assign words = post.content | strip_html | number_of_words %}
-          {% assign read_time = words | divided_by: 200 | plus: 1 %}
+    <div class="posts-grid">
+      {% for post in paginator.posts offset:1 %}
+        {% assign words = post.content | strip_html | number_of_words %}
+        {% assign rt = words | divided_by: 200 | plus: 1 %}
+        {% assign thumb = post.content | split: 'src="' | last | split: '"' | first %}
 
-          {% assign accent_colors = "#3cffd0,#5200ff,#131313,#131313,#131313,#131313,#f5c518,#131313,#131313,#ff3e6c" | split: "," %}
-          {% assign ci = forloop.index | modulo: 10 %}
-          {% assign accent = accent_colors[ci] %}
-          {% if accent == '#3cffd0' %}{% assign text_on_tile = '#000000' %}{% elsif accent == '#f5c518' %}{% assign text_on_tile = '#000000' %}{% else %}{% assign text_on_tile = '#ffffff' %}{% endif %}
-
-          <article class="stream-item" style="--tile-bg: {{ accent }}; --tile-text: {{ text_on_tile }};">
-            <div class="stream-timestamp">{{ post.date | date: "%b %-d" | upcase }}</div>
-            <div class="stream-card">
-              {% if thumb contains 'http' and accent == '#131313' %}
-              <a href="{{ post.url | relative_url }}" class="stream-thumb-link">
-                <img src="{{ thumb }}" alt="{{ post.title | escape }}" loading="lazy" class="stream-thumb">
-              </a>
+        <article class="post-card">
+          {% if thumb contains 'http' %}
+          <a href="{{ post.url | relative_url }}" class="card-image-link">
+            <img src="{{ thumb }}" alt="{{ post.title | escape }}" class="card-image" loading="lazy">
+          </a>
+          {% endif %}
+          <div class="card-body">
+            <div class="card-top-meta">
+              <span class="meta-avatar small">{{ post.author | default: 'T' | slice: 0 }}</span>
+              <span class="meta-author">{{ post.author | default: 'Team HCITExperts' }}</span>
+              {% if post.categories.size > 0 %}
+              <span class="meta-sep">&middot;</span>
+              <span class="card-cat">{{ post.categories.first }}</span>
               {% endif %}
-              <div class="stream-card-body">
-                <div class="stream-kicker">{% if post.categories.size > 0 %}{{ post.categories.first | upcase }}{% else %}HEALTHCARE IT{% endif %}</div>
-                <a href="{{ post.url | relative_url }}" class="stream-title-link">
-                  <h3 class="stream-title">{{ post.title | escape }}</h3>
-                </a>
-                <div class="stream-meta">
-                  <span>{{ post.author | default: 'Team HCITExperts' | upcase }}</span>
-                  <span class="meta-dot">&middot;</span>
-                  <span>{{ read_time }} MIN READ</span>
-                </div>
-              </div>
             </div>
-          </article>
-        {% endfor %}
-      </div>
-
-      <aside class="stream-sidebar">
-        <div class="sidebar-block">
-          <div class="section-kicker">TOPICS</div>
-          <div class="topic-cluster">
-            {% assign all_cats = site.posts | map: 'categories' | join: ',' | split: ',' | uniq | sort %}
-            {% for cat in all_cats limit:14 %}
-              {% if cat != '' %}
-              <a href="{{ '/category/' | append: cat | slugify | relative_url }}" class="topic-tag">{{ cat | upcase }}</a>
-              {% endif %}
-            {% endfor %}
+            <a href="{{ post.url | relative_url }}" class="card-title-link">
+              <h2 class="card-title">{{ post.title | escape }}</h2>
+            </a>
+            {% if post.excerpt %}
+            <p class="card-excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</p>
+            {% endif %}
+            <div class="card-bottom-meta">
+              <span>{{ post.date | date: "%b %-d, %Y" }}</span>
+              <span class="meta-sep">&middot;</span>
+              <span>{{ rt }} min read</span>
+            </div>
           </div>
-        </div>
-        <div class="sidebar-block">
-          <div class="section-kicker">ABOUT</div>
-          <p class="sidebar-text">Healthcare IT insights, digital health analysis, and AI in medicine — by the team at Yajur Healthcare.</p>
-          <a href="{{ '/feed.xml' | relative_url }}" class="btn-outline">RSS FEED</a>
-        </div>
-      </aside>
+        </article>
+      {% endfor %}
     </div>
 
     {% if paginator.total_pages > 1 %}
     <nav class="pagination">
       {% if paginator.previous_page %}
-        <a href="{{ paginator.previous_page_path | relative_url }}" class="btn-pill">&larr; NEWER</a>
+        <a href="{{ paginator.previous_page_path | relative_url }}" class="page-btn">&larr; Newer</a>
       {% else %}
-        <span class="btn-pill disabled">&larr; NEWER</span>
+        <span class="page-btn disabled">&larr; Newer</span>
       {% endif %}
-      <span class="page-counter">{{ paginator.page }} / {{ paginator.total_pages }}</span>
+      <span class="page-num">{{ paginator.page }} of {{ paginator.total_pages }}</span>
       {% if paginator.next_page %}
-        <a href="{{ paginator.next_page_path | relative_url }}" class="btn-pill">OLDER &rarr;</a>
+        <a href="{{ paginator.next_page_path | relative_url }}" class="page-btn">Older &rarr;</a>
       {% else %}
-        <span class="btn-pill disabled">OLDER &rarr;</span>
+        <span class="page-btn disabled">Older &rarr;</span>
       {% endif %}
     </nav>
     {% endif %}

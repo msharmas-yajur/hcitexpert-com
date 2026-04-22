@@ -8,29 +8,32 @@ layout: default
 <div class="progress-bar" id="progressBar"></div>
 
 <article class="post-article">
+  <div class="post-container">
 
-  <div class="post-hero">
-    <div class="post-hero-inner">
+    <header class="post-header">
       {% if page.categories.size > 0 %}
-      <div class="post-kicker">
-        {% for cat in page.categories limit:1 %}{{ cat | upcase }}{% endfor %}
+      <div class="post-cats">
+        {% for cat in page.categories limit:2 %}
+          <a class="cat-badge" href="{{ '/category/' | append: cat | slugify | relative_url }}">{{ cat }}</a>
+        {% endfor %}
       </div>
       {% endif %}
-      <h1 class="post-display-title">{{ page.title | escape }}</h1>
+
+      <h1 class="post-title">{{ page.title | escape }}</h1>
+
       <div class="post-byline">
-        <span class="byline-avatar">{{ page.author | default: 'T' | slice: 0 | upcase }}</span>
-        <div>
-          <span class="byline-name">{{ page.author | default: 'Team HCITExperts' | upcase }}</span>
-          <span class="byline-dot">&middot;</span>
-          <span class="byline-date">{{ page.date | date: "%b %-d, %Y" | upcase }}</span>
-          <span class="byline-dot">&middot;</span>
-          <span class="byline-time">{{ read_time }} MIN READ</span>
+        <span class="meta-avatar">{{ page.author | default: 'T' | slice: 0 }}</span>
+        <div class="byline-info">
+          <span class="meta-author">{{ page.author | default: 'Team HCITExperts' }}</span>
+          <div class="byline-sub">
+            {{ page.date | date: "%B %-d, %Y" }}
+            <span class="meta-sep">&middot;</span>
+            {{ read_time }} min read
+          </div>
         </div>
       </div>
-    </div>
-  </div>
+    </header>
 
-  <div class="post-body-wrap">
     <div class="post-body">
       {{ content }}
     </div>
@@ -38,42 +41,55 @@ layout: default
     <footer class="post-footer">
       {% if page.tags.size > 0 %}
       <div class="post-tags">
-        {% for tag in page.tags %}
-          <span class="pill-tag">{{ tag | upcase }}</span>
+        {% for tag in page.tags limit:8 %}
+          <span class="tag-pill">{{ tag }}</span>
         {% endfor %}
       </div>
       {% endif %}
       <div class="post-share">
-        <span class="share-label">SHARE</span>
-        <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ page.url | absolute_url }}" target="_blank" rel="noopener" class="share-link">X / TWITTER</a>
-        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url }}" target="_blank" rel="noopener" class="share-link">LINKEDIN</a>
+        <span>Share:</span>
+        <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ page.url | absolute_url }}" target="_blank" rel="noopener">Twitter</a>
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url }}" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </footer>
-  </div>
 
+  </div>
 </article>
 
-{% assign related = site.posts | where_exp: "p", "p.url != page.url" %}
-{% if related.size > 0 %}
-<section class="more-posts">
+<section class="more-section">
   <div class="more-inner">
-    <div class="section-kicker">MORE FROM HCITEXPERTS</div>
+    <h3 class="more-heading">More from HCITExperts</h3>
     <div class="more-grid">
+      {% assign related = site.posts | where_exp: "p", "p.url != page.url" %}
       {% for post in related limit:3 %}
-        {% include post-card.html post=post %}
+        {% assign rt = post.content | strip_html | number_of_words | divided_by: 200 | plus: 1 %}
+        <article class="post-card small">
+          <div class="card-body">
+            <div class="card-top-meta">
+              <span class="meta-avatar small">{{ post.author | default: 'T' | slice: 0 }}</span>
+              <span class="meta-author">{{ post.author | default: 'Team HCITExperts' }}</span>
+            </div>
+            <a href="{{ post.url | relative_url }}" class="card-title-link">
+              <h2 class="card-title">{{ post.title | escape }}</h2>
+            </a>
+            <div class="card-bottom-meta">
+              <span>{{ post.date | date: "%b %-d, %Y" }}</span>
+              <span class="meta-sep">&middot;</span>
+              <span>{{ rt }} min read</span>
+            </div>
+          </div>
+        </article>
       {% endfor %}
     </div>
   </div>
 </section>
-{% endif %}
 
 <script>
   window.addEventListener('scroll', function() {
-    var el = document.getElementById('progressBar');
+    var bar = document.getElementById('progressBar');
     var body = document.querySelector('.post-body');
-    if (!el || !body) return;
-    var scrolled = window.scrollY - body.offsetTop;
-    var pct = Math.min(Math.max(scrolled / body.offsetHeight * 100, 0), 100);
-    el.style.width = pct + '%';
+    if (!bar || !body) return;
+    var pct = Math.min(100, Math.max(0, (window.scrollY - body.offsetTop) / body.offsetHeight * 100));
+    bar.style.width = pct + '%';
   });
 </script>

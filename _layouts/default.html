@@ -7,7 +7,7 @@
   <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;700&family=Space+Mono:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   {% feed_meta %}
   {% seo %}
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
@@ -16,12 +16,14 @@
 
   <header class="site-header">
     <div class="header-inner">
-      <a class="site-logo" href="{{ '/' | relative_url }}">HCITEXPERTS</a>
+      <a class="site-logo" href="{{ '/' | relative_url }}">
+        <img src="{{ '/assets/images/logo.svg' | relative_url }}" alt="HCITExperts" height="32">
+      </a>
       <nav class="header-nav">
-        <a href="{{ '/blog/' | relative_url }}">BLOG</a>
-        <a href="{{ '/about-hcitexpert/' | relative_url }}">ABOUT</a>
-        <a href="{{ '/contact-us/' | relative_url }}">CONTACT</a>
-        <a href="{{ site.feed.path | default: '/feed.xml' | relative_url }}" class="btn-subscribe">SUBSCRIBE</a>
+        <a href="{{ '/' | relative_url }}">Blog</a>
+        <a href="{{ '/about-hcitexpert/' | relative_url }}">About</a>
+        <a href="{{ '/contact-us/' | relative_url }}">Contact</a>
+        <a href="{{ site.feed.path | default: '/feed.xml' | relative_url }}" class="btn-subscribe">Subscribe</a>
       </nav>
     </div>
   </header>
@@ -30,15 +32,19 @@
 
   <footer class="site-footer">
     <div class="footer-inner">
-      <div class="footer-wordmark">HCITEXPERTS</div>
-      <p class="footer-desc">Healthcare IT insights by Yajur Healthcare since 2013</p>
+      <div class="footer-left">
+        <img src="{{ '/assets/images/logo.svg' | relative_url }}" alt="HCITExperts" height="28">
+        <p>Healthcare IT insights by Yajur Healthcare since 2013.</p>
+      </div>
       <nav class="footer-nav">
-        <a href="{{ '/' | relative_url }}">HOME</a>
-        <a href="{{ '/about-hcitexpert/' | relative_url }}">ABOUT</a>
-        <a href="{{ '/contact-us/' | relative_url }}">CONTACT</a>
+        <a href="{{ '/' | relative_url }}">Home</a>
+        <a href="{{ '/about-hcitexpert/' | relative_url }}">About</a>
+        <a href="{{ '/contact-us/' | relative_url }}">Contact</a>
         <a href="{{ site.feed.path | default: '/feed.xml' | relative_url }}">RSS</a>
       </nav>
-      <p class="footer-copy">&copy; {{ site.time | date: '%Y' }} HCITExperts &middot; Yajur Healthcare</p>
+    </div>
+    <div class="footer-copy">
+      <p>&copy; {{ site.time | date: '%Y' }} HCITExperts &middot; Yajur Healthcare. All rights reserved.</p>
     </div>
   </footer>
 
