@@ -105,20 +105,17 @@ function cardHtml(post, large = false) {
   const titleSize = large ? '1.1rem' : '1rem';
 
   return `<article class="post-card">
-    ${img ? `<a href="/post/${post.slug}" class="card-image-link"><img src="${img}" alt="" class="card-image" loading="lazy" style="height:${large?'200':'170'}px"></a>` : ''}
     <div class="card-body">
       <div class="card-top-meta">
-        <span class="meta-avatar small">${avatar(author)}</span>
-        <span class="meta-author">${author}</span>
+        <span>${date}</span>
         <span class="meta-sep">&middot;</span>
         <span class="card-cat">${cat}</span>
+        <span class="meta-sep">&middot;</span>
+        <span>${mins} min read</span>
       </div>
       <a href="/post/${post.slug}" class="card-title-link">
         <h2 class="card-title" style="font-size:${titleSize}">${post.meta.title || ''}</h2>
       </a>
-      <div class="card-bottom-meta">
-        <span>${date}</span><span class="meta-sep">&middot;</span><span>${mins} min read</span>
-      </div>
     </div>
   </article>`;
 }
@@ -136,7 +133,6 @@ function homeHtml(posts) {
   <div class="hero-inner">
     <p class="hero-tag">Featured</p>
     <a href="/post/${featured.slug}" class="hero-link">
-      ${img ? `<div class="hero-image-wrap"><img src="${img}" alt="" class="hero-image" loading="eager"></div>` : ''}
       <div class="hero-body">
         <span class="cat-badge">${cat}</span>
         <h1 class="hero-title">${featured.meta.title || ''}</h1>
