@@ -1,0 +1,10 @@
+---
+title: "#INFOGRAPHICS &amp; #comicgraphics #Doodling A powerful way to share ideas"
+date: 2015-10-07 05:03:00 +0000
+author: Manish Sharma
+original_url: https://hcitexpert.com/2015/10/infographics-comicgraphics-doodling-a-powerful-way-to-share-ideas.html/
+categories:
+  - OTHERS
+---
+
+<div dir="ltr" style="text-align:left;"><br /><div class="s-description"><span>We  have attended some conferences recently, virtually, and we saw an  interesting trend emerging of various attendees and conference  organizers making use of Comics, doodles  and Infographics Boards at the site of  the conference to capture the essence of what the speakers and the  attendees were sharing.</span></div><div class="s-description"><br /></div><div class="s-description"><span>We  started out this storify to include the doodling shared during various  conferences and have now started to include additional comics and  doodles by the twitterati every day. </span></div><div class="s-description"><br /></div><div class="s-description"><span>We propose to keep adding the various #Infographics, Doodles and #comicgraphics to this Storify as and when we come about something interesting.</span></div><div class="s-description"><span><br /></span></div><div class="s-description"><span>So </span><span>Do bookmark this link to see update  and use for your talks and articles and presentations that might be making to your audiences.</span></div><div class="s-description"><span><br /></span></div><div class="s-description"><span>And perhaps, the next time you are heading or organising a conference, call up the folks in this storify to capture the essence of your conference !!</span></div><div class="s-description"><span><br /></span></div><div class="s-description"><span>Click on the link below to view our Storify ... </span></div><div class="s-description"><span><br /></span></div><div class="s-description"><span></span></div><a name='more'></a><br /><br /><br /><div class="storify">[<a href="//storify.com/HCITExpert/infographics-comicgraphics" target="_blank">View the story "#INFOGRAPHICS &amp; #Comicgraphics" on Storify</a>]</div><br /></div>

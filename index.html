@@ -1,0 +1,33 @@
+---
+layout: default
+title: Home
+---
+<div class="home">
+  <h1>{{ site.title }}</h1>
+  <p class="lead">{{ site.description }}</p>
+
+  <h2>Latest Posts</h2>
+  <ul class="post-list">
+    {% for post in paginator.posts %}
+    <li>
+      <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+      <h3><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
+      {% if post.excerpt %}
+        <p>{{ post.excerpt | strip_html | truncate: 200 }}</p>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+
+  {% if paginator.total_pages > 1 %}
+  <nav class="pagination">
+    {% if paginator.previous_page %}
+      <a href="{{ paginator.previous_page_path | relative_url }}">&laquo; Newer</a>
+    {% endif %}
+    <span>Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
+    {% if paginator.next_page %}
+      <a href="{{ paginator.next_page_path | relative_url }}">Older &raquo;</a>
+    {% endif %}
+  </nav>
+  {% endif %}
+</div>

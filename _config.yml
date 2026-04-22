@@ -1,0 +1,53 @@
+title: HCITExperts Blog
+description: Healthcare IT insights by Yajur Healthcare
+url: "https://hcitexpert.com"
+baseurl: ""
+
+author:
+  name: Team HCITExperts
+  email: info@hcitexpert.com
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: /:year/:month/:day/:title/
+
+# Plugins (GitHub Pages safe)
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Pagination
+paginate: 10
+paginate_path: "/blog/page/:num/"
+
+# Collections
+collections:
+  pages:
+    output: true
+    permalink: /:path/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - scripts/
+  - "*.py"
+  - README.md
