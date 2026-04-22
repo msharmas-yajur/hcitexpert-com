@@ -1,0 +1,31 @@
+{% assign words = post.content | strip_html | number_of_words %}
+{% assign read_time = words | divided_by: 200 | plus: 1 %}
+{% assign thumb = post.content | split: 'src="' | last | split: '"' | first %}
+
+<article class="post-card">
+  <div class="card-body">
+    <div class="card-meta-top">
+      <span class="card-author">{{ post.author | default: 'Team HCITExperts' }}</span>
+      {% if post.categories.size > 0 %}
+        <span class="card-sep">&middot;</span>
+        <span class="card-category">{{ post.categories.first }}</span>
+      {% endif %}
+    </div>
+    <a class="card-link" href="{{ post.url | relative_url }}">
+      <h2 class="card-title">{{ post.title | escape }}</h2>
+      {% if post.excerpt %}
+        <p class="card-excerpt">{{ post.excerpt | strip_html | truncate: 140 }}</p>
+      {% endif %}
+    </a>
+    <div class="card-meta-bottom">
+      <span>{{ post.date | date: "%b %-d, %Y" }}</span>
+      <span class="card-sep">&middot;</span>
+      <span>{{ read_time }} min read</span>
+    </div>
+  </div>
+  {% if thumb contains 'http' %}
+  <a class="card-thumb" href="{{ post.url | relative_url }}" aria-hidden="true">
+    <img src="{{ thumb }}" alt="{{ post.title | escape }}" loading="lazy">
+  </a>
+  {% endif %}
+</article>
