@@ -7,7 +7,7 @@
   <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;700&family=Space+Mono:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&display=swap" rel="stylesheet">
   {% feed_meta %}
   {% seo %}
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
@@ -16,18 +16,12 @@
 
   <header class="site-header">
     <div class="header-inner">
-      <a class="site-logo" href="{{ '/' | relative_url }}">
-        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="28" height="28" rx="4" fill="#1a1a1a"/>
-          <text x="5" y="20" font-family="Inter" font-weight="700" font-size="14" fill="white">HC</text>
-        </svg>
-        <span>HCITExperts</span>
-      </a>
+      <a class="site-logo" href="{{ '/' | relative_url }}">HCITEXPERTS</a>
       <nav class="header-nav">
-        <a href="{{ '/blog/' | relative_url }}">Blog</a>
-        <a href="{{ '/about/' | relative_url }}">About</a>
-        <a href="{{ '/contact-us/' | relative_url }}">Contact</a>
-        <a href="{{ site.feed.path | default: '/feed.xml' | relative_url }}" class="btn-rss">RSS</a>
+        <a href="{{ '/blog/' | relative_url }}">BLOG</a>
+        <a href="{{ '/about-hcitexpert/' | relative_url }}">ABOUT</a>
+        <a href="{{ '/contact-us/' | relative_url }}">CONTACT</a>
+        <a href="{{ site.feed.path | default: '/feed.xml' | relative_url }}" class="btn-subscribe">SUBSCRIBE</a>
       </nav>
     </div>
   </header>
@@ -36,17 +30,15 @@
 
   <footer class="site-footer">
     <div class="footer-inner">
-      <div class="footer-brand">
-        <strong>HCITExperts</strong>
-        <span>Healthcare IT insights by Yajur Healthcare</span>
-      </div>
+      <div class="footer-wordmark">HCITEXPERTS</div>
+      <p class="footer-desc">Healthcare IT insights by Yajur Healthcare since 2013</p>
       <nav class="footer-nav">
-        <a href="{{ '/' | relative_url }}">Home</a>
-        <a href="{{ '/about/' | relative_url }}">About</a>
-        <a href="{{ '/contact-us/' | relative_url }}">Contact</a>
+        <a href="{{ '/' | relative_url }}">HOME</a>
+        <a href="{{ '/about-hcitexpert/' | relative_url }}">ABOUT</a>
+        <a href="{{ '/contact-us/' | relative_url }}">CONTACT</a>
         <a href="{{ site.feed.path | default: '/feed.xml' | relative_url }}">RSS</a>
       </nav>
-      <p class="footer-copy">&copy; {{ site.time | date: '%Y' }} HCITExperts · Yajur Healthcare</p>
+      <p class="footer-copy">&copy; {{ site.time | date: '%Y' }} HCITExperts &middot; Yajur Healthcare</p>
     </div>
   </footer>
 

@@ -8,34 +8,29 @@ layout: default
 <div class="progress-bar" id="progressBar"></div>
 
 <article class="post-article">
-  <div class="post-container">
 
-    <header class="post-header">
+  <div class="post-hero">
+    <div class="post-hero-inner">
       {% if page.categories.size > 0 %}
-      <div class="post-topics">
-        {% for cat in page.categories limit:2 %}
-          <a class="topic-tag" href="{{ '/category/' | append: cat | slugify | relative_url }}">{{ cat }}</a>
-        {% endfor %}
+      <div class="post-kicker">
+        {% for cat in page.categories limit:1 %}{{ cat | upcase }}{% endfor %}
       </div>
       {% endif %}
-
-      <h1 class="post-title">{{ page.title | escape }}</h1>
-
-      {% if page.excerpt %}
-      <p class="post-subtitle">{{ page.excerpt | strip_html | truncate: 200 }}</p>
-      {% endif %}
-
+      <h1 class="post-display-title">{{ page.title | escape }}</h1>
       <div class="post-byline">
-        <div class="byline-avatar">{{ page.author | default: 'Team HCITExperts' | slice: 0 }}</div>
-        <div class="byline-meta">
-          <span class="byline-author">{{ page.author | default: 'Team HCITExperts' }}</span>
-          <span class="byline-details">
-            {{ page.date | date: "%b %-d, %Y" }} &middot; {{ read_time }} min read
-          </span>
+        <span class="byline-avatar">{{ page.author | default: 'T' | slice: 0 | upcase }}</span>
+        <div>
+          <span class="byline-name">{{ page.author | default: 'Team HCITExperts' | upcase }}</span>
+          <span class="byline-dot">&middot;</span>
+          <span class="byline-date">{{ page.date | date: "%b %-d, %Y" | upcase }}</span>
+          <span class="byline-dot">&middot;</span>
+          <span class="byline-time">{{ read_time }} MIN READ</span>
         </div>
       </div>
-    </header>
+    </div>
+  </div>
 
+  <div class="post-body-wrap">
     <div class="post-body">
       {{ content }}
     </div>
@@ -44,28 +39,27 @@ layout: default
       {% if page.tags.size > 0 %}
       <div class="post-tags">
         {% for tag in page.tags %}
-          <span class="post-tag">{{ tag }}</span>
+          <span class="pill-tag">{{ tag | upcase }}</span>
         {% endfor %}
       </div>
       {% endif %}
-
       <div class="post-share">
-        <span>Share this article</span>
-        <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ page.url | absolute_url }}" target="_blank" rel="noopener">Twitter</a>
-        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url }}" target="_blank" rel="noopener">LinkedIn</a>
+        <span class="share-label">SHARE</span>
+        <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ page.url | absolute_url }}" target="_blank" rel="noopener" class="share-link">X / TWITTER</a>
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url }}" target="_blank" rel="noopener" class="share-link">LINKEDIN</a>
       </div>
     </footer>
-
   </div>
+
 </article>
 
-{% assign cat_posts = site.posts | where_exp: "p", "p.url != page.url" %}
-{% if cat_posts.size > 0 %}
+{% assign related = site.posts | where_exp: "p", "p.url != page.url" %}
+{% if related.size > 0 %}
 <section class="more-posts">
-  <div class="more-posts-inner">
-    <h2>More from HCITExperts</h2>
-    <div class="more-posts-grid">
-      {% for post in cat_posts limit:3 %}
+  <div class="more-inner">
+    <div class="section-kicker">MORE FROM HCITEXPERTS</div>
+    <div class="more-grid">
+      {% for post in related limit:3 %}
         {% include post-card.html post=post %}
       {% endfor %}
     </div>
@@ -76,12 +70,10 @@ layout: default
 <script>
   window.addEventListener('scroll', function() {
     var el = document.getElementById('progressBar');
-    var article = document.querySelector('.post-body');
-    if (!article || !el) return;
-    var rect = article.getBoundingClientRect();
-    var total = article.offsetHeight;
-    var scrolled = -rect.top;
-    var pct = Math.min(Math.max(scrolled / total * 100, 0), 100);
+    var body = document.querySelector('.post-body');
+    if (!el || !body) return;
+    var scrolled = window.scrollY - body.offsetTop;
+    var pct = Math.min(Math.max(scrolled / body.offsetHeight * 100, 0), 100);
     el.style.width = pct + '%';
   });
 </script>

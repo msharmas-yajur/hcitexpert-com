@@ -1,31 +1,29 @@
 {% assign words = post.content | strip_html | number_of_words %}
 {% assign read_time = words | divided_by: 200 | plus: 1 %}
 {% assign thumb = post.content | split: 'src="' | last | split: '"' | first %}
+{% assign tile_colors = "#3cffd0,#5200ff,#f5c518,#ff3e6c,#ff6b00" | split: "," %}
+{% assign color_index = post.date | date: "%-d" | modulo: 5 %}
+{% assign tile_color = tile_colors[color_index] %}
 
-<article class="post-card">
-  <div class="card-body">
-    <div class="card-meta-top">
-      <span class="card-author">{{ post.author | default: 'Team HCITExperts' }}</span>
-      {% if post.categories.size > 0 %}
-        <span class="card-sep">&middot;</span>
-        <span class="card-category">{{ post.categories.first }}</span>
-      {% endif %}
-    </div>
-    <a class="card-link" href="{{ post.url | relative_url }}">
-      <h2 class="card-title">{{ post.title | escape }}</h2>
-      {% if post.excerpt %}
-        <p class="card-excerpt">{{ post.excerpt | strip_html | truncate: 140 }}</p>
-      {% endif %}
-    </a>
-    <div class="card-meta-bottom">
-      <span>{{ post.date | date: "%b %-d, %Y" }}</span>
-      <span class="card-sep">&middot;</span>
-      <span>{{ read_time }} min read</span>
-    </div>
-  </div>
+<article class="story-tile" style="--tile-color: {{ tile_color }};">
   {% if thumb contains 'http' %}
-  <a class="card-thumb" href="{{ post.url | relative_url }}" aria-hidden="true">
-    <img src="{{ thumb }}" alt="{{ post.title | escape }}" loading="lazy">
+  <a href="{{ post.url | relative_url }}" class="tile-image-link" aria-hidden="true">
+    <img src="{{ thumb }}" alt="{{ post.title | escape }}" loading="lazy" class="tile-image">
   </a>
   {% endif %}
+  <div class="tile-body">
+    <div class="tile-kicker">
+      {% if post.categories.size > 0 %}{{ post.categories.first | upcase }}{% else %}HEALTHCARE IT{% endif %}
+    </div>
+    <a href="{{ post.url | relative_url }}" class="tile-title-link">
+      <h2 class="tile-title">{{ post.title | escape }}</h2>
+    </a>
+    <div class="tile-meta">
+      <span>{{ post.author | default: 'Team HCITExperts' | upcase }}</span>
+      <span class="meta-dot">&middot;</span>
+      <span>{{ post.date | date: "%b %-d, %Y" | upcase }}</span>
+      <span class="meta-dot">&middot;</span>
+      <span>{{ read_time }} MIN</span>
+    </div>
+  </div>
 </article>
