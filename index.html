@@ -17,7 +17,7 @@ title: HCITExperts — Healthcare IT Blog
         {% if featured.categories.size > 0 %}
         <span class="cat-badge">{{ featured.categories.first }}</span>
         {% endif %}
-        <h1 class="hero-title">{{ featured.title | escape }}</h1>
+        <h1 class="hero-title">{{ featured.title }}</h1>
         {% if featured.excerpt %}
         <p class="hero-deck">{{ featured.excerpt | strip_html | truncate: 220 }}</p>
         {% endif %}
@@ -39,7 +39,8 @@ title: HCITExperts — Healthcare IT Blog
   <div class="posts-inner">
 
     <div class="posts-grid">
-      {% for post in paginator.posts offset:1 %}
+      {% for post in paginator.posts %}
+        {% unless post.url == featured.url %}
         {% assign words = post.content | strip_html | number_of_words %}
         {% assign rt = words | divided_by: 200 | plus: 1 %}
 
@@ -55,10 +56,11 @@ title: HCITExperts — Healthcare IT Blog
               <span>{{ rt }} min read</span>
             </div>
             <a href="{{ post.url | relative_url }}" class="card-title-link">
-              <h2 class="card-title">{{ post.title | escape }}</h2>
+              <h2 class="card-title">{{ post.title }}</h2>
             </a>
           </div>
         </article>
+        {% endunless %}
       {% endfor %}
     </div>
 

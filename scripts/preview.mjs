@@ -116,10 +116,14 @@ function cardHtml(post, large = false) {
         <span>${mins} min read</span>
       </div>
       <a href="/post/${post.slug}" class="card-title-link">
-        <h2 class="card-title" style="font-size:${titleSize}">${post.meta.title || ''}</h2>
+        <h2 class="card-title" style="font-size:${titleSize}">${decodeEntities(post.meta.title)}</h2>
       </a>
     </div>
   </article>`;
+}
+
+function decodeEntities(str) {
+  return (str || '').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#039;/g, "'");
 }
 
 function homeHtml(posts) {
@@ -137,7 +141,7 @@ function homeHtml(posts) {
     <a href="/post/${featured.slug}" class="hero-link">
       <div class="hero-body">
         <span class="cat-badge">${cat}</span>
-        <h1 class="hero-title">${featured.meta.title || ''}</h1>
+        <h1 class="hero-title">${decodeEntities(featured.meta.title)}</h1>
         <div class="post-meta">
           <span class="meta-avatar">${avatar(author)}</span>
           <span class="meta-author">${author}</span>
@@ -168,13 +172,13 @@ function postHtml(post) {
   const cat = post.meta.categories ? post.meta.categories.split(',')[0].trim() : '';
   const mins = rt(post.body);
 
-  return shell(post.meta.title || 'Post', `
+  return shell(decodeEntities(post.meta.title) || 'Post', `
 <div class="progress-bar" id="progressBar"></div>
 <article class="post-article">
   <div class="post-container">
     <header class="post-header">
       ${cat ? `<div class="post-cats"><span class="cat-badge">${cat}</span></div>` : ''}
-      <h1 class="post-title">${post.meta.title || ''}</h1>
+      <h1 class="post-title">${decodeEntities(post.meta.title)}</h1>
       <div class="post-byline">
         <span class="meta-avatar">${avatar(author)}</span>
         <div class="byline-info">
