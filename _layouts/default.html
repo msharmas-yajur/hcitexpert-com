@@ -34,16 +34,28 @@
 
   <footer class="site-footer">
     <div class="footer-inner">
-      <div class="footer-left">
-        <img src="{{ '/assets/images/logo-full.png' | relative_url }}" alt="HCITExperts — The Healthcare IT Experts Blog by Yajur Healthcare" height="60">
-        <p>Healthcare IT insights by Yajur Healthcare since 2013.</p>
+
+      <div class="footer-brand">
+        <img src="{{ '/assets/images/logo-full.png' | relative_url }}" alt="HCITExperts" height="52">
+        <p>India's leading Healthcare IT blog.<br>Insights by Yajur Healthcare since 2013.</p>
       </div>
-      <nav class="footer-nav">
-        <a href="{{ '/' | relative_url }}">Home</a>
+
+      <div class="footer-col">
+        <h4 class="footer-col-title">Explore</h4>
+        <a href="{{ '/' | relative_url }}">Blog</a>
         <a href="{{ '/about-hcitexpert/' | relative_url }}">About</a>
         <a href="{{ '/contact-us/' | relative_url }}">Contact</a>
-        <a href="{{ site.feed.path | default: '/feed.xml' | relative_url }}">RSS</a>
-      </nav>
+        <a href="{{ site.feed.path | default: '/feed.xml' | relative_url }}">RSS Feed</a>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-col-title">Follow Us</h4>
+        <a href="https://twitter.com/HCITExpert" target="_blank" rel="noopener">Twitter / X</a>
+        <a href="http://www.linkedin.com/company/hcitexpert" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="http://www.facebook.com/HCITExpert/" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://telegram.me/HCITExpertDHNews" target="_blank" rel="noopener">Telegram</a>
+      </div>
+
     </div>
     <div class="footer-copy">
       <p>&copy; {{ site.time | date: '%Y' }} HCITExperts &middot; Yajur Healthcare. All rights reserved.</p>
