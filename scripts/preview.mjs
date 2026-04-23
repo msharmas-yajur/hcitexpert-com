@@ -281,6 +281,21 @@ const server = http.createServer((req, res) => {
     return;
   }
 
+  // posts-index.json for timeline year filter
+  if (pathname === '/posts-index.json') {
+    const data = posts.map(p => {
+      const words = p.body.replace(/<[^>]+>/g, '').split(/\s+/).length;
+      const r = Math.max(1, Math.ceil(words / 200));
+      const d = (p.meta.date || '').slice(0, 10);
+      const y = d ? parseInt(d.slice(0, 4), 10) : 0;
+      const c = p.meta.categories ? p.meta.categories.split(',')[0].trim() : 'Healthcare IT';
+      return { t: decodeEntities(p.meta.title || ''), u: `/post/${p.slug}`, d, y, c, r };
+    });
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify(data));
+    return;
+  }
+
   // paginated pages: /blog/page/2/ etc.
   const pageMatch = pathname.match(/^\/blog\/page\/(\d+)\/?$/);
   if (pageMatch) {

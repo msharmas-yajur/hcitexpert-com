@@ -7,6 +7,17 @@ title: HCITExperts — Healthcare IT Blog
 {% unless featured %}{% assign featured = paginator.posts | first %}{% endunless %}
 {% assign fwords = featured.content | strip_html | number_of_words %}
 {% assign frt = fwords | divided_by: 200 | plus: 1 %}
+{% assign years = site.posts | map: 'date' | map: 'year' | uniq | sort | reverse %}
+
+<!-- Timeline year filter (sticky) -->
+<nav class="timeline-filter" aria-label="Browse archive by year">
+  <div class="timeline-inner">
+    <button type="button" class="tl-btn active" data-year="all">All</button>
+    {% for y in years %}
+      <button type="button" class="tl-btn" data-year="{{ y }}">{{ y }}</button>
+    {% endfor %}
+  </div>
+</nav>
 
 <!-- Hero / Featured -->
 <section class="hero">
@@ -91,11 +102,19 @@ title: HCITExperts — Healthcare IT Blog
   var grid = document.querySelector('.posts-grid');
   if (!sentinel || !grid) return;
 
-  // Hide paginator — JS takes over
+  // Hide fallback paginator — JS handles navigation
   var paginationNav = document.querySelector('.pagination');
   if (paginationNav) paginationNav.style.display = 'none';
 
+  // Snapshot the server-rendered grid so "All" can restore it without a reload
+  var originalGrid = grid.innerHTML;
+  var originalNext = sentinel.dataset.next;
+
   var loading = false;
+  var observer = null;
+  var postsCache = null;
+
+  // ── Infinite scroll ──────────────────────────────────────────────
 
   function loadNext() {
     var next = sentinel.dataset.next;
@@ -107,22 +126,17 @@ title: HCITExperts — Healthcare IT Blog
       .then(function (r) { return r.text(); })
       .then(function (html) {
         var doc = new DOMParser().parseFromString(html, 'text/html');
-
         doc.querySelectorAll('.posts-grid .post-card').forEach(function (card) {
           grid.appendChild(card);
         });
-
         var ns = doc.getElementById('load-sentinel');
         var nextUrl = (ns && ns.dataset.next) || '';
         sentinel.dataset.next = nextUrl;
-
         sentinel.classList.remove('is-loading');
-
         if (!nextUrl) {
           var count = grid.querySelectorAll('.post-card').length;
           sentinel.innerHTML = '<p class="load-end">All ' + count + ' articles loaded</p>';
         }
-
         loading = false;
       })
       .catch(function () {
@@ -131,7 +145,107 @@ title: HCITExperts — Healthcare IT Blog
       });
   }
 
-  var observer = new IntersectionObserver(loadNext, { rootMargin: '500px' });
-  observer.observe(sentinel);
+  function startScroll() {
+    observer = new IntersectionObserver(loadNext, { rootMargin: '500px' });
+    observer.observe(sentinel);
+  }
+
+  function stopScroll() {
+    if (observer) { observer.disconnect(); observer = null; }
+    loading = false;
+  }
+
+  // ── Timeline filter ──────────────────────────────────────────────
+
+  var MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+  function fmtDate(iso) {
+    var d = new Date(iso + 'T00:00:00');
+    return MONTHS[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+  }
+
+  function esc(s) {
+    return (s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function makeCard(p) {
+    return '<article class="post-card">'
+      + '<div class="card-body">'
+      + '<div class="card-top-meta">'
+      + '<span>' + fmtDate(p.d) + '</span>'
+      + (p.c ? '<span class="meta-sep">&middot;</span><span class="card-cat">' + esc(p.c) + '</span>' : '')
+      + '<span class="meta-sep">&middot;</span><span>' + p.r + ' min read</span>'
+      + '</div>'
+      + '<a href="' + esc(p.u) + '" class="card-title-link"><h2 class="card-title">' + esc(p.t) + '</h2></a>'
+      + '</div>'
+      + '</article>';
+  }
+
+  function setActiveBtn(year) {
+    document.querySelectorAll('.tl-btn').forEach(function (b) {
+      b.classList.toggle('active', b.dataset.year === year);
+    });
+  }
+
+  function activateYear(year) {
+    stopScroll();
+    document.body.classList.add('filtered');
+    setActiveBtn(year);
+    history.replaceState(null, '', '#year=' + year);
+
+    function render(posts) {
+      var filtered = posts
+        .filter(function (p) { return String(p.y) === year; })
+        .sort(function (a, b) { return b.d.localeCompare(a.d); });
+
+      grid.innerHTML = filtered.length
+        ? filtered.map(makeCard).join('')
+        : '<p style="grid-column:1/-1;color:var(--muted);padding:2rem 0">No articles found for ' + year + '.</p>';
+
+      sentinel.innerHTML = filtered.length
+        ? '<p class="load-end">' + filtered.length + ' article' + (filtered.length !== 1 ? 's' : '') + ' from ' + year + '</p>'
+        : '';
+      sentinel.classList.remove('is-loading');
+    }
+
+    if (postsCache) {
+      render(postsCache);
+    } else {
+      sentinel.classList.add('is-loading');
+      fetch('/posts-index.json')
+        .then(function (r) { return r.json(); })
+        .then(function (posts) {
+          postsCache = posts;
+          sentinel.classList.remove('is-loading');
+          render(posts);
+        })
+        .catch(function () { sentinel.classList.remove('is-loading'); });
+    }
+  }
+
+  function activateAll() {
+    stopScroll();
+    document.body.classList.remove('filtered');
+    setActiveBtn('all');
+    history.replaceState(null, '', location.pathname + location.search);
+    grid.innerHTML = originalGrid;
+    sentinel.innerHTML = '';
+    sentinel.dataset.next = originalNext;
+    startScroll();
+  }
+
+  // Click delegation on the timeline bar
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest('.tl-btn');
+    if (!btn) return;
+    if (btn.dataset.year === 'all') { activateAll(); }
+    else { activateYear(btn.dataset.year); }
+  });
+
+  // Deep-link on page load: honour #year=YYYY in URL
+  var hashMatch = location.hash.match(/^#year=(\d{4})$/);
+  if (hashMatch) { activateYear(hashMatch[1]); }
+  else { startScroll(); }
+
 }());
 </script>
