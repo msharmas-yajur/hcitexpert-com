@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Allow Googlebot full asset access for accurate rendering
+User-agent: Googlebot
+Allow: /assets/
+
+Sitemap: https://hcitexpert.com/sitemap.xml

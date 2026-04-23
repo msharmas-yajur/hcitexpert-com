@@ -1,0 +1,142 @@
+{%- assign site_url = site.url | default: 'https://hcitexpert.com' -%}
+{%- if page.date -%}
+{%- assign post_url = page.url | absolute_url -%}
+{%- assign author_name = page.author | default: 'Manish Sharma' -%}
+{%- assign words = page.content | strip_html | number_of_words -%}
+{%- assign post_image = page.image | default: page.featured_image -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "{{ post_url }}#article",
+      "headline": {{ page.title | jsonify }},
+      "description": {{ page.excerpt | strip_html | truncate: 200 | jsonify }},
+      "datePublished": "{{ page.date | date_to_xmlschema }}",
+      "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
+      "wordCount": {{ words }},
+      "inLanguage": "en-IN",
+      "url": "{{ post_url }}",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{ post_url }}"
+      },
+      "author": {
+        "@type": "Person",
+        "@id": "{{ site_url }}/about-hcitexpert/#author",
+        "name": {{ author_name | jsonify }},
+        "url": "{{ site_url }}/about-hcitexpert/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "@id": "{{ site_url }}/#organization",
+        "name": "HCITExperts",
+        "url": "{{ site_url }}",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "{{ site_url }}/assets/images/logo.png"
+        }
+      }{% if post_image %},
+      "image": {
+        "@type": "ImageObject",
+        "url": {{ post_image | absolute_url | jsonify }}
+      }{% endif %}{% if page.categories.size > 0 %},
+      "articleSection": {{ page.categories.first | jsonify }},
+      "keywords": {{ page.categories | join: ', ' | jsonify }}{% endif %},
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [".post-title", ".post-body > p:first-of-type"]
+      },
+      "isPartOf": {
+        "@type": "Blog",
+        "@id": "{{ site_url }}/#blog",
+        "name": "HCITExperts Blog"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "{{ site_url }}"
+        }{% if page.categories.size > 0 %},
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": {{ page.categories.first | jsonify }},
+          "item": "{{ site_url }}/category/{{ page.categories.first | slugify }}"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": {{ page.title | jsonify }},
+          "item": "{{ post_url }}"
+        }{% else %},
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": {{ page.title | jsonify }},
+          "item": "{{ post_url }}"
+        }{% endif %}
+      ]
+    }
+  ]
+}
+</script>
+{%- else -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "{{ site_url }}/#organization",
+      "name": "HCITExperts",
+      "alternateName": "The Healthcare IT Experts Blog",
+      "url": "{{ site_url }}",
+      "description": "India's leading Healthcare IT blog. Expert insights by Yajur Healthcare since 2013.",
+      "foundingDate": "2013",
+      "inLanguage": "en-IN",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "{{ site_url }}/assets/images/logo.png",
+        "@id": "{{ site_url }}/#logo"
+      },
+      "sameAs": [
+        "https://twitter.com/HCITExpert",
+        "https://www.linkedin.com/company/hcitexpert",
+        "https://www.facebook.com/HCITExpert/",
+        "https://telegram.me/HCITExpertDHNews"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "info@hcitexpert.com",
+        "contactType": "editorial"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "{{ site_url }}/#website",
+      "name": "HCITExperts",
+      "url": "{{ site_url }}",
+      "description": "India's leading Healthcare IT blog",
+      "inLanguage": "en-IN",
+      "publisher": {
+        "@id": "{{ site_url }}/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "{{ site_url }}/?s={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+  ]
+}
+</script>
+{%- endif -%}

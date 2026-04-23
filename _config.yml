@@ -1,11 +1,31 @@
 title: HCITExperts Blog
-description: Healthcare IT insights by Yajur Healthcare
+description: "India's leading Healthcare IT blog. Expert analysis, news, and insights on Digital Health, EMR, EHR, HIS, telemedicine, and healthcare technology — by Yajur Healthcare since 2013."
 url: "https://hcitexpert.com"
 baseurl: ""
+lang: en-IN
 
 author:
-  name: Team HCITExperts
-  email: info@hcitexpert.com
+  name: Manish Sharma
+  email: manish.sharma@hcitexpert.com
+  twitter: HCITExpert
+  url: https://hcitexpert.com/about-hcitexpert/
+
+# jekyll-seo-tag: Twitter card config
+twitter:
+  username: HCITExpert
+  card: summary_large_image
+
+# jekyll-seo-tag: social sameAs for Knowledge Panel
+social:
+  name: HCITExperts
+  links:
+    - https://twitter.com/HCITExpert
+    - https://www.linkedin.com/company/hcitexpert
+    - https://www.facebook.com/HCITExpert/
+    - https://telegram.me/HCITExpertDHNews
+
+# Open Graph image fallback (used when post has no featured_image)
+logo: /assets/images/logo.png
 
 # Build settings
 markdown: kramdown
