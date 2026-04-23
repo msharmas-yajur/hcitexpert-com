@@ -2,6 +2,7 @@
 title: Contact Us
 date: 2017-03-07 08:58:00 +0000
 permalink: /contact-us/
+description: "Contact the HCITExperts editorial team. Reach Manish Sharma, Founder Editor, for article contributions, expert opinions, and healthcare technology discussions."
 ---
 
 <div class="contact-page">

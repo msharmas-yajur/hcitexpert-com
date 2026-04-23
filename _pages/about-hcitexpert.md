@@ -3,6 +3,7 @@ title: About The Healthcare IT Expert Blog
 date: 2019-02-05 14:28:00 +0000
 permalink: /about-hcitexpert/
 original_url: https://hcitexpert.com/about-hcitexpert/
+description: "The Healthcare IT Experts Blog — India's leading Healthcare IT publication since 2013, covering Digital Health, EMR, EHR, telemedicine, and healthcare AI by Yajur Healthcare."
 ---
 
 <div style="text-align:center; margin-bottom: 2.5rem;">

@@ -185,13 +185,14 @@ a { color: inherit; text-decoration: none; }
 }
 .timeline-inner {
   max-width: var(--max-w); margin: 0 auto;
-  padding: .6rem 2rem;
-  display: flex; gap: .4rem;
+  padding: .75rem 2rem;
+  display: flex; align-items: center; gap: 1rem;
   overflow-x: auto; scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
 }
 .timeline-inner::-webkit-scrollbar { display: none; }
-.tl-btn {
+/* "All" pill button */
+.tl-all {
   flex-shrink: 0;
   font: 500 .8rem 'Inter', sans-serif;
   padding: .35rem .9rem;
@@ -201,11 +202,48 @@ a { color: inherit; text-decoration: none; }
   cursor: pointer; transition: all .15s;
   line-height: 1;
 }
-.tl-btn:hover { color: var(--text); border-color: #aaa; }
-.tl-btn.active { background: var(--green); color: #fff; border-color: var(--green); }
+.tl-all:hover { color: var(--text); border-color: #aaa; }
+.tl-all.active { background: var(--green); color: #fff; border-color: var(--green); }
+/* Year nodes on horizontal track */
+.tl-track {
+  position: relative;
+  display: flex; align-items: center;
+  flex: 1; min-width: 0;
+  overflow-x: auto; scrollbar-width: none;
+}
+.tl-track::-webkit-scrollbar { display: none; }
+.tl-line {
+  position: absolute; top: 50%; left: 0; right: 0;
+  height: 2px; background: var(--border);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+.tl-node {
+  position: relative; z-index: 1; flex-shrink: 0;
+  display: flex; flex-direction: column; align-items: center;
+  padding: .4rem 1.2rem;
+  background: none; border: none; cursor: pointer;
+  gap: .25rem;
+}
+.tl-dot {
+  display: block; width: 10px; height: 10px;
+  border-radius: 50%;
+  background: #fff; border: 2px solid var(--border);
+  transition: all .15s;
+}
+.tl-year {
+  font: 500 .72rem 'Inter', sans-serif;
+  color: var(--muted); transition: color .15s;
+  line-height: 1; white-space: nowrap;
+}
+.tl-node:hover .tl-dot { background: var(--green); border-color: var(--green); }
+.tl-node:hover .tl-year { color: var(--text); }
+.tl-node.active .tl-dot { background: var(--green); border-color: var(--green); }
+.tl-node.active .tl-year { color: var(--green); font-weight: 600; }
 body.filtered .hero { display: none; }
 @media (max-width: 700px) {
-  .timeline-inner { padding: .5rem 1rem; }
+  .timeline-inner { padding: .6rem 1rem; gap: .6rem; }
+  .tl-node { padding: .4rem .8rem; }
 }
 
 /* ── Infinite scroll sentinel ──────────────────────────── */

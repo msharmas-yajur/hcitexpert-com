@@ -7,15 +7,21 @@ title: HCITExperts — Healthcare IT Blog
 {% unless featured %}{% assign featured = paginator.posts | first %}{% endunless %}
 {% assign fwords = featured.content | strip_html | number_of_words %}
 {% assign frt = fwords | divided_by: 200 | plus: 1 %}
-{% assign years = site.posts | map: 'date' | map: 'year' | uniq | sort | reverse %}
+{% assign years = site.posts | group_by_exp: "post", "post.date | date: '%Y'" | map: 'name' | sort | reverse %}
 
 <!-- Timeline year filter (sticky) -->
 <nav class="timeline-filter" aria-label="Browse archive by year">
   <div class="timeline-inner">
-    <button type="button" class="tl-btn active" data-year="all">All</button>
-    {% for y in years %}
-      <button type="button" class="tl-btn" data-year="{{ y }}">{{ y }}</button>
-    {% endfor %}
+    <button type="button" class="tl-btn tl-all active" data-year="all">All</button>
+    <div class="tl-track">
+      <div class="tl-line"></div>
+      {% for y in years %}
+        <button type="button" class="tl-btn tl-node" data-year="{{ y }}">
+          <span class="tl-dot"></span>
+          <span class="tl-year">{{ y }}</span>
+        </button>
+      {% endfor %}
+    </div>
   </div>
 </nav>
 
