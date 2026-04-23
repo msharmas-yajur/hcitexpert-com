@@ -277,6 +277,30 @@ a { color: inherit; text-decoration: none; }
 .footer-copy { max-width: var(--max-w); margin: 0 auto; padding: 0 2rem; border-top: 1px solid var(--border); padding-top: 1rem; }
 .footer-copy p { font-size: .75rem; color: #aaa; }
 
+/* ── Contact page ──────────────────────────────────────── */
+.contact-page { max-width: var(--post-w); margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+.contact-section-title { font-family: 'Lora', serif; font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem; padding-bottom: .5rem; border-bottom: 2px solid var(--border); }
+.team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 3rem; }
+.team-card { display: flex; flex-direction: column; align-items: center; text-align: center; background: var(--faint); border-radius: 12px; padding: 2rem 1.5rem; }
+.team-photo { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 1.25rem; border: 3px solid var(--border); }
+.team-name { font-size: 1.1rem; font-weight: 700; margin-bottom: .25rem; }
+.team-role { font-size: .875rem; color: var(--green); font-weight: 600; margin-bottom: .2rem; }
+.team-org { font-size: .8rem; color: var(--muted); margin-bottom: 1rem; }
+.team-links { display: flex; gap: .75rem; flex-wrap: wrap; justify-content: center; }
+.team-btn { font-size: .8rem; font-weight: 600; padding: .4rem 1rem; border-radius: 999px; text-decoration: none; }
+.team-btn-linkedin { background: #0a66c2; color: #fff; }
+.team-btn-email { background: var(--green); color: #fff; }
+.contact-info-section { margin-bottom: 2.5rem; }
+.contact-details { display: flex; flex-direction: column; gap: .75rem; margin-bottom: 1.5rem; }
+.contact-detail { display: flex; gap: 1rem; font-size: .925rem; }
+.contact-label { font-weight: 600; min-width: 80px; color: var(--muted); }
+.contact-detail a { color: var(--green); }
+.social-links { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1rem; }
+.social-links a { font-size: .8rem; font-weight: 600; padding: .35rem .9rem; border-radius: 999px; border: 1px solid var(--border); color: var(--text); transition: border-color .15s; }
+.social-links a:hover { border-color: var(--green); color: var(--green); }
+.contact-map { margin-top: 2rem; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
+.contact-map iframe { width: 100%; height: 350px; display: block; border: none; }
+
 /* ── Responsive ────────────────────────────────────────── */
 @media (max-width: 900px) {
   .hero-link { grid-template-columns: 1fr; }
@@ -290,4 +314,5 @@ a { color: inherit; text-decoration: none; }
   .header-nav a:not(.btn-subscribe) { display: none; }
   .posts-inner, .hero-inner, .more-inner, .footer-inner, .footer-copy { padding: 0 1rem; }
   .more-grid { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: 1fr; }
 }
