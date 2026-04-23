@@ -65,7 +65,7 @@ title: HCITExperts — Healthcare IT Blog
     </div>
 
     {% if paginator.total_pages > 1 %}
-    <nav class="pagination">
+    <nav class="pagination" aria-label="Pagination fallback">
       {% if paginator.previous_page %}
         <a href="{{ paginator.previous_page_path | relative_url }}" class="page-btn">&larr; Newer</a>
       {% else %}
@@ -80,5 +80,58 @@ title: HCITExperts — Healthcare IT Blog
     </nav>
     {% endif %}
 
+    <div id="load-sentinel" data-next="{% if paginator.next_page %}{{ paginator.next_page_path | relative_url }}{% endif %}"></div>
+
   </div>
 </section>
+
+<script>
+(function () {
+  var sentinel = document.getElementById('load-sentinel');
+  var grid = document.querySelector('.posts-grid');
+  if (!sentinel || !grid) return;
+
+  // Hide paginator — JS takes over
+  var paginationNav = document.querySelector('.pagination');
+  if (paginationNav) paginationNav.style.display = 'none';
+
+  var loading = false;
+
+  function loadNext() {
+    var next = sentinel.dataset.next;
+    if (loading || !next) return;
+    loading = true;
+    sentinel.classList.add('is-loading');
+
+    fetch(next)
+      .then(function (r) { return r.text(); })
+      .then(function (html) {
+        var doc = new DOMParser().parseFromString(html, 'text/html');
+
+        doc.querySelectorAll('.posts-grid .post-card').forEach(function (card) {
+          grid.appendChild(card);
+        });
+
+        var ns = doc.getElementById('load-sentinel');
+        var nextUrl = (ns && ns.dataset.next) || '';
+        sentinel.dataset.next = nextUrl;
+
+        sentinel.classList.remove('is-loading');
+
+        if (!nextUrl) {
+          var count = grid.querySelectorAll('.post-card').length;
+          sentinel.innerHTML = '<p class="load-end">All ' + count + ' articles loaded</p>';
+        }
+
+        loading = false;
+      })
+      .catch(function () {
+        sentinel.classList.remove('is-loading');
+        loading = false;
+      });
+  }
+
+  var observer = new IntersectionObserver(loadNext, { rootMargin: '500px' });
+  observer.observe(sentinel);
+}());
+</script>

@@ -126,10 +126,28 @@ function decodeEntities(str) {
   return (str || '').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#039;/g, "'");
 }
 
-function homeHtml(posts) {
-  const featured = posts.find(p => p.meta.featured === 'true') || posts[0];
-  const rest = posts.filter(p => p !== featured).slice(0, 20);
-  const img = featured ? thumb(featured.body) : null;
+const PAGE_SIZE = 12;
+
+function pageHtml(posts, allPosts, pageNum) {
+  const featured = allPosts.find(p => p.meta.featured === 'true') || allPosts[0];
+  const offset = (pageNum - 1) * PAGE_SIZE;
+  const pagePosts = posts.slice(offset, offset + PAGE_SIZE);
+  const totalPages = Math.ceil(posts.length / PAGE_SIZE);
+  const nextUrl = pageNum < totalPages ? `/blog/page/${pageNum + 1}/` : '';
+
+  const grid = pagePosts.map(p => cardHtml(p, true)).join('');
+  const sentinel = `<div id="load-sentinel" data-next="${nextUrl}"></div>`;
+
+  if (pageNum > 1) {
+    return shell(`HCITExperts — Page ${pageNum}`, `
+<section class="posts-section">
+  <div class="posts-inner">
+    <div class="posts-grid">${grid}</div>
+    ${sentinel}
+  </div>
+</section>`);
+  }
+
   const cat = featured?.meta.categories ? featured.meta.categories.split(',')[0].trim() : 'Healthcare IT';
   const author = featured?.meta.author || 'Team HCITExperts';
   const mins = featured ? rt(featured.body) : 0;
@@ -155,16 +173,50 @@ function homeHtml(posts) {
   </div>
 </section>` : '';
 
-  const grid = rest.map(p => cardHtml(p, true)).join('');
+  const nonFeatured = posts.filter(p => p !== featured);
+  const firstGrid = nonFeatured.slice(0, PAGE_SIZE).map(p => cardHtml(p, true)).join('');
+  const firstNextUrl = nonFeatured.length > PAGE_SIZE ? '/blog/page/2/' : '';
 
   return shell('HCITExperts — Healthcare IT Blog', `
 ${heroSection}
 <section class="posts-section">
   <div class="posts-inner">
-    <div class="posts-grid">${grid}</div>
-    <p style="text-align:center;margin-top:2rem;font-size:.85rem;color:#999">${posts.length} total posts &mdash; local preview shows 20</p>
+    <div class="posts-grid">${firstGrid}</div>
+    <div id="load-sentinel" data-next="${firstNextUrl}"></div>
   </div>
-</section>`);
+</section>
+<script>
+(function () {
+  var sentinel = document.getElementById('load-sentinel');
+  var grid = document.querySelector('.posts-grid');
+  if (!sentinel || !grid) return;
+  var loading = false;
+  function loadNext() {
+    var next = sentinel.dataset.next;
+    if (loading || !next) return;
+    loading = true;
+    sentinel.classList.add('is-loading');
+    fetch(next).then(function(r){return r.text();}).then(function(html){
+      var doc = new DOMParser().parseFromString(html,'text/html');
+      doc.querySelectorAll('.posts-grid .post-card').forEach(function(c){grid.appendChild(c);});
+      var ns = doc.getElementById('load-sentinel');
+      var nextUrl = (ns && ns.dataset.next) || '';
+      sentinel.dataset.next = nextUrl;
+      sentinel.classList.remove('is-loading');
+      if (!nextUrl) {
+        var count = grid.querySelectorAll('.post-card').length;
+        sentinel.innerHTML = '<p class="load-end">All '+count+' articles loaded</p>';
+      }
+      loading = false;
+    }).catch(function(){sentinel.classList.remove('is-loading');loading=false;});
+  }
+  new IntersectionObserver(loadNext, {rootMargin:'500px'}).observe(sentinel);
+}());
+<\/script>`);
+}
+
+function homeHtml(posts) {
+  return pageHtml(posts, posts, 1);
 }
 
 function postHtml(post) {
@@ -226,6 +278,15 @@ const server = http.createServer((req, res) => {
   if (pathname === '/') {
     res.writeHead(200, { 'Content-Type': 'text/html' });
     res.end(homeHtml(posts));
+    return;
+  }
+
+  // paginated pages: /blog/page/2/ etc.
+  const pageMatch = pathname.match(/^\/blog\/page\/(\d+)\/?$/);
+  if (pageMatch) {
+    const num = parseInt(pageMatch[1], 10);
+    res.writeHead(200, { 'Content-Type': 'text/html' });
+    res.end(pageHtml(posts, posts, num));
     return;
   }
 
