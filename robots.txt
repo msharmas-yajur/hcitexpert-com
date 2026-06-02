@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /shares/
 
 # Allow Googlebot full asset access for accurate rendering
 User-agent: Googlebot
