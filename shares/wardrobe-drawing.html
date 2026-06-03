@@ -10,277 +10,339 @@
 
   /* ── RESET ── */
   *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-  html { font-size:16px; }
+
+  /*
+   * Base font-size = 18.4px (16 × 1.15).
+   * All rem/em values cascade from this root.
+   * clamp() keeps text readable from 320px phones to 4K monitors.
+   */
+  html { font-size: 18.4px; }
 
   /* ── BASE ── */
   body {
-    background:#e8e4dc;
-    font-family:'IBM Plex Mono',monospace;
-    padding:10px;
-    -webkit-text-size-adjust:100%;
-    text-size-adjust:100%;
+    background: #e8e4dc;
+    font-family: 'IBM Plex Mono', monospace;
+    padding: 10px;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    /* Fluid type scale anchored to root */
+    font-size: 1rem;
   }
 
-  /* ── LANGUAGE BAR — sticky top ── */
+  /* ══════════════════════════════════════════════════════
+     LANGUAGE BAR  — sticky, full-width on all devices
+  ══════════════════════════════════════════════════════ */
   #lang-bar {
-    max-width:1100px; margin:0 auto 12px;
-    display:flex; align-items:center; gap:10px;
-    background:#1a1a1a; padding:10px 16px; border-radius:3px;
-    box-shadow:2px 2px 0 #000;
-    position:sticky; top:10px; z-index:100;
+    max-width: 1100px;
+    margin: 0 auto 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #1a1a1a;
+    padding: 12px 18px;
+    border-radius: 3px;
+    box-shadow: 2px 2px 0 #000;
+    position: sticky;
+    top: 10px;
+    z-index: 100;
+    flex-wrap: wrap;         /* wraps on very narrow screens */
   }
-  #lang-bar .lang-label { font-size:12px; color:#aaa; flex:1; }
+  #lang-bar .lang-label {
+    font-size: clamp(12px, 2vw, 14px);
+    color: #aaa;
+    flex: 1;
+    min-width: 80px;
+  }
   .lang-btn {
-    font-family:'IBM Plex Mono',monospace; font-size:13px; font-weight:600;
-    padding:8px 20px; border:1.5px solid #555; background:transparent;
-    color:#aaa; cursor:pointer; border-radius:3px; transition:all .15s;
-    touch-action:manipulation; -webkit-tap-highlight-color:transparent;
-    min-height:44px; min-width:80px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: clamp(13px, 2vw, 15px);
+    font-weight: 600;
+    padding: 9px 22px;
+    border: 1.5px solid #555;
+    background: transparent;
+    color: #aaa;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: all .15s;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    min-height: 46px;
+    min-width: 84px;
   }
   .lang-btn:hover, .lang-btn:focus { border-color:#fff; color:#fff; outline:none; }
   .lang-btn.active { background:#fff; color:#1a1a1a; border-color:#fff; }
-  .lang-btn.hindi-btn { font-family:'Noto Sans Devanagari',sans-serif; font-size:15px; }
-
-  /* ── PAGE CARD ── */
-  .page {
-    max-width:1100px; margin:0 auto 20px; background:#fffef9;
-    border:1px solid #bbb; padding:16px;
-    box-shadow:3px 3px 0 #bbb;
+  .lang-btn.hindi-btn {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+    font-size: clamp(14px, 2.2vw, 17px);
   }
 
-  /* ── PAGE HEADER ── */
-  .page-header {
-    border-bottom:2.5px solid #1a1a1a; padding-bottom:10px; margin-bottom:16px;
-  }
-  .page-header-inner {
-    display:flex; justify-content:space-between; align-items:flex-start;
-    gap:12px; flex-wrap:wrap;
-  }
-  .page-header h1 {
-    font-size:clamp(12px, 2.5vw, 15px); font-weight:600;
-    text-transform:uppercase; letter-spacing:.05em; line-height:1.3;
-  }
-  .page-header .sub  { font-size:clamp(9px, 1.8vw, 11px); color:#666; margin-top:4px; line-height:1.4; }
-  .page-header .meta { font-size:clamp(8px, 1.6vw, 10px); color:#555; text-align:right; line-height:1.8; }
-  .rev { display:inline-block; background:#cc0000; color:#fff; font-size:9px; padding:1px 6px; margin-left:6px; vertical-align:middle; }
-
-  /* ── SECTION BAR ── */
-  .section-bar {
-    background:#f0ede4; border-left:4px solid #1a1a1a;
-    font-size:clamp(9px, 2vw, 11px); font-weight:600;
-    text-transform:uppercase; letter-spacing:.08em;
-    padding:7px 10px; margin:20px 0 6px; line-height:1.4;
-  }
-
-  /* ── VIEW BLOCK ── */
-  .view-block { margin-bottom:24px; }
-  .view-sub {
-    font-size:clamp(8px, 1.8vw, 10px); color:#999;
-    text-align:center; margin-bottom:8px; line-height:1.5; padding:0 8px;
-  }
-
-  /* ── SVG RESPONSIVE WRAPPER ──
-     - overflow-x:auto  → horizontal scroll on mobile when svg is wider than screen
-     - SVG has viewBox  → scales proportionally
-     - width:100%       → fills available space
-     - height:auto      → maintains aspect ratio
-     - min-width        → never compressed so small labels are unreadable;
-                          user can pinch-zoom or scroll horizontally
-  */
-  .svg-wrap {
-    width:100%;
-    overflow-x:auto;
-    -webkit-overflow-scrolling:touch;
-    overflow-y:hidden;
-    border:1px solid #ccc;
-    background:#fff;
-    -ms-overflow-style:-ms-autohiding-scrollbar;
-  }
-  .svg-wrap.dark-border { border:2px solid #1a1a1a; background:#f8f8f5; }
-  .svg-wrap svg {
-    display:block;
-    width:100%;
-    min-width:320px;
-    height:auto;
-  }
-
-  /* Taller/narrower SVGs (elevations): allow extra min-width so proportions hold */
-  .svg-wrap.elevation svg  { min-width:400px; }
-  .svg-wrap.plan svg       { min-width:360px; }
-  .svg-wrap.detail svg     { min-width:440px; }
-
-  /* ── TABLE ── */
-  .table-wrap { width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; }
-  table { width:100%; border-collapse:collapse; font-size:clamp(9px,1.8vw,11px); min-width:480px; }
-  th { background:#1a1a1a; color:#fff; padding:7px 8px; text-align:left; }
-  td { padding:6px 8px; border-bottom:1px solid #ddd; vertical-align:top; line-height:1.5; }
-  tr:nth-child(even) td { background:#f5f0e8; }
-  tr.hl td { background:#fff8e0; font-weight:600; }
-
-  /* ── NOTES & FOOTER ── */
-  .note {
-    background:#fff8e1; border-left:3px solid #f0a500;
-    padding:10px 12px; margin-top:14px;
-    font-size:clamp(9px,1.8vw,11px); line-height:1.8;
-  }
-  .note strong { display:block; margin-bottom:4px; font-size:clamp(10px,2vw,12px); }
-  .footer {
-    margin-top:14px; padding-top:10px; border-top:1px solid #ccc;
-    font-size:clamp(8px,1.6vw,9px); color:#999;
-    display:flex; justify-content:space-between; flex-wrap:wrap; gap:4px;
-  }
-
-  /* ── HINDI MODE ── */
-  body.hindi { font-family:'Noto Sans Devanagari',sans-serif; }
-  body.hindi .page-header h1,
-  body.hindi .section-bar,
-  body.hindi .view-sub,
-  body.hindi .note,
-  body.hindi th,
-  body.hindi td,
-  body.hindi .footer,
-  body.hindi #lang-bar .lang-label { font-family:'Noto Sans Devanagari',sans-serif; }
-  body.hindi .page-header h1 { letter-spacing:0; text-transform:none; }
-  body.hindi .section-bar { letter-spacing:0; text-transform:none; }
-
-  /* ── RESPONSIVE BREAKPOINTS ── */
-  @media (max-width:600px) {
-    body { padding:6px; }
-    #lang-bar { padding:8px 12px; top:6px; gap:8px; }
-    .page { padding:12px 10px; }
-    .page-header .meta { text-align:left; }
-    .footer { flex-direction:column; }
-    .section-bar { white-space:normal; }
-    .lang-btn { padding:8px 14px; font-size:12px; }
-  }
-  @media (min-width:900px) {
-    body { padding:20px; }
-    #lang-bar { top:20px; }
-    .page { padding:28px; }
-  }
-
-  /* ══════════════════════════════════════════════════
-     A4 PRINT STYLES
-     A4 = 210mm × 297mm
-     At 96dpi: 794px × 1123px
-     Usable with 15mm margins: 764px × 1093px
-     Each .sheet is one A4 page on screen and in print
-  ══════════════════════════════════════════════════ */
-
-  /* Screen: show A4 sheets as white cards with shadow */
+  /* ══════════════════════════════════════════════════════
+     SHEETS  — A4 layout, fluid on screen, fixed on print
+  ══════════════════════════════════════════════════════ */
   .sheet {
-    width: 794px;
-    min-height: 1123px;
-    margin: 0 auto 28px;
+    /*
+     * On screen: fluid width up to 794px (A4 at 96dpi).
+     * Padding uses vw so it scales with viewport.
+     * On mobile the sheet fills the screen edge-to-edge with small padding.
+     */
+    width: min(794px, 100%);
+    min-height: auto;           /* don't force A4 height on mobile */
+    margin: 0 auto 24px;
     background: #fff;
-    box-shadow: 0 2px 12px rgba(0,0,0,.18);
-    padding: 20mm 15mm 20mm 15mm;
+    box-shadow: 0 2px 14px rgba(0,0,0,.18);
+    padding: clamp(12px, 4vw, 57px) clamp(10px, 4vw, 43px) clamp(40px, 6vw, 70px);
     position: relative;
     box-sizing: border-box;
   }
 
-  /* Sheet header: drawing title + revision + page number */
+  /* ── Sheet header ── */
   .sheet-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    gap: 12px;
+    flex-wrap: wrap;             /* stack on narrow screens */
     border-bottom: 2px solid #1a1a1a;
-    padding-bottom: 8px;
-    margin-bottom: 14px;
+    padding-bottom: 10px;
+    margin-bottom: 16px;
   }
   .sheet-header h2 {
-    font-size: 12px; font-weight: 600;
-    text-transform: uppercase; letter-spacing: .06em;
+    font-size: clamp(12px, 2.5vw, 14px);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .06em;
     line-height: 1.4;
   }
   .sheet-header .sh-meta {
-    font-size: 9px; color: #555; text-align: right; line-height: 1.8;
+    font-size: clamp(9px, 1.8vw, 11px);
+    color: #555;
+    text-align: right;
+    line-height: 1.9;
+  }
+  @media (max-width: 500px) {
+    .sheet-header .sh-meta { text-align: left; }
   }
 
-  /* Sheet footer: thin rule + doc ref + page number */
+  /* ── Sheet footer ── */
   .sheet-footer {
     position: absolute;
-    bottom: 12mm; left: 15mm; right: 15mm;
+    bottom: clamp(8px, 3vw, 20px);
+    left:  clamp(10px, 4vw, 43px);
+    right: clamp(10px, 4vw, 43px);
     border-top: 1px solid #ccc;
     padding-top: 5px;
     display: flex;
     justify-content: space-between;
-    font-size: 8px; color: #aaa;
+    flex-wrap: wrap;
+    gap: 4px;
+    font-size: clamp(8px, 1.5vw, 9.5px);
+    color: #aaa;
   }
 
-  /* Each drawing block must NOT be cut by a page break */
+  /* ══════════════════════════════════════════════════════
+     DRAWING BLOCKS  — no page-break inside
+  ══════════════════════════════════════════════════════ */
   .drawing-block {
     break-inside: avoid;
     page-break-inside: avoid;
-    margin-bottom: 18px;
+    margin-bottom: 20px;
   }
   .drawing-block .bar {
     background: #f0ede4;
-    border-left: 3px solid #1a1a1a;
-    font-size: 9.5px; font-weight: 700;
-    text-transform: uppercase; letter-spacing: .07em;
-    padding: 5px 8px; margin-bottom: 5px;
+    border-left: 4px solid #1a1a1a;
+    font-size: clamp(9px, 2vw, 11px);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+    padding: 6px 10px;
+    margin-bottom: 5px;
+    line-height: 1.4;
+    word-break: break-word;
   }
   .drawing-block .dsub {
-    font-size: 8px; color: #999;
-    text-align: center; margin-bottom: 6px; line-height: 1.4;
+    font-size: clamp(8px, 1.8vw, 10px);
+    color: #999;
+    text-align: center;
+    margin-bottom: 7px;
+    line-height: 1.5;
+    padding: 0 6px;
+    word-break: break-word;
   }
-  /* SVG inside drawing block fills the sheet width */
+
+  /* ══════════════════════════════════════════════════════
+     SVG WRAPPER
+     - width:100% fills container
+     - overflow-x:auto gives horizontal scroll on mobile
+     - min-width prevents drawings from being unreadably tiny
+     - height:auto preserves aspect ratio from viewBox
+  ══════════════════════════════════════════════════════ */
+  .svg-wrap,
   .drawing-block .svg-wrap {
-    width: 100%; overflow-x: auto;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
-    border: 1px solid #ccc; background: #fff;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    border: 1px solid #ccc;
+    background: #fff;
+    border-radius: 1px;
   }
-  .drawing-block .svg-wrap.dark-border { border: 2px solid #1a1a1a; background: #f8f8f5; }
+  .svg-wrap.dark-border,
+  .drawing-block .svg-wrap.dark-border { border: 2px solid #1a1a1a; background:#f8f8f5; }
+
+  .svg-wrap svg,
   .drawing-block .svg-wrap svg {
-    display: block; width: 100%; height: auto; min-width: 280px;
+    display: block;
+    width: 100%;
+    height: auto;
+    /* min-width: enough to keep labels readable before user pinch-zooms */
+    min-width: 300px;
   }
+  /* Tall elevation SVGs need more minimum width */
+  .svg-wrap.elevation svg  { min-width: 380px; }
+  .svg-wrap.plan svg       { min-width: 340px; }
+  .svg-wrap.detail svg     { min-width: 400px; }
 
-  /* Bill of components table inside drawing block */
-  .drawing-block table {
-    width: 100%; border-collapse: collapse;
-    font-size: 8.5px; margin-top: 4px;
+  /* ══════════════════════════════════════════════════════
+     TABLES
+  ══════════════════════════════════════════════════════ */
+  .table-wrap,
+  .drawing-block .table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
-  .drawing-block th {
-    background: #1a1a1a; color: #fff; padding: 5px 7px; text-align: left;
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: clamp(9px, 1.8vw, 10.5px);
+    min-width: 460px;
   }
-  .drawing-block td {
-    padding: 4px 7px; border-bottom: 1px solid #ddd;
-    vertical-align: top; line-height: 1.5;
+  .drawing-block table { font-size: clamp(9px, 1.8vw, 10.5px); min-width: 460px; }
+  th {
+    background: #1a1a1a;
+    color: #fff;
+    padding: 7px 9px;
+    text-align: left;
+    font-size: clamp(9px, 1.8vw, 10.5px);
+    white-space: nowrap;
   }
-  .drawing-block tr:nth-child(even) td { background: #f5f0e8; }
-  .drawing-block tr.hl td { background: #fff8e0; font-weight: 600; }
+  td {
+    padding: 6px 9px;
+    border-bottom: 1px solid #ddd;
+    vertical-align: top;
+    line-height: 1.6;
+  }
+  tr:nth-child(even) td { background: #f5f0e8; }
+  tr.hl td { background: #fff8e0; font-weight: 600; }
 
-  /* Note box inside drawing block */
+  /* ══════════════════════════════════════════════════════
+     NOTES & FOOTERS
+  ══════════════════════════════════════════════════════ */
+  .note,
   .drawing-block .note {
-    background: #fff8e1; border-left: 3px solid #f0a500;
-    padding: 7px 10px; margin-top: 10px;
-    font-size: 8.5px; line-height: 1.7; break-inside: avoid; page-break-inside: avoid;
+    background: #fff8e1;
+    border-left: 3px solid #f0a500;
+    padding: 10px 13px;
+    margin-top: 14px;
+    font-size: clamp(9px, 1.9vw, 11px);
+    line-height: 1.85;
+    break-inside: avoid;
+    page-break-inside: avoid;
+    word-break: break-word;
   }
-  .drawing-block .note strong { display: block; margin-bottom: 3px; font-size: 9px; }
+  .note strong,
+  .drawing-block .note strong {
+    display: block;
+    margin-bottom: 4px;
+    font-size: clamp(10px, 2vw, 12px);
+  }
+  .footer {
+    margin-top: 14px;
+    padding-top: 10px;
+    border-top: 1px solid #ccc;
+    font-size: clamp(8px, 1.6vw, 9.5px);
+    color: #999;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
 
-  /* Hindi mode inside sheets */
+  /* ══════════════════════════════════════════════════════
+     HINDI MODE
+  ══════════════════════════════════════════════════════ */
+  body.hindi { font-family: 'Noto Sans Devanagari', sans-serif; }
   body.hindi .sheet-header h2,
   body.hindi .drawing-block .bar,
   body.hindi .drawing-block .dsub,
   body.hindi .drawing-block th,
   body.hindi .drawing-block td,
   body.hindi .drawing-block .note,
-  body.hindi .sheet-footer { font-family: 'Noto Sans Devanagari', sans-serif; letter-spacing: 0; text-transform: none; }
+  body.hindi .sheet-footer,
+  body.hindi .note,
+  body.hindi th, body.hindi td,
+  body.hindi .footer,
+  body.hindi #lang-bar .lang-label {
+    font-family: 'Noto Sans Devanagari', sans-serif;
+  }
+  body.hindi .sheet-header h2,
+  body.hindi .drawing-block .bar { letter-spacing:0; text-transform:none; }
 
-  /* ── PRINT MEDIA ── */
+  /* ══════════════════════════════════════════════════════
+     RESPONSIVE BREAKPOINTS
+  ══════════════════════════════════════════════════════ */
+
+  /* ── Mobile (≤480px) ── */
+  @media (max-width: 480px) {
+    html { font-size: 16px; }   /* slightly smaller root on tiny screens */
+    body { padding: 6px; }
+    #lang-bar { padding: 8px 12px; top: 6px; gap: 8px; }
+    .lang-btn { padding: 8px 14px; min-height: 44px; }
+    .sheet-footer { flex-direction: column; gap: 2px; }
+    .footer { flex-direction: column; }
+    .drawing-block .bar { letter-spacing: .02em; }
+  }
+
+  /* ── Phablet / small tablet (481–767px) ── */
+  @media (min-width: 481px) and (max-width: 767px) {
+    html { font-size: 17px; }
+    body { padding: 10px; }
+  }
+
+  /* ── Tablet (768–1023px) ── */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    html { font-size: 18px; }
+    body { padding: 16px; }
+    #lang-bar { top: 16px; }
+  }
+
+  /* ── Desktop (≥1024px) ── */
+  @media (min-width: 1024px) {
+    html { font-size: 18.4px; }
+    body { padding: 24px; }
+    #lang-bar { top: 24px; }
+  }
+
+  /* ── Wide desktop (≥1400px) ── */
+  @media (min-width: 1400px) {
+    html { font-size: 19px; }
+    body { padding: 28px; }
+  }
+
+  /* ══════════════════════════════════════════════════════
+     PRINT  (@media print)
+  ══════════════════════════════════════════════════════ */
   @media print {
-    /* Hide screen-only chrome */
+    html { font-size: 10pt; }   /* standard print size */
     body { background: white; padding: 0; margin: 0; }
     #lang-bar { display: none !important; }
-    .page { display: none !important; }   /* hide old page cards */
 
-    /* Each sheet = one A4 page */
     .sheet {
       width: 100%;
       min-height: 0;
       margin: 0;
-      padding: 15mm 12mm 20mm 12mm;
+      padding: 15mm 12mm 22mm 12mm;
       box-shadow: none;
       page-break-after: always;
       break-after: page;
@@ -289,19 +351,14 @@
       page-break-after: auto;
       break-after: auto;
     }
-
-    /* Never cut a drawing block across pages */
     .drawing-block {
       break-inside: avoid;
       page-break-inside: avoid;
     }
-
-    /* Keep note with its drawing block */
     .drawing-block .note {
       break-inside: avoid;
       page-break-inside: avoid;
     }
-
     @page {
       size: A4 portrait;
       margin: 0;
@@ -406,36 +463,36 @@
       <rect x="40" y="40" width="432" height="576" fill="none" stroke="#1a1a1a" stroke-width="2.5"/>
 
       <!-- ── LOFT (y=40..148, h=108) — 2 shutters each 216px ── -->
-      <rect x="40"  y="40" width="432" height="108" fill="#ede9e0" stroke="#1a1a1a" stroke-width="1.5"/>
-      <rect x="40"  y="40" width="216" height="108" fill="#eae7df" stroke="#999" stroke-width="1"/>
-      <rect x="256" y="40" width="216" height="108" fill="#e4e1d9" stroke="#999" stroke-width="1"/>
+      <rect x="40"  y="40" width="432" height="120" fill="#ede9e0" stroke="#1a1a1a" stroke-width="1.5"/>
+      <rect x="40"  y="40" width="216" height="120" fill="#eae7df" stroke="#999" stroke-width="1"/>
+      <rect x="256" y="40" width="216" height="120" fill="#e4e1d9" stroke="#999" stroke-width="1"/>
       <!-- loft centre seam -->
-      <line x1="256" y1="40" x2="256" y2="148" stroke="#888" stroke-width="1.2"/>
+      <line x1="256" y1="40" x2="256" y2="160" stroke="#888" stroke-width="1.2"/>
       <!-- loft hinges -->
       <circle cx="40"  cy="75"  r="3" fill="#888"/>
       <circle cx="40"  cy="115" r="3" fill="#888"/>
       <circle cx="256" cy="75"  r="3" fill="#888"/>
       <circle cx="256" cy="115" r="3" fill="#888"/>
       <!-- loft labels -->
-      <text x="148" y="90"  text-anchor="middle" font-size="9" fill="#777" font-family="IBM Plex Mono,monospace">LOFT LEFT</text>
-      <text x="148" y="102" text-anchor="middle" font-size="8" fill="#999" font-family="IBM Plex Mono,monospace">(36" × 18")</text>
-      <text x="364" y="90"  text-anchor="middle" font-size="9" fill="#777" font-family="IBM Plex Mono,monospace">LOFT RIGHT</text>
-      <text x="364" y="102" text-anchor="middle" font-size="8" fill="#999" font-family="IBM Plex Mono,monospace">(36" × 18")</text>
+      <text x="148" y="92" text-anchor="middle" font-size="9" fill="#777" font-family="IBM Plex Mono,monospace">LOFT LEFT</text>
+      <text x="148" y="104" text-anchor="middle" font-size="8" fill="#999" font-family="IBM Plex Mono,monospace">(36" × 20")</text>
+      <text x="364" y="92" text-anchor="middle" font-size="9" fill="#777" font-family="IBM Plex Mono,monospace">LOFT RIGHT</text>
+      <text x="364" y="104" text-anchor="middle" font-size="8" fill="#999" font-family="IBM Plex Mono,monospace">(36" × 20")</text>
 
       <!-- ── 4 DOORS (y=148..616, h=468) each 108px wide ── -->
       <!-- D1: x=40..148, hinge left, opens ← -->
-      <rect x="40"  y="148" width="108" height="468" fill="#f6f4f0" stroke="#aaa" stroke-width="1"/>
+      <rect x="40"  y="160" width="108" height="444" fill="#f6f4f0" stroke="#aaa" stroke-width="1"/>
       <!-- D2: x=148..256, hinge right at x=256 (post behind), opens → -->
-      <rect x="148" y="148" width="108" height="468" fill="#efede9" stroke="#aaa" stroke-width="1"/>
+      <rect x="148" y="160" width="108" height="444" fill="#efede9" stroke="#aaa" stroke-width="1"/>
       <!-- D3: x=256..364, hinge left at x=256, opens ← -->
-      <rect x="256" y="148" width="108" height="468" fill="#f6f4f0" stroke="#aaa" stroke-width="1"/>
+      <rect x="256" y="160" width="108" height="444" fill="#f6f4f0" stroke="#aaa" stroke-width="1"/>
       <!-- D4: x=364..472, hinge right, opens → -->
-      <rect x="364" y="148" width="108" height="468" fill="#efede9" stroke="#aaa" stroke-width="1"/>
+      <rect x="364" y="160" width="108" height="444" fill="#efede9" stroke="#aaa" stroke-width="1"/>
 
       <!-- door seam lines -->
-      <line x1="148" y1="148" x2="148" y2="616" stroke="#888" stroke-width="1.2"/>
-      <line x1="256" y1="148" x2="256" y2="616" stroke="#888" stroke-width="1.2"/>
-      <line x1="364" y1="148" x2="364" y2="616" stroke="#888" stroke-width="1.2"/>
+      <line x1="148" y1="160" x2="148" y2="604" stroke="#888" stroke-width="1.2"/>
+      <line x1="256" y1="160" x2="256" y2="604" stroke="#888" stroke-width="1.2"/>
+      <line x1="364" y1="160" x2="364" y2="604" stroke="#888" stroke-width="1.2"/>
 
       <!-- hinges: D1 left wall, D2 right=centre, D3 left=centre, D4 right wall -->
       <circle cx="40"  cy="260" r="3" fill="#777"/><circle cx="40"  cy="500" r="3" fill="#777"/>
@@ -443,17 +500,21 @@
       <circle cx="256" cy="260" r="3" fill="#777"/><circle cx="256" cy="500" r="3" fill="#777"/>
       <circle cx="472" cy="260" r="3" fill="#777"/><circle cx="472" cy="500" r="3" fill="#777"/>
 
-      <!-- handles -->
-      <circle cx="142" cy="392" r="4" fill="none" stroke="#888" stroke-width="1.5"/>
-      <circle cx="250" cy="392" r="4" fill="none" stroke="#888" stroke-width="1.5"/>
-      <circle cx="262" cy="392" r="4" fill="none" stroke="#888" stroke-width="1.5"/>
-      <circle cx="370" cy="392" r="4" fill="none" stroke="#888" stroke-width="1.5"/>
+      <!-- handles — on meeting edges, vertically centred on door (y=148..616, centre=382) -->
+      <!-- D1: right edge of door → just inside x=148 -->
+      <circle cx="140" cy="382" r="4" fill="none" stroke="#555" stroke-width="1.8"/>
+      <!-- D2: left edge of door → just inside x=148 -->
+      <circle cx="156" cy="382" r="4" fill="none" stroke="#555" stroke-width="1.8"/>
+      <!-- D3: right edge of door → just inside x=364 -->
+      <circle cx="356" cy="382" r="4" fill="none" stroke="#555" stroke-width="1.8"/>
+      <!-- D4: left edge of door → just inside x=364 -->
+      <circle cx="372" cy="382" r="4" fill="none" stroke="#555" stroke-width="1.8"/>
 
       <!-- door labels -->
-      <text x="94"  y="185" text-anchor="middle" font-size="8" fill="#bbb" font-family="IBM Plex Mono,monospace">D1 ← LEFT</text>
-      <text x="202" y="185" text-anchor="middle" font-size="8" fill="#bbb" font-family="IBM Plex Mono,monospace">D2 RIGHT →</text>
-      <text x="310" y="185" text-anchor="middle" font-size="8" fill="#bbb" font-family="IBM Plex Mono,monospace">D3 ← LEFT</text>
-      <text x="418" y="185" text-anchor="middle" font-size="8" fill="#bbb" font-family="IBM Plex Mono,monospace">D4 RIGHT →</text>
+      <text x="94"  y="188" text-anchor="middle" font-size="8" fill="#bbb" font-family="IBM Plex Mono,monospace">D1 ← LEFT</text>
+      <text x="202" y="188" text-anchor="middle" font-size="8" fill="#bbb" font-family="IBM Plex Mono,monospace">D2 RIGHT →</text>
+      <text x="310" y="188" text-anchor="middle" font-size="8" fill="#bbb" font-family="IBM Plex Mono,monospace">D3 ← LEFT</text>
+      <text x="418" y="188" text-anchor="middle" font-size="8" fill="#bbb" font-family="IBM Plex Mono,monospace">D4 RIGHT →</text>
 
       <!-- note about hidden post -->
       <rect x="158" y="430" width="156" height="28" fill="#fffbe6" stroke="#f0a500" stroke-width="0.8" rx="2"/>
@@ -476,12 +537,12 @@
       <!-- zone heights left -->
       <line x1="24" y1="40"  x2="24" y2="148" stroke="#0000aa" stroke-width="0.8"/>
       <line x1="20" y1="40"  x2="28" y2="40"  stroke="#0000aa" stroke-width="0.8"/>
-      <line x1="20" y1="148" x2="28" y2="148" stroke="#0000aa" stroke-width="0.8"/>
-      <text x="14" y="98"  text-anchor="middle" font-size="8" fill="#0000aa" font-family="IBM Plex Mono,monospace" transform="rotate(-90,14,98)">18"</text>
+      <line x1="20" y1="160" x2="28" y2="160" stroke="#0000aa" stroke-width="0.8"/>
+      <text x="14" y="94"  text-anchor="middle" font-size="8" fill="#0000aa" font-family="IBM Plex Mono,monospace" transform="rotate(-90,14,106)">22"</text>
 
-      <line x1="24" y1="148" x2="24" y2="616" stroke="#0000aa" stroke-width="0.8"/>
+      <line x1="24" y1="172" x2="24" y2="616" stroke="#0000aa" stroke-width="0.8"/>
       <line x1="20" y1="616" x2="28" y2="616" stroke="#0000aa" stroke-width="0.8"/>
-      <text x="14" y="382" text-anchor="middle" font-size="8" fill="#0000aa" font-family="IBM Plex Mono,monospace" transform="rotate(-90,14,382)">78"  (main body)</text>
+      <text x="14" y="394" text-anchor="middle" font-size="8" fill="#0000aa" font-family="IBM Plex Mono,monospace" transform="rotate(-90,14,394)">74"  (main body)</text>
 
       <!-- door widths bottom -->
       <line x1="40"  y1="634" x2="472" y2="634" stroke="#555" stroke-width="0.6"/>
@@ -534,12 +595,12 @@
       <text x="68" y="51" font-size="8" fill="#fff" font-weight="bold" font-family="IBM Plex Mono,monospace">INTERIOR — Rev F</text>
 
       <!-- ── LOFT (y=40..148, h=108px=18") ── -->
-      <rect x="60" y="40" width="432" height="108" fill="#ede9e0" stroke="#1a1a1a" stroke-width="1.5"/>
-      <line x1="276" y1="40" x2="276" y2="148" stroke="#aaa" stroke-width="1" stroke-dasharray="4,3"/>
+      <rect x="60" y="40" width="432" height="120" fill="#ede9e0" stroke="#1a1a1a" stroke-width="1.5"/>
+      <line x1="276" y1="40" x2="276" y2="160" stroke="#aaa" stroke-width="1" stroke-dasharray="4,3"/>
       <text x="168" y="88"  text-anchor="middle" font-size="9"   fill="#555" font-family="IBM Plex Mono,monospace">LOFT — LEFT</text>
-      <text x="168" y="100" text-anchor="middle" font-size="8"   fill="#888" font-family="IBM Plex Mono,monospace">36" × 18" × 28" deep</text>
+      <text x="168" y="100" text-anchor="middle" font-size="8"   fill="#888" font-family="IBM Plex Mono,monospace">36" × 20" × 28" deep</text>
       <text x="384" y="88"  text-anchor="middle" font-size="9"   fill="#555" font-family="IBM Plex Mono,monospace">LOFT — RIGHT</text>
-      <text x="384" y="100" text-anchor="middle" font-size="8"   fill="#888" font-family="IBM Plex Mono,monospace">36" × 18" × 28" deep</text>
+      <text x="384" y="100" text-anchor="middle" font-size="8"   fill="#888" font-family="IBM Plex Mono,monospace">36" × 20" × 28" deep</text>
 
       <!-- ── 4"×4" CENTRE POST: x=264..288 (24px=4"), full height y=40..616 ── -->
       <rect x="264" y="40" width="24" height="576" fill="#d4b896" stroke="#8a6a3a" stroke-width="1.8"/>
@@ -571,17 +632,17 @@
       <text x="276" y="340" text-anchor="middle" font-size="7" fill="#7a5020" font-weight="bold" font-family="IBM Plex Mono,monospace" transform="rotate(90,276,340)">4"×4" CENTRE POST · FULL HEIGHT</text>
 
       <!-- post callout -->
-      <rect x="184" y="160" width="184" height="28" fill="#fff8e8" stroke="#c80" stroke-width="1" rx="2"/>
-      <text x="276" y="172" text-anchor="middle" font-size="8.5" fill="#8a5000" font-weight="bold" font-family="IBM Plex Mono,monospace">4" × 4" SQUARE POST</text>
-      <text x="276" y="183" text-anchor="middle" font-size="7.5" fill="#8a5000" font-family="IBM Plex Mono,monospace">Full height · 4" deep only · recessed</text>
-      <line x1="276" y1="188" x2="276" y2="200" stroke="#c80" stroke-width="1"/>
-      <polygon points="272,200 280,200 276,206" fill="#c80"/>
+      <rect x="184" y="166" width="184" height="28" fill="#fff8e8" stroke="#c80" stroke-width="1" rx="2"/>
+      <text x="276" y="178" text-anchor="middle" font-size="8.5" fill="#8a5000" font-weight="bold" font-family="IBM Plex Mono,monospace">4" × 4" SQUARE POST</text>
+      <text x="276" y="189" text-anchor="middle" font-size="7.5" fill="#8a5000" font-family="IBM Plex Mono,monospace">Full height · 4" deep only · recessed</text>
+      <line x1="276" y1="194" x2="276" y2="206" stroke="#c80" stroke-width="1"/>
+      <polygon points="272,206 280,206 276,212" fill="#c80"/>
 
       <!-- ── HANGING ZONE labels (y=148..472, 324px=54") ── -->
-      <text x="162" y="218" text-anchor="middle" font-size="9" fill="#666" font-family="IBM Plex Mono,monospace">HANGING LEFT</text>
-      <text x="162" y="230" text-anchor="middle" font-size="8" fill="#aaa" font-family="IBM Plex Mono,monospace">(36" wide)</text>
-      <text x="390" y="218" text-anchor="middle" font-size="9" fill="#666" font-family="IBM Plex Mono,monospace">HANGING RIGHT</text>
-      <text x="390" y="230" text-anchor="middle" font-size="8" fill="#aaa" font-family="IBM Plex Mono,monospace">(36" wide)</text>
+      <text x="162" y="220" text-anchor="middle" font-size="9" fill="#666" font-family="IBM Plex Mono,monospace">HANGING LEFT</text>
+      <text x="162" y="232" text-anchor="middle" font-size="8" fill="#aaa" font-family="IBM Plex Mono,monospace">(36" wide)</text>
+      <text x="390" y="220" text-anchor="middle" font-size="9" fill="#666" font-family="IBM Plex Mono,monospace">HANGING RIGHT</text>
+      <text x="390" y="232" text-anchor="middle" font-size="8" fill="#aaa" font-family="IBM Plex Mono,monospace">(36" wide)</text>
 
       <!-- ── SINGLE HANGING ROD y=292 (30" above drawer top y=472) ── -->
       <!-- rod: full width x=60..492 -->
@@ -610,7 +671,7 @@
 
       <!-- ── DRAWER GAP DIVIDER: x=264..288, y=472..616 (144px=24") ── -->
       <!-- Darker fill to distinguish from post above -->
-      <rect x="264" y="472" width="24" height="144" fill="#7a5a28" stroke="#5a3a0a" stroke-width="1.5"/>
+      <rect x="264" y="472" width="24" height="132" fill="#7a5a28" stroke="#5a3a0a" stroke-width="1.5"/>
       <line x1="264" y1="476" x2="288" y2="500" stroke="#5a3a0a" stroke-width="0.7"/>
       <line x1="264" y1="500" x2="288" y2="524" stroke="#5a3a0a" stroke-width="0.7"/>
       <line x1="264" y1="524" x2="288" y2="548" stroke="#5a3a0a" stroke-width="0.7"/>
@@ -655,6 +716,11 @@
       <text x="302" y="602" font-size="7.5" fill="#888" font-family="IBM Plex Mono,monospace">DWR 4</text>
       <text x="390" y="463" text-anchor="middle" font-size="8" fill="#555" font-family="IBM Plex Mono,monospace">RIGHT BANK (~34")</text>
 
+
+      <!-- ── SKIRTING 2" at base y=604..616 ── -->
+      <rect x="60" y="604" width="432" height="12" fill="#c8b89a" stroke="#8a6a3a" stroke-width="1.2"/>
+      <text x="276" y="612" text-anchor="middle" font-size="7" fill="#5a3a10" font-family="IBM Plex Mono,monospace">SKIRTING  2"  (full width)</text>
+
       <!-- ── DIMENSION LINES ── -->
       <!-- total width -->
       <line x1="60"  y1="24" x2="492" y2="24" stroke="#cc0000" stroke-width="0.8"/>
@@ -675,16 +741,19 @@
       <line x1="506" y1="616" x2="514" y2="616" stroke="#cc0000" stroke-width="0.8"/>
       <text x="526" y="332" text-anchor="middle" font-size="9" fill="#cc0000" font-family="IBM Plex Mono,monospace" transform="rotate(90,526,332)">8'-0"  (96")</text>
       <!-- zone heights left -->
-      <line x1="44" y1="40"  x2="44" y2="148" stroke="#0000aa" stroke-width="0.8"/>
+      <line x1="44" y1="40"  x2="44" y2="160" stroke="#0000aa" stroke-width="0.8"/>
       <line x1="40" y1="40"  x2="48" y2="40"  stroke="#0000aa" stroke-width="0.8"/>
-      <line x1="40" y1="148" x2="48" y2="148" stroke="#0000aa" stroke-width="0.8"/>
-      <text x="34" y="98"  text-anchor="middle" font-size="8" fill="#0000aa" font-family="IBM Plex Mono,monospace" transform="rotate(-90,34,98)">18"</text>
-      <line x1="44" y1="148" x2="44" y2="472" stroke="#0000aa" stroke-width="0.8"/>
+      <line x1="40" y1="160" x2="48" y2="160" stroke="#0000aa" stroke-width="0.8"/>
+      <text x="34" y="100" text-anchor="middle" font-size="8" fill="#0000aa" font-family="IBM Plex Mono,monospace" transform="rotate(-90,34,100)">20"</text>
+      <line x1="44" y1="160" x2="44" y2="472" stroke="#0000aa" stroke-width="0.8"/>
       <line x1="40" y1="472" x2="48" y2="472" stroke="#0000aa" stroke-width="0.8"/>
-      <text x="34" y="314" text-anchor="middle" font-size="8" fill="#0000aa" font-family="IBM Plex Mono,monospace" transform="rotate(-90,34,314)">54"</text>
-      <line x1="44" y1="472" x2="44" y2="616" stroke="#0000aa" stroke-width="0.8"/>
+      <text x="34" y="322" text-anchor="middle" font-size="8" fill="#0000aa" font-family="IBM Plex Mono,monospace" transform="rotate(-90,34,322)">50"</text>
+      <line x1="44" y1="472" x2="44" y2="604" stroke="#0000aa" stroke-width="0.8"/>
+      <line x1="40" y1="604" x2="48" y2="604" stroke="#0000aa" stroke-width="0.8"/>
+      <text x="34" y="542" text-anchor="middle" font-size="8" fill="#0000aa" font-family="IBM Plex Mono,monospace" transform="rotate(-90,34,542)">24"</text>
+      <line x1="44" y1="604" x2="44" y2="616" stroke="#0000aa" stroke-width="0.8"/>
       <line x1="40" y1="616" x2="48" y2="616" stroke="#0000aa" stroke-width="0.8"/>
-      <text x="34" y="548" text-anchor="middle" font-size="8" fill="#0000aa" font-family="IBM Plex Mono,monospace" transform="rotate(-90,34,548)">24"</text>
+      <text x="34" y="612" text-anchor="middle" font-size="8" fill="#0000aa" font-family="IBM Plex Mono,monospace" transform="rotate(-90,34,612)">2"</text>
       <!-- rod height from drawer top -->
       <line x1="510" y1="292" x2="510" y2="472" stroke="#555" stroke-width="0.8" stroke-dasharray="4,2"/>
       <line x1="506" y1="292" x2="514" y2="292" stroke="#555" stroke-width="0.8"/>
@@ -737,13 +806,13 @@
       <text x="44" y="344" text-anchor="middle" font-size="6.5" fill="#999" font-family="IBM Plex Mono,monospace" transform="rotate(-90,44,344)">BACK WALL</text>
 
       <!-- loft divider y=148 -->
-      <line x1="40" y1="148" x2="208" y2="148" stroke="#1a1a1a" stroke-width="1.5"/>
-      <text x="124" y="85"  text-anchor="middle" font-size="9"   fill="#555" font-family="IBM Plex Mono,monospace">LOFT</text>
-      <text x="124" y="97"  text-anchor="middle" font-size="8"   fill="#555" font-family="IBM Plex Mono,monospace">(18" high)</text>
-      <text x="124" y="109" text-anchor="middle" font-size="7.5" fill="#888" font-family="IBM Plex Mono,monospace">full 28" deep</text>
+      <line x1="40" y1="160" x2="208" y2="160" stroke="#1a1a1a" stroke-width="1.5"/>
+      <text x="124" y="86"  text-anchor="middle" font-size="9"   fill="#555" font-family="IBM Plex Mono,monospace">LOFT</text>
+      <text x="124" y="98"  text-anchor="middle" font-size="8"   fill="#555" font-family="IBM Plex Mono,monospace">(20" high)</text>
+      <text x="124" y="116" text-anchor="middle" font-size="7.5" fill="#888" font-family="IBM Plex Mono,monospace">full 28" deep</text>
 
       <!-- shelf face line at x=184 (24" from back) dashed -->
-      <line x1="184" y1="148" x2="184" y2="472" stroke="#0000aa" stroke-width="1" stroke-dasharray="5,3"/>
+      <line x1="184" y1="160" x2="184" y2="472" stroke="#0000aa" stroke-width="1" stroke-dasharray="5,3"/>
       <text x="184" y="163" text-anchor="middle" font-size="7" fill="#0000aa" font-family="IBM Plex Mono,monospace" transform="rotate(90,184,163)">shelf face</text>
 
       <!-- 4"×4" POST cross-section in side view:
@@ -752,8 +821,8 @@
            In side elevation, post appears as a 24px wide hatched rect at x=160..184
            Post runs from y=148 (below loft) to y=616 (floor)
       -->
-      <rect x="160" y="148" width="24" height="468" fill="#d4b896" stroke="#8a6a3a" stroke-width="1.5"/>
-      <line x1="160" y1="152" x2="184" y2="176" stroke="#8a6a3a" stroke-width="0.7"/>
+      <rect x="160" y="160" width="24" height="432" fill="#d4b896" stroke="#8a6a3a" stroke-width="1.5"/>
+      <line x1="160" y1="608" x2="184" y2="632" stroke="#8a6a3a" stroke-width="0.7"/>
       <line x1="160" y1="176" x2="184" y2="200" stroke="#8a6a3a" stroke-width="0.7"/>
       <line x1="160" y1="200" x2="184" y2="224" stroke="#8a6a3a" stroke-width="0.7"/>
       <line x1="160" y1="224" x2="184" y2="248" stroke="#8a6a3a" stroke-width="0.7"/>
@@ -821,8 +890,8 @@
       <!-- zone heights left -->
       <line x1="24" y1="40"  x2="24" y2="148" stroke="#0000aa" stroke-width="0.8"/>
       <line x1="20" y1="40"  x2="28" y2="40"  stroke="#0000aa" stroke-width="0.8"/>
-      <line x1="20" y1="148" x2="28" y2="148" stroke="#0000aa" stroke-width="0.8"/>
-      <text x="14" y="98"  text-anchor="middle" font-size="8" fill="#0000aa" font-family="IBM Plex Mono,monospace" transform="rotate(-90,14,98)">18"</text>
+      <line x1="20" y1="160" x2="28" y2="160" stroke="#0000aa" stroke-width="0.8"/>
+      <text x="14" y="94"  text-anchor="middle" font-size="8" fill="#0000aa" font-family="IBM Plex Mono,monospace" transform="rotate(-90,14,106)">22"</text>
       <line x1="24" y1="148" x2="24" y2="472" stroke="#0000aa" stroke-width="0.8"/>
       <line x1="20" y1="472" x2="28" y2="472" stroke="#0000aa" stroke-width="0.8"/>
       <text x="14" y="314" text-anchor="middle" font-size="8" fill="#0000aa" font-family="IBM Plex Mono,monospace" transform="rotate(-90,14,314)">54"</text>
@@ -1211,99 +1280,139 @@
 </div>
 
 <script>
-// ═══════════════════════════════════════════════════
-// TRANSLATION DICTIONARY — English ↔ Hindi
-// ═══════════════════════════════════════════════════
+// ══════════════════════════════════════════════════════════
+//  TRANSLATION DICTIONARY  —  English / Hindi
+//  All double-quote characters inside string values are
+//  represented as inch symbols (") or escaped as \".
+//  Single quotes inside values are left unescaped.
+// ══════════════════════════════════════════════════════════
 const T = {
   en: {
-    // Language bar
-    "lang_label": "Language / भाषा:",
-    // Page titles
-    "title_p1":   "Wardrobe — Carpenter Drawing",
-    "sub_p1":     "Page 1 of 2 · Front Elevation · Interior Elevation · Side Section",
-    "meta_p1":    "6'-0\"W × 8'-0\"H × 28\"D cabinet · Shelf depth 24\"<br>Loft 18\" · Hanging 54\" · Drawers 4×6\"=24\"<br>Centre post 4\"×4\", full height, recessed<br>CAB-001 Rev F · June 2026",
-    "title_p2":   "Wardrobe — Carpenter Drawing",
-    "sub_p2":     "Page 2 of 2 · Plan View · Pillar & Door Detail · Bill of Components",
-    "meta_p2":    "CAB-001 Rev F · June 2026",
-    // Section bars
-    "bar_a":      "A — Front Elevation · Doors Closed · 6'-0\" × 8'-0\"",
-    "bar_b":      "B — Interior Elevation · Doors Removed · Shows all internal components",
-    "bar_c":      "C — Side Section · 28\" Cabinet Depth · 24\" Shelf Depth",
-    "bar_d":      "D — Plan View · Top-Down Cut at Mid-Height",
-    "bar_e":      "E — Centre Post & Door Detail · Zoomed Plan Section",
-    "bar_bom":    "Bill of Components — Rev F",
-    // View subs
-    "sub_a":      "As seen from outside · pillar hidden behind closed doors · loft shutters at top",
-    "sub_b":      "Loft · 4\"×4\" centre post (full height) · single hanging rod · drawer gap divider · 8 drawers",
-    "sub_c":      "Cross section showing cabinet depth, shelf recess, 4\"×4\" post position, single rod, drawer zone",
-    "sub_d":      "Shows door swings · 4\"×4\" post at centre · shelf recess 4\" · cabinet depth 28\"",
-    "sub_e":      "How Door 2 and Door 3 hinge on the post and bolt into its front face · Scale 1\"≈14px",
-    // Table headers
-    "th_comp":    "Component",
-    "th_width":   "Width",
-    "th_height":  "Height",
-    "th_depth":   "Depth",
-    "th_qty":     "Qty",
-    "th_notes":   "Notes",
-    // Table rows
-    "bom_r1_c":   "Overall Wardrobe",          "bom_r1_n": "Floor to ceiling",
-    "bom_r2_c":   "Loft Cabinet",               "bom_r2_n": "2 shutters, split at post centre line",
-    "bom_r3_c":   "Hanging Space",              "bom_r3_n": "Full width, single rod end to end",
-    "bom_r4_c":   "Single Hanging Rod",         "bom_r4_n": "⌀1\" steel/brass · 30\" above drawer top · bracket/notch at post",
-    "bom_r5_c":   "4\"×4\" Centre Post",        "bom_r5_n": "Square post at centreline. NOT full cabinet depth. Front face flush with shelf face. D2 & D3 hinge on post and bolt into front face.",
-    "bom_r6_c":   "Drawer Gap Divider",         "bom_r6_n": "Drawer zone only. Sits on post centreline. Notched into drawer base and top panel.",
-    "bom_r7_c":   "Drawers — Left Bank",        "bom_r7_n": "Soft-close full-extension slides",
-    "bom_r8_c":   "Drawers — Right Bank",       "bom_r8_n": "Soft-close full-extension slides",
-    "bom_r9_c":   "Hinged Doors",               "bom_r9_n": "D1 hinge left wall opens ←, D2 hinge post left opens →, D3 hinge post right opens ←, D4 hinge right wall opens →. Flush bolts on D2 & D3.",
-    // Notes
-    "note_p1":    "<strong>⚠ CARPENTER NOTES — Rev F (Page 1)</strong>• All drawings use consistent scale: 1\" = 6px. Width:height ratios are proportionally accurate.<br>• <b>Centre Post:</b> 4\"×4\" square timber/ply, full height 96\", positioned at shelf face (24\" from back). Only 4\" deep — does NOT span full cabinet depth. Completely hidden when doors are closed.<br>• <b>Single Hanging Rod:</b> One ⌀1\" rod, full 72\" width, wall bracket to wall bracket at 30\" above drawer top. Rod passes post via a notch or small U-bracket fixed to post.<br>• <b>Doors:</b> D1 hinges on left wall (opens ←). D2 hinges on left face of post (opens →). D3 hinges on right face of post (opens ←). D4 hinges on right wall (opens →). D2 & D3 flush-bolt into post front face.",
-    "note_p2":    "<strong>⚠ CARPENTER NOTES — Rev F</strong>• <b>Scale:</b> All elevation drawings use consistent 1\" = 6px scale. Width to height ratios are proportionally accurate (72\"W × 96\"H = 3:4 ratio).<br>• <b>4\"×4\" Post:</b> Only 4\" deep. Sits at the shelf face line (24\" from back wall). Rod passes it via a notch or U-bracket. Completely hidden by closed doors.<br>• <b>Drawer gap divider</b> (4\" wide) is a separate piece from the post — sits only in the 24\" drawer zone, aligned on the same centreline as the post above it.<br>• Verify all dims on site. Material: hardwood or 18mm BWR ply, laminate finish.",
-    // Footers
-    "footer_p1":  ["CAB-001 / Rev F / June 2026", "Page 1 of 2", "Verify all dims on site before cutting"],
-    "footer_p2":  ["CAB-001 / Rev F / June 2026", "Page 2 of 2 — Bangalore", "Verify all dimensions on site before cutting"],
+    lang_label: "Language / भाषा:",
+    title_p1:   "Wardrobe \u2014 Carpenter Drawing",
+    sub_p1:     "Sheet 1 of 4 \u00b7 Front Elevation \u00b7 Interior Elevation \u00b7 Side Section",
+    meta_p1:    '6\'-0"W \u00d7 8\'-0"H \u00d7 28"D cabinet \u00b7 Shelf 24"<br>Loft 20" \u00b7 Hanging 50" \u00b7 Drawers 4\u00d76"=24" \u00b7 Skirting 2"<br>Centre post 4"\u00d74", full height, recessed<br>CAB-001 Rev F \u00b7 June 2026',
+    title_p2:   "Wardrobe \u2014 Carpenter Drawing",
+    sub_p2:     "Sheet 4 of 4 \u00b7 Centre Post & Door Detail \u00b7 Bill of Components",
+    meta_p2:    "CAB-001 Rev F \u00b7 June 2026",
+    bar_a:      'A \u2014 Front Elevation \u00b7 Doors Closed \u00b7 6\'-0" \u00d7 8\'-0"',
+    bar_b:      "B \u2014 Interior Elevation \u00b7 Doors Removed \u00b7 Shows all internal components",
+    bar_c:      'C \u2014 Side Section \u00b7 28" Cabinet Depth \u00b7 24" Shelf Depth',
+    bar_d:      "D \u2014 Plan View \u00b7 Top-Down Cut at Mid-Height",
+    bar_e:      "E \u2014 Centre Post & Door Detail \u00b7 Zoomed Plan Section",
+    bar_bom:    "Bill of Components \u2014 Rev F",
+    sub_a:      "As seen from outside \u00b7 pillar hidden behind closed doors \u00b7 loft shutters at top \u00b7 2\" skirting at base",
+    sub_b:      '4"\u00d74" centre post (full height) \u00b7 single hanging rod \u00b7 drawer gap divider \u00b7 8 drawers \u00b7 2" skirting',
+    sub_c:      '28" cabinet depth \u00b7 24" shelf \u00b7 2" skirting at base \u00b7 rod \u00b7 drawers',
+    sub_d:      '4"\u00d74" post at centre \u00b7 shelf recess 4" \u00b7 cabinet depth 28"',
+    sub_e:      "How Door 2 and Door 3 hinge on the post and bolt into its front face",
+    th_comp:    "Component",
+    th_width:   "Width",
+    th_height:  "Height",
+    th_depth:   "Depth",
+    th_qty:     "Qty",
+    th_notes:   "Notes",
+    bom_r1_c: "Overall Wardrobe",            bom_r1_n: "Floor (incl. 2\" skirting) to ceiling",
+    bom_r2_c: "Skirting",                    bom_r2_n: '2" high \u00d7 72" wide \u00d7 28" deep. Full base of all three units. Recessed 0.5" from door face.',
+    bom_r3_c: "Loft / Overhead Cabinet",     bom_r3_n: '72" (2\u00d736") \u00b7 20" high (reduced from 22" to accommodate skirting) \u00b7 28" full depth',
+    bom_r4_c: "Hanging Space",               bom_r4_n: "Full width, single rod end to end, 50\" high",
+    bom_r5_c: "Single Hanging Rod",          bom_r5_n: '\u00d81" steel/brass \u00b7 30" above drawer top \u00b7 bracket/notch at post',
+    bom_r6_c: '4"\u00d74" Centre Post',      bom_r6_n: "Square post at centreline. NOT full cabinet depth. Front face flush with shelf face. D2 & D3 hinge on post and bolt into front face.",
+    bom_r7_c: "Drawer Gap Divider",          bom_r7_n: "Drawer zone only. Sits on post centreline. Notched into drawer base and top panel.",
+    bom_r8_c: "Drawers \u2014 Left Bank",    bom_r8_n: "~34\" wide \u00b7 6\" each \u00b7 4 drawers \u00b7 soft-close full-extension slides",
+    bom_r9_c: "Hinged Doors",                bom_r9_n: "D1 hinge left wall \u2190, D2 hinge post-left \u2192, D3 hinge post-right \u2190, D4 hinge right wall \u2192. Flush bolts on D2 & D3.",
+    note_p1: "<strong>\u26a0 CARPENTER NOTES \u2014 Rev F (Page 1)</strong>\u2022 All drawings use consistent scale 1\" = 6px. Width:height ratios proportionally accurate.<br>\u2022 <b>Skirting:</b> 2\" high base runs full width of all three units (wardrobes + TV unit). Recessed slightly from door face. Loft height reduced by 2\" (22\"\u219220\") to keep total at 96\".<br>\u2022 <b>Centre Post:</b> 4\"\u00d74\" timber/ply, full 96\" height, at shelf face (24\" from back). Only 4\" deep. Hidden by closed doors.<br>\u2022 <b>Hanging Rod:</b> Single \u00d81\" rod, 72\" wall-to-wall, 30\" above drawer top. Notch or U-bracket at post.<br>\u2022 <b>Doors:</b> D1 hinge left wall (\u2190). D2 hinge post-left (\u2192). D3 hinge post-right (\u2190). D4 hinge right wall (\u2192). D2 & D3 flush-bolt into post face.",
+    note_p2: "<strong>\u26a0 CARPENTER NOTES \u2014 Rev F (Page 2)</strong>\u2022 <b>Scale:</b> 1\" = 6px throughout. 72\"W \u00d7 96\"H = 3:4 ratio.<br>\u2022 <b>Post:</b> 4\" deep only. At shelf face 24\" from back. Rod passes via notch. Hidden by closed doors.<br>\u2022 <b>Drawer gap divider</b> (4\" wide): separate piece, drawer zone only, on same centreline as post.<br>\u2022 <b>Skirting:</b> 2\" base on all units. Loft is now 20\" (was 22\"). Total height remains 96\".<br>\u2022 Material: hardwood or 18mm BWR ply, laminate finish.",
+    footer_p1: ["CAB-001 / Rev F / June 2026", "Sheet 1 of 4", "Verify all dims on site before cutting"],
+    footer_p2: ["CAB-001 / Rev F / June 2026", "Sheet 4 of 4 \u2014 Bangalore", "Verify all dimensions on site before cutting"]
   },
   hi: {
-    "lang_label": "Language / भाषा:",
-    "title_p1":   "अलमारी — बढ़ई का चित्र",
-    "sub_p1":     "पृष्ठ 1 / 2 · सामने का दृश्य · आंतरिक दृश्य · साइड सेक्शन",
-    "meta_p1":    "चौड़ाई 6'-0\" × ऊँचाई 8'-0\" × गहराई 28\" · शेल्फ गहराई 24\"<br>लॉफ्ट 18\" · हैंगिंग 54\" · दराज 4×6\"=24\"<br>केंद्र स्तंभ 4\"×4\", पूरी ऊँचाई, अंदर छुपा<br>CAB-001 Rev F · जून 2026",
-    "title_p2":   "अलमारी — बढ़ई का चित्र",
-    "sub_p2":     "पृष्ठ 2 / 2 · ऊपर से दृश्य · स्तंभ व दरवाज़ा विवरण · सामग्री सूची",
-    "meta_p2":    "CAB-001 Rev F · जून 2026",
-    "bar_a":      "क — सामने का दृश्य · दरवाज़े बंद · 6'-0\" × 8'-0\"",
-    "bar_b":      "ख — आंतरिक दृश्य · दरवाज़े हटाए गए · सभी घटक दर्शाए गए",
-    "bar_c":      "ग — साइड सेक्शन · कैबिनेट गहराई 28\" · शेल्फ गहराई 24\"",
-    "bar_d":      "घ — ऊपर से दृश्य · मध्य ऊँचाई पर काट",
-    "bar_e":      "ङ — केंद्र स्तंभ और दरवाज़ा विवरण · ज़ूम किया हुआ प्लान",
-    "bar_bom":    "सामग्री सूची — Rev F",
-    "sub_a":      "बाहर से जैसा दिखता है · स्तंभ बंद दरवाज़ों के पीछे छुपा · ऊपर लॉफ्ट शटर",
-    "sub_b":      "लॉफ्ट · 4\"×4\" केंद्र स्तंभ (पूरी ऊँचाई) · एकल हैंगिंग रॉड · दराज विभाजक · 8 दराज",
-    "sub_c":      "कैबिनेट गहराई, शेल्फ रिसेस, स्तंभ स्थान, रॉड और दराज क्षेत्र दर्शाता क्रॉस-सेक्शन",
-    "sub_d":      "दरवाज़ों का घुमाव · केंद्र में 4\"×4\" स्तंभ · शेल्फ रिसेस 4\" · कैबिनेट गहराई 28\"",
-    "sub_e":      "दरवाज़ा 2 और दरवाज़ा 3 स्तंभ पर टिका कैसे लगते हैं और बोल्ट कैसे करते हैं",
-    "th_comp":    "घटक",
-    "th_width":   "चौड़ाई",
-    "th_height":  "ऊँचाई",
-    "th_depth":   "गहराई",
-    "th_qty":     "संख्या",
-    "th_notes":   "टिप्पणी",
-    "bom_r1_c":   "पूरी अलमारी",              "bom_r1_n": "फर्श से छत तक",
-    "bom_r2_c":   "लॉफ्ट कैबिनेट",           "bom_r2_n": "2 शटर, स्तंभ की केंद्र रेखा पर विभाजित",
-    "bom_r3_c":   "हैंगिंग स्थान",            "bom_r3_n": "पूरी चौड़ाई, एकल रॉड सिरे से सिरे तक",
-    "bom_r4_c":   "एकल हैंगिंग रॉड",          "bom_r4_n": "⌀1\" स्टील/पीतल · दराज से 30\" ऊपर · स्तंभ पर ब्रैकेट/नॉच",
-    "bom_r5_c":   "4\"×4\" केंद्र स्तंभ",     "bom_r5_n": "केंद्र रेखा पर चौकोर स्तंभ। पूरी कैबिनेट गहराई नहीं। अगला चेहरा शेल्फ फेस से फ्लश। दरवाज़ा 2 और 3 स्तंभ पर टिके और सामने बोल्ट होते हैं।",
-    "bom_r6_c":   "दराज विभाजक",             "bom_r6_n": "केवल दराज क्षेत्र में। स्तंभ की केंद्र रेखा पर। आधार और ऊपरी पैनल में नॉच किया।",
-    "bom_r7_c":   "दराज — बाईं तरफ",         "bom_r7_n": "सॉफ्ट-क्लोज़ फुल-एक्सटेंशन स्लाइड",
-    "bom_r8_c":   "दराज — दाईं तरफ",         "bom_r8_n": "सॉफ्ट-क्लोज़ फुल-एक्सटेंशन स्लाइड",
-    "bom_r9_c":   "टिका वाले दरवाज़े",        "bom_r9_n": "द1 बाईं दीवार पर टिका, बाईं ओर खुलता ←; द2 स्तंभ बाईं ओर टिका, दाईं ओर खुलता →; द3 स्तंभ दाईं ओर टिका, बाईं ओर खुलता ←; द4 दाईं दीवार पर टिका, दाईं ओर खुलता →। द2 और द3 पर फ्लश बोल्ट।",
-    "note_p1":    "<strong>⚠ बढ़ई के लिए नोट — Rev F (पृष्ठ 1)</strong>• सभी चित्र एक समान स्केल पर: 1\" = 6px। चौड़ाई और ऊँचाई का अनुपात सटीक है।<br>• <b>केंद्र स्तंभ:</b> 4\"×4\" चौकोर लकड़ी/प्लाई, पूरी ऊँचाई 96\", शेल्फ फेस पर (पीछे से 24\")। केवल 4\" गहरा — पूरी कैबिनेट गहराई नहीं। बंद दरवाज़ों से पूरी तरह छुपा।<br>• <b>एकल हैंगिंग रॉड:</b> ⌀1\" एक ही रॉड, पूरी 72\" चौड़ाई, दीवार से दीवार तक, दराज से 30\" ऊपर। स्तंभ पर नॉच या U-ब्रैकेट से गुज़रता है।<br>• <b>दरवाज़े:</b> द1 बाईं दीवार पर टिका (←)। द2 स्तंभ के बाईं फेस पर टिका (→)। द3 स्तंभ के दाईं फेस पर टिका (←)। द4 दाईं दीवार पर टिका (→)। द2 और द3 स्तंभ के अगले चेहरे में फ्लश-बोल्ट।",
-    "note_p2":    "<strong>⚠ बढ़ई के लिए नोट — Rev F</strong>• <b>स्केल:</b> सभी एलिवेशन चित्र 1\" = 6px स्केल पर। चौड़ाई-ऊँचाई अनुपात सटीक (72\"W × 96\"H = 3:4)।<br>• <b>4\"×4\" स्तंभ:</b> केवल 4\" गहरा। पीछे की दीवार से 24\" पर शेल्फ फेस पर। रॉड नॉच या ब्रैकेट से गुज़रती है। बंद दरवाज़ों से पूरी तरह छुपा।<br>• <b>दराज विभाजक</b> (4\" चौड़ा) स्तंभ से अलग टुकड़ा है — केवल 24\" दराज क्षेत्र में, उसी केंद्र रेखा पर।<br>• काटने से पहले सभी माप साइट पर जाँचें। सामग्री: दृढ़ लकड़ी या 18mm BWR प्लाई, लेमिनेट फिनिश।",
-    "footer_p1":  ["CAB-001 / Rev F / जून 2026", "पृष्ठ 1 / 2", "काटने से पहले सभी माप साइट पर जाँचें"],
-    "footer_p2":  ["CAB-001 / Rev F / जून 2026", "पृष्ठ 2 / 2 — बैंगलोर", "काटने से पहले सभी माप साइट पर जाँचें"],
+    lang_label: "भाषा / Language:",
+    title_p1:   "अलमारी \u2014 बढ़ई का नक्शा",
+    sub_p1:     "शीट 1/4 \u00b7 सामने का दृश्य \u00b7 आंतरिक दृश्य \u00b7 साइड सेक्शन",
+    meta_p1:    'चौड़ाई 6\'-0" \u00d7 ऊँचाई 8\'-0" \u00d7 गहराई 28" \u00b7 शेल्फ 24"<br>लॉफ्ट 20" \u00b7 हैंगिंग 50" \u00b7 दराज 4\u00d76"=24" \u00b7 स्कर्टिंग 2"<br>केंद्रीय स्तंभ 4"\u00d74", पूरी ऊँचाई, अंदर छुपा<br>CAB-001 Rev F \u00b7 जून 2026',
+    title_p2:   "अलमारी \u2014 बढ़ई का नक्शा",
+    sub_p2:     "शीट 4/4 \u00b7 केंद्रीय स्तंभ व दरवाज़ा विवरण \u00b7 सामग्री सूची",
+    meta_p2:    "CAB-001 Rev F \u00b7 जून 2026",
+    bar_a:      'क \u2014 सामने का दृश्य \u00b7 दरवाज़े बंद \u00b7 6\'-0" \u00d7 8\'-0"',
+    bar_b:      "ख \u2014 आंतरिक दृश्य \u00b7 दरवाज़े हटाए गए \u00b7 सभी घटक दिखाए गए",
+    bar_c:      'ग \u2014 साइड सेक्शन \u00b7 कैबिनेट गहराई 28" \u00b7 शेल्फ गहराई 24"',
+    bar_d:      "घ \u2014 ऊपर से दृश्य \u00b7 बीच की ऊँचाई पर काट",
+    bar_e:      "ङ \u2014 केंद्रीय स्तंभ और दरवाज़ा विवरण \u00b7 आवर्धित प्लान सेक्शन",
+    bar_bom:    "सामग्री एवं माप सूची \u2014 Rev F",
+    sub_a:      'बाहर से दिखने वाला दृश्य \u00b7 स्तंभ दरवाज़ों के पीछे छुपा \u00b7 ऊपर लॉफ्ट \u00b7 नीचे 2" स्कर्टिंग',
+    sub_b:      '4"\u00d74" केंद्रीय स्तंभ \u00b7 एकल हैंगिंग रॉड \u00b7 दराज विभाजक \u00b7 8 दराज \u00b7 2" स्कर्टिंग',
+    sub_c:      '28" कैबिनेट गहराई \u00b7 24" शेल्फ \u00b7 2" स्कर्टिंग \u00b7 रॉड \u00b7 दराज',
+    sub_d:      '4"\u00d74" स्तंभ \u00b7 शेल्फ रिसेस 4" \u00b7 कैबिनेट गहराई 28"',
+    sub_e:      "दरवाज़ा 2 और 3 किस तरह स्तंभ पर टिके हैं और बोल्ट होते हैं",
+    th_comp:    "घटक का नाम",
+    th_width:   "चौड़ाई",
+    th_height:  "ऊँचाई",
+    th_depth:   "गहराई",
+    th_qty:     "संख्या",
+    th_notes:   "विशेष निर्देश",
+    bom_r1_c: "पूरी अलमारी",              bom_r1_n: 'फर्श (2" स्कर्टिंग सहित) से छत तक',
+    bom_r2_c: "स्कर्टिंग (पायदान)",       bom_r2_n: '2" ऊँचाई \u00d7 72" चौड़ाई \u00d7 28" गहराई। तीनों यूनिट के नीचे। दरवाज़े से थोड़ा अंदर।',
+    bom_r3_c: "लॉफ्ट / ऊपरी अलमारी",     bom_r3_n: '72" (2\u00d736") \u00b7 ऊँचाई 20" (स्कर्टिंग हेतु 22" से घटाकर) \u00b7 गहराई 28"',
+    bom_r4_c: "कपड़े टाँगने का स्थान",    bom_r4_n: "पूरी चौड़ाई में एकल रॉड, 50\" ऊँचा",
+    bom_r5_c: "एकल हैंगिंग रॉड",         bom_r5_n: '\u00d81" स्टील/पीतल \u00b7 दराज से 30" ऊपर \u00b7 स्तंभ पर ब्रैकेट/नॉच',
+    bom_r6_c: '4"\u00d74" केंद्रीय स्तंभ', bom_r6_n: "केंद्र रेखा पर चौकोर स्तंभ। पूरी गहराई नहीं। शेल्फ फेस से समतल। द-2 और द-3 इसमें बोल्ट होते हैं।",
+    bom_r7_c: "दराज विभाजक",             bom_r7_n: "केवल दराज क्षेत्र में। केंद्र रेखा पर। आधार और ऊपरी पैनल में नॉच।",
+    bom_r8_c: "दराज \u2014 बाईं पंक्ति",  bom_r8_n: "~34\" चौड़ाई \u00b7 6\" प्रत्येक \u00b7 4 दराज \u00b7 सॉफ्ट-क्लोज़ स्लाइड",
+    bom_r9_c: "टिका वाले दरवाज़े",       bom_r9_n: "द-1 बाईं दीवार \u2190 \u00b7 द-2 स्तंभ-बाईं \u2192 \u00b7 द-3 स्तंभ-दाईं \u2190 \u00b7 द-4 दाईं दीवार \u2192। द-2 व द-3 में फ्लश बोल्ट।",
+    note_p1: "<strong>\u26a0 बढ़ई के लिए महत्वपूर्ण निर्देश \u2014 शीट 1</strong>\u2022 सभी नक्शे एक समान स्केल 1\" = 6px पर। अनुपात पूरी तरह सटीक।<br>\u2022 <b>स्कर्टिंग (पायदान):</b> 2\" ऊँची। तीनों यूनिट के नीचे पूरी चौड़ाई में। इसके कारण लॉफ्ट 22\" से घटकर 20\" हुआ — कुल ऊँचाई 96\" बनी रहती है।<br>\u2022 <b>केंद्रीय स्तंभ:</b> 4\"\u00d74\" चौकोर लकड़ी/प्लाई, पूरी 96\" ऊँचाई, शेल्फ फेस पर (पीछे से 24\")। केवल 4\" गहरा। बंद दरवाज़ों से पूरी तरह छुपा।<br>\u2022 <b>एकल हैंगिंग रॉड:</b> \u00d81\" रॉड, पूरी 72\" चौड़ाई, दीवार से दीवार तक, दराज से 30\" ऊपर।<br>\u2022 <b>दरवाज़े:</b> द-1 बाईं दीवार पर टिका (\u2190)। द-2 स्तंभ-बाईं (\u2192)। द-3 स्तंभ-दाईं (\u2190)। द-4 दाईं दीवार (\u2192)।",
+    note_p2: "<strong>\u26a0 बढ़ई के लिए महत्वपूर्ण निर्देश \u2014 शीट 4</strong>\u2022 <b>स्केल:</b> 1\" = 6px। अनुपात 3:4।<br>\u2022 <b>स्तंभ:</b> केवल 4\" गहरा। शेल्फ फेस पर। रॉड नॉच/ब्रैकेट से गुज़रती है। बंद दरवाज़ों से छुपा।<br>\u2022 <b>दराज विभाजक:</b> 4\" चौड़ा, केवल दराज क्षेत्र में, केंद्र रेखा पर।<br>\u2022 <b>स्कर्टिंग:</b> सभी यूनिट में 2\" नीचे। लॉफ्ट अब 20\" (पहले 22\")। कुल ऊँचाई 96\" बनी रहती है।<br>\u2022 सामग्री: 18mm BWR प्लाई, लेमिनेट फिनिश।",
+    footer_p1: ["CAB-001 / Rev F / जून 2026", "शीट 1 / 4", "काटने से पहले सभी माप साइट पर जाँचें"],
+    footer_p2: ["CAB-001 / Rev F / जून 2026", "शीट 4 / 4 \u2014 बेंगलुरु", "काटने से पहले सभी माप साइट पर जाँचें"]
   }
 };
 
-// ─── IDs to translate ─────────────────────────────
+const BLOCKS = {
+  en: {
+    "sh5-h2":    "Full Wall Layout \u2014 Carpenter Drawing",
+    "sh5-sub":   "Sheet 5 of 6 \u00b7 18ft Wall Overview \u00b7 Left Wardrobe + TV Unit + Right Wardrobe",
+    "sh5-meta":  'Wall: 18\'-0" (216") total<br>Each wardrobe: 6\'-0" \u00b7 TV unit: 6\'-0"<br>All units: 8\'-0" high \u00d7 28" deep \u00b7 2" skirting at base<br>CAB-001 Rev F \u00b7 June 2026',
+    "sh5-bar":   'F \u2014 Full Wall Front Elevation \u00b7 18\'-0" Wide \u00d7 8\'-0" High',
+    "sh5-dsub":  'Left Wardrobe (6ft) \u00b7 TV Unit (6ft) \u00b7 Right Wardrobe (6ft) \u00b7 Scale 1" = 4px',
+    "sh5-note":  "<strong>\u26a0 CARPENTER NOTES \u2014 Sheet 5 (Wall Overview)</strong>\u2022 Total wall: 18'-0\" = Left Wardrobe (6ft) + TV Unit (6ft) + Right Wardrobe (6ft).<br>\u2022 All three units 8'-0\" tall and 28\" deep \u2014 flush front face across the full wall.<br>\u2022 <b>Skirting:</b> 2\" high base on all three units. Recessed slightly from door face. Loft reduced 22\"\u219220\" to keep total height at 96\".<br>\u2022 Left and right wardrobes identical in design (see Sheets 1\u20134).<br>\u2022 TV unit is a separate carcass \u2014 see Sheet 6 for full detail.",
+    "sh5-foot0": "CAB-001 / Rev F / June 2026",
+    "sh5-foot1": "Sheet 5 of 6 \u2014 Full Wall Overview (18ft)",
+    "sh5-foot2": "Verify all dims on site before cutting",
+    "sh6-h2":    "TV Unit \u2014 Carpenter Drawing",
+    "sh6-sub":   "Sheet 6 of 6 \u00b7 TV Unit Front Elevation \u00b7 Interior Detail \u00b7 Bill of Components",
+    "sh6-meta":  '6\'-0"W \u00d7 8\'-0"H \u00d7 28"D<br>Drawers 2\u00d716" \u00b7 TV 42" \u00b7 AC 20" \u00b7 Skirting 2"<br>CAB-001 Rev F \u00b7 June 2026',
+    "sh6-bar":   'G \u2014 TV Unit Front Elevation \u00b7 6\'-0" Wide \u00d7 8\'-0" High \u00b7 Scale 1" = 6px',
+    "sh6-dsub":  'AC space (open, 20") \u00b7 TV recess (42") \u00b7 2 sets of drawers (2\u00d716"=32") \u00b7 skirting 2" at base',
+    "sh6-bom":   "TV Unit \u2014 Bill of Components",
+    "sh6-note":  "<strong>\u26a0 CARPENTER NOTES \u2014 Sheet 6 (TV Unit)</strong>\u2022 <b>Zones bottom to top:</b> 2\" skirting \u00b7 2\u00d716\" drawers=32\" \u00b7 TV recess 42\" \u00b7 AC space 20\" = 96\" \u2713<br>\u2022 <b>Drawers:</b> Left 34\" + 4\"\u00d74\" post + Right 34\" = 72\". 2 per side, 16\" high. Soft-close slides.<br>\u2022 <b>Post:</b> Same as wardrobes. Drawer zone only (32\" high). Does not extend into TV or AC zone.<br>\u2022 <b>TV recess:</b> 75\" TV (~65\"W\u00d737\"H). Flush back panel. Cable cutout at base. Wall mount through back panel.<br>\u2022 <b>AC space:</b> Open. 20\" suits cassette/wall-split AC. Allow 2\u20133\" ventilation gap.<br>\u2022 <b>Skirting:</b> 2\" base matches wardrobes. AC space reduced 22\"\u219220\" accordingly.<br>\u2022 Material: 18mm BWR ply, laminate finish to match wardrobes.",
+    "sh6-foot0": "CAB-001 / Rev F / June 2026",
+    "sh6-foot1": "Sheet 6 of 6 \u2014 TV Unit Detail \u00b7 Bangalore",
+    "sh6-foot2": "Verify all dimensions on site before cutting"
+  },
+  hi: {
+    "sh5-h2":    "पूरी दीवार का नक्शा \u2014 बढ़ई का चित्र",
+    "sh5-sub":   "शीट 5/6 \u00b7 18 फुट की पूरी दीवार \u00b7 बाईं अलमारी + टीवी यूनिट + दाईं अलमारी",
+    "sh5-meta":  'कुल दीवार: 18\'-0" (216")<br>प्रत्येक अलमारी: 6\'-0" \u00b7 टीवी यूनिट: 6\'-0"<br>तीनों यूनिट: 8\'-0" ऊँचे \u00d7 28" गहरे \u00b7 नीचे 2" स्कर्टिंग<br>CAB-001 Rev F \u00b7 जून 2026',
+    "sh5-bar":   'च \u2014 पूरी दीवार सामने का दृश्य \u00b7 चौड़ाई 18\'-0" \u00d7 ऊँचाई 8\'-0"',
+    "sh5-dsub":  'बाईं अलमारी (6 फुट) \u00b7 टीवी यूनिट (6 फुट) \u00b7 दाईं अलमारी (6 फुट) \u00b7 स्केल 1" = 4px',
+    "sh5-note":  "<strong>\u26a0 बढ़ई के लिए महत्वपूर्ण निर्देश \u2014 शीट 5</strong>\u2022 कुल दीवार: 18'-0\" = बाईं अलमारी (6 फुट) + टीवी यूनिट (6 फुट) + दाईं अलमारी (6 फुट)।<br>\u2022 तीनों यूनिट 8'-0\" ऊँचे और 28\" गहरे \u2014 सामने की सतह पूरी दीवार पर एक समतल में।<br>\u2022 <b>स्कर्टिंग:</b> तीनों यूनिट के नीचे 2\" ऊँचा पायदान। इस कारण लॉफ्ट 22\" से 20\" हुआ \u2014 कुल ऊँचाई 96\" बनी रहती है।<br>\u2022 बाईं और दाईं अलमारी का डिज़ाइन एक जैसा (शीट 1-4 देखें)।<br>\u2022 टीवी यूनिट अलग ढाँचा है \u2014 पूरी जानकारी शीट 6 में।",
+    "sh5-foot0": "CAB-001 / Rev F / जून 2026",
+    "sh5-foot1": "शीट 5/6 \u2014 18 फुट की पूरी दीवार",
+    "sh5-foot2": "काटने से पहले सभी माप साइट पर जाँचें",
+    "sh6-h2":    "टीवी यूनिट \u2014 बढ़ई का नक्शा",
+    "sh6-sub":   "शीट 6/6 \u00b7 टीवी यूनिट सामने का दृश्य \u00b7 आंतरिक विवरण \u00b7 सामग्री सूची",
+    "sh6-meta":  '6\'-0"चौ \u00d7 8\'-0"ऊँ \u00d7 28"गह<br>दराज 2\u00d716" \u00b7 टीवी 42" \u00b7 एसी 20" \u00b7 स्कर्टिंग 2"<br>CAB-001 Rev F \u00b7 जून 2026',
+    "sh6-bar":   'छ \u2014 टीवी यूनिट सामने का दृश्य \u00b7 चौड़ाई 6\'-0" \u00d7 ऊँचाई 8\'-0"',
+    "sh6-dsub":  'एसी स्थान (खुला, 20") \u00b7 टीवी स्थान (42") \u00b7 दो जोड़ी दराज (2\u00d716"=32") \u00b7 नीचे 2" स्कर्टिंग',
+    "sh6-bom":   "टीवी यूनिट \u2014 सामग्री एवं माप सूची",
+    "sh6-note":  "<strong>\u26a0 बढ़ई के लिए महत्वपूर्ण निर्देश \u2014 शीट 6 (टीवी यूनिट)</strong>\u2022 <b>क्षेत्र नीचे से ऊपर:</b> 2\" स्कर्टिंग \u00b7 2\u00d716\" दराज=32\" \u00b7 टीवी 42\" \u00b7 एसी 20\" = कुल 96\" \u2713<br>\u2022 <b>दराज:</b> बाईं 34\" + 4\"\u00d74\" स्तंभ + दाईं 34\" = 72\"। प्रति पक्ष 2 दराज, 16\" ऊँचे। सॉफ्ट-क्लोज़ स्लाइड।<br>\u2022 <b>स्तंभ:</b> अलमारी जैसा ही। केवल दराज क्षेत्र में (32\" ऊँचा)। टीवी या एसी क्षेत्र तक नहीं।<br>\u2022 <b>टीवी स्थान:</b> 75\" टीवी (~65\"×37\")। सीधा पिछला पैनल। नीचे केबल कटआउट। वॉल माउंट।<br>\u2022 <b>एसी स्थान:</b> खुला। 20\" ऊँचाई कैसेट/वॉल-स्प्लिट एसी के लिए उचित। 2-3\" हवा के लिए जगह।<br>\u2022 <b>स्कर्टिंग:</b> 2\" नीचे। इससे एसी क्षेत्र 22\" से 20\" हुआ।<br>\u2022 सामग्री: 18mm BWR प्लाई, लेमिनेट फिनिश।",
+    "sh6-foot0": "CAB-001 / Rev F / जून 2026",
+    "sh6-foot1": "शीट 6/6 \u2014 टीवी यूनिट विवरण \u00b7 बेंगलुरु",
+    "sh6-foot2": "काटने से पहले सभी माप साइट पर जाँचें"
+  }
+};
+
+// ── IDs to translate via T dictionary ──
 const IDS = [
   "lang-label",
   "title-p1","sub-p1","meta-p1",
@@ -1314,29 +1423,512 @@ const IDS = [
   "bom-r1-c","bom-r1-n","bom-r2-c","bom-r2-n","bom-r3-c","bom-r3-n",
   "bom-r4-c","bom-r4-n","bom-r5-c","bom-r5-n","bom-r6-c","bom-r6-n",
   "bom-r7-c","bom-r7-n","bom-r8-c","bom-r8-n","bom-r9-c","bom-r9-n",
-  "note-p1","note-p2",
+  "note-p1","note-p2"
 ];
 
 function setLang(lang) {
   const t = T[lang];
-  // Text/HTML elements
+  const b = BLOCKS[lang];
+  // Translate T-dictionary elements
   IDS.forEach(id => {
-    const el = document.getElementById(id.replace(/-/g, '-'));
+    const el = document.getElementById(id);
     if (!el) return;
     const key = id.replace(/-/g, '_');
     if (t[key] !== undefined) el.innerHTML = t[key];
   });
   // Footers (arrays)
   ["p1","p2"].forEach(pg => {
-    const spans = document.querySelectorAll(`#footer-${pg} span`);
-    const arr = t[`footer_${pg}`];
-    spans.forEach((s,i) => { if (arr[i]) s.textContent = arr[i]; });
+    const spans = document.querySelectorAll('#footer-' + pg + ' span');
+    const arr = t['footer_' + pg];
+    if (arr) spans.forEach((s,i) => { if (arr[i] !== undefined) s.textContent = arr[i]; });
   });
-  // Toggle Hindi font class
+  // Translate BLOCKS elements (Sheets 5 & 6)
+  Object.keys(b).forEach(key => {
+    const el = document.getElementById(key);
+    if (el) el.innerHTML = b[key];
+  });
+  // Sheet 5 & 6 footers
+  ["sh5","sh6"].forEach(sh => {
+    const spans = document.querySelectorAll('#' + sh + '-footer span');
+    spans.forEach((s,i) => {
+      const v = b[sh + '-foot' + i];
+      if (v !== undefined) s.textContent = v;
+    });
+  });
+  // Font class + button state
   document.body.classList.toggle('hindi', lang === 'hi');
-  // Toggle active button
-  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
 }
 </script>
+
+<!-- ┌─────────────────────────────────────────────────┐
+     │  SHEET 5 — Full Wall Overview (18ft)            │
+     └─────────────────────────────────────────────────┘ -->
+<div class="sheet" id="sheet-5">
+  <div class="sheet-header">
+    <div>
+      <h2 id="sh5-h2">Full Wall Layout — Carpenter Drawing <span class="rev">Rev F</span></h2>
+      <div style="font-size:9px;color:#666;margin-top:3px;" id="sh5-sub">Sheet 5 of 6 · 18ft Wall Overview · Left Wardrobe + TV Unit + Right Wardrobe</div>
+    </div>
+    <div class="sh-meta">
+      <span id="sh5-meta">Wall: 18'-0" (216") total<br>Each wardrobe: 6'-0" · TV unit: 6'-0"<br>All units: 8'-0" high × 28" deep<br>CAB-001 Rev F · June 2026</span>
+    </div>
+  </div>
+
+  <div class="drawing-block">
+    <div class="bar" id="sh5-bar">F — Full Wall Front Elevation · 18'-0" Wide × 8'-0" High</div>
+    <div class="dsub" id="sh5-dsub">Left Wardrobe (6ft) · TV Unit (6ft) · Right Wardrobe (6ft) · Scale 1" = 4px</div>
+    <!--
+      SCALE: 1" = 4px
+      Total wall 216" = 864px  x: 20..884
+      Height 96" = 384px       y: 30..414
+      Left wardrobe:  x=20..308   (288px = 72")
+      TV unit:        x=308..596  (288px = 72")
+      Right wardrobe: x=596..884  (288px = 72")
+
+      TV unit zones (from bottom, scale 4px/in):
+        Drawers 32" = 128px  → y=286..414
+        TV space 42" = 168px → y=118..286
+        AC space 22" = 88px  → y=30..118
+
+      Wardrobe zones (from bottom):
+        Drawers 24" = 96px   → y=318..414
+        Hanging 54" = 216px  → y=102..318
+        Loft 18" = 72px      → y=30..102
+    -->
+    <div class="svg-wrap" style="border:2px solid #1a1a1a;">
+    <svg viewBox="0 0 920 480" style="display:block;width:100%;height:auto;background:#fff;">
+
+      <!-- ── WALL BACKGROUND ── -->
+      <rect x="20" y="30" width="864" height="384" fill="#f5f2ee" stroke="none"/>
+
+      <!-- ════════════════════════════════════════════
+           LEFT WARDROBE  x=20..308
+      ════════════════════════════════════════════ -->
+      <rect x="20" y="30" width="288" height="384" fill="#fffef9" stroke="#1a1a1a" stroke-width="2"/>
+
+      <!-- loft zone y=30..102 -->
+      <rect x="20" y="30" width="288" height="80" fill="#ede9e0" stroke="#1a1a1a" stroke-width="1.2"/>
+      <text x="164" y="66" text-anchor="middle" font-size="9" fill="#555" font-family="IBM Plex Mono,monospace">LOFT (20")</text>
+      <line x1="164" y1="30" x2="164" y2="110" stroke="#bbb" stroke-width="0.8" stroke-dasharray="3,2"/>
+
+      <!-- 4 doors y=102..414 -->
+      <line x1="92"  y1="110" x2="92"  y2="406" stroke="#999" stroke-width="1"/>
+      <line x1="164" y1="110" x2="164" y2="406" stroke="#999" stroke-width="1"/>
+      <line x1="236" y1="110" x2="236" y2="406" stroke="#999" stroke-width="1"/>
+      <!-- door shading alternating -->
+      <rect x="20"  y="110" width="72" height="296" fill="#f4f2ee" stroke="none"/>
+      <rect x="92"  y="110" width="72" height="296" fill="#eeebe6" stroke="none"/>
+      <rect x="164" y="110" width="72" height="296" fill="#f4f2ee" stroke="none"/>
+      <rect x="236" y="110" width="72" height="296" fill="#eeebe6" stroke="none"/>
+      <!-- handles — meeting edges, vertically centred y=102..414 → cy=258 -->
+      <!-- D1 right edge at x=92 -->
+      <circle cx="84"  cy="258" r="3" fill="none" stroke="#666" stroke-width="1.2"/>
+      <!-- D2 left edge at x=92 -->
+      <circle cx="100" cy="258" r="3" fill="none" stroke="#666" stroke-width="1.2"/>
+      <!-- D3 right edge at x=236 -->
+      <circle cx="228" cy="258" r="3" fill="none" stroke="#666" stroke-width="1.2"/>
+      <!-- D4 left edge at x=236 -->
+      <circle cx="244" cy="258" r="3" fill="none" stroke="#666" stroke-width="1.2"/>
+      <!-- hinges -->
+      <circle cx="20"  cy="186" r="2.5" fill="#777"/><circle cx="20"  cy="350" r="2.5" fill="#777"/>
+      <circle cx="164" cy="186" r="2.5" fill="#777"/><circle cx="164" cy="350" r="2.5" fill="#777"/>
+      <circle cx="164" cy="186" r="2.5" fill="#777"/><circle cx="164" cy="350" r="2.5" fill="#777"/>
+      <circle cx="308" cy="186" r="2.5" fill="#777"/><circle cx="308" cy="350" r="2.5" fill="#777"/>
+      <!-- label -->
+      <rect x="60" y="270" width="108" height="22" fill="#fffef9" stroke="#ccc" stroke-width="0.8" rx="2"/>
+      <text x="114" y="282" text-anchor="middle" font-size="8.5" fill="#333" font-family="IBM Plex Mono,monospace" font-weight="bold">LEFT WARDROBE</text>
+      <text x="114" y="290" text-anchor="middle" font-size="7.5" fill="#888" font-family="IBM Plex Mono,monospace">6'-0" × 8'-0" × 28"</text>
+      <!-- drawer line -->
+      <line x1="20" y1="318" x2="308" y2="318" stroke="#888" stroke-width="1" stroke-dasharray="4,2"/>
+      <!-- skirting left -->
+      <rect x="20" y="406" width="288" height="8" fill="#c8b89a" stroke="#8a6a3a" stroke-width="0.8"/>
+
+      <!-- ════════════════════════════════════════════
+           TV UNIT  x=308..596
+      ════════════════════════════════════════════ -->
+      <rect x="308" y="30" width="288" height="384" fill="#fffef9" stroke="#1a1a1a" stroke-width="2"/>
+
+      <!-- AC SPACE y=30..110 (20") — open -->
+      <rect x="308" y="30" width="288" height="80" fill="#eef4f8" stroke="#1a1a1a" stroke-width="1.2"/>
+      <!-- AC unit outline -->
+      <rect x="328" y="38" width="248" height="46" rx="4" fill="#ddeef8" stroke="#5599aa" stroke-width="1.2"/>
+      <text x="452" y="57" text-anchor="middle" font-size="9" fill="#336688" font-family="IBM Plex Mono,monospace" font-weight="bold">AC UNIT SPACE</text>
+      <text x="452" y="69" text-anchor="middle" font-size="7.5" fill="#336688" font-family="IBM Plex Mono,monospace">(open — 20" high)</text>
+      <!-- AC vent lines -->
+      <line x1="338" y1="58" x2="338" y2="84" stroke="#88bbcc" stroke-width="0.7"/>
+      <line x1="348" y1="58" x2="348" y2="84" stroke="#88bbcc" stroke-width="0.7"/>
+      <line x1="358" y1="58" x2="358" y2="84" stroke="#88bbcc" stroke-width="0.7"/>
+
+      <!-- TV SPACE y=110..278 (42") -->
+      <rect x="308" y="110" width="288" height="168" fill="#f8f6f2" stroke="#1a1a1a" stroke-width="1.2"/>
+      <!-- TV screen -->
+      <rect x="318" y="126" width="268" height="152" rx="6" fill="#1a1a2e" stroke="#333" stroke-width="1.5"/>
+      <!-- TV screen glare -->
+      <rect x="322" y="130" width="260" height="144" rx="4" fill="#0d1b2e" stroke="none"/>
+      <text x="452" y="198" text-anchor="middle" font-size="10" fill="#3a6a9a" font-family="IBM Plex Mono,monospace">75" TV</text>
+      <text x="452" y="211" text-anchor="middle" font-size="8"  fill="#2a4a6a" font-family="IBM Plex Mono,monospace">space: 68"W × 42"H</text>
+      <!-- TV stand legs -->
+      <rect x="420" y="278" width="20" height="8" rx="2" fill="#555" stroke="none"/>
+      <rect x="466" y="278" width="20" height="8" rx="2" fill="#555" stroke="none"/>
+
+      <!-- DRAWER ZONE y=278..406 (32") -->
+      <line x1="308" y1="278" x2="596" y2="278" stroke="#1a1a1a" stroke-width="1.5"/>
+
+      <!-- 4"×4" CENTRE POST x=444..460 -->
+      <rect x="444" y="278" width="16" height="120" fill="#d4b896" stroke="#8a6a3a" stroke-width="1.2"/>
+      <line x1="444" y1="290" x2="460" y2="306" stroke="#8a6a3a" stroke-width="0.6"/>
+      <line x1="444" y1="306" x2="460" y2="322" stroke="#8a6a3a" stroke-width="0.6"/>
+      <line x1="444" y1="322" x2="460" y2="338" stroke="#8a6a3a" stroke-width="0.6"/>
+      <line x1="444" y1="338" x2="460" y2="354" stroke="#8a6a3a" stroke-width="0.6"/>
+      <line x1="444" y1="354" x2="460" y2="370" stroke="#8a6a3a" stroke-width="0.6"/>
+      <line x1="444" y1="370" x2="460" y2="386" stroke="#8a6a3a" stroke-width="0.6"/>
+      <line x1="444" y1="386" x2="460" y2="402" stroke="#8a6a3a" stroke-width="0.6"/>
+
+      <!-- LEFT drawers x=308..444 (136px=34") -->
+      <!-- Drawer 1 left: y=286..350 -->
+      <rect x="308" y="278" width="136" height="64" fill="#ede9e0" stroke="#1a1a1a" stroke-width="1"/>
+      <rect x="348" y="298" width="56" height="6" rx="3" fill="#ccc" stroke="#aaa" stroke-width="0.8"/>
+      <!-- Drawer 2 left: y=350..414 -->
+      <rect x="308" y="342" width="136" height="64" fill="#e5e1d8" stroke="#1a1a1a" stroke-width="1"/>
+      <rect x="348" y="362" width="56" height="6" rx="3" fill="#ccc" stroke="#aaa" stroke-width="0.8"/>
+      <text x="376" y="314" text-anchor="middle" font-size="7" fill="#888" font-family="IBM Plex Mono,monospace">DWR 1</text>
+      <text x="376" y="378" text-anchor="middle" font-size="7" fill="#888" font-family="IBM Plex Mono,monospace">DWR 2</text>
+
+      <!-- RIGHT drawers x=460..596 (136px=34") -->
+      <!-- Drawer 1 right: y=286..350 -->
+      <rect x="460" y="278" width="136" height="64" fill="#ede9e0" stroke="#1a1a1a" stroke-width="1"/>
+      <rect x="500" y="298" width="56" height="6" rx="3" fill="#ccc" stroke="#aaa" stroke-width="0.8"/>
+      <!-- Drawer 2 right: y=350..414 -->
+      <rect x="460" y="342" width="136" height="64" fill="#e5e1d8" stroke="#1a1a1a" stroke-width="1"/>
+      <rect x="500" y="362" width="56" height="6" rx="3" fill="#ccc" stroke="#aaa" stroke-width="0.8"/>
+      <text x="528" y="314" text-anchor="middle" font-size="7" fill="#888" font-family="IBM Plex Mono,monospace">DWR 1</text>
+      <text x="528" y="378" text-anchor="middle" font-size="7" fill="#888" font-family="IBM Plex Mono,monospace">DWR 2</text>
+
+      <!-- TV unit label -->
+      <!-- skirting TV -->
+      <rect x="308" y="406" width="288" height="8" fill="#c8b89a" stroke="#8a6a3a" stroke-width="0.8"/>
+      <text x="452" y="432" text-anchor="middle" font-size="9" fill="#333" font-family="IBM Plex Mono,monospace" font-weight="bold">TV UNIT</text>
+      <text x="452" y="442" text-anchor="middle" font-size="7.5" fill="#888" font-family="IBM Plex Mono,monospace">6'-0" × 8'-0" × 28"</text>
+
+      <!-- ════════════════════════════════════════════
+           RIGHT WARDROBE  x=596..884
+      ════════════════════════════════════════════ -->
+      <rect x="596" y="30" width="288" height="384" fill="#fffef9" stroke="#1a1a1a" stroke-width="2"/>
+
+      <!-- loft zone -->
+      <rect x="596" y="30" width="288" height="80" fill="#ede9e0" stroke="#1a1a1a" stroke-width="1.2"/>
+      <text x="740" y="66" text-anchor="middle" font-size="9" fill="#555" font-family="IBM Plex Mono,monospace">LOFT (20")</text>
+      <line x1="740" y1="30" x2="740" y2="110" stroke="#bbb" stroke-width="0.8" stroke-dasharray="3,2"/>
+
+      <!-- 4 doors -->
+      <line x1="668" y1="110" x2="668" y2="406" stroke="#999" stroke-width="1"/>
+      <line x1="740" y1="110" x2="740" y2="406" stroke="#999" stroke-width="1"/>
+      <line x1="812" y1="110" x2="812" y2="406" stroke="#999" stroke-width="1"/>
+      <rect x="596" y="110" width="72" height="296" fill="#f4f2ee" stroke="none"/>
+      <rect x="668" y="110" width="72" height="296" fill="#eeebe6" stroke="none"/>
+      <rect x="740" y="110" width="72" height="296" fill="#f4f2ee" stroke="none"/>
+      <rect x="812" y="110" width="72" height="296" fill="#eeebe6" stroke="none"/>
+      <!-- handles — meeting edges, vertically centred y=102..414 → cy=258 -->
+      <!-- D1 right edge at x=668 -->
+      <circle cx="660" cy="258" r="3" fill="none" stroke="#666" stroke-width="1.2"/>
+      <!-- D2 left edge at x=668 -->
+      <circle cx="676" cy="258" r="3" fill="none" stroke="#666" stroke-width="1.2"/>
+      <!-- D3 right edge at x=812 -->
+      <circle cx="804" cy="258" r="3" fill="none" stroke="#666" stroke-width="1.2"/>
+      <!-- D4 left edge at x=812 -->
+      <circle cx="820" cy="258" r="3" fill="none" stroke="#666" stroke-width="1.2"/>
+      <!-- hinges -->
+      <circle cx="596" cy="186" r="2.5" fill="#777"/><circle cx="596" cy="350" r="2.5" fill="#777"/>
+      <circle cx="740" cy="186" r="2.5" fill="#777"/><circle cx="740" cy="350" r="2.5" fill="#777"/>
+      <circle cx="740" cy="186" r="2.5" fill="#777"/><circle cx="740" cy="350" r="2.5" fill="#777"/>
+      <circle cx="884" cy="186" r="2.5" fill="#777"/><circle cx="884" cy="350" r="2.5" fill="#777"/>
+      <!-- label -->
+      <rect x="636" y="270" width="108" height="22" fill="#fffef9" stroke="#ccc" stroke-width="0.8" rx="2"/>
+      <text x="690" y="282" text-anchor="middle" font-size="8.5" fill="#333" font-family="IBM Plex Mono,monospace" font-weight="bold">RIGHT WARDROBE</text>
+      <text x="690" y="290" text-anchor="middle" font-size="7.5" fill="#888" font-family="IBM Plex Mono,monospace">6'-0" × 8'-0" × 28"</text>
+      <line x1="596" y1="318" x2="884" y2="318" stroke="#888" stroke-width="1" stroke-dasharray="4,2"/>
+      <!-- skirting right -->
+      <rect x="596" y="406" width="288" height="8" fill="#c8b89a" stroke="#8a6a3a" stroke-width="0.8"/>
+
+      <!-- ── DIMENSION LINES ── -->
+      <!-- Total wall width -->
+      <line x1="20"  y1="16" x2="884" y2="16" stroke="#cc0000" stroke-width="0.8"/>
+      <line x1="20"  y1="12" x2="20"  y2="20" stroke="#cc0000" stroke-width="0.8"/>
+      <line x1="884" y1="12" x2="884" y2="20" stroke="#cc0000" stroke-width="0.8"/>
+      <text x="452" y="14" text-anchor="middle" font-size="9" fill="#cc0000" font-family="IBM Plex Mono,monospace">18'-0"  (216")</text>
+
+      <!-- Section widths bottom -->
+      <line x1="20"  y1="458" x2="308" y2="458" stroke="#555" stroke-width="0.7"/>
+      <line x1="20"  y1="454" x2="20"  y2="462" stroke="#555" stroke-width="0.7"/>
+      <line x1="308" y1="454" x2="308" y2="462" stroke="#555" stroke-width="0.7"/>
+      <text x="164" y="456" text-anchor="middle" font-size="8.5" fill="#555" font-family="IBM Plex Mono,monospace">6'-0"</text>
+
+      <line x1="308" y1="458" x2="596" y2="458" stroke="#555" stroke-width="0.7"/>
+      <line x1="596" y1="454" x2="596" y2="462" stroke="#555" stroke-width="0.7"/>
+      <text x="452" y="456" text-anchor="middle" font-size="8.5" fill="#555" font-family="IBM Plex Mono,monospace">6'-0"</text>
+
+      <line x1="596" y1="458" x2="884" y2="458" stroke="#555" stroke-width="0.7"/>
+      <line x1="884" y1="454" x2="884" y2="462" stroke="#555" stroke-width="0.7"/>
+      <text x="740" y="456" text-anchor="middle" font-size="8.5" fill="#555" font-family="IBM Plex Mono,monospace">6'-0"</text>
+
+      <!-- Height right -->
+      <line x1="896" y1="30"  x2="896" y2="414" stroke="#cc0000" stroke-width="0.8"/>
+      <line x1="892" y1="30"  x2="900" y2="30"  stroke="#cc0000" stroke-width="0.8"/>
+      <line x1="892" y1="414" x2="900" y2="414" stroke="#cc0000" stroke-width="0.8"/>
+      <text x="910" y="226" text-anchor="middle" font-size="9" fill="#cc0000" font-family="IBM Plex Mono,monospace" transform="rotate(90,910,226)">8'-0"  (96")</text>
+
+      <!-- TV zone heights (right of TV unit) -->
+      <line x1="602" y1="30"  x2="602" y2="110" stroke="#0000aa" stroke-width="0.7"/>
+      <line x1="598" y1="30"  x2="606" y2="30"  stroke="#0000aa" stroke-width="0.7"/>
+      <line x1="598" y1="110" x2="606" y2="110" stroke="#0000aa" stroke-width="0.7"/>
+      <text x="608" y="74" text-anchor="start" font-size="7" fill="#0000aa" font-family="IBM Plex Mono,monospace">20" AC/LOFT</text>
+
+      <line x1="602" y1="110" x2="602" y2="278" stroke="#0000aa" stroke-width="0.7"/>
+      <line x1="598" y1="278" x2="606" y2="278" stroke="#0000aa" stroke-width="0.7"/>
+      <text x="608" y="198" text-anchor="start" font-size="7" fill="#0000aa" font-family="IBM Plex Mono,monospace">42" TV</text>
+
+      <line x1="602" y1="278" x2="602" y2="406" stroke="#0000aa" stroke-width="0.7"/>
+      <line x1="598" y1="406" x2="606" y2="406" stroke="#0000aa" stroke-width="0.7"/>
+      <text x="608" y="346" text-anchor="start" font-size="7" fill="#0000aa" font-family="IBM Plex Mono,monospace">32" DWR</text>
+
+      <!-- floor line -->
+      <!-- skirting label -->
+      <text x="452" y="420" text-anchor="middle" font-size="7" fill="#8a6a3a" font-family="IBM Plex Mono,monospace">SKIRTING 2" (all three units)</text>
+      <rect x="20" y="414" width="864" height="6" fill="#888" stroke="none"/>
+      <text x="452" y="425" text-anchor="middle" font-size="7.5" fill="#888" font-family="IBM Plex Mono,monospace">FLOOR</text>
+
+    </svg>
+    </div>
+  </div>
+
+  <div class="drawing-block note" id="sh5-note">
+    <strong>⚠ CARPENTER NOTES — Sheet 5 (Wall Overview)</strong>
+    • Total wall span: 18'-0" = Left Wardrobe (6ft) + TV Unit (6ft) + Right Wardrobe (6ft).<br>
+    • All three units are 8'-0" tall and 28" deep — flush front face across the full wall.<br>
+    • Left and right wardrobes are identical in design (see Sheets 1–4 for full detail).<br>
+    • TV unit is a separate carcass — see Sheet 6 for full internal detail.
+  </div>
+
+  <div class="sheet-footer" id="sh5-footer">
+    <span>CAB-001 / Rev F / June 2026</span>
+    <span>Sheet 5 of 6 — Full Wall Overview (18ft)</span>
+    <span>Verify all dims on site before cutting</span>
+  </div>
+</div>
+
+<!-- ┌─────────────────────────────────────────────────┐
+     │  SHEET 6 — TV Unit Detail                       │
+     └─────────────────────────────────────────────────┘ -->
+<div class="sheet" id="sheet-6">
+  <div class="sheet-header">
+    <div>
+      <h2 id="sh6-h2">TV Unit — Carpenter Drawing <span class="rev">Rev F</span></h2>
+      <div style="font-size:9px;color:#666;margin-top:3px;" id="sh6-sub">Sheet 6 of 6 · TV Unit Front Elevation · Interior Detail · Bill of Components</div>
+    </div>
+    <div class="sh-meta">
+      <span id="sh6-meta">6'-0"W × 8'-0"H × 28"D<br>Drawers 2×16" · TV 42" · AC 22"<br>CAB-001 Rev F · June 2026</span>
+    </div>
+  </div>
+
+  <!-- TV UNIT FRONT ELEVATION -->
+  <div class="drawing-block">
+    <div class="bar" id="sh6-bar">G — TV Unit Front Elevation · 6'-0" Wide × 8'-0" High · Scale 1" = 6px</div>
+    <div class="dsub" id="sh6-dsub">AC space (open, 22") · TV recess (42") · 2 full-width drawers (2×16"=32") from bottom</div>
+    <!--
+      Scale 1"=6px (same as wardrobes)
+      Width 72" = 432px   x: 60..492  (centre x=276)
+      Height 96" = 576px  y: 40..616
+
+      AC space:   22"=132px  y=40..172
+      TV space:   42"=252px  y=172..424
+      Drawers:    32"=192px  y=424..616
+        Drawer 1: 16"=96px   y=424..520
+        Drawer 2: 16"=96px   y=520..616
+
+      TV screen: 75" diagonal → 65.4"W × 36.8"H (16:9)
+        In px: 65.4×6=392px W, 36.8×6=221px H
+        Centred in 432px wide opening: x = 60+(432-392)/2 = 60+20 = 80
+        Vertically centred in 252px: y = 172+(252-221)/2 = 172+15 = 187
+    -->
+    <div class="svg-wrap" style="border:2px solid #1a1a1a;">
+    <svg viewBox="0 0 580 670" style="display:block;width:100%;height:auto;background:#fff;">
+
+      <!-- outer carcass -->
+      <rect x="60" y="40" width="432" height="576" fill="#fffef9" stroke="#1a1a1a" stroke-width="2.5"/>
+
+      <!-- ── AC SPACE (y=40..172, h=132px=22") ── -->
+      <rect x="60" y="40" width="432" height="132" fill="#eef4f8" stroke="#1a1a1a" stroke-width="1.5"/>
+      <text x="276" y="90" text-anchor="middle" font-size="11" fill="#336688" font-family="IBM Plex Mono,monospace" font-weight="bold">AC UNIT SPACE</text>
+      <text x="276" y="106" text-anchor="middle" font-size="9"  fill="#336688" font-family="IBM Plex Mono,monospace">Open — no doors · 22" high × 72" wide</text>
+      <text x="276" y="120" text-anchor="middle" font-size="8.5" fill="#5599aa" font-family="IBM Plex Mono,monospace">Cassette AC or wall unit to be installed here</text>
+      <!-- vent hatching -->
+      <line x1="70"  y1="55" x2="70"  y2="165" stroke="#aaccdd" stroke-width="0.6"/>
+      <line x1="84"  y1="55" x2="84"  y2="165" stroke="#aaccdd" stroke-width="0.6"/>
+      <line x1="98"  y1="55" x2="98"  y2="165" stroke="#aaccdd" stroke-width="0.6"/>
+      <line x1="112" y1="55" x2="112" y2="165" stroke="#aaccdd" stroke-width="0.6"/>
+      <line x1="440" y1="55" x2="440" y2="165" stroke="#aaccdd" stroke-width="0.6"/>
+      <line x1="454" y1="55" x2="454" y2="165" stroke="#aaccdd" stroke-width="0.6"/>
+      <line x1="468" y1="55" x2="468" y2="165" stroke="#aaccdd" stroke-width="0.6"/>
+      <line x1="482" y1="55" x2="482" y2="165" stroke="#aaccdd" stroke-width="0.6"/>
+
+      <!-- ── TV RECESS (y=172..424, h=252px=42") ── -->
+      <rect x="60" y="172" width="432" height="252" fill="#f0ede8" stroke="#1a1a1a" stroke-width="1.5"/>
+
+      <!-- TV screen: 392px × 221px centred -->
+      <rect x="80" y="187" width="392" height="221" rx="8" fill="#111827" stroke="#2a2a3a" stroke-width="2"/>
+      <rect x="84" y="191" width="384" height="213" rx="5" fill="#0d1520" stroke="none"/>
+      <!-- screen content hint -->
+      <text x="276" y="295" text-anchor="middle" font-size="13" fill="#2a5a8a" font-family="IBM Plex Mono,monospace">75"  TELEVISION</text>
+      <text x="276" y="313" text-anchor="middle" font-size="9"  fill="#1a3a5a" font-family="IBM Plex Mono,monospace">screen: ~65.4" × 36.8"  (16:9)</text>
+      <!-- TV bezel bottom -->
+      <rect x="80" y="408" width="392" height="12" rx="4" fill="#222" stroke="#333" stroke-width="1"/>
+
+      <!-- TV back panel / mount -->
+      <text x="276" y="158" text-anchor="middle" font-size="8" fill="#888" font-family="IBM Plex Mono,monospace">← wall mount or recessed panel →</text>
+
+      <!-- ── DRAWER ZONE (y=424..616, h=192px=32") ── -->
+      <!-- LEFT 34" + POST 4" + RIGHT 34" = 72" -->
+      <line x1="60" y1="424" x2="492" y2="424" stroke="#1a1a1a" stroke-width="2"/>
+
+      <!-- 4"×4" CENTRE POST: x=264..288 (24px=4"), full drawer height -->
+      <rect x="264" y="424" width="24" height="192" fill="#d4b896" stroke="#8a6a3a" stroke-width="1.8"/>
+      <line x1="264" y1="430" x2="288" y2="454" stroke="#8a6a3a" stroke-width="0.8"/>
+      <line x1="264" y1="454" x2="288" y2="478" stroke="#8a6a3a" stroke-width="0.8"/>
+      <line x1="264" y1="478" x2="288" y2="502" stroke="#8a6a3a" stroke-width="0.8"/>
+      <line x1="264" y1="502" x2="288" y2="526" stroke="#8a6a3a" stroke-width="0.8"/>
+      <line x1="264" y1="526" x2="288" y2="550" stroke="#8a6a3a" stroke-width="0.8"/>
+      <line x1="264" y1="550" x2="288" y2="574" stroke="#8a6a3a" stroke-width="0.8"/>
+      <line x1="264" y1="574" x2="288" y2="598" stroke="#8a6a3a" stroke-width="0.8"/>
+
+      <!-- Post label -->
+      <text x="276" y="520" text-anchor="middle" font-size="7" fill="#7a5020" font-weight="bold"
+            font-family="IBM Plex Mono,monospace" transform="rotate(90,276,520)">4"×4" POST</text>
+
+      <!-- Post width callout -->
+      <line x1="264" y1="628" x2="288" y2="628" stroke="#8a6a3a" stroke-width="0.8"/>
+      <line x1="264" y1="624" x2="264" y2="632" stroke="#8a6a3a" stroke-width="0.8"/>
+      <line x1="288" y1="624" x2="288" y2="632" stroke="#8a6a3a" stroke-width="0.8"/>
+      <text x="276" y="642" text-anchor="middle" font-size="7.5" fill="#8a6a3a" font-family="IBM Plex Mono,monospace">4"</text>
+
+      <!-- ── LEFT DRAWERS: x=60..264 (204px=34") ── -->
+      <!-- Drawer 1 Left: y=424..520 (96px=16") -->
+      <rect x="60"  y="424" width="204" height="96" fill="#ede9e0" stroke="#1a1a1a" stroke-width="1.2"/>
+      <rect x="114" y="462" width="96"  height="10" rx="5" fill="#ccc" stroke="#aaa" stroke-width="1"/>
+      <text x="162" y="448" text-anchor="middle" font-size="8" fill="#888" font-family="IBM Plex Mono,monospace">LEFT  DWR 1</text>
+      <text x="162" y="458" text-anchor="middle" font-size="7.5" fill="#aaa" font-family="IBM Plex Mono,monospace">(34" wide × 16" high)</text>
+
+      <!-- Drawer 2 Left: y=520..616 (96px=16") -->
+      <rect x="60"  y="520" width="204" height="96" fill="#e5e1d8" stroke="#1a1a1a" stroke-width="1.2"/>
+      <rect x="114" y="558" width="96"  height="10" rx="5" fill="#ccc" stroke="#aaa" stroke-width="1"/>
+      <text x="162" y="544" text-anchor="middle" font-size="8" fill="#888" font-family="IBM Plex Mono,monospace">LEFT  DWR 2</text>
+      <text x="162" y="554" text-anchor="middle" font-size="7.5" fill="#aaa" font-family="IBM Plex Mono,monospace">(34" wide × 16" high)</text>
+
+      <!-- ── RIGHT DRAWERS: x=288..492 (204px=34") ── -->
+      <!-- Drawer 1 Right: y=424..520 -->
+      <rect x="288" y="424" width="204" height="96" fill="#ede9e0" stroke="#1a1a1a" stroke-width="1.2"/>
+      <rect x="342" y="462" width="96"  height="10" rx="5" fill="#ccc" stroke="#aaa" stroke-width="1"/>
+      <text x="390" y="448" text-anchor="middle" font-size="8" fill="#888" font-family="IBM Plex Mono,monospace">RIGHT  DWR 1</text>
+      <text x="390" y="458" text-anchor="middle" font-size="7.5" fill="#aaa" font-family="IBM Plex Mono,monospace">(34" wide × 16" high)</text>
+
+      <!-- Drawer 2 Right: y=520..616 -->
+      <rect x="288" y="520" width="204" height="96" fill="#e5e1d8" stroke="#1a1a1a" stroke-width="1.2"/>
+      <rect x="342" y="558" width="96"  height="10" rx="5" fill="#ccc" stroke="#aaa" stroke-width="1"/>
+      <text x="390" y="544" text-anchor="middle" font-size="8" fill="#888" font-family="IBM Plex Mono,monospace">RIGHT  DWR 2</text>
+      <text x="390" y="554" text-anchor="middle" font-size="7.5" fill="#aaa" font-family="IBM Plex Mono,monospace">(34" wide × 16" high)</text>
+
+      <!-- Drawer width dims bottom -->
+      <line x1="60"  y1="652" x2="264" y2="652" stroke="#cc0000" stroke-width="0.8"/>
+      <line x1="60"  y1="648" x2="60"  y2="656" stroke="#cc0000" stroke-width="0.8"/>
+      <line x1="264" y1="648" x2="264" y2="656" stroke="#cc0000" stroke-width="0.8"/>
+      <text x="162" y="650" text-anchor="middle" font-size="8" fill="#cc0000" font-family="IBM Plex Mono,monospace">34"</text>
+      <line x1="288" y1="652" x2="492" y2="652" stroke="#cc0000" stroke-width="0.8"/>
+      <line x1="288" y1="648" x2="288" y2="656" stroke="#cc0000" stroke-width="0.8"/>
+      <line x1="492" y1="648" x2="492" y2="656" stroke="#cc0000" stroke-width="0.8"/>
+      <text x="390" y="650" text-anchor="middle" font-size="8" fill="#cc0000" font-family="IBM Plex Mono,monospace">34"</text>
+
+      <!-- ── DIMENSION LINES ── -->
+      <!-- Total width -->
+      <line x1="60"  y1="24" x2="492" y2="24" stroke="#cc0000" stroke-width="0.8"/>
+      <line x1="60"  y1="20" x2="60"  y2="28" stroke="#cc0000" stroke-width="0.8"/>
+      <line x1="492" y1="20" x2="492" y2="28" stroke="#cc0000" stroke-width="0.8"/>
+      <text x="276" y="22" text-anchor="middle" font-size="9" fill="#cc0000" font-family="IBM Plex Mono,monospace">6'-0"  (72")</text>
+
+      <!-- Total height right -->
+      <line x1="508" y1="40"  x2="508" y2="616" stroke="#cc0000" stroke-width="0.8"/>
+      <line x1="504" y1="40"  x2="512" y2="40"  stroke="#cc0000" stroke-width="0.8"/>
+      <line x1="504" y1="616" x2="512" y2="616" stroke="#cc0000" stroke-width="0.8"/>
+      <text x="524" y="332" text-anchor="middle" font-size="9" fill="#cc0000" font-family="IBM Plex Mono,monospace" transform="rotate(90,524,332)">8'-0"  (96")</text>
+
+      <!-- Zone heights left -->
+      <line x1="44" y1="40"  x2="44" y2="172" stroke="#0000aa" stroke-width="0.8"/>
+      <line x1="40" y1="40"  x2="48" y2="40"  stroke="#0000aa" stroke-width="0.8"/>
+      <line x1="40" y1="172" x2="48" y2="172" stroke="#0000aa" stroke-width="0.8"/>
+      <text x="34" y="110" text-anchor="middle" font-size="8" fill="#0000aa" font-family="IBM Plex Mono,monospace" transform="rotate(-90,34,110)">22"  AC</text>
+
+      <line x1="44" y1="172" x2="44" y2="424" stroke="#0000aa" stroke-width="0.8"/>
+      <line x1="40" y1="424" x2="48" y2="424" stroke="#0000aa" stroke-width="0.8"/>
+      <text x="34" y="302" text-anchor="middle" font-size="8" fill="#0000aa" font-family="IBM Plex Mono,monospace" transform="rotate(-90,34,302)">42"  TV</text>
+
+      <line x1="44" y1="424" x2="44" y2="520" stroke="#0000aa" stroke-width="0.8"/>
+      <line x1="40" y1="520" x2="48" y2="520" stroke="#0000aa" stroke-width="0.8"/>
+      <text x="34" y="476" text-anchor="middle" font-size="8" fill="#0000aa" font-family="IBM Plex Mono,monospace" transform="rotate(-90,34,476)">16"</text>
+
+      <line x1="44" y1="520" x2="44" y2="616" stroke="#0000aa" stroke-width="0.8"/>
+      <line x1="40" y1="616" x2="48" y2="616" stroke="#0000aa" stroke-width="0.8"/>
+      <text x="34" y="572" text-anchor="middle" font-size="8" fill="#0000aa" font-family="IBM Plex Mono,monospace" transform="rotate(-90,34,572)">16"</text>
+
+      <!-- TV screen opening width -->
+      <line x1="80"  y1="665" x2="472" y2="665" stroke="#555" stroke-width="0.7"/>
+      <line x1="80"  y1="661" x2="80"  y2="669" stroke="#555" stroke-width="0.7"/>
+      <line x1="472" y1="661" x2="472" y2="669" stroke="#555" stroke-width="0.7"/>
+      <text x="276" y="663" text-anchor="middle" font-size="8" fill="#555" font-family="IBM Plex Mono,monospace">TV opening: ~65" wide  (75" diagonal screen)</text>
+
+    </svg>
+    </div>
+  </div>
+
+  <!-- TV UNIT BILL OF COMPONENTS -->
+  <div class="drawing-block">
+    <div class="bar" id="sh6-bom">TV Unit — Bill of Components</div>
+    <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Component</th><th>Width</th><th>Height</th><th>Depth</th><th>Qty</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>TV Unit Carcass</td><td>6'-0" (72")</td><td>8'-0" (96")</td><td>28"</td><td>1</td><td>Flush with wardrobes on both sides</td></tr>
+        <tr><td>AC Space</td><td>72"</td><td>22"</td><td>28"</td><td>1</td><td>Open — no doors. Top section. Allow ventilation gap at back.</td></tr>
+        <tr><td>TV Recess</td><td>72"</td><td>42"</td><td>28"</td><td>1</td><td>Open front. 75" TV fits (~65"W). Flush back panel or wall mount.</td></tr>
+        <tr class="hl"><td>4"×4" Centre Post</td><td>4"</td><td>32" (drawer zone)</td><td>4"</td><td>1</td><td>Same square post as wardrobe. Sits between left &amp; right drawer banks. Centred at 36" from each side.</td></tr>
+        <tr class="hl"><td>Drawer — Left Bank (×2)</td><td>34"</td><td>16" each</td><td>24"</td><td>2</td><td>Soft-close full-extension slides. Left of centre post.</td></tr>
+        <tr class="hl"><td>Drawer — Right Bank (×2)</td><td>34"</td><td>16" each</td><td>24"</td><td>2</td><td>Soft-close full-extension slides. Right of centre post.</td></tr>
+        <tr><td>Drawer Handle</td><td>~10" bar handle</td><td>—</td><td>—</td><td>4</td><td>One per drawer, centred. Match wardrobe handles.</td></tr>
+        <tr><td>Back Panel</td><td>72"</td><td>96"</td><td>—</td><td>1</td><td>6mm ply or HDF. Cable management holes in TV zone.</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <div class="drawing-block note" id="sh6-note">
+    <strong>⚠ CARPENTER NOTES — Sheet 6 (TV Unit)</strong>
+    • <b>Zones (bottom to top):</b> 2×16" drawers = 32" · TV recess 42" · AC/loft space 22" = 96" total ✓<br>
+    • <b>Drawers:</b> Left bank 34" wide + 4"×4" post + right bank 34" wide = 72" total. 2 drawers per side, each 16" high. Soft-close full-extension slides. Handle centred on each drawer.<br>
+    • <b>4"×4" Centre Post:</b> Same square timber/ply post as the wardrobes. Sits at the centreline (36" from each side). Only present in the drawer zone (32" high) — does not extend into TV or AC zone.<br>
+    • <b>TV recess:</b> Designed for 75" TV (~65"W × 37"H screen). No shelf — flush back panel. Cable management cutout at base of recess for HDMI/power. Wall mount bracket fixed through back panel into wall.<br>
+    • <b>AC space:</b> Open — no doors. Height 22" suits standard cassette or wall-split AC unit. Allow 2–3" air gap at back and sides for ventilation.<br>
+    • <b>Alignment:</b> TV unit front face flush with both wardrobes. All three units share same 28" depth and same floor line.<br>
+    • Material: 18mm BWR ply throughout, laminate finish to match wardrobes.
+  </div>
+
+  <div class="sheet-footer" id="sh6-footer">
+    <span>CAB-001 / Rev F / June 2026</span>
+    <span>Sheet 6 of 6 — TV Unit Detail · Bangalore</span>
+    <span>Verify all dimensions on site before cutting</span>
+  </div>
+</div>
+
 </body>
 </html>
