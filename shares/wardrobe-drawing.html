@@ -635,21 +635,21 @@
       <polygon points="272,206 280,206 276,212" fill="#c80"/>
 
       <!-- ── HANGING ZONE labels (y=148..472, 324px=54") ── -->
-      <text x="162" y="220" text-anchor="middle" font-size="9" fill="#666" font-family="IBM Plex Mono,monospace">HANGING LEFT</text>
-      <text x="162" y="232" text-anchor="middle" font-size="8" fill="#aaa" font-family="IBM Plex Mono,monospace">(36" wide)</text>
-      <text x="390" y="220" text-anchor="middle" font-size="9" fill="#666" font-family="IBM Plex Mono,monospace">HANGING RIGHT</text>
-      <text x="390" y="232" text-anchor="middle" font-size="8" fill="#aaa" font-family="IBM Plex Mono,monospace">(36" wide)</text>
+      <text x="162" y="178" text-anchor="middle" font-size="9" fill="#666" font-family="IBM Plex Mono,monospace">HANGING LEFT</text>
+      <text x="162" y="190" text-anchor="middle" font-size="8" fill="#aaa" font-family="IBM Plex Mono,monospace">(36" wide · 38" high)</text>
+      <text x="390" y="178" text-anchor="middle" font-size="9" fill="#666" font-family="IBM Plex Mono,monospace">HANGING RIGHT</text>
+      <text x="390" y="190" text-anchor="middle" font-size="8" fill="#aaa" font-family="IBM Plex Mono,monospace">(36" wide · 38" high)</text>
 
       <!-- ── SINGLE HANGING ROD y=292 (30" above drawer top y=472) ── -->
       <!-- rod: full width x=60..492 -->
-      <rect x="64"  y="289" width="424" height="6" rx="3" fill="#666" stroke="#444" stroke-width="1.2"/>
+      <rect x="64"  y="205" width="424" height="6" rx="3" fill="#666" stroke="#444" stroke-width="1.2"/>
       <!-- wall brackets -->
-      <rect x="60"  y="284" width="12"  height="16" rx="2" fill="#777" stroke="#444" stroke-width="1"/>
-      <rect x="480" y="284" width="12"  height="16" rx="2" fill="#777" stroke="#444" stroke-width="1"/>
+      <rect x="60"  y="200" width="12"  height="16" rx="2" fill="#777" stroke="#444" stroke-width="1"/>
+      <rect x="480" y="200" width="12"  height="16" rx="2" fill="#777" stroke="#444" stroke-width="1"/>
       <!-- rod label -->
-      <text x="510" y="296" font-size="8" fill="#333" font-family="IBM Plex Mono,monospace">ROD ⌀1"</text>
+      <text x="510" y="214" font-size="8" fill="#333" font-family="IBM Plex Mono,monospace">ROD ⌀1"</text>
       <!-- note: rod passes post via notch -->
-      <text x="276" y="282" text-anchor="middle" font-size="7" fill="#777" font-family="IBM Plex Mono,monospace">single rod — passes post via bracket/notch</text>
+      <text x="276" y="195" text-anchor="middle" font-size="7" fill="#777" font-family="IBM Plex Mono,monospace">single rod — passes post via bracket/notch</text>
 
       <!-- hanger symbols left (decorative) -->
       <path d="M148,295 Q156,285 164,295" fill="none" stroke="#ddd" stroke-width="1.5"/>
@@ -663,16 +663,17 @@
       <line x1="396" y1="295" x2="396" y2="385" stroke="#ddd" stroke-width="1"/>
 
       <!-- ── DRAWER ZONE TOP LINE y=472 ── -->
-      <line x1="60" y1="472" x2="492" y2="472" stroke="#1a1a1a" stroke-width="2"/>
+      <line x1="60" y1="388" x2="492" y2="388" stroke="#1a1a1a" stroke-width="2"/>
 
       <!-- ── DRAWER GAP DIVIDER: x=264..288, y=472..616 (144px=24") ── -->
       <!-- Darker fill to distinguish from post above -->
-      <rect x="264" y="472" width="24" height="132" fill="#7a5a28" stroke="#5a3a0a" stroke-width="1.5"/>
-      <line x1="264" y1="476" x2="288" y2="500" stroke="#5a3a0a" stroke-width="0.7"/>
-      <line x1="264" y1="500" x2="288" y2="524" stroke="#5a3a0a" stroke-width="0.7"/>
-      <line x1="264" y1="524" x2="288" y2="548" stroke="#5a3a0a" stroke-width="0.7"/>
-      <line x1="264" y1="548" x2="288" y2="572" stroke="#5a3a0a" stroke-width="0.7"/>
-      <line x1="264" y1="572" x2="288" y2="596" stroke="#5a3a0a" stroke-width="0.7"/>
+      <rect x="264" y="388" width="24" height="216" fill="#7a5a28" stroke="#5a3a0a" stroke-width="1.5"/>
+      <line x1="264" y1="392" x2="288" y2="416" stroke="#5a3a0a" stroke-width="0.7"/>
+      <line x1="264" y1="432" x2="288" y2="456" stroke="#5a3a0a" stroke-width="0.7"/>
+      <line x1="264" y1="472" x2="288" y2="496" stroke="#5a3a0a" stroke-width="0.7"/>
+      <line x1="264" y1="512" x2="288" y2="536" stroke="#5a3a0a" stroke-width="0.7"/>
+      <line x1="264" y1="552" x2="288" y2="576" stroke="#5a3a0a" stroke-width="0.7"/>
+      <line x1="264" y1="580" x2="288" y2="604" stroke="#5a3a0a" stroke-width="0.7"/>
       <!-- drawer gap label -->
       <rect x="196" y="620" width="160" height="22" fill="#fff3cd" stroke="#b37000" stroke-width="1" rx="2"/>
       <text x="276" y="632" text-anchor="middle" font-size="8"   fill="#8a5000" font-weight="bold" font-family="IBM Plex Mono,monospace">DRAWER GAP = 4"</text>
@@ -681,36 +682,30 @@
       <polygon points="272,620 280,620 276,624" fill="#b37000"/>
 
       <!-- ── LEFT DRAWERS: x=60..264 (204px=34"), 4 drawers each 36px ── -->
-      <rect x="60"  y="472" width="204" height="36" fill="#ede9e0" stroke="#1a1a1a" stroke-width="1"/>
-      <rect x="60"  y="508" width="204" height="36" fill="#e5e1d8" stroke="#1a1a1a" stroke-width="1"/>
-      <rect x="60"  y="544" width="204" height="36" fill="#ede9e0" stroke="#1a1a1a" stroke-width="1"/>
-      <rect x="60"  y="580" width="204" height="36" fill="#e5e1d8" stroke="#1a1a1a" stroke-width="1"/>
+      <rect x="60"  y="388" width="204" height="72" fill="#ede9e0" stroke="#1a1a1a" stroke-width="1"/>
+      <rect x="60"  y="460" width="204" height="72" fill="#e5e1d8" stroke="#1a1a1a" stroke-width="1"/>
+      <rect x="60"  y="532" width="204" height="72" fill="#ede9e0" stroke="#1a1a1a" stroke-width="1"/>
       <!-- handles left (centred in each drawer) -->
-      <rect x="120" y="481" width="84" height="6" rx="3" fill="#ccc" stroke="#aaa" stroke-width="0.8"/>
-      <rect x="120" y="517" width="84" height="6" rx="3" fill="#ccc" stroke="#aaa" stroke-width="0.8"/>
-      <rect x="120" y="553" width="84" height="6" rx="3" fill="#ccc" stroke="#aaa" stroke-width="0.8"/>
-      <rect x="120" y="589" width="84" height="6" rx="3" fill="#ccc" stroke="#aaa" stroke-width="0.8"/>
-      <text x="74" y="494"  font-size="7.5" fill="#888" font-family="IBM Plex Mono,monospace">DWR 1</text>
-      <text x="74" y="530"  font-size="7.5" fill="#888" font-family="IBM Plex Mono,monospace">DWR 2</text>
-      <text x="74" y="566"  font-size="7.5" fill="#888" font-family="IBM Plex Mono,monospace">DWR 3</text>
-      <text x="74" y="602"  font-size="7.5" fill="#888" font-family="IBM Plex Mono,monospace">DWR 4</text>
-      <text x="162" y="463" text-anchor="middle" font-size="8" fill="#555" font-family="IBM Plex Mono,monospace">LEFT BANK (~34")</text>
+      <rect x="120" y="421" width="84" height="6" rx="3" fill="#ccc" stroke="#aaa" stroke-width="0.8"/>
+      <rect x="120" y="493" width="84" height="6" rx="3" fill="#ccc" stroke="#aaa" stroke-width="0.8"/>
+      <rect x="120" y="565" width="84" height="6" rx="3" fill="#ccc" stroke="#aaa" stroke-width="0.8"/>
+      <text x="74" y="428"  font-size="7.5" fill="#888" font-family="IBM Plex Mono,monospace">DWR 1  (12")</text>
+      <text x="74" y="500"  font-size="7.5" fill="#888" font-family="IBM Plex Mono,monospace">DWR 2  (12")</text>
+      <text x="74" y="572"  font-size="7.5" fill="#888" font-family="IBM Plex Mono,monospace">DWR 3  (12")</text>
+      <text x="162" y="380" text-anchor="middle" font-size="8" fill="#555" font-family="IBM Plex Mono,monospace">LEFT BANK (~34")  3×12"</text>
 
       <!-- ── RIGHT DRAWERS: x=288..492 (204px=34") ── -->
-      <rect x="288" y="472" width="204" height="36" fill="#ede9e0" stroke="#1a1a1a" stroke-width="1"/>
-      <rect x="288" y="508" width="204" height="36" fill="#e5e1d8" stroke="#1a1a1a" stroke-width="1"/>
-      <rect x="288" y="544" width="204" height="36" fill="#ede9e0" stroke="#1a1a1a" stroke-width="1"/>
-      <rect x="288" y="580" width="204" height="36" fill="#e5e1d8" stroke="#1a1a1a" stroke-width="1"/>
+      <rect x="288" y="388" width="204" height="72" fill="#ede9e0" stroke="#1a1a1a" stroke-width="1"/>
+      <rect x="288" y="460" width="204" height="72" fill="#e5e1d8" stroke="#1a1a1a" stroke-width="1"/>
+      <rect x="288" y="532" width="204" height="72" fill="#ede9e0" stroke="#1a1a1a" stroke-width="1"/>
       <!-- handles right -->
-      <rect x="348" y="481" width="84" height="6" rx="3" fill="#ccc" stroke="#aaa" stroke-width="0.8"/>
-      <rect x="348" y="517" width="84" height="6" rx="3" fill="#ccc" stroke="#aaa" stroke-width="0.8"/>
-      <rect x="348" y="553" width="84" height="6" rx="3" fill="#ccc" stroke="#aaa" stroke-width="0.8"/>
-      <rect x="348" y="589" width="84" height="6" rx="3" fill="#ccc" stroke="#aaa" stroke-width="0.8"/>
-      <text x="302" y="494" font-size="7.5" fill="#888" font-family="IBM Plex Mono,monospace">DWR 1</text>
-      <text x="302" y="530" font-size="7.5" fill="#888" font-family="IBM Plex Mono,monospace">DWR 2</text>
-      <text x="302" y="566" font-size="7.5" fill="#888" font-family="IBM Plex Mono,monospace">DWR 3</text>
-      <text x="302" y="602" font-size="7.5" fill="#888" font-family="IBM Plex Mono,monospace">DWR 4</text>
-      <text x="390" y="463" text-anchor="middle" font-size="8" fill="#555" font-family="IBM Plex Mono,monospace">RIGHT BANK (~34")</text>
+      <rect x="348" y="421" width="84" height="6" rx="3" fill="#ccc" stroke="#aaa" stroke-width="0.8"/>
+      <rect x="348" y="493" width="84" height="6" rx="3" fill="#ccc" stroke="#aaa" stroke-width="0.8"/>
+      <rect x="348" y="565" width="84" height="6" rx="3" fill="#ccc" stroke="#aaa" stroke-width="0.8"/>
+      <text x="302" y="428" font-size="7.5" fill="#888" font-family="IBM Plex Mono,monospace">DWR 1  (12")</text>
+      <text x="302" y="500" font-size="7.5" fill="#888" font-family="IBM Plex Mono,monospace">DWR 2  (12")</text>
+      <text x="302" y="572" font-size="7.5" fill="#888" font-family="IBM Plex Mono,monospace">DWR 3  (12")</text>
+      <text x="390" y="380" text-anchor="middle" font-size="8" fill="#555" font-family="IBM Plex Mono,monospace">RIGHT BANK (~34")  3×12"</text>
 
 
       <!-- ── SKIRTING 2" at base y=604..616 ── -->
@@ -741,19 +736,19 @@
       <line x1="40" y1="40"  x2="48" y2="40"  stroke="#0000aa" stroke-width="0.8"/>
       <line x1="40" y1="160" x2="48" y2="160" stroke="#0000aa" stroke-width="0.8"/>
       <text x="34" y="100" text-anchor="middle" font-size="8" fill="#0000aa" font-family="IBM Plex Mono,monospace" transform="rotate(-90,34,100)">20"</text>
-      <line x1="44" y1="160" x2="44" y2="472" stroke="#0000aa" stroke-width="0.8"/>
-      <line x1="40" y1="472" x2="48" y2="472" stroke="#0000aa" stroke-width="0.8"/>
-      <text x="34" y="322" text-anchor="middle" font-size="8" fill="#0000aa" font-family="IBM Plex Mono,monospace" transform="rotate(-90,34,322)">50"</text>
-      <line x1="44" y1="472" x2="44" y2="604" stroke="#0000aa" stroke-width="0.8"/>
+      <line x1="44" y1="160" x2="44" y2="388" stroke="#0000aa" stroke-width="0.8"/>
+      <line x1="40" y1="388" x2="48" y2="388" stroke="#0000aa" stroke-width="0.8"/>
+      <text x="34" y="278" text-anchor="middle" font-size="8" fill="#0000aa" font-family="IBM Plex Mono,monospace" transform="rotate(-90,34,278)">38"</text>
+      <line x1="44" y1="388" x2="44" y2="604" stroke="#0000aa" stroke-width="0.8"/>
       <line x1="40" y1="604" x2="48" y2="604" stroke="#0000aa" stroke-width="0.8"/>
-      <text x="34" y="542" text-anchor="middle" font-size="8" fill="#0000aa" font-family="IBM Plex Mono,monospace" transform="rotate(-90,34,542)">24"</text>
+      <text x="34" y="500" text-anchor="middle" font-size="8" fill="#0000aa" font-family="IBM Plex Mono,monospace" transform="rotate(-90,34,500)">36"</text>
       <line x1="44" y1="604" x2="44" y2="616" stroke="#0000aa" stroke-width="0.8"/>
       <line x1="40" y1="616" x2="48" y2="616" stroke="#0000aa" stroke-width="0.8"/>
       <text x="34" y="612" text-anchor="middle" font-size="8" fill="#0000aa" font-family="IBM Plex Mono,monospace" transform="rotate(-90,34,612)">2"</text>
       <!-- rod height from drawer top -->
-      <line x1="510" y1="292" x2="510" y2="472" stroke="#555" stroke-width="0.8" stroke-dasharray="4,2"/>
-      <line x1="506" y1="292" x2="514" y2="292" stroke="#555" stroke-width="0.8"/>
-      <text x="526" y="386" text-anchor="middle" font-size="7.5" fill="#555" font-family="IBM Plex Mono,monospace" transform="rotate(90,526,386)">rod 30" above drawers</text>
+      <line x1="510" y1="208" x2="510" y2="388" stroke="#555" stroke-width="0.8" stroke-dasharray="4,2"/>
+      <line x1="506" y1="208" x2="514" y2="208" stroke="#555" stroke-width="0.8"/>
+      <text x="526" y="302" text-anchor="middle" font-size="7.5" fill="#555" font-family="IBM Plex Mono,monospace" transform="rotate(90,526,302)">rod 30" above drawers</text>
       <!-- post width dim -->
       <line x1="264" y1="668" x2="288" y2="668" stroke="#8a6a3a" stroke-width="0.8"/>
       <line x1="264" y1="664" x2="264" y2="672" stroke="#8a6a3a" stroke-width="0.8"/>
@@ -761,7 +756,7 @@
       <text x="276" y="682" text-anchor="middle" font-size="7.5" fill="#8a6a3a" font-family="IBM Plex Mono,monospace">4"</text>
       <!-- each drawer height -->
       <line x1="510" y1="472" x2="510" y2="508" stroke="#555" stroke-width="0.6" stroke-dasharray="3,2"/>
-      <text x="528" y="495" font-size="7" fill="#777" font-family="IBM Plex Mono,monospace">6"</text>
+      <text x="528" y="495" font-size="7" fill="#777" font-family="IBM Plex Mono,monospace">8"</text>
     </svg>
 </div>
   </div>
@@ -840,23 +835,22 @@
       <text x="172" y="344" text-anchor="middle" font-size="6.5" fill="#7a5020" font-weight="bold" font-family="IBM Plex Mono,monospace" transform="rotate(90,172,344)">4"×4" POST</text>
 
       <!-- drawer zone top y=472 -->
-      <line x1="40" y1="472" x2="208" y2="472" stroke="#1a1a1a" stroke-width="1.5"/>
+      <line x1="40" y1="388" x2="208" y2="388" stroke="#1a1a1a" stroke-width="1.5"/>
 
       <!-- 4 drawers each 36px high, x=48..200 (inside cabinet walls) -->
-      <rect x="48" y="472" width="152" height="36" fill="#ede9e0" stroke="#1a1a1a" stroke-width="0.8"/>
-      <rect x="48" y="508" width="152" height="36" fill="#e5e1d8" stroke="#1a1a1a" stroke-width="0.8"/>
-      <rect x="48" y="544" width="152" height="36" fill="#ede9e0" stroke="#1a1a1a" stroke-width="0.8"/>
-      <rect x="48" y="580" width="152" height="36" fill="#e5e1d8" stroke="#1a1a1a" stroke-width="0.8"/>
+      <!-- 3 drawers × 72px (12") = 216px -->
+      <rect x="48" y="388" width="152" height="72" fill="#ede9e0" stroke="#1a1a1a" stroke-width="0.8"/>
+      <rect x="48" y="460" width="152" height="72" fill="#e5e1d8" stroke="#1a1a1a" stroke-width="0.8"/>
+      <rect x="48" y="532" width="152" height="72" fill="#ede9e0" stroke="#1a1a1a" stroke-width="0.8"/>
       <!-- drawer handle profiles -->
-      <rect x="90" y="480" width="68" height="5" rx="2.5" fill="#ccc" stroke="#aaa" stroke-width="0.7"/>
-      <rect x="90" y="516" width="68" height="5" rx="2.5" fill="#ccc" stroke="#aaa" stroke-width="0.7"/>
-      <rect x="90" y="552" width="68" height="5" rx="2.5" fill="#ccc" stroke="#aaa" stroke-width="0.7"/>
-      <rect x="90" y="588" width="68" height="5" rx="2.5" fill="#ccc" stroke="#aaa" stroke-width="0.7"/>
+      <rect x="90" y="421" width="68" height="5" rx="2.5" fill="#ccc" stroke="#aaa" stroke-width="0.7"/>
+      <rect x="90" y="493" width="68" height="5" rx="2.5" fill="#ccc" stroke="#aaa" stroke-width="0.7"/>
+      <rect x="90" y="565" width="68" height="5" rx="2.5" fill="#ccc" stroke="#aaa" stroke-width="0.7"/>
 
       <!-- SINGLE ROD cross-section at y=292 -->
-      <circle cx="120" cy="292" r="6" fill="#666" stroke="#333" stroke-width="1.5"/>
-      <text x="120" y="283" text-anchor="middle" font-size="7.5" fill="#333" font-family="IBM Plex Mono,monospace">ROD ⌀1"</text>
-      <text x="120" y="274" text-anchor="middle" font-size="7"   fill="#888" font-family="IBM Plex Mono,monospace">single rod</text>
+      <circle cx="120" cy="208" r="6" fill="#666" stroke="#333" stroke-width="1.5"/>
+      <text x="120" y="199" text-anchor="middle" font-size="7.5" fill="#333" font-family="IBM Plex Mono,monospace">ROD ⌀1"</text>
+      <text x="120" y="190" text-anchor="middle" font-size="7"   fill="#888" font-family="IBM Plex Mono,monospace">single rod</text>
       <line x1="120" y1="298" x2="120" y2="472" stroke="#e0e0e0" stroke-width="1" stroke-dasharray="3,2"/>
       <text x="100" y="400" text-anchor="middle" font-size="7.5" fill="#999" font-family="IBM Plex Mono,monospace">HANGING</text>
       <text x="100" y="413" text-anchor="middle" font-size="7.5" fill="#999" font-family="IBM Plex Mono,monospace">ZONE</text>
@@ -895,9 +889,9 @@
       <line x1="20" y1="616" x2="28" y2="616" stroke="#0000aa" stroke-width="0.8"/>
       <text x="14" y="548" text-anchor="middle" font-size="8" fill="#0000aa" font-family="IBM Plex Mono,monospace" transform="rotate(-90,14,548)">24"</text>
       <!-- rod height dim -->
-      <line x1="224" y1="292" x2="224" y2="472" stroke="#555" stroke-width="0.8" stroke-dasharray="4,2"/>
-      <line x1="220" y1="292" x2="228" y2="292" stroke="#555" stroke-width="0.8"/>
-      <text x="240" y="386" text-anchor="middle" font-size="7.5" fill="#555" font-family="IBM Plex Mono,monospace" transform="rotate(90,240,386)">30" rod height</text>
+      <line x1="224" y1="208" x2="224" y2="388" stroke="#555" stroke-width="0.8" stroke-dasharray="4,2"/>
+      <line x1="220" y1="208" x2="228" y2="208" stroke="#555" stroke-width="0.8"/>
+      <text x="240" y="302" text-anchor="middle" font-size="7.5" fill="#555" font-family="IBM Plex Mono,monospace" transform="rotate(90,240,302)">30" rod height</text>
     </svg>
 </div>
   </div>
@@ -1234,8 +1228,8 @@
       <tr><td id="bom-r4-c">Single Hanging Rod</td><td>72" end to end</td><td>—</td><td>—</td><td>1</td><td id="bom-r4-n">⌀1" steel/brass · 30" above drawer top · bracket/notch at post</td></tr>
       <tr class="hl"><td id="bom-r5-c">4"×4" Centre Post</td><td>4"</td><td>96" (full height)</td><td>4" only</td><td>1</td><td id="bom-r5-n">Square post at centreline. NOT full cabinet depth. Front face flush with shelf face. D2 &amp; D3 hinge on post and bolt into front face.</td></tr>
       <tr class="hl"><td id="bom-r6-c">Drawer Gap Divider</td><td>4"</td><td>24"</td><td>24"</td><td>1</td><td id="bom-r6-n">Drawer zone only. Sits on post centreline. Notched into drawer base and top panel.</td></tr>
-      <tr><td id="bom-r7-c">Drawers — Left Bank</td><td>~34"</td><td>6" each</td><td>24"</td><td>4</td><td id="bom-r7-n">Soft-close full-extension slides</td></tr>
-      <tr><td id="bom-r8-c">Drawers — Right Bank</td><td>~34"</td><td>6" each</td><td>24"</td><td>4</td><td id="bom-r8-n">Soft-close full-extension slides</td></tr>
+      <tr><td id="bom-r7-c">Drawers — Left Bank</td><td>~34"</td><td>12" each</td><td>24"</td><td>3</td><td id="bom-r7-n">~34" wide · 12" each · 3 drawers · 36" total bank · soft-close full-extension slides</td></tr>
+      <tr><td id="bom-r8-c">Drawers — Right Bank</td><td>~34"</td><td>12" each</td><td>24"</td><td>3</td><td id="bom-r8-n">~34" wide · 12" each · 3 drawers · 36" total bank · soft-close full-extension slides</td></tr>
       <tr><td id="bom-r9-c">Hinged Doors</td><td>18" each</td><td>78"</td><td>—</td><td>4</td><td id="bom-r9-n">D1 hinge left wall opens ←, D2 hinge post left opens →, D3 hinge post right opens ←, D4 hinge right wall opens →. Flush bolts on D2 &amp; D3.</td></tr>
     </tbody>
   </table>
@@ -1252,8 +1246,8 @@
         <tr><td id="bom-r4-c">Single Hanging Rod</td><td>72" end to end</td><td>—</td><td>—</td><td>1</td><td id="bom-r4-n">⌀1" steel/brass · 30" above drawer top · bracket/notch at post</td></tr>
         <tr class="hl"><td id="bom-r5-c">4"×4" Centre Post</td><td>4"</td><td>96" (full height)</td><td>4" only</td><td>1</td><td id="bom-r5-n">Square post at centreline. NOT full cabinet depth. Front face flush with shelf face. D2 &amp; D3 hinge on post and bolt into front face.</td></tr>
         <tr class="hl"><td id="bom-r6-c">Drawer Gap Divider</td><td>4"</td><td>24"</td><td>24"</td><td>1</td><td id="bom-r6-n">Drawer zone only. Sits on post centreline. Notched into drawer base and top panel.</td></tr>
-        <tr><td id="bom-r7-c">Drawers — Left Bank</td><td>~34"</td><td>6" each</td><td>24"</td><td>4</td><td id="bom-r7-n">Soft-close full-extension slides</td></tr>
-        <tr><td id="bom-r8-c">Drawers — Right Bank</td><td>~34"</td><td>6" each</td><td>24"</td><td>4</td><td id="bom-r8-n">Soft-close full-extension slides</td></tr>
+        <tr><td id="bom-r7-c">Drawers — Left Bank</td><td>~34"</td><td>12" each</td><td>24"</td><td>3</td><td id="bom-r7-n">~34" wide · 12" each · 3 drawers · 36" total bank · soft-close full-extension slides</td></tr>
+        <tr><td id="bom-r8-c">Drawers — Right Bank</td><td>~34"</td><td>12" each</td><td>24"</td><td>3</td><td id="bom-r8-n">~34" wide · 12" each · 3 drawers · 36" total bank · soft-close full-extension slides</td></tr>
         <tr><td id="bom-r9-c">Hinged Doors</td><td>18" each</td><td>78"</td><td>—</td><td>4</td><td id="bom-r9-n">D1 hinge left wall opens ←, D2 hinge post left opens →, D3 hinge post right opens ←, D4 hinge right wall opens →. Flush bolts on D2 &amp; D3.</td></tr>
       </tbody>
     </table>
@@ -1315,7 +1309,7 @@ const T = {
     bom_r5_c: "Single Hanging Rod",          bom_r5_n: '\u00d81" steel/brass \u00b7 30" above drawer top \u00b7 bracket/notch at post',
     bom_r6_c: '4"\u00d74" Centre Post',      bom_r6_n: "Square post at centreline. NOT full cabinet depth. Front face flush with shelf face. D2 & D3 hinge on post and bolt into front face.",
     bom_r7_c: "Drawer Gap Divider",          bom_r7_n: "Drawer zone only. Sits on post centreline. Notched into drawer base and top panel.",
-    bom_r8_c: "Drawers \u2014 Left Bank",    bom_r8_n: "~34\" wide \u00b7 6\" each \u00b7 4 drawers \u00b7 soft-close full-extension slides",
+    bom_r8_c: "Drawers \u2014 Left Bank",    bom_r8_n: "~34\" wide \u00b7 8\" each \u00b7 3 drawers \u00b7 soft-close full-extension slides",
     bom_r9_c: "Hinged Doors",                bom_r9_n: "D1 hinge left wall \u2190, D2 hinge post-left \u2192, D3 hinge post-right \u2190, D4 hinge right wall \u2192. Flush bolts on D2 & D3.",
     note_p1: "<strong>\u26a0 CARPENTER NOTES \u2014 Rev F (Page 1)</strong>\u2022 All drawings use consistent scale 1\" = 6px. Width:height ratios proportionally accurate.<br>\u2022 <b>Skirting:</b> 2\" high base runs full width of all three units (wardrobes + TV unit). Recessed slightly from door face. Loft height reduced by 2\" (22\"\u219220\") to keep total at 96\".<br>\u2022 <b>Centre Post:</b> 4\"\u00d74\" timber/ply, full 96\" height, at shelf face (24\" from back). Only 4\" deep. Hidden by closed doors.<br>\u2022 <b>Hanging Rod:</b> Single \u00d81\" rod, 72\" wall-to-wall, 30\" above drawer top. Notch or U-bracket at post.<br>\u2022 <b>Doors:</b> D1 hinge left wall (\u2190). D2 hinge post-left (\u2192). D3 hinge post-right (\u2190). D4 hinge right wall (\u2192). D2 & D3 flush-bolt into post face.",
     note_p2: "<strong>\u26a0 CARPENTER NOTES \u2014 Rev F (Page 2)</strong>\u2022 <b>Scale:</b> 1\" = 6px throughout. 72\"W \u00d7 96\"H = 3:4 ratio.<br>\u2022 <b>Post:</b> 4\" deep only. At shelf face 24\" from back. Rod passes via notch. Hidden by closed doors.<br>\u2022 <b>Drawer gap divider</b> (4\" wide): separate piece, drawer zone only, on same centreline as post.<br>\u2022 <b>Skirting:</b> 2\" base on all units. Loft is now 20\" (was 22\"). Total height remains 96\".<br>\u2022 Material: hardwood or 18mm BWR ply, laminate finish.",
@@ -1538,7 +1532,8 @@ function setLang(lang) {
       <text x="114" y="282" text-anchor="middle" font-size="8.5" fill="#333" font-family="IBM Plex Mono,monospace" font-weight="bold">LEFT WARDROBE</text>
       <text x="114" y="290" text-anchor="middle" font-size="7.5" fill="#888" font-family="IBM Plex Mono,monospace">6'-0" × 8'-0" × 28"</text>
       <!-- drawer line -->
-      <line x1="20" y1="318" x2="308" y2="318" stroke="#888" stroke-width="1" stroke-dasharray="4,2"/>
+      <!-- drawer zone divider — 3 drawers each 12" -->
+      <line x1="20" y1="262" x2="308" y2="262" stroke="#888" stroke-width="1" stroke-dasharray="4,2"/>
       <!-- skirting left -->
       <rect x="20" y="406" width="288" height="8" fill="#c8b89a" stroke="#8a6a3a" stroke-width="0.8"/>
 
@@ -1645,7 +1640,8 @@ function setLang(lang) {
       <rect x="636" y="270" width="108" height="22" fill="#fffef9" stroke="#ccc" stroke-width="0.8" rx="2"/>
       <text x="690" y="282" text-anchor="middle" font-size="8.5" fill="#333" font-family="IBM Plex Mono,monospace" font-weight="bold">RIGHT WARDROBE</text>
       <text x="690" y="290" text-anchor="middle" font-size="7.5" fill="#888" font-family="IBM Plex Mono,monospace">6'-0" × 8'-0" × 28"</text>
-      <line x1="596" y1="318" x2="884" y2="318" stroke="#888" stroke-width="1" stroke-dasharray="4,2"/>
+      <!-- drawer zone divider — 3 drawers each 12" -->
+      <line x1="596" y1="262" x2="884" y2="262" stroke="#888" stroke-width="1" stroke-dasharray="4,2"/>
       <!-- skirting right -->
       <rect x="596" y="406" width="288" height="8" fill="#c8b89a" stroke="#8a6a3a" stroke-width="0.8"/>
 
