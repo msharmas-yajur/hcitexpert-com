@@ -1585,15 +1585,18 @@ function setLang(lang) {
 }
 
 /* ── Font-size control ── */
-const BASE_FS  = 18.4;   // px — matches html { font-size: 18.4px }
-const FS_STEP  = 5;      // percent per click
-const FS_MIN   = -20;    // floor: 80% of base
-const FS_MAX   = 20;     // ceiling: 120% of base
-let   fsOffset = 0;      // current offset in percent
+const FS_STEP = 5;    // percent per click
+const FS_MIN  = -20;  // floor:   80% zoom
+const FS_MAX  = 20;   // ceiling: 120% zoom
+let   fsOffset = 0;
 
 function adjustFontSize(dir) {
   fsOffset = Math.min(FS_MAX, Math.max(FS_MIN, fsOffset + dir * FS_STEP));
-  document.documentElement.style.fontSize = (BASE_FS * (1 + fsOffset / 100)) + 'px';
+  const scale = 1 + fsOffset / 100;
+  // zoom scales the entire page including SVG text with hardcoded font-size attrs
+  document.documentElement.style.zoom = scale;
+  // counter-zoom the lang-bar so it stays sharp at original size
+  document.getElementById('lang-bar').style.zoom = 1 / scale;
   document.getElementById('fs-indicator').textContent = (100 + fsOffset) + '%';
   document.getElementById('fs-down').disabled = fsOffset <= FS_MIN;
   document.getElementById('fs-up').disabled   = fsOffset >= FS_MAX;
