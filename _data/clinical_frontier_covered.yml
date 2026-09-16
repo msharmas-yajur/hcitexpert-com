@@ -1,0 +1,32 @@
+# The Clinical Frontier — coverage ledger
+# ---------------------------------------------------------------------------
+# State file for the DAILY "Clinical Frontier" series on HCITExperts Blog.
+# Each day the routine reviews the latest updates from Anthropic, OpenAI,
+# Google (Gemini/DeepMind), Groq, Cursor, and NVIDIA, then publishes ONE
+# healthcare-contextualised article on how a frontier-model / AI-hardware
+# update applies to a specific clinical or health-system scenario.
+#
+# Anti-repetition is keyed on `angle` (the healthcare scenario) so the same
+# model update can be revisited for a different scenario, but no scenario is
+# repeated. `sources` logs which announcements were referenced.
+#
+# The routine appends one entry per published edition. See
+# scripts/clinical-frontier-runbook.md for the full procedure.
+# ---------------------------------------------------------------------------
+
+# Healthcare scenarios to rotate through (pick an unused one each day; extend freely):
+#   ambient-clinical-documentation, radiology-medical-imaging, cancer-registry-abstraction,
+#   pmjay-nhcx-claims-rcm, abdm-fhir-interoperability, clinical-decision-support-stg,
+#   discharge-summaries-patient-comms, medical-coding-icd10, pathology-digital,
+#   drug-discovery-genomics, on-prem-edge-inference-hospitals, health-data-deidentification,
+#   triage-virtual-nursing, multilingual-indic-patient-engagement, ophthalmology-screening,
+#   ecg-cardiology, mental-health-support, ehr-agentic-workflows, tumour-board-synthesis,
+#   prior-authorisation-automation, adverse-event-pharmacovigilance, bed-ot-capacity-ops
+
+covered: []
+#  - date: 2026-09-17
+#    slug: 2026-09-17-...
+#    angle: radiology-medical-imaging
+#    models: ["Gemini 3.8 Flash", "NVIDIA Vera Rubin"]
+#    sources:
+#      - https://blog.google/...
