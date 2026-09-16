@@ -38,6 +38,16 @@ run it identically.
 5. **Append** one entry to `covered` with `date`, `slug`, `angle`, `models`,
    and `sources` (the URLs referenced).
 
+## Style: publish as a NEWSLETTER, with no dashes
+
+**Newsletter format.** Every edition reads as a scannable briefing, not a long essay. Use the published template at `_posts/2026-09-16-on-premise-inference-hospital-firewall-*` as the reference:
+- Open with a **masthead** blockquote naming the series, the date, and the issue number, plus a one-line tagline. Example: `> **The Clinical Frontier** · <Day Month Year> · Issue NNN`.
+- Follow with an **"In this issue"** TL;DR of 2 to 4 bullets.
+- Use short, bold-headed sections ("What shipped", "Why it matters", "For Indian hospitals", "The takeaway") and tight bullets. Prefer 1 to 3 sentence blurbs over long paragraphs. Keep it skimmable.
+- Close with a consistent **sign-off** line and the call to action (read the source, the yajur.ai posts, next issue).
+
+**No dashes as punctuation (hard rule).** Never use em dashes (—) or en dashes (–) anywhere, including the title, headers, and front matter. Use commas, colons, parentheses, or periods. For number ranges write "30 to 40 minutes" or "5-10" with a hyphen.
+
 ## Article format (match HCITExperts house style)
 
 Front matter (mirror recent posts, e.g. `_posts/2026-04-23-open-intelligence-*`):
