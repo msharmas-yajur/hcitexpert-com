@@ -23,7 +23,16 @@
 #   ecg-cardiology, mental-health-support, ehr-agentic-workflows, tumour-board-synthesis,
 #   prior-authorisation-automation, adverse-event-pharmacovigilance, bed-ot-capacity-ops
 
-covered: []
+covered:
+  - date: 2026-09-16
+    slug: 2026-09-16-on-premise-inference-hospital-firewall-nvidia-vera-rubin-monai
+    angle: on-prem-edge-inference-hospitals
+    models: ["NVIDIA DGX Vera Rubin NVL72", "NVIDIA BioNeMo / MONAI Deploy", "Groq inference cloud", "Gemini 3.8 Flash"]
+    sources:
+      - https://www.nvidia.com/en-us/data-center/dgx-vera-rubin-nvl72/
+      - https://nvidianews.nvidia.com/news/healthcare-generative-ai-microservices
+      - https://groq.com/blog/groq-among-the-first-to-bring-nvidia-groq-3-lpx-and-vera-rubin-nvl72-to-market
+      - https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/
 #  - date: 2026-09-17
 #    slug: 2026-09-17-...
 #    angle: radiology-medical-imaging
