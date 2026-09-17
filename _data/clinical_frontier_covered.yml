@@ -33,9 +33,11 @@ covered:
       - https://nvidianews.nvidia.com/news/healthcare-generative-ai-microservices
       - https://groq.com/blog/groq-among-the-first-to-bring-nvidia-groq-3-lpx-and-vera-rubin-nvl72-to-market
       - https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/
-#  - date: 2026-09-17
-#    slug: 2026-09-17-...
-#    angle: radiology-medical-imaging
-#    models: ["Gemini 3.8 Flash", "NVIDIA Vera Rubin"]
-#    sources:
-#      - https://blog.google/...
+  - date: 2026-09-17
+    slug: 2026-09-17-claude-science-nvidia-bionemo-drug-discovery-india
+    angle: drug-discovery-genomics
+    models: ["Claude Science (Anthropic)", "NVIDIA BioNeMo Agent Toolkit", "Evo 2", "Boltz-2", "OpenFold3"]
+    sources:
+      - https://www.anthropic.com/news/claude-science-ai-workbench
+      - https://www.biospace.com/press-releases/novo-and-anthropic-will-collaborate-to-advance-drug-discovery-with-claude
+      - https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-BioNeMo-Agent-Toolkit--Tools-for-Agents-to-Accelerate-Scientific-Discovery/default.aspx
