@@ -41,3 +41,11 @@ covered:
       - https://www.anthropic.com/news/claude-science-ai-workbench
       - https://www.biospace.com/press-releases/novo-and-anthropic-will-collaborate-to-advance-drug-discovery-with-claude
       - https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-BioNeMo-Agent-Toolkit--Tools-for-Agents-to-Accelerate-Scientific-Discovery/default.aspx
+  - date: 2026-09-18
+    slug: 2026-09-18-cursor-projects-openai-agents-api-ehr-agentic-workflows-india
+    angle: ehr-agentic-workflows
+    models: ["Cursor Projects coordinator agent", "OpenAI Agents API", "GPT-6 Astra"]
+    sources:
+      - https://cursor.com/changelog/projects
+      - https://openai.com/index/introducing-the-agents-api/
+      - https://cursor.com/changelog/08-19-26
