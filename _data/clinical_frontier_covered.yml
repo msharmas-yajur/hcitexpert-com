@@ -49,3 +49,14 @@ covered:
       - https://cursor.com/changelog/projects
       - https://openai.com/index/introducing-the-agents-api/
       - https://cursor.com/changelog/08-19-26
+  - date: 2026-09-19
+    slug: 2026-09-19-claude-fable-51-cancer-registry-abstraction-india-ncrp
+    angle: cancer-registry-abstraction
+    models: ["Claude Fable 5.1", "Claude Mythos 5.1", "GPT-6 Astra", "Gemini 3.6 Flash"]
+    sources:
+      - https://www.anthropic.com/claude-fable-and-mythos-5-1
+      - https://www-cdn.anthropic.com/0339e6a7c5c7b87f5c07798616dc32c215d14235/Claude%20Fable%205.1%20&%20Claude%20Mythos%205.1%20System%20Card.pdf
+      - https://deploymentsafety.openai.com/gpt-6-astra
+      - https://deepmind.google/models/model-cards/gemini-3-6-flash/
+      - https://pubmed.ncbi.nlm.nih.gov/42344698/
+      - https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9461636/
