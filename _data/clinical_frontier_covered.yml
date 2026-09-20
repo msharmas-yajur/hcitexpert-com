@@ -60,3 +60,14 @@ covered:
       - https://deepmind.google/models/model-cards/gemini-3-6-flash/
       - https://pubmed.ncbi.nlm.nih.gov/42344698/
       - https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9461636/
+  - date: 2026-09-20
+    slug: 2026-09-20-openai-astra-law-claude-healthcare-ambient-documentation-india
+    angle: ambient-clinical-documentation
+    models: ["Claude for Healthcare (Haiku 4.5 + Sonnet 4.6 cascade)", "OpenAI GPT-6 Astra for Law", "NVIDIA AI in Healthcare Survey 2026"]
+    sources:
+      - https://www.anthropic.com/news/healthcare-life-sciences
+      - https://siliconangle.com/2026/09/17/openai-launches-astra-for-law-a-gpt-6-configuration-for-legal-research/
+      - https://blogs.nvidia.com/blog/ai-in-healthcare-survey-2026
+      - https://intuitionlabs.ai/articles/claude-healthcare-life-sciences-ai-capabilities-2026
+      - https://www.fiercehealthcare.com/ai-and-machine-learning/jpm26-anthropic-launches-claude-healthcare-targeting-health-systems-payers
+      - https://yajur.ai/2026/09/16/the-yajur-health-vault-anonymisation-by-architecture.html
