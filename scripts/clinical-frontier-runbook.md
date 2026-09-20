@@ -9,6 +9,29 @@ scenario**, written for an Indian health-IT audience.
 Runs automatically via a scheduled cloud routine, but is written so a human can
 run it identically.
 
+## Editorial process: maker-checker (MANDATORY, fully automated)
+
+Every article passes through two phases in the same run. **Nothing is published until the checker validates it.**
+
+**Phase 1, MAKER.** Research and write the article to a file. Do NOT commit or push yet.
+
+**Phase 2, CHECKER (adversarial fact-check).** Put the maker's draft aside and re-verify it with fresh, skeptical eyes:
+1. Build a **claim inventory**: list every factual assertion in the draft (dates, names, numbers, model capabilities, architectures, quotes, "X launched Y", "supports Z").
+2. For **each** claim, re-fetch the cited source and confirm the source actually says it. A **primary source is required** for any claim about a model, its architecture, its capabilities, launch dates, or numbers: the company's own site (anthropic.com, openai.com, blog.google/deepmind.google, groq.com, cursor.com, nvidia.com/nvidianews). Secondary aggregators (news sites, blog re-writes, AI-content sites) may add colour but may NOT be the sole support for a technical or numeric claim.
+3. **Delete or rewrite** every claim that the primary source does not support. Watch specifically for: invented technical architectures (e.g. "cascade of model A + model B") that the vendor never described; capability claims that are technically wrong (e.g. a text-only model "transcribing audio"); false deployment claims (e.g. "model weights available on-premises" when the vendor is API-only); wrong venues/dates; and precise numbers that trace only to a non-primary source.
+4. Verify every outbound link returns 200 (curl) and points where the text claims.
+5. Produce a one-line verdict: **APPROVED** only when every remaining claim is verified against a primary source.
+
+**Revise-and-recheck loop.** If the checker finds problems, revise the draft and run the checker again. Up to 3 passes.
+
+**Hold rule.** If, after revision, a compelling hook still cannot be verified, **do not publish it**. Either switch to a different, fully-verifiable angle, or, as a last resort, publish nothing that day and log "held: could not verify" rather than shipping an unverified article. A missing day is acceptable; a false claim is not.
+
+Only an **APPROVED** draft proceeds to Publish.
+
+## Sourcing rule
+
+Lead with genuine, verifiable updates. Prefer the company's own announcement over any re-write of it. Trace every figure, name, and date to the primary source, and cite that primary source in the article. Never fabricate a benchmark, architecture, quote, or number.
+
 ## Tracked sources (get the latest updates each run)
 
 | Company | Primary index | Fallback |
@@ -83,10 +106,13 @@ Body guidance:
   source**. Trace every figure to a source; never fabricate benchmarks or news.
 - Connect to the **Indian context** where relevant: ABDM, FHIR, NHCX, PM-JAY,
   DPDP Act, on-prem/data-residency, Indic languages.
-- **Link out (dofollow):** every source announcement, and 1-3 contextual
-  **dofollow links to yajur.ai** where genuinely relevant (e.g. the data
-  lakehouse, Health Vault, or task-framework posts) to pass link equity.
-  Do NOT set `canonical_url` — these are original HCITExperts articles.
+- **Link out (dofollow):** always link every source announcement you cite. These
+  are market-trend briefings that inform readers first, so do NOT force a link to
+  our own properties. Reference a yajur.ai post (Health Vault, data lakehouse,
+  task framework) or another HCITExperts post ONLY when it is genuinely and
+  directly relevant to the point being made, at most one such self-reference per
+  article, and often none. Never insert a self-link as a routine call to action.
+  Do NOT set `canonical_url`, these are original HCITExperts articles.
 - Include a short FAQ block (front matter `faq`) for answer engines.
 - **NO em dashes (—) or en dashes (–).** Use commas, colons, or periods. This is
   a hard style rule for this series.
