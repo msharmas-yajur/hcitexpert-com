@@ -28,15 +28,15 @@ mentions:
     description: "OpenAI's managed cloud agent harness, launched September 10, 2026, bringing the Codex infrastructure to developers as an API for building persistent multi-day agents with tool use and subagent coordination"
     url: "https://openai.com/index/introducing-the-agents-api/"
   - name: "Cursor self-hosted machines"
-    description: "Cursor Cloud Agent support for self-hosted machines announced September 2, 2026, letting teams run agent compute inside their own network"
-    url: "https://cursor.com/changelog/08-19-26"
+    description: "Cursor support for self-hosted machines announced September 2, 2026, letting teams run tool and code execution on machines inside their own network while the agent loop and model inference remain in Cursor's cloud"
+    url: "https://cursor.com/changelog/self-hosted-machines"
 faq:
   - q: "What is Cursor Projects and how does the coordinator agent work?"
-    a: "Cursor Projects, launched in beta on September 10, 2026, is a persistent workspace where a coordinator agent reads your codebase, builds a plan, and delegates implementation tasks to subagents. The coordinator does not write code itself. It runs on Cursor's cloud infrastructure, maintains a shared file system that accumulates knowledge about the codebase over months, and keeps working even when the developer's laptop is closed. Heavy Projects users merge six times more pull requests than before."
+    a: "Cursor Projects, launched in beta on September 10, 2026, is a persistent workspace where a coordinator agent reads your codebase, builds a plan, and delegates implementation tasks to subagents. The coordinator does not write code itself. It runs on Cursor's cloud infrastructure, maintains a shared file system that accumulates knowledge about the codebase over months, and keeps working even when the developer's laptop is closed. Cursor reports that users who primarily use Projects merge six times as many pull requests."
   - q: "What is the OpenAI Agents API and how does it work?"
     a: "The OpenAI Agents API, launched September 10, 2026, provides a fully managed cloud harness derived from the same infrastructure that powers Codex. It manages context across long-running sessions, coordinates subagents, calls tools, and keeps agents running reliably for days. Each agent gets a private file environment and code execution capability. One early user reported evaluation scores improving from 0.71 to 0.85 after migrating from a hand-rolled agent loop."
   - q: "Can Cursor Projects or the OpenAI Agents API be used in Indian hospitals under the DPDP Act 2023?"
-    a: "The cloud-hosted versions route agent context through external infrastructure outside India's data boundary. For workflows touching identifiable patient data, Cursor's self-hosted machine option (announced September 2, 2026) lets hospital IT teams run the coordinator inside their own network. Non-identifiable tasks such as FHIR schema validation, code generation, and test writing can use cloud harnesses without a DPDP compliance exposure."
+    a: "The cloud-hosted versions route agent context through external infrastructure outside India's data boundary. For workflows touching identifiable patient data, Cursor's self-hosted machine option (announced September 2, 2026) lets hospital IT teams run tool and code execution on machines inside their own network, though the agent's planning loop and model inference still run in Cursor's cloud, so identifiable data must not be placed in the agent's context. Non-identifiable tasks such as FHIR schema validation, code generation, and test writing can use cloud harnesses without a DPDP compliance exposure."
   - q: "Which EHR workflows in India are most ready for agentic automation in 2026?"
     a: "The workflows most ready for agentic automation in India's ABDM-compliant EHR ecosystem are NHCX claims bundle generation and submission, ABDM consent artefact compliance checking, discharge summary drafting against a structured template, and FHIR R4 integration maintenance. Each maps naturally onto a coordinator-plus-subagent pattern where context must persist across dozens of tool calls and multiple systems."
 ---
@@ -54,7 +54,7 @@ faq:
 
 **[Cursor Projects](https://cursor.com/changelog/projects)**, released in beta on September 10, 2026, adds a coordinator agent as the top layer of a multi-agent coding system. The coordinator reads the codebase, builds a plan, and delegates implementation tasks to subagents. It does not write code itself. A shared file system accumulates what each agent learns about the codebase, so a subagent that figures out how to test a service leaves instructions that every future agent can reuse. The coordinator runs on Cursor's cloud infrastructure and keeps working when the developer's laptop is closed.
 
-Cursor reported that heavy Projects users merge six times more pull requests than before, and that new users merge thirty percent more. The productivity signal points to something structural: persistent context and delegation are compounding advantages, not one-time boosts.
+Cursor reported ([Introducing Projects](https://cursor.com/blog/projects)) that users who primarily use Projects merge six times as many pull requests, and that new users merge thirty percent more. The productivity signal points to something structural: persistent context and delegation are compounding advantages, not one-time boosts.
 
 **[OpenAI's Agents API](https://openai.com/index/introducing-the-agents-api/)**, also launched September 10, 2026, brings the same managed harness that powers Codex to developers via a public API. The harness manages context across long-running sessions, coordinates subagents, handles tool calls, and keeps agents running for days. Each agent gets a private file environment and can execute code and save intermediate results. An early customer moved from a hand-rolled agent loop to the Agents API and raised their automated evaluation score from 0.71 to 0.85.
 
@@ -72,7 +72,7 @@ The persistent-context dimension matters more in healthcare than in software dev
 
 India's ABDM-compliant EHR ecosystem is a layered integration problem. FHIR R4 APIs for health records, NHCX gateways for insurance claims, HIU/HIP connectors for health data exchange, Aadhaar-linked patient identification, and ABDM consent flows each represent a tested integration that the vendor maintains. Over a hospital network of 50 to 500 beds, that maintenance burden compounds quickly.
 
-A coordinator agent running as a persistent cloud instance (or, for patient data, on Cursor's self-hosted machine option inside the hospital network) can:
+A coordinator agent running as a persistent cloud instance (or, for patient data, using Cursor's self-hosted machine option so that tool and code execution run inside the hospital network) can:
 
 - **Watch pull requests** on the FHIR integration layer and trigger targeted test agents when the FHIR bundle structure changes, catching regressions before they reach production.
 - **Run ABDM compliance checks on a schedule**, flagging records that lack consent artefacts or have incomplete HIU/HIP linkages, without a developer writing a fresh compliance script for each new ABDM version.
@@ -83,7 +83,7 @@ The [task framework Yajur.ai published in March 2025](https://yajur.ai/2025/03/1
 
 The data substrate question remains. A coordinator agent that maintains multi-month context needs a structured, versioned, queryable data layer to read from and write to reliably. A [well-designed hospital data lakehouse](https://yajur.ai/2026/03/11/building-a-data-lakehouse-for-your-hospital.html) provides ACID-compliant, auditable access to clinical records, so the coordinator is reading from a reliable source rather than parsing flat files or hitting fragile EHR query APIs for every task.
 
-One compliance note: the cloud-hosted versions of both Cursor Projects and the OpenAI Agents API route agent context through external infrastructure. For workflows that touch identifiable patient data, the self-hosted machine option from Cursor keeps agent execution within the hospital's data boundary as required under DPDP 2023. For non-identifiable work such as code generation, test writing, and FHIR schema validation, the cloud harness is available without a compliance exposure.
+One compliance note: the cloud-hosted versions of both Cursor Projects and the OpenAI Agents API route agent context through external infrastructure. For workflows that touch identifiable patient data, Cursor's self-hosted machine option keeps tool and code execution within the hospital's data boundary, but the agent's planning loop and model inference still run in Cursor's cloud, so identifiable patient data must not be placed in the agent's context or prompts under DPDP 2023. For non-identifiable work such as code generation, test writing, and FHIR schema validation, the cloud harness is available without a compliance exposure.
 
 ## The takeaway
 
