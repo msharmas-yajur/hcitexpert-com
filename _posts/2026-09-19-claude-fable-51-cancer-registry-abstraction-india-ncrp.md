@@ -32,7 +32,7 @@ mentions:
     description: "OpenAI's most capable model as of September 3, 2026, with substantially fewer hallucinations than GPT-5.6 and improved factual accuracy at low reasoning settings"
     url: "https://deploymentsafety.openai.com/gpt-6-astra"
   - name: "Gemini 3.6 Flash"
-    description: "Google DeepMind's July 21, 2026 workhorse model with a 1 million-token context window, native PDF and image input, and 17% lower output-token usage than its predecessor"
+    description: "Google DeepMind's July 21, 2026 workhorse model with a 1 million-token context window, native image input, and lower output pricing than its predecessor ($7.50 per million output tokens, down from $9.00)"
     url: "https://deepmind.google/models/model-cards/gemini-3-6-flash/"
 faq:
   - q: "What is cancer registry abstraction and why is it hard to automate?"
@@ -60,7 +60,7 @@ faq:
 
 Three changes in this release are directly relevant to healthcare document processing.
 
-**Cache-read pricing fell 75%.** Cache reads for Fable 5.1 cost $0.25 per million tokens, down from $1.00 on Fable 5. Standard input remains $10 per million tokens and output $50 per million tokens. Cache writes are $12.50 per million tokens for standard cache and $20 per million for one-hour cache. Anthropic [estimates a 25% lower cost for typical token-billed workloads](https://venturebeat.com/technology/anthropics-claude-fable-5-1-and-mythos-5-1-arrive-with-a-75-cost-reduction-for-fable-cache-reads) and up to 45% for highly agentic tasks. Registry abstraction, which involves re-reading the same codebooks and guidelines for every case, is precisely the workload that benefits most from cheap cache reads.
+**Cache-read pricing fell 75%.** Cache reads for Fable 5.1 cost $0.25 per million tokens, down from $1.00 on Fable 5, a 75 percent cut. Standard input remains $10 per million tokens and output $50 per million tokens. Per [Anthropic's model documentation](https://platform.claude.com/docs/en/models/overview), cache reads on Fable 5.1 and Mythos 5.1 cost 2.5 percent of the base input price, against 10 percent on other Claude models. Registry abstraction, which involves re-reading the same codebooks and guidelines for every case, is precisely the workload that benefits most from cheap cache reads.
 
 **Biology safeguards fire 85% less often on benign medical content.** Previous Claude models sometimes refused or added excessive caveats when processing detailed oncology language, pathology-report descriptions of tumour invasion, or treatment toxicity data. Those refusals blocked automation pipelines. The retune in Fable 5.1 applies specifically to research-grade and clinical professional contexts, reducing interruption rates on legitimate medical processing.
 
@@ -70,9 +70,9 @@ The context window is 1 million tokens, and the model supports 128,000 completio
 
 ## The cancer registry problem in India
 
-India's [National Cancer Registry Programme (NCRP)](https://www.ncdirindia.org/CRAB/C_2017/CRAB_2017.pdf), run by ICMR through the National Centre for Disease Informatics and Research (NCDIR) in Bengaluru, is the country's principal cancer surveillance infrastructure. It currently runs through 269 hospital-based cancer registries (HBCRs) and 38 population-based registries (PBCRs), making it one of the largest registry networks in the world by count of participating institutions.
+India's [National Cancer Registry Programme (NCRP)](https://www.ncdirindia.org/), run by ICMR through the National Centre for Disease Informatics and Research (NCDIR) in Bengaluru, is the country's principal cancer surveillance infrastructure. It currently runs through 269 hospital-based cancer registries (HBCRs) and 38 population-based registries (PBCRs), making it one of the largest registry networks in the world by count of participating institutions.
 
-The bottleneck is abstraction. A cancer registrar reviewing a case must read the pathology report for primary site, histology, and grade; the imaging report for size and extent; the surgical notes for resection margins and lymph node status; the discharge summary for treatment received; and the follow-up record for recurrence and survival. These documents are distributed across multiple EMR modules, often written in inconsistent formats, and frequently scanned rather than typed. [A study published in 2026 evaluating the Onco-Insight EMR integration at Tata Memorial Centre](https://pubmed.ncbi.nlm.nih.gov/42344698/), one of India's largest hospital-based registries, found that data distributed across multiple modules makes abstraction time-consuming even with platform-level integration.
+The bottleneck is abstraction. A cancer registrar reviewing a case must read the pathology report for primary site, histology, and grade; the imaging report for size and extent; the surgical notes for resection margins and lymph node status; the discharge summary for treatment received; and the follow-up record for recurrence and survival. These documents are distributed across multiple EMR modules, often written in inconsistent formats, and frequently scanned rather than typed. [A 2026 study evaluating an EMR-integrated Onco-Insight hospital-based cancer registry at a tertiary cancer centre in India](https://pubmed.ncbi.nlm.nih.gov/42344698/), which assessed data completeness and data-entry turnaround, illustrates that data distributed across multiple modules makes abstraction time-consuming even with platform-level integration.
 
 The abstract itself maps to structured codes: ICD-O-3 topography and morphology, TNM stage under AJCC eighth edition, treatment modality (surgery, chemotherapy, radiotherapy, targeted therapy, immunotherapy), and recurrence and survival status. Each code must be justifiable against a specific passage in a source document. Errors compound in population-level incidence estimates.
 
@@ -86,9 +86,9 @@ The output format is structured JSON: primary site topography code, morphology c
 
 ## Supporting evidence from other September updates
 
-[GPT-6 Astra, released September 3, 2026](https://deploymentsafety.openai.com/gpt-6-astra), is OpenAI's most capable broadly deployed model and makes substantially fewer factual errors than GPT-5.6. OpenAI reports the improvements are most pronounced at very low latency and reasoning settings, which is the regime a high-throughput registry pipeline operates in. For registries that want a second model to cross-check stage assignments, Astra's lower hallucination rate makes it a viable review layer.
+[GPT-6 Astra, released September 3, 2026](https://deploymentsafety.openai.com/gpt-6-astra), is OpenAI's most capable broadly deployed model, positioned as more accurate and better aligned than its predecessor. For registries that want a second model to cross-check stage assignments, a strong independent reasoner is a useful review layer alongside the primary extraction model, flagging cases where two models disagree for human review.
 
-[Gemini 3.6 Flash, released July 21, 2026](https://deepmind.google/models/model-cards/gemini-3-6-flash/), accepts PDF and image input natively alongside text, with the same 1 million-token context window and a throughput of roughly 280 tokens per second. For registries where a meaningful portion of source documents are scanned PDFs, Gemini 3.6 Flash processes them directly without a separate OCR pipeline. At $1.50 per million input tokens it is substantially cheaper than Fable 5.1 for first-pass extraction from scanned images, with Fable 5.1 reserved for the structured-coding step where accuracy matters more than cost.
+[Gemini 3.6 Flash, released July 21, 2026](https://deepmind.google/models/model-cards/gemini-3-6-flash/), accepts image input natively alongside text, with the same 1 million-token context window. For registries where a meaningful portion of source documents are scanned pages, Gemini 3.6 Flash can read them as images without a separate OCR pipeline. At $1.50 per million input tokens it is substantially cheaper than Fable 5.1 for first-pass extraction from scanned documents, with Fable 5.1 reserved for the structured-coding step where accuracy matters more than cost.
 
 ## ABDM integration and what it unlocks
 
@@ -108,4 +108,4 @@ Cancer registry abstraction is the kind of task that large language models were 
 
 ---
 
-*The Clinical Frontier is a daily briefing from [HCITExperts](https://hcitexpert.com/). For the anonymisation architecture that sits between hospital records and any external model, see the [Yajur Health Vault whitepaper](https://yajur.ai/2026/09/16/the-yajur-health-vault-anonymisation-by-architecture.html). More tomorrow.*
+*The Clinical Frontier is a daily briefing from [HCITExperts](https://hcitexpert.com/). More tomorrow.*
