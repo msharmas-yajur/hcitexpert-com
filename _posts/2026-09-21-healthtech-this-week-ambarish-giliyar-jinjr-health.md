@@ -1,6 +1,6 @@
 ---
 title: "Healthtech This Week with Ambarish Giliyar of Jinjr Health: September 14-19, 2026"
-date: 2026-09-21 10:00:00 +0530
+date: 2026-09-21 07:30:00 +0530
 author: Manish Sharma
 description: "A curated roundup of what Ambarish Giliyar, the Bengaluru healthtech marketer-analyst at Jinjr Health, was reading and writing on LinkedIn during the week of 14 to 19 September 2026. His posts are embedded here, grouped by theme: India's healthcare opportunity, the sector's economics and funding, the AI and frontier-tech megatrends, clinical AI and interoperability, and the patient and payer view."
 keywords: "Ambarish Giliyar, Jinjr Health, healthtech India, digital health India, healthcare AI, India healthcare sector, radiology AI, healthcare interoperability, healthcare venture funding, health insurance AHP, longevity, healthtech LinkedIn roundup, 3P framework patient provider payer"
