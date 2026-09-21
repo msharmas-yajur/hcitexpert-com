@@ -71,3 +71,10 @@ covered:
       - https://intuitionlabs.ai/articles/claude-healthcare-life-sciences-ai-capabilities-2026
       - https://www.fiercehealthcare.com/ai-and-machine-learning/jpm26-anthropic-launches-claude-healthcare-targeting-health-systems-payers
       - https://yajur.ai/2026/09/16/the-yajur-health-vault-anonymisation-by-architecture.html
+  - date: 2026-09-21
+    slug: 2026-09-21-openai-gpt-live-1-anthropic-efs-ai-voice-triage-india
+    angle: triage-virtual-nursing
+    models: ["OpenAI GPT-Live-1", "GPT-6 Astra (reasoning backend)", "Anthropic Enterprise Frontier Safeguards (EFS)"]
+    sources:
+      - https://openai.com/index/introducing-gpt-live-1-in-the-api/
+      - https://www.anthropic.com/news/enterprise-frontier-safeguards
