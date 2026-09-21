@@ -72,9 +72,12 @@ covered:
       - https://www.fiercehealthcare.com/ai-and-machine-learning/jpm26-anthropic-launches-claude-healthcare-targeting-health-systems-payers
       - https://yajur.ai/2026/09/16/the-yajur-health-vault-anonymisation-by-architecture.html
   - date: 2026-09-21
-    slug: 2026-09-21-openai-gpt-live-1-anthropic-efs-ai-voice-triage-india
-    angle: triage-virtual-nursing
-    models: ["OpenAI GPT-Live-1", "GPT-6 Astra (reasoning backend)", "Anthropic Enterprise Frontier Safeguards (EFS)"]
+    slug: 2026-09-21-gemini-agentic-video-multimodal-vision-radiology-imaging-india
+    angle: medical-imaging-radiology
+    models: ["Gemini agentic video understanding", "Gemini 3.8 Flash (multimodal)"]
     sources:
-      - https://openai.com/index/introducing-gpt-live-1-in-the-api/
-      - https://www.anthropic.com/news/enterprise-frontier-safeguards
+      - https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-agentic-video-in-gemini/
+      - https://blog.google/innovation-and-ai/models-and-research/gemini-models/3-8-flash-and-3-8-flash-cyber/
+      - https://medicalbuyer.co.in/indias-radiologist-to-patient-ratio-dismally-low-at-1100000/
+      - https://www.thelancet.com/journals/lansea/article/PIIS2772-3682(23)00055-0/fulltext
+      - https://pmc.ncbi.nlm.nih.gov/articles/PMC10703224/
