@@ -81,3 +81,13 @@ covered:
       - https://medicalbuyer.co.in/indias-radiologist-to-patient-ratio-dismally-low-at-1100000/
       - https://www.thelancet.com/journals/lansea/article/PIIS2772-3682(23)00055-0/fulltext
       - https://pmc.ncbi.nlm.nih.gov/articles/PMC10703224/
+  - date: 2026-09-22
+    slug: 2026-09-22-gpt-live-1-telephony-voice-triage-india-104-helpline
+    angle: triage-virtual-nursing
+    models: ["GPT-Live-1 (OpenAI)", "Gemini 3.5 Transcribe (Google)"]
+    sources:
+      - https://openai.com/index/introducing-gpt-live-1-in-the-api/
+      - https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5-transcribe/
+      - https://ai.google.dev/gemini-api/docs/models/gemini-3.5-transcribe
+      - https://nhm.maharashtra.gov.in/en/scheme/health-advice-call-center-toll-free-104/
+      - https://nhm.gov.in/index1.php?lang=1&level=1&sublinkid=150&lid=226
