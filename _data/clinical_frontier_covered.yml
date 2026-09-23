@@ -91,3 +91,10 @@ covered:
       - https://ai.google.dev/gemini-api/docs/models/gemini-3.5-transcribe
       - https://nhm.maharashtra.gov.in/en/scheme/health-advice-call-center-toll-free-104/
       - https://nhm.gov.in/index1.php?lang=1&level=1&sublinkid=150&lid=226
+  - date: 2026-09-23
+    slug: 2026-09-23-claude-opus-55-gpt6-sol-prior-auth-pmjay-india
+    angle: prior-authorisation-automation
+    models: ["Claude Opus 5.5 (Anthropic)", "GPT-6 Sol (OpenAI)", "GPT-6 Luna (OpenAI)"]
+    sources:
+      - https://www.anthropic.com/claude-opus-5-5
+      - https://openai.com/index/introducing-gpt-6-sol-and-luna/
