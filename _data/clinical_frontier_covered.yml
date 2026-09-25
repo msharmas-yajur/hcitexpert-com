@@ -98,3 +98,11 @@ covered:
     sources:
       - https://www.anthropic.com/claude-opus-5-5
       - https://openai.com/index/introducing-gpt-6-sol-and-luna/
+  - date: 2026-09-25
+    slug: 2026-09-25-anthropic-lsvp-pharmacovigilance-india-pvpi-cdsco
+    angle: adverse-event-pharmacovigilance
+    models: ["Claude Mythos 5.1 (Anthropic)", "Claude Opus 5 (Anthropic)", "Claude Sonnet 5 (Anthropic)"]
+    sources:
+      - https://www.anthropic.com/news/life-sciences-verification-program
+      - https://www.anthropic.com/news/claude-discovers-novel-enzyme-system
+      - https://www.anthropic.com/claude-opus-5-5
