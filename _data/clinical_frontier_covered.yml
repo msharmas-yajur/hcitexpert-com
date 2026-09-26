@@ -106,3 +106,9 @@ covered:
       - https://www.anthropic.com/news/life-sciences-verification-program
       - https://www.anthropic.com/news/claude-discovers-novel-enzyme-system
       - https://www.anthropic.com/claude-opus-5-5
+  - date: 2026-09-26
+    slug: 2026-09-26-anthropic-efs-clinical-deidentification-dpdp-india
+    angle: health-data-deidentification
+    models: ["Claude Fable 5 (Anthropic)", "Claude Fable 5.1 (Anthropic)"]
+    sources:
+      - https://www.anthropic.com/news/enterprise-frontier-safeguards
