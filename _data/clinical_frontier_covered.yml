@@ -112,3 +112,9 @@ covered:
     models: ["Claude Fable 5 (Anthropic)", "Claude Fable 5.1 (Anthropic)"]
     sources:
       - https://www.anthropic.com/news/enterprise-frontier-safeguards
+  - date: 2026-09-27
+    slug: 2026-09-27-anthropic-mhs-lab-automation-digital-pathology-india
+    angle: pathology-digital
+    models: ["Anthropic Model Hardware Standard (Claude)"]
+    sources:
+      - https://www.anthropic.com/news/model-hardware-standard-research-preview
