@@ -126,3 +126,11 @@ covered:
       - https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/
       - https://ai.google.dev/gemini-api/docs/models/gemini-3.8-live-extended-thinking
       - https://blog.google/intl/en-in/company-news/technology/gemini-in-india-now-on-mobile-multilingual-and-more-powerful-for-your-everyday-tasks/
+  - date: 2026-09-29
+    slug: 2026-09-29-gpt-6-astra-medical-coding-icd10-pmjay-nhcx-india
+    angle: medical-coding-icd10
+    models: ["GPT-6 Astra (OpenAI)", "OpenAI Agents API"]
+    sources:
+      - https://openai.com/index/gpt-6-astra/
+      - https://openai.com/index/introducing-the-agents-api/
+      - https://nha.gov.in/PM-JAY
