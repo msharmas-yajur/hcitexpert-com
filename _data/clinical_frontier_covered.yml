@@ -134,3 +134,12 @@ covered:
       - https://openai.com/index/gpt-6-astra/
       - https://openai.com/index/introducing-the-agents-api/
       - https://nha.gov.in/PM-JAY
+  - date: 2026-09-30
+    slug: 2026-09-30-claude-sonnet-55-clinical-decision-support-cdss-india
+    angle: clinical-decision-support-stg
+    models: ["Claude Sonnet 5.5 (Anthropic)"]
+    sources:
+      - https://www.anthropic.com/claude-sonnet-5-5
+      - https://platform.claude.com/docs/en/models/sonnet-5-5/overview
+      - https://www.anthropic.com/news/life-sciences-verification-program
+      - https://www.aninews.in/news/national/general-news/indian-council-of-medical-research-wins-gold-at-national-awards-for-e-governance-202620260705133035/
