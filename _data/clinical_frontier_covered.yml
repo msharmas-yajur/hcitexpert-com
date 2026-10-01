@@ -143,3 +143,19 @@ covered:
       - https://platform.claude.com/docs/en/models/sonnet-5-5/overview
       - https://www.anthropic.com/news/life-sciences-verification-program
       - https://www.aninews.in/news/national/general-news/indian-council-of-medical-research-wins-gold-at-national-awards-for-e-governance-202620260705133035/
+  - date: 2026-10-01
+    slug: 2026-10-01-gpt-rosalind-tumour-board-synthesis-india-ncg
+    angle: tumour-board-synthesis
+    models: ["GPT-Rosalind (OpenAI)", "GPT-Rosalind-5.5 (OpenAI)"]
+    sources:
+      - https://openai.com/index/introducing-gpt-rosalind/
+      - https://openai.com/index/introducing-new-capabilities-to-gpt-rosalind/
+      - https://openai.com/gpt-rosalind/
+      - https://developers.openai.com/blog/rosalind-workbench
+      - https://deploymentsafety.openai.com/gpt-rosalind-5-5/gpt-rosalind-5-5.pdf
+      - https://help.openai.com/en/articles/20001193-gpt-rosalind-for-life-sciences-research
+      - https://www.ncgindia.org/about
+      - https://www.ncgindia.org/key-initiatives/virtual-tumor-board
+      - https://pubmed.ncbi.nlm.nih.gov/36510887/
+      - https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9092762/
+      - https://ecancer.org/en/journal/article/2090-profiling-of-tumour-board-characteristics-and-functioning-for-cancer-care-under-hospitals-registered-under-national-cancer-registry-programme-in-india
