@@ -159,3 +159,11 @@ covered:
       - https://pubmed.ncbi.nlm.nih.gov/36510887/
       - https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9092762/
       - https://ecancer.org/en/journal/article/2090-profiling-of-tumour-board-characteristics-and-functioning-for-cancer-care-under-hospitals-registered-under-national-cancer-registry-programme-in-india
+  - date: 2026-10-02
+    slug: 2026-10-02-claude-sonnet-55-discharge-summaries-abdm-fhir-india
+    angle: discharge-summaries-patient-comms
+    models: ["Claude Sonnet 5.5 (Anthropic)"]
+    sources:
+      - https://www.anthropic.com/claude-sonnet-5-5
+      - https://www.anthropic.com/news/healthcare-life-sciences
+      - https://www.anthropic.com/news/life-sciences-verification-program
