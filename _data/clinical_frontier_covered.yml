@@ -167,3 +167,12 @@ covered:
       - https://www.anthropic.com/claude-sonnet-5-5
       - https://www.anthropic.com/news/healthcare-life-sciences
       - https://www.anthropic.com/news/life-sciences-verification-program
+  - date: 2026-10-03
+    slug: 2026-10-03-openai-agents-api-computer-use-pmjay-nhcx-claims-rcm-india
+    angle: pmjay-nhcx-claims-rcm
+    models: ["GPT-6.1 Sol (OpenAI)", "Claude Frontier Academy (Anthropic)"]
+    sources:
+      - https://openai.com/index/introducing-gpt-6-1-sol/
+      - https://openai.com/index/devday-2026-recap/
+      - https://www.anthropic.com/news/claude-frontier-academy
+      - https://nha.gov.in/PM-JAY
