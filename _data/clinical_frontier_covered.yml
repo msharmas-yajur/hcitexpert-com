@@ -176,3 +176,12 @@ covered:
       - https://openai.com/index/devday-2026-recap/
       - https://www.anthropic.com/news/claude-frontier-academy
       - https://nha.gov.in/PM-JAY
+  - date: 2026-10-04
+    slug: 2026-10-04-google-medgemma-ophthalmology-diabetic-retinopathy-screening-india
+    angle: ophthalmology-screening
+    models: ["MedGemma 1.5 (Google)", "MedASR (Google)"]
+    sources:
+      - https://developers.google.com/health-ai-developer-foundations/medgemma/model-card
+      - https://research.google/blog/next-generation-medical-image-interpretation-with-medgemma-15-and-medical-speech-to-text-with-medasr/
+      - https://developers.google.com/health-ai-developer-foundations/showcase/visilant
+      - https://diabetesatlas.org/
