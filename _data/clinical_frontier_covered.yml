@@ -193,3 +193,12 @@ covered:
       - https://www.anthropic.com/news/wellbeing-research-grants
       - https://www.anthropic.com/news/protecting-well-being-of-users
       - https://www.anthropic.com/news/how-people-use-claude-for-support-advice-and-companionship
+  - date: 2026-10-07
+    slug: 2026-10-07-claude-sonnet-55-abdm-fhir-interoperability-india
+    angle: abdm-fhir-interoperability
+    models: ["Claude Sonnet 5.5 (Anthropic)"]
+    sources:
+      - https://www.anthropic.com/claude-sonnet-5-5
+      - https://www.anthropic.com/news/claude-frontier-academy
+      - https://www.nrces.in/preview/ndhm/fhir/r4/index.html
+      - https://newsonair.gov.in/ayushman-bharat-digital-mission-crosses-landmark-milestone-of-90-crore-abhas/
