@@ -202,3 +202,9 @@ covered:
       - https://www.anthropic.com/news/claude-frontier-academy
       - https://www.nrces.in/preview/ndhm/fhir/r4/index.html
       - https://newsonair.gov.in/ayushman-bharat-digital-mission-crosses-landmark-milestone-of-90-crore-abhas/
+  - date: 2026-10-08
+    slug: 2026-10-08-claude-haiku-55-ecg-cardiac-triage-india
+    angle: ecg-cardiology
+    models: ["Claude Haiku 5.5 (Anthropic)"]
+    sources:
+      - https://www.anthropic.com/claude-haiku-5-5
