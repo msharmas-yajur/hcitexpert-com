@@ -208,3 +208,11 @@ covered:
     models: ["Claude Haiku 5.5 (Anthropic)"]
     sources:
       - https://www.anthropic.com/claude-haiku-5-5
+  - date: 2026-10-09
+    slug: 2026-10-09-gpt6-astra-computer-use-bed-ot-capacity-hospitals-india
+    angle: bed-ot-capacity-ops
+    models: ["GPT-6 Astra (OpenAI)"]
+    sources:
+      - https://openai.com/index/advancing-computer-use-with-ironclad/
+      - https://cursor.com/changelog/projects
+      - https://nha.gov.in/PM-JAY
