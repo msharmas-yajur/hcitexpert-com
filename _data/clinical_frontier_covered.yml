@@ -216,3 +216,10 @@ covered:
       - https://openai.com/index/advancing-computer-use-with-ironclad/
       - https://cursor.com/changelog/projects
       - https://nha.gov.in/PM-JAY
+  - date: 2026-10-10
+    slug: 2026-10-10-anthropic-cyber-mission-hospital-cybersecurity-india-dpdp
+    angle: hospital-cybersecurity-critical-infrastructure
+    models: ["Claude (Anthropic Cyber Mission CIDP)"]
+    sources:
+      - https://www.anthropic.com/news/anthropic-cyber-mission
+      - https://www.anthropic.com/news/critical-infrastructure-defense
