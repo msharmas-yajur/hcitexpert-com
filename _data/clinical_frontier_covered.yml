@@ -223,3 +223,12 @@ covered:
     sources:
       - https://www.anthropic.com/news/anthropic-cyber-mission
       - https://www.anthropic.com/news/critical-infrastructure-defense
+  - date: 2026-10-11
+    slug: 2026-10-11-gpt6-intelligent-ui-chronic-disease-ncd-india
+    angle: chronic-disease-ncd-management
+    models: ["GPT-6 Sol (OpenAI)", "GPT-6 Luna (OpenAI)"]
+    sources:
+      - https://openai.com/index/gpt-6-for-everyone/
+      - https://help.openai.com/en/articles/20001598-intelligent-ui-in-chatgpt
+      - https://www.thelancet.com/journals/landia/article/PIIS2213-8587(23)00119-5/fulltext
+      - https://www.anthropic.com/news/genesis-mission-commitment
