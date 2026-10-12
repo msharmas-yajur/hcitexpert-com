@@ -232,3 +232,11 @@ covered:
       - https://help.openai.com/en/articles/20001598-intelligent-ui-in-chatgpt
       - https://www.thelancet.com/journals/landia/article/PIIS2213-8587(23)00119-5/fulltext
       - https://www.anthropic.com/news/genesis-mission-commitment
+  - date: 2026-10-12
+    slug: 2026-10-12-google-amie-lancet-primary-care-ai-india
+    angle: ai-diagnostic-reasoning-primary-care
+    models: ["Google AMIE", "Claude Haiku 5.5 (Anthropic)"]
+    sources:
+      - https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(26)01535-7/abstract
+      - https://blog.google/innovation-and-ai/technology/health/amie-clinical-study-lancet/
+      - https://www.anthropic.com/claude-haiku-5-5
