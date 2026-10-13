@@ -240,3 +240,11 @@ covered:
       - https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(26)01535-7/abstract
       - https://blog.google/innovation-and-ai/technology/health/amie-clinical-study-lancet/
       - https://www.anthropic.com/claude-haiku-5-5
+  - date: 2026-10-13
+    slug: 2026-10-13-claude-agents-novel-enzyme-tb-amr-india
+    angle: ai-autonomous-discovery-infectious-disease
+    models: ["Claude (Anthropic autonomous research agents)"]
+    sources:
+      - https://www.anthropic.com/news/claude-discovers-novel-enzyme-system
+      - https://www.anthropic.com/news/genesis-mission-commitment
+      - https://www.anthropic.com/news/expanding-support-for-scientists
