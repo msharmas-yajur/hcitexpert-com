@@ -248,3 +248,11 @@ covered:
       - https://www.anthropic.com/news/claude-discovers-novel-enzyme-system
       - https://www.anthropic.com/news/genesis-mission-commitment
       - https://www.anthropic.com/news/expanding-support-for-scientists
+  - date: 2026-10-14
+    slug: 2026-10-14-alphagenome-gemini-4-argon-rare-disease-genomics-india
+    angle: rare-disease-genomics-india
+    models: ["AlphaGenome Atlas (Google DeepMind)", "Gemini 4 Argon (Google)"]
+    sources:
+      - https://deepmind.google/blog/alphagenome-atlas-a-predictive-map-of-every-possible-dna-letter-change-in-the-human-genome/
+      - https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/
+      - https://nvidianews.nvidia.com/news/nvidia-commits-1-billion-to-advance-us-science-over-the-next-five-years
