@@ -256,3 +256,10 @@ covered:
       - https://deepmind.google/blog/alphagenome-atlas-a-predictive-map-of-every-possible-dna-letter-change-in-the-human-genome/
       - https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/
       - https://nvidianews.nvidia.com/news/nvidia-commits-1-billion-to-advance-us-science-over-the-next-five-years
+  - date: 2026-10-15
+    slug: 2026-10-15-anthropic-usage-policy-clinical-ai-governance-india
+    angle: clinical-ai-governance-compliance-india
+    models: ["Claude (Anthropic)"]
+    sources:
+      - https://www.anthropic.com/news/2026-usage-policy-update
+      - https://www.anthropic.com/news/singapore-office-opening
