@@ -263,3 +263,9 @@ covered:
     sources:
       - https://www.anthropic.com/news/2026-usage-policy-update
       - https://www.anthropic.com/news/singapore-office-opening
+  - date: 2026-10-16
+    slug: 2026-10-16-anthropic-independent-evaluators-clinical-ai-audit-india
+    angle: clinical-ai-third-party-evaluation-india
+    models: ["Claude (Anthropic)"]
+    sources:
+      - https://www.anthropic.com/news/an-update-on-independent-evaluators
