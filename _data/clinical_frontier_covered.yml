@@ -286,5 +286,16 @@ covered:
     models: ["Claude (Anthropic)"]
     sources:
       - https://www.anthropic.com/news/an-update-on-independent-evaluators
+  - date: 2026-11-08
+    slug: 2026-11-08-google-smartwatch-hypertension-nature-wearables-india
+    angle: wearables-consumer-health
+    models: ["AI-PPG-ACC-HTN (Google Research)", "MAI-DxO (Microsoft AI)", "MedGemma / MedSigLIP / HeAR (Google)", "Claude (Anthropic)"]
+    sources:
+      - https://research.google/blog/detecting-signs-of-hypertension-using-wearable-sensors/
+      - https://www.nature.com/articles/s41586-026-11336-3
+      - https://nrces.in/ndhm/fhir/r4/StructureDefinition/WellnessRecord
+      - https://microsoft.ai/news/building-medical-superintelligence/
+      - https://research.google/blog/bringing-foundational-models-to-the-front-lines-of-tb-screening/
+      - https://www.anthropic.com/research/early-progress-drug-development
 
 held: []
