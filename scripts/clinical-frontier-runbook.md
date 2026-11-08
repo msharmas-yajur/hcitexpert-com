@@ -66,6 +66,9 @@ the checker with the Agent tool. The checker must be independent of the maker:
    regulation described as in force when it is draft or proposed.
 4. Check every outbound link returns 200 (`curl -sIL -o /dev/null -w '%{http_code}'`,
    with a browser user agent if a site blocks curl) and points where the text says.
+   Some servers refuse HEAD (nrces.in returns 403 on HEAD, 200 on GET); if HEAD
+   fails, retry with a GET (`curl -sL -o /dev/null -w '%{http_code}'`) before
+   counting the link as broken.
 5. Check style: no em dashes or en dashes anywhere; masthead, issue number and
    date are right; front matter is valid YAML.
 6. Verdict: **APPROVED** only when every remaining claim is VERIFIED and every
