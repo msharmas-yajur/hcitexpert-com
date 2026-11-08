@@ -2,7 +2,8 @@
 # ---------------------------------------------------------------------------
 # State file for the DAILY "Clinical Frontier" series on HCITExperts Blog.
 # Each day the routine reviews the latest updates from Anthropic, OpenAI,
-# Google (Gemini/DeepMind), Groq, Cursor, and NVIDIA, then publishes ONE
+# Google (Gemini/DeepMind/Research), Microsoft AI, Meta AI, and NVIDIA
+# (Groq and Cursor as secondary sources), then publishes ONE
 # healthcare-contextualised article on how a frontier-model / AI-hardware
 # update applies to a specific clinical or health-system scenario.
 #
@@ -22,6 +23,22 @@
 #   triage-virtual-nursing, multilingual-indic-patient-engagement, ophthalmology-screening,
 #   ecg-cardiology, mental-health-support, ehr-agentic-workflows, tumour-board-synthesis,
 #   prior-authorisation-automation, adverse-event-pharmacovigilance, bed-ot-capacity-ops
+#   (all of the above used by Issue 029)
+#
+# Fresh angles (added 2026-11-08; unused):
+#   icu-early-warning-sepsis, emergency-department-triage, antimicrobial-stewardship,
+#   maternal-neonatal-care, tb-elimination-programme, dermatology-teledermatology,
+#   dental-oral-health, nursing-handover-shift-notes, hospital-pharmacy-inventory,
+#   lab-information-systems-qc, blood-bank-transfusion, organ-transplant-allocation,
+#   home-care-remote-monitoring, geriatric-care, palliative-care-communication,
+#   medical-education-training, clinical-trials-recruitment-india, insurance-fraud-detection,
+#   public-health-surveillance-idsp, asha-frontline-health-workers, ayush-integrative-medicine,
+#   hospital-revenue-leakage, patient-consent-dpdp, procurement-medical-devices,
+#   wearables-consumer-health, voice-ai-patient-calls, hospital-chatbots-helpdesk,
+#   surgical-video-or-analytics, nutrition-diabetes-coaching, health-insurance-claims-ops-tpa
+#
+# Days with no publish go in `held:` (bottom of file) with date and reason; they
+# do not consume an angle and do not take an issue number.
 
 covered:
   - date: 2026-09-16
@@ -269,3 +286,5 @@ covered:
     models: ["Claude (Anthropic)"]
     sources:
       - https://www.anthropic.com/news/an-update-on-independent-evaluators
+
+held: []
