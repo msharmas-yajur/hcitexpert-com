@@ -297,5 +297,13 @@ covered:
       - https://microsoft.ai/news/building-medical-superintelligence/
       - https://research.google/blog/bringing-foundational-models-to-the-front-lines-of-tb-screening/
       - https://www.anthropic.com/research/early-progress-drug-development
+  - date: 2026-11-09
+    slug: 2026-11-09-google-blind-sweep-ultrasound-maternal-care-pcpndt-india
+    angle: maternal-neonatal-care
+    models: ["Blind sweep gestational age AI (Google Research)", "Cheminformatics Skills for Google Antigravity (Google DeepMind)"]
+    sources:
+      - https://research.google/blog/empowering-frontline-maternal-care-with-ai-assisted-ultrasound/
+      - https://www.py.gov.in/sites/default/files/pre-conception-pre-natal-diagnostic-techniquest-act1994.pdf
+      - https://deepmind.google/blog/agentic-cheminformatics-with-google-antigravity/
 
 held: []
