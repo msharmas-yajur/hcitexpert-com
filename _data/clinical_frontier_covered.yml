@@ -316,4 +316,15 @@ covered:
       - https://www.meity.gov.in/static/uploads/2025/11/53450e6e5dc0bfa85ebd78686cadad39.pdf
       - https://www.pib.gov.in/PressReleasePage.aspx?PRID=2190014
 
+  - date: 2026-11-12
+    slug: 2026-11-12-gemini-for-healthcare-ehr-billing-revenue-leakage-pmjay-india
+    angle: hospital-revenue-leakage
+    models: ["Gemini for healthcare (Google Cloud)", "Claude Fable 5.2 (Anthropic)"]
+    sources:
+      - https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/gemini-for-healthcare/
+      - https://blog.google/innovation-and-ai/technology/health/evaluating-health-ai-at-scale/
+      - https://www.anthropic.com/claude-fable-and-mythos-5-2
+      - https://www.pib.gov.in/PressReleasePage.aspx?PRID=2243769
+      - https://www.pib.gov.in/PressReleasePage.aspx?PRID=2286071
+
 held: []
