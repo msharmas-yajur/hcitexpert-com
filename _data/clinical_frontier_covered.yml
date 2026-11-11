@@ -306,4 +306,14 @@ covered:
       - https://www.py.gov.in/sites/default/files/pre-conception-pre-natal-diagnostic-techniquest-act1994.pdf
       - https://deepmind.google/blog/agentic-cheminformatics-with-google-antigravity/
 
+  - date: 2026-11-11
+    slug: 2026-11-11-claude-fable-52-gemini-4-carbon-patient-consent-dpdp-india
+    angle: patient-consent-dpdp
+    models: ["Claude Fable 5.2 (Anthropic)", "Claude Mythos 5.2 (Anthropic)", "Gemini 4 Carbon (Google)"]
+    sources:
+      - https://www.anthropic.com/claude-fable-and-mythos-5-2
+      - https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-carbon-now-available/
+      - https://www.meity.gov.in/static/uploads/2025/11/53450e6e5dc0bfa85ebd78686cadad39.pdf
+      - https://www.pib.gov.in/PressReleasePage.aspx?PRID=2190014
+
 held: []
