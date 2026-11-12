@@ -1,6 +1,6 @@
 ---
 title: "Gemini for Healthcare Links Records to Billing Systems: What It Could Mean for Revenue Leakage in Indian Hospitals"
-date: 2026-11-12 00:43:17 +0530
+date: 2026-11-12 05:36:56 +0530
 author: Manish Sharma
 description: "The Clinical Frontier, Issue 033. Google Cloud launched Gemini for healthcare in preview, an AI solution that connects electronic health records, billing platforms and clinical guidelines to run multi-step workflows with human oversight. What that design suggests for hospital revenue leakage under AB PM-JAY, and what India's claim rules already demand."
 keywords: "Gemini for healthcare, hospital revenue leakage India, AI medical billing India, PM-JAY claims documentation, AB PM-JAY claim settlement turnaround, NHCX hospital receivables, Claude Fable 5.2, health AI evaluation framework, Google Cloud healthcare AI"
