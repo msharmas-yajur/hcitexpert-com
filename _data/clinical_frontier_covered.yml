@@ -327,4 +327,16 @@ covered:
       - https://www.pib.gov.in/PressReleasePage.aspx?PRID=2243769
       - https://www.pib.gov.in/PressReleasePage.aspx?PRID=2286071
 
+  - date: 2026-11-13
+    slug: 2026-11-13-google-wearable-health-age-ckm-gemini-4-hydrogen-nutrition-diabetes-coaching-india
+    angle: nutrition-diabetes-coaching
+    models: ["Coachable Health Age / SensorWM / CKM health age (Google Research)", "Gemini 4 Hydrogen (Google)", "Auto-Ontology / Agent Knowledge Foundation (NVIDIA)", "SNOMED CT Terminology connector (Anthropic marketplace)"]
+    sources:
+      - https://research.google/blog/using-wearables-to-enable-cardiovascular-kidney-metabolic-ckm-risk-profiling-for-personalized-coaching/
+      - https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/
+      - https://pib.gov.in/FactsheetDetails.aspx?Id=150834
+      - https://blogs.nvidia.com/blog/enterprise-platforms-agent-toolkit/
+      - https://developer.nvidia.com/topics/ai/agent-knowledge-foundation
+      - https://claude.com/marketplace/connectors/snomed-ct-terminology
+
 held: []
