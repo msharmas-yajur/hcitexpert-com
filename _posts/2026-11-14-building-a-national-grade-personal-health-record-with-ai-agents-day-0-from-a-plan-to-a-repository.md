@@ -183,10 +183,10 @@ Fifteen pull requests merged on 28 October (189 commits). Among them:
 
 The PHR is built by a small Caladrius team working with AI agents:
 
-- **Giri**: Cally taxonomy and intent framework
+- **Giri**: CEO; Cally taxonomy and intent framework
 - **Krishna**: development, infrastructure and go-live
 - **Preetha**: narrative engineer, personas
-- **Manish** (me): CTO and CPO
+- **Manish** (me): CTO and CPO, enabling the Caladrius Health AI PHR and the AI Studio framework
 
 ### Cally: taxonomy and intent (Giri)
 
