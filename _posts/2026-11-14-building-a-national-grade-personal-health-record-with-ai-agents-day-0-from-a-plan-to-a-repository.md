@@ -1,6 +1,6 @@
 ---
 title: "Building a national-grade personal health record with AI agents — Day 0: from a plan to a repository"
-date: 2026-11-14 10:00:00 +0530
+date: 2026-11-14 02:33:45 +0530
 author: Manish Sharma
 series: building-the-caladrius-phr-with-agents
 tags: [building-the-caladrius-phr-with-agents, agentic-development, abdm, phr, healthcare-it]
