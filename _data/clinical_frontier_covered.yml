@@ -330,7 +330,7 @@ covered:
   - date: 2026-11-13
     slug: 2026-11-13-google-wearable-health-age-ckm-gemini-4-hydrogen-nutrition-diabetes-coaching-india
     angle: nutrition-diabetes-coaching
-    models: ["Coachable Health Age / SensorWM / CKM health age (Google Research)", "Gemini 4 Hydrogen (Google)", "Auto-Ontology / Agent Knowledge Foundation (NVIDIA)", "SNOMED CT Terminology connector (Anthropic marketplace)"]
+    models: ["Coachable Health Age / SensorWM / CKM health age (Google Research)", "Gemini 4 Hydrogen (Google)", "Auto-Ontology / Agent Knowledge Foundation (NVIDIA)", "SNOMED CT Terminology connector (Anthropic marketplace)", "Google Health app (Google)", "Primer (Wharton GAIL)", "Paperclip Datasets (GXL)"]
     sources:
       - https://research.google/blog/using-wearables-to-enable-cardiovascular-kidney-metabolic-ckm-risk-profiling-for-personalized-coaching/
       - https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/
@@ -338,5 +338,8 @@ covered:
       - https://blogs.nvidia.com/blog/enterprise-platforms-agent-toolkit/
       - https://developer.nvidia.com/topics/ai/agent-knowledge-foundation
       - https://claude.com/marketplace/connectors/snomed-ct-terminology
+      - https://blog.google/products-and-platforms/products/google-health/google-health-app/
+      - https://gail.wharton.upenn.edu/primer/
+      - https://gxl.ai/blog/introducing-paperclip-datasets/
 
 held: []
