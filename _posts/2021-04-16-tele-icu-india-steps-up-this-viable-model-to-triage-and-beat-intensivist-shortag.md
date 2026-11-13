@@ -104,7 +104,7 @@ categories:
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
-<p><strong>Dhruv Joshi, Director – Cloudphysician Healthcare Pvt Ltd, </strong><a href="https://hcitexpert.com/2020/03/innovative-solutions-for-india-to-manage-critically-ill-covid-19-patients-a-five-point-agenda-by-dhruv-joshi-and-dileep-raman-cloudphysician.html/#.YHVv9egzbIU">in one of the earlier HCITExpert blog post, </a>had shared that with a tele-ICU system it is possible for 1 intensivist to cater to the needs of 60-80 sick patients as opposed to the current ratio of 1:15, where an intensivist is seeing a patient at the<strong> </strong>bedside.</p>
+<p><strong>Dhruv Joshi, Director – Cloudphysician Healthcare Pvt Ltd, </strong><a href="/2020/03/30/innovative-solutions-for-india-to-manage-critically-ill-covid-19-patients-a-five/#.YHVv9egzbIU">in one of the earlier HCITExpert blog post, </a>had shared that with a tele-ICU system it is possible for 1 intensivist to cater to the needs of 60-80 sick patients as opposed to the current ratio of 1:15, where an intensivist is seeing a patient at the<strong> </strong>bedside.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->

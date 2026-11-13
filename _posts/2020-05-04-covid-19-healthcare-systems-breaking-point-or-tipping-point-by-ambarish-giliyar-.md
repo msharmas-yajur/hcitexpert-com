@@ -92,7 +92,7 @@ tags:
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
-<p><a href="https://hcitexpert.com/2020/03/consumer-centric-digital-platform-for-integrated-health-care-services-by-ambarish-giliyar-iamgiliyar.html/">https://hcitexpert.com/2020/03/consumer-centric-digital-platform-for-integrated-health-care-services-by-ambarish-giliyar-iamgiliyar.html/(opens in a new tab)</a></p>
+<p><a href="/2020/03/12/consumer-centric-digital-platform-for-integrated-health-care-services-by-ambaris/">https://hcitexpert.com/2020/03/consumer-centric-digital-platform-for-integrated-health-care-services-by-ambarish-giliyar-iamgiliyar.html/(opens in a new tab)</a></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->

@@ -552,5 +552,5 @@ original_url: https://hcitexpert.com/authors-on-healthcare-it-experts-blog/
 <!-- wp:latest-posts {"postsToShow":20,"displayPostDate":true,"postLayout":"grid","columns":2} /-->
 
 <!-- wp:list -->
-<ul><li>About The Healthcare IT Experts Blog: <a href="https://hcitexpert.com/about-hcitexpert/">https://hcitexpert.com/about-hcitexpert/</a></li><li>Mentors &amp; Advisors: <a href="https://hcitexpert.com/mentors-advisors-the-hcitexperts-blog/">https://hcitexpert.com/mentors-advisors-the-hcitexperts-blog/</a></li></ul>
+<ul><li>About The Healthcare IT Experts Blog: <a href="/about-hcitexpert/">https://hcitexpert.com/about-hcitexpert/</a></li><li>Mentors &amp; Advisors: <a href="/mentors-advisors-the-hcitexperts-blog/">https://hcitexpert.com/mentors-advisors-the-hcitexperts-blog/</a></li></ul>
 <!-- /wp:list -->

@@ -9,7 +9,7 @@ original_url: https://hcitexpert.com/list-of-digital-health-startups-and-compani
 <h2>150+ digital Health Startups from india</h2>
 <p>This is a list of 150+ #DigitalHealth Startups in India. The list content is curated by the Editorial team at the HCITExperts Blog. Visit the page on the HCITExpert Blog</p>
 <p>If you don't find your startup listed in this list, please email us at: info@hcitexpert.com</p>
-<p>        <a href="https://hcitexpert.com/2020/05/startup-showcase-analysis-of-the-200-startups-on-the-hcitexperts-blog.html/#.XtgKeS8w3OQ"><br>
+<p>        <a href="/2020/05/28/startup-showcase-analysis-of-the-200-startups-on-the-hcitexperts-blog/#.XtgKeS8w3OQ"><br>
                                                                     VIEW THE ANALYSIS<br>
                     </a><br>
 										<img width="768" height="917" src="https://hcitexpert.com/wp-content/uploads/2020/05/By-City-200-digitalhealth-startups-from-india-768x917.png" alt="" srcset="https://i0.wp.com/hcitexpert.com/wp-content/uploads/2020/05/By-City-200-digitalhealth-startups-from-india.png?resize=768%2C917&amp;ssl=1 768w, https://i0.wp.com/hcitexpert.com/wp-content/uploads/2020/05/By-City-200-digitalhealth-startups-from-india.png?resize=251%2C300&amp;ssl=1 251w, https://i0.wp.com/hcitexpert.com/wp-content/uploads/2020/05/By-City-200-digitalhealth-startups-from-india.png?resize=858%2C1024&amp;ssl=1 858w, https://i0.wp.com/hcitexpert.com/wp-content/uploads/2020/05/By-City-200-digitalhealth-startups-from-india.png?resize=1200%2C1432&amp;ssl=1 1200w, https://i0.wp.com/hcitexpert.com/wp-content/uploads/2020/05/By-City-200-digitalhealth-startups-from-india.png?w=1240&amp;ssl=1 1240w" sizes="(max-width: 768px) 100vw, 768px"><br>
@@ -38,6 +38,6 @@ original_url: https://hcitexpert.com/list-of-digital-health-startups-and-compani
 
 <h2>View the List of Healthcare Technology Companies in India</h2>
 <p>We have also curated a list of 50+ Healthcare Technology Companies Operating out of India</p>
-<p>			<a href="https://hcitexpert.com/50-digitalhealth-companies-in-india/#.XtgO0i8w3OQ" role="button"><br>
+<p>			<a href="/50-digitalhealth-companies-in-india/#.XtgO0i8w3OQ" role="button"><br>
 						View the List<br>
 					</a></p>

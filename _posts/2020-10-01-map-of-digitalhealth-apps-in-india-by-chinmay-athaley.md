@@ -15,7 +15,7 @@ tags:
 <h2>The Map of 300+ Digital Health Startups</h2>
 Chinmay Athaley reviewed and categorised the list of digital health startups from India. Presenting the Map of Digital Health Startups - 2020
 
-<a href="https://hcitexpert.com/2020/10/map-of-digitalhealth-apps-in-india-by-chinmay-athaley.html/">
+<a href="/2020/10/01/map-of-digitalhealth-apps-in-india-by-chinmay-athaley/">
 View the map
 </a>
 <img width="225" height="225" src="https://hcitexpert.com/wp-content/uploads/2020/10/dots-circle.png" alt="" loading="lazy" srcset="https://i1.wp.com/hcitexpert.com/wp-content/uploads/2020/10/dots-circle.png?w=225&amp;ssl=1 225w, https://i1.wp.com/hcitexpert.com/wp-content/uploads/2020/10/dots-circle.png?resize=150%2C150&amp;ssl=1 150w, https://i1.wp.com/hcitexpert.com/wp-content/uploads/2020/10/dots-circle.png?resize=200%2C200&amp;ssl=1 200w" sizes="(max-width: 225px) 100vw, 225px">
@@ -27,10 +27,10 @@ View the map
 <h2>Digital Health Startups</h2>
 View the Analysis and the List of Digital Health Startups
 
-<a href="https://hcitexpert.com/list-of-digital-health-startups-and-companies-from-india-healthcare-it-experts-blog/#.X3Ye0WgzaUk" role="button">
+<a href="/list-of-digital-health-startups-and-companies-from-india-healthcare-it-experts-blog/#.X3Ye0WgzaUk" role="button">
 List
 </a>
-<a href="https://hcitexpert.com/2020/05/startup-showcase-analysis-of-the-200-startups-on-the-hcitexperts-blog.html/#.X3Yf9WgzaUk" role="button">
+<a href="/2020/05/28/startup-showcase-analysis-of-the-200-startups-on-the-hcitexperts-blog/#.X3Yf9WgzaUk" role="button">
 Analysis
 </a>
 <img width="450" height="450" src="https://hcitexpert.com/wp-content/uploads/2020/10/chinmay.jpg" alt="" loading="lazy" srcset="https://i0.wp.com/hcitexpert.com/wp-content/uploads/2020/10/chinmay.jpg?w=450&amp;ssl=1 450w, https://i0.wp.com/hcitexpert.com/wp-content/uploads/2020/10/chinmay.jpg?resize=300%2C300&amp;ssl=1 300w, https://i0.wp.com/hcitexpert.com/wp-content/uploads/2020/10/chinmay.jpg?resize=150%2C150&amp;ssl=1 150w, https://i0.wp.com/hcitexpert.com/wp-content/uploads/2020/10/chinmay.jpg?resize=400%2C400&amp;ssl=1 400w, https://i0.wp.com/hcitexpert.com/wp-content/uploads/2020/10/chinmay.jpg?resize=200%2C200&amp;ssl=1 200w" sizes="(max-width: 450px) 100vw, 450px">

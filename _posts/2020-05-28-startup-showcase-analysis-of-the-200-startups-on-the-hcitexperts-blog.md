@@ -34,6 +34,6 @@ tags:
 <p><img width="960" height="540" src="https://hcitexpert.com/wp-content/uploads/2020/03/Startup-Showcase-by-Category.png" alt="Startup Showcase by Category.png" srcset="https://i2.wp.com/hcitexpert.com/wp-content/uploads/2020/03/Startup-Showcase-by-Category.png?w=960&amp;ssl=1 960w, https://i2.wp.com/hcitexpert.com/wp-content/uploads/2020/03/Startup-Showcase-by-Category.png?resize=300%2C169&amp;ssl=1 300w, https://i2.wp.com/hcitexpert.com/wp-content/uploads/2020/03/Startup-Showcase-by-Category.png?resize=768%2C432&amp;ssl=1 768w, https://i2.wp.com/hcitexpert.com/wp-content/uploads/2020/03/Startup-Showcase-by-Category.png?resize=150%2C84&amp;ssl=1 150w" sizes="(max-width: 960px) 100vw, 960px">											</p>
 <h2>Don't Find Your Startup in the List</h2>
 <p>Fill out the Startup form, and we will add you to the list</p>
-<p>			<a href="https://hcitexpert.com/digital-health-startup-form/#.XtAiqhMzbOS" role="button"><br>
+<p>			<a href="/digital-health-startup-form/#.XtAiqhMzbOS" role="button"><br>
 						Go To Startup Form<br>
 					</a></p>

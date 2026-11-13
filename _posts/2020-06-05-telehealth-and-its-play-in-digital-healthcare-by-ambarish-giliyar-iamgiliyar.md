@@ -16,7 +16,7 @@ tags:
 <h2>Telehealth and its play in Digital Healthcare</h2>
 Telehealth is the use of digital information and communication technologies, such as mobile devices, Cloud, Fitness devices, Health devices &amp; sensors, AI-powered Messaging &amp; Chatbot systems and more, to access healthcare services remotely and manage healthcare. These may be technologies you use from home or that your Doctor uses to improve or support healthcare services.
 
-<a href="https://hcitexpert.com/2020/06/telehealth-and-its-play-in-digital-healthcare-by-ambarish-giliyar-iamgiliyar.html/">
+<a href="/2020/06/05/telehealth-and-its-play-in-digital-healthcare-by-ambarish-giliyar-iamgiliyar/">
 </a>
 <!--more Read More-->
 

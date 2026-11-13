@@ -47,7 +47,7 @@ original_url: https://hcitexpert.com/404-page-not-found/
 
 <!-- wp:column -->
 <div class="wp-block-column"><!-- wp:paragraph -->
-<p><strong>50+ DigitalHealth Companies in India</strong><br><a href="https://hcitexpert.com/50-digitalhealth-companies-in-india/"><em>https://hcitexpert.com/50-digitalhealth-companies-in-india/</em></a><em><br></em><a href="https://hcitexpert.com/50-digitalhealth-companies-in-india/">Read more &gt;</a> </p>
+<p><strong>50+ DigitalHealth Companies in India</strong><br><a href="/50-digitalhealth-companies-in-india/"><em>https://hcitexpert.com/50-digitalhealth-companies-in-india/</em></a><em><br></em><a href="/50-digitalhealth-companies-in-india/">Read more &gt;</a> </p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column -->
 
@@ -73,7 +73,7 @@ original_url: https://hcitexpert.com/404-page-not-found/
 
 <!-- wp:column -->
 <div class="wp-block-column"><!-- wp:paragraph -->
-<p><strong>Why Publish on the HCITExperts Blog </strong><em><a href="https://hcitexpert.com/why-publish-on-hcitexpert-blog/">https://hcitexpert.com/why-publish-on-hcitexpert-blog/</a> </em>    <a href="https://hcitexpert.com/why-publish-on-hcitexpert-blog/">Read more ></a> </p>
+<p><strong>Why Publish on the HCITExperts Blog </strong><em><a href="/why-publish-on-hcitexpert-blog/">https://hcitexpert.com/why-publish-on-hcitexpert-blog/</a> </em>    <a href="/why-publish-on-hcitexpert-blog/">Read more ></a> </p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns -->
