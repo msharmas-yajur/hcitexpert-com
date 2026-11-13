@@ -13,7 +13,7 @@ tags:
 <h2>Anusha Ashwin, Consulting Editor</h2>
 In her first artcile as the Consulting Editor of the Healthcare IT Experts' Blog, Anusha shares a review of the NDHM's proposed Health ODE to create a future ready digital health system.
 
-<a href="https://hcitexpert.com/2020/10/ndhm-proposed-health-ode-will-enable-a-more-inclusive-framework-for-digital-health-services-by-anusha-ashwin-ashwin_anusha.html/">
+<a href="/2020/10/05/ndhm-proposed-health-ode-will-enable-a-more-inclusive-framework-for-digital-heal/">
 Editorial
 </a>
 <img width="1024" height="512" src="https://hcitexpert.com/wp-content/uploads/2020/10/Blog-by-Anusha-Ashwin-1024x512.png" alt="" loading="lazy" srcset="https://i2.wp.com/hcitexpert.com/wp-content/uploads/2020/10/Blog-by-Anusha-Ashwin.png?resize=1024%2C512&amp;ssl=1 1024w, https://i2.wp.com/hcitexpert.com/wp-content/uploads/2020/10/Blog-by-Anusha-Ashwin.png?resize=300%2C150&amp;ssl=1 300w, https://i2.wp.com/hcitexpert.com/wp-content/uploads/2020/10/Blog-by-Anusha-Ashwin.png?resize=768%2C384&amp;ssl=1 768w, https://i2.wp.com/hcitexpert.com/wp-content/uploads/2020/10/Blog-by-Anusha-Ashwin.png?resize=1536%2C768&amp;ssl=1 1536w, https://i2.wp.com/hcitexpert.com/wp-content/uploads/2020/10/Blog-by-Anusha-Ashwin.png?resize=1200%2C600&amp;ssl=1 1200w, https://i2.wp.com/hcitexpert.com/wp-content/uploads/2020/10/Blog-by-Anusha-Ashwin.png?w=2048&amp;ssl=1 2048w" sizes="(max-width: 1024px) 100vw, 1024px">

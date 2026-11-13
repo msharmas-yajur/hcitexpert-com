@@ -80,7 +80,7 @@ tags:
 <!-- /wp:coblocks/highlight -->
 
 <!-- wp:list {"ordered":true} -->
-<ol><li>An article by Dr. Rohit Sharma, <a href="https://hcitexpert.com/2020/03/the-future-of-healthcare-and-medicine-by-dr-rohit-sharma-zinitheai.html/">https://hcitexpert.com/2020/03/the-future-of-healthcare-and-medicine-by-dr-rohit-sharma-zinitheai.html/</a></li><li>Dr. Rohit Sharma on Forbes, <a href="https://www.forbesindia.com/article/brand-connect/dr-rohit-sharma-on-a-mission-to-upgrade-medicine-for-billions/59193/1">https://www.forbesindia.com/article/brand-connect/dr-rohit-sharma-on-a-mission-to-upgrade-medicine-for-billions/59193/1</a></li><li>Zini, mentioned in IJPH Journal, <a href="http://www.ijph.in/article.asp?issn=0019-557X;year=2020;volume=64;issue=6;spage=117;epage=124;aulast=Sarbadhikari">link</a></li></ol>
+<ol><li>An article by Dr. Rohit Sharma, <a href="/2020/03/09/the-future-of-healthcare-and-medicine-by-dr-rohit-sharma-zinitheai/">https://hcitexpert.com/2020/03/the-future-of-healthcare-and-medicine-by-dr-rohit-sharma-zinitheai.html/</a></li><li>Dr. Rohit Sharma on Forbes, <a href="https://www.forbesindia.com/article/brand-connect/dr-rohit-sharma-on-a-mission-to-upgrade-medicine-for-billions/59193/1">https://www.forbesindia.com/article/brand-connect/dr-rohit-sharma-on-a-mission-to-upgrade-medicine-for-billions/59193/1</a></li><li>Zini, mentioned in IJPH Journal, <a href="http://www.ijph.in/article.asp?issn=0019-557X;year=2020;volume=64;issue=6;spage=117;epage=124;aulast=Sarbadhikari">link</a></li></ol>
 <!-- /wp:list -->
 
 <!-- wp:block {"ref":5838} /-->

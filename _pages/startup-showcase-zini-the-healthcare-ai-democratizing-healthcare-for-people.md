@@ -70,5 +70,5 @@ original_url: https://hcitexpert.com/startup-showcase-zini-the-healthcare-ai-dem
 <!-- /wp:coblocks/highlight -->
 
 <!-- wp:list {"ordered":true} -->
-<ol><li>An article by Dr. Rohit Sharma, <a href="https://hcitexpert.com/2020/03/the-future-of-healthcare-and-medicine-by-dr-rohit-sharma-zinitheai.html/">https://hcitexpert.com/2020/03/the-future-of-healthcare-and-medicine-by-dr-rohit-sharma-zinitheai.html/</a></li><li>Dr. Rohit Sharma on Forbes, <a href="https://www.forbesindia.com/article/brand-connect/dr-rohit-sharma-on-a-mission-to-upgrade-medicine-for-billions/59193/1">https://www.forbesindia.com/article/brand-connect/dr-rohit-sharma-on-a-mission-to-upgrade-medicine-for-billions/59193/1</a></li></ol>
+<ol><li>An article by Dr. Rohit Sharma, <a href="/2020/03/09/the-future-of-healthcare-and-medicine-by-dr-rohit-sharma-zinitheai/">https://hcitexpert.com/2020/03/the-future-of-healthcare-and-medicine-by-dr-rohit-sharma-zinitheai.html/</a></li><li>Dr. Rohit Sharma on Forbes, <a href="https://www.forbesindia.com/article/brand-connect/dr-rohit-sharma-on-a-mission-to-upgrade-medicine-for-billions/59193/1">https://www.forbesindia.com/article/brand-connect/dr-rohit-sharma-on-a-mission-to-upgrade-medicine-for-billions/59193/1</a></li></ol>
 <!-- /wp:list -->

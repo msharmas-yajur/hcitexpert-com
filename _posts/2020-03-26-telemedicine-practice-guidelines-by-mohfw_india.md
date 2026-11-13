@@ -68,6 +68,6 @@ https://www.youtube.com/watch?v=EDTX6X_UTOY&amp;feature=youtu.be
 
 <!-- wp:coblocks/author -->
 <div class="wp-block-coblocks-author"><div class="wp-block-coblocks-author__content"><span class="wp-block-coblocks-author__name">Team HCITExperts</span><!-- wp:button {"placeholder":"Author link…"} -->
-<div class="wp-block-button"><a class="wp-block-button__link" href="https://hcitexpert.com/about-hcitexpert/" target="_blank" rel="noreferrer noopener">About Us</a></div>
+<div class="wp-block-button"><a class="wp-block-button__link" href="/about-hcitexpert/" target="_blank" rel="noreferrer noopener">About Us</a></div>
 <!-- /wp:button --></div></div>
 <!-- /wp:coblocks/author -->

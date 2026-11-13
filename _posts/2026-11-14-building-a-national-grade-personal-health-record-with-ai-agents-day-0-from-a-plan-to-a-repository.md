@@ -2,6 +2,7 @@
 title: "Building a national-grade personal health record with AI agents — Day 0: from a plan to a repository"
 date: 2026-11-14 02:33:45 +0530
 author: Manish Sharma
+featured: true
 series: building-the-caladrius-phr-with-agents
 tags: [building-the-caladrius-phr-with-agents, agentic-development, abdm, phr, healthcare-it]
 day: 0
@@ -177,6 +178,39 @@ Fifteen pull requests merged on 28 October (189 commits). Among them:
 - **The rules file is the leverage.** An hour on `AGENTS.md` paid for itself many times over. When an agent went wrong later, the fix was almost always the same: write the missing rule down where the next agent will read it.
 
 *Next, Day 1 (29 October): the app stops talking to a mock and starts talking to ABDM.*
+
+## The team behind Day 0
+
+The PHR is built by a small Caladrius team working with AI agents:
+
+- **Giri**: CEO; Cally taxonomy and intent framework
+- **Krishna**: development, infrastructure and go-live
+- **Preetha**: narrative engineer, personas
+- **Manish** (me): CTO and CPO, enabling the Caladrius Health AI PHR and the AI Studio framework
+
+### Cally: taxonomy and intent (Giri)
+
+Day 0 wired Cally in on CopilotKit, off by default, behind consent and a filter that keeps personal health information out of the model. That sets the first rule of the taxonomy before a single intent exists: a request is classified only after it has passed a boundary that decides what the model may see at all.
+
+The same day fixed the vocabulary Cally will later work with. Each milestone got one sentence of framing (sign-in, linking and consent, subscriptions, the locker), and those sentences went into the screens' help text. For Giri's area they are groundwork: the first outline of the categories a person's questions will fall into, such as who may read my records, what a hospital holds about me, and where my own documents are.
+
+### Development, infrastructure and go-live (Krishna)
+
+Most of Day 0 sits in this area. Within an hour of the first commit the repository was an npm-workspaces monorepo, and the gates went in before any feature: security testing on every change, NHA's cases as code, container images pinned by digest and signed before deploy, and GitHub Actions pinned by commit SHA. A QA environment and deploy pipeline merged the same day (app, API, PostgreSQL, Redis and Valkey), so every change could be tried on a real server.
+
+Functional tests run only for `qa` and `main`, to keep `dev` fast, and the local stack rebuilds itself after each merge. Go-live was a long way off, but the path every later change would take to reach it was already in place.
+
+### Narrative and personas (Preetha)
+
+The person on Day 0 is someone in India creating their ABHA, finding what hospitals hold about them, deciding who may read it, and keeping their own documents in a locker. The UI mock let product, compliance and the certifying agency walk those flows on synthetic data before any gateway was wired. That is where the demo personas start: invented people only, under the rule that no real patient data ever enters the repository.
+
+The narrative choices were already in the basics: five languages with self-hosted fonts for the Indian scripts, light and dark themes, and one sentence per milestone ("the patient decides, and is told each time") that the screens repeat in their help text. Agents reuse a good sentence everywhere, so the wording is where the story gets set.
+
+### Product and technology direction (Manish)
+
+In 48 hours I moved the PHR from out of scope, to patients inside AI Studio, to a separate app, to a separate product with its own repository, database, API and front end. The reasons were scale (one national deployment, not one per facility), a separate integrator with its own audit, and the fact that a patient's records belong to the patient, not to a hospital's database.
+
+I kept the stack we already knew from AI Studio, but chose to port its conventions rather than import them, so the two products never share a release. And I spent an hour on `AGENTS.md`, because I had decided that the rules file, more than any single prompt, would be how I direct the agents.
 
 ## Further reading
 

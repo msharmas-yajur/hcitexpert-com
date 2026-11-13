@@ -6,7 +6,7 @@ original_url: https://hcitexpert.com/60-books-to-read-goodreads-hitsmind/
 ---
 
 <h2>Featured Book</h2>
-<p>			<a href="https://hcitexpert.com/book-technology-to-business-the-invisible-gap-by-harish-c-rijhwani/" role="button"><br>
+<p>			<a href="/book-technology-to-business-the-invisible-gap-by-harish-c-rijhwani/" role="button"><br>
 						Book Review<br>
 					</a></p>
 
