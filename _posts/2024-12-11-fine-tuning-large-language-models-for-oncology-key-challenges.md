@@ -38,7 +38,7 @@ categories:
 <!-- /wp:list -->
 
 <!-- wp:paragraph -->
-<p id="ember2269">As data continues to be the cornerstone of intelligent systems in healthcare, organizations must prioritize these updates to leverage the full potential of AI technologies. By <a href="https://scale.com/guides/data-labeling-annotation-guide">embracing data-centric approaches</a>, healthcare providers can enhance patient care, streamline operations, and accelerate medical innovations. It becomes very important to ensure the <a href="/2022/05/18/need-for-a-robust-abdm-healthcare-network-enabling-cancer-care-without-walls-by-/">recency and relevancy of data</a> in all the various contexts we will be reviewing in this article.</p>
+<p id="ember2269">As data continues to be the cornerstone of intelligent systems in healthcare, organizations must prioritize these updates to leverage the full potential of AI technologies. By <a href="https://scale.com/guides/data-labeling-annotation-guide">embracing data-centric approaches</a>, healthcare providers can enhance patient care, streamline operations, and accelerate medical innovations. It becomes very important to ensure the <a href="/2022/05/18/need-for-a-robust-abdm-healthcare-network-enabling-cancer-care-without-walls-by/">recency and relevancy of data</a> in all the various contexts we will be reviewing in this article.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:quote -->
