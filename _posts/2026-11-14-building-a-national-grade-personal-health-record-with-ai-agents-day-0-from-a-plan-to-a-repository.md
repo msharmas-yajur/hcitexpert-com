@@ -20,7 +20,7 @@ I'll be specific about the technical choices: the stack, the architecture, the s
 
 ## 1. The starting point: an integration plan, not a product
 
-On 26 October, NHA's new developer portal for **HIE-CM v3** (the health information exchange and consent manager behind ABDM) went live. It reorganised the integration work into milestones:
+On 26 October, NHA's new developer portal for **HIE-CM v3** (the health information exchange and consent manager behind [ABDM](https://caladriushealth.ai/what-is-abdm/)) went live. It reorganised the integration work into milestones:
 
 | Milestone | What it covers |
 |---|---|
@@ -32,7 +32,7 @@ On 26 October, NHA's new developer portal for **HIE-CM v3** (the health informat
 
 NHA published two things that changed how we work alongside it: a set of per-milestone **test skills**, and an **integrators' assistant plugin** for Claude Code, backed by an MCP server that serves the documentation, the API operations, the NRCES FHIR profiles and an error decoder.
 
-My first document that day was an integration plan for **AI Studio**, our clinician-facing product, which already covered most of M1–M3. In that plan, P1–P4 were marked *out of scope*: AI Studio is the facility's system, not a patient's app.
+My first document that day was an integration plan for **[AI Studio](https://caladriushealth.ai/platform/brief/#platform)**, our clinician-facing product, which already covered most of M1–M3. In that plan, P1–P4 were marked *out of scope*: AI Studio is the facility's system, not a patient's app.
 
 Before the day was over, the plan had a **Part C**: let patients into AI Studio itself. A patient would be a user tied to exactly one patient record, holding a "Patient Health Records" permission group, with every endpoint they could reach forcing the patient id to their own. We mapped every PHR capability to what AI Studio already had:
 
@@ -70,7 +70,7 @@ The first build was a **UI mock**: every screen and every branch of P1–P4 runn
 
 **The stack** was the one we already knew from AI Studio:
 - React 19, Vite 8, TypeScript and Tailwind v4;
-- a progressive web app via `vite-plugin-pwa`, built on the Caladrius design system (Radix-based components and token classes);
+- a progressive web app via `vite-plugin-pwa`, built on the [Caladrius design system](https://caladriushealth.ai/platform/brief/#design-system) (Radix-based components and token classes);
 - attachments in a bottom sheet: PDFs through pdf.js, images, and a **FHIR bundle viewer** ported from AI Studio, since ABDM records travel as FHIR document bundles.
 
 **Late that night: a design review against Apple's Human Interface Guidelines.** It produced a second theme, "Caladrius 2", with Liquid Glass used sparingly: glass on the header, the tab bar, toolbars and sheets, never on content. Its tokens went into the design system as an additive section, so AI Studio's look stayed untouched.
@@ -149,7 +149,7 @@ That last rule earns its place. A model will confidently "remember" an API field
 
 Before any feature work, the morning added the machinery that judges it:
 
-- **Security testing on every change**: secret scanning, static analysis with our own rules, dependency audit, an SBOM, container scanning and an automated web scan, gating every deploy. Finding exceptions must carry a reason and an expiry.
+- **[Security](https://caladriushealth.ai/platform/brief/#security) testing on every change**: secret scanning, static analysis with our own rules, dependency audit, an SBOM, container scanning and an automated web scan, gating every deploy. Finding exceptions must carry a reason and an expiry.
 - **NHA's test cases as code**: the PHR catalogue imported as JSON, Playwright specs that name the cases they cover, and a lint rule that fails on an unknown case id. Every screen declares which cases it serves.
 - **Signed images and pinned versions**: container images pinned by digest, GitHub Actions pinned by commit SHA, images signed before deploy.
 
@@ -165,7 +165,7 @@ Fifteen pull requests merged on 28 October (189 commits). Among them:
    - **P2:** the patient-side tables and routes for linking and consent;
    - **P3:** subscriptions, "the patient deciding, and being told each time";
    - **P4:** the health locker's data model and record pipeline.
-3. **Cally, our assistant, on CopilotKit**, wired in but **off by default**, behind consent and a filter that keeps personal health information out of the model.
+3. **[Cally](https://caladriushealth.ai/platform/brief/#cally), our assistant, on CopilotKit**, wired in but **off by default**, behind consent and a filter that keeps personal health information out of the model.
 4. **Functional tests only for `qa` and `main`**, so `dev` stays fast.
 5. **The local stack rebuilt automatically** on our own machine after each merge, so I could see every change in a browser without asking.
 6. **A full-screen, portrait PWA** when installed.
@@ -177,3 +177,9 @@ Fifteen pull requests merged on 28 October (189 commits). Among them:
 - **The rules file is the leverage.** An hour on `AGENTS.md` paid for itself many times over. When an agent went wrong later, the fix was almost always the same: write the missing rule down where the next agent will read it.
 
 *Next, Day 1 (29 October): the app stops talking to a mock and starts talking to ABDM.*
+
+## Further reading
+
+- [Caladrius Health](https://caladriushealth.ai/), the company behind the PHR
+- [The Caladrius platform brief](https://caladriushealth.ai/platform/brief/): AI Studio, [Cally](https://caladriushealth.ai/platform/brief/#cally), the [Health Vault](https://caladriushealth.ai/platform/brief/#vault), the [design system](https://caladriushealth.ai/platform/brief/#design-system) and [security by design](https://caladriushealth.ai/platform/brief/#security)
+- [Caladrius Pulse](https://caladriushealth.ai/blog/), our blog, including the ABDM series ([What is ABDM?](https://caladriushealth.ai/what-is-abdm/)) and the NHCX series ([What is NHCX?](https://caladriushealth.ai/what-is-nhcx/))
