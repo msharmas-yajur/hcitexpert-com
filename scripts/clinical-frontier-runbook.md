@@ -18,8 +18,16 @@ run it identically.
 
 1. `git checkout main && git pull --rebase origin main`.
 2. If a file `_posts/<today IST>-*.md` already exists, or today's date is already
-   in `covered` or `held`, **stop**: today is done. Report "already published".
-3. Issue number = (number of entries in `covered`) + 1, zero-padded to 3 digits.
+   in `covered` or `held` of either `_data/clinical_frontier_covered.yml` or
+   `_data/research_radar_covered.yml`, **stop**: today is done. Report "already
+   published".
+3. **Edition alternation.** The Frontier alternates with **The Research Radar**
+   (`scripts/research-radar-runbook.md`). Take the most recent entry (latest
+   `date`) across those two ledgers; a `held` day does not count. If it is a
+   **Frontier** (every entry in `clinical_frontier_covered.yml` is one), today is a
+   Research Radar: follow that runbook instead of this one and stop reading here.
+   If it is a Radar, continue with this runbook.
+4. Issue number = (number of entries in `covered`) + 1, zero-padded to 3 digits.
    Held days do not take an issue number.
 
 ## Editorial process: maker-checker (MANDATORY, fully automated)

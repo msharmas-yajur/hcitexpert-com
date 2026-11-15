@@ -1,0 +1,31 @@
+# The Research Radar: coverage ledger
+# ---------------------------------------------------------------------------
+# State file for the alternate-day "Research Radar" edition on HCITExperts Blog:
+# a review of the ten highest-ranked recent arXiv preprints on digital health and
+# clinical AI. The Clinical Frontier (see clinical_frontier_covered.yml) runs on
+# the other days. Issue numbers here are independent of the Frontier's.
+#
+# Issue number = (number of entries in `covered`) + 1, zero-padded to 3 digits.
+# `scripts/research_radar.py` reads every arxiv.org/abs/<id> URL below and never
+# selects those papers again.
+#
+# Entry shape:
+#   - date: YYYY-MM-DD
+#     slug: <post file name without .md>
+#     issue: NNN
+#     window: {start: YYYY-MM-DD, end: YYYY-MM-DD}
+#     as_of: <UTC timestamp of the research_radar.py run; HF upvotes are as of then>
+#     pool_size: <pool_size_before_filters>
+#     in_scope: <in_scope_after_filters>
+#     ranked_by_hf_upvotes: <how many of the ten were ranked by upvotes>
+#     papers:
+#       - {rank: 1, url: "https://arxiv.org/abs/<id>", title: "...", rank_basis: hf_upvotes|keyword_relevance_fallback, hf_upvotes: N|null}
+#     skipped:            # candidates dropped after reading, with the reason
+#       - {url: "https://arxiv.org/abs/<id>", reason: "..."}
+#
+# Days with no publish go in `held:` with date and reason.
+# ---------------------------------------------------------------------------
+
+covered: []
+
+held: []
