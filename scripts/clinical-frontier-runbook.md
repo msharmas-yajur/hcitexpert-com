@@ -32,6 +32,17 @@ run it identically.
 4. Issue number = (number of entries in `covered`) + 1, zero-padded to 3 digits.
    Held days do not take an issue number.
 
+## Geography focus (near term, set by the owner on 2026-11-15)
+
+The owner tracks **India, the Middle East and the US** for their solutions. The default
+framing stays an Indian health-IT audience, but where the scenario allows, add
+examples, context or regulation from the **Middle East** (GCC first: Saudi Arabia, UAE,
+Qatar, Kuwait, Oman, Bahrain) and the **US**, each from a **primary source** (the
+regulator's, ministry's, company's or operator's own page). Never force a market the
+scenario does not touch, and never describe something as being from a market unless
+its source says so. Record the markets an issue drew examples from in the ledger entry
+as `regions: [India, US]`. Over a run of issues, vary the angle so all three appear.
+
 ## Editorial process: maker-checker (MANDATORY, fully automated)
 
 Every article passes through two roles. **Nothing is published until an
@@ -223,7 +234,7 @@ git commit -m "post: Clinical Frontier <YYYY-MM-DD> - <angle>"
 git push origin main            # auto-deploys
 ```
 
-Append the ledger entry (below) in the same commit.
+Append the ledger entry (below, including `regions`) in the same commit.
 
 **Verify.** Wait for the deploy (poll every 60 seconds, up to 10 minutes) until
 `curl -s -o /dev/null -w '%{http_code}' https://hcitexpert.com/<yyyy>/<mm>/<dd>/<slug>/`

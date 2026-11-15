@@ -10,6 +10,25 @@ Everything here is about process and state. It holds no secrets, and none should
 
 ---
 
+## 0. Editorial direction set by the owner (read first)
+
+- **Geography focus (near term, from 2026-11-15): India, the Middle East and the US.**
+  These are the three markets the owner tracks for their solutions (Caladrius, Yajur).
+  Research and examples should draw from all three, and content should be publishable
+  across them. In practice:
+  - **Radar PHR spotlight:** exactly one PHR app each from India, the Middle East and the
+    US, from primary sources, no repeats within three Radar issues.
+  - **Frontier:** default framing is still an Indian health-IT audience, but add examples
+    or regulation from the Middle East (GCC first) and the US where the scenario allows,
+    each from a primary source, never forced. Record `regions: [..]` in the ledger entry
+    and vary angles so all three appear over time.
+  - **Radar papers:** `research_radar.py` tags each paper with the focus markets its title
+    or abstract names (`geo`). In Issue 001 none of the ten Track 1 papers named a setting,
+    so geography has to come mostly from the apps and the Frontier. Never re-rank or
+    substitute papers for geography.
+  - Never describe something as from a market unless its own source says so.
+- Topics the owner wants considered later: biomedical research agents (see backlog).
+
 ## 1. Quick start: what do I do today?
 
 1. `git checkout main && git pull --rebase origin main` (a sandbox session restricted to a
@@ -163,9 +182,10 @@ What actually went wrong (use this as a pre-flight list *before* sending a draft
   1 entry, none held.
 - **Issue 001 was then updated to Radar process version 2** (at the owner's request): the
   method note moved to the end ("How this issue was made") and a PHR spotlight was added
-  (papers 2610.41437, 2610.23851, 2610.31467; apps **Google Health app, NHS App, Aarogya
-  Setu 2.0**, so those three apps are not repeated in Radar Issues 002 to 004 unless they
-  have a new announcement). The update goes live only when its PR is merged.
+  (papers 2610.41437, 2610.23851, 2610.31467; apps **Aarogya Setu 2.0 (India), Sehhaty
+  (Saudi Arabia, Middle East), Google Health app (US)**, so those three apps are not repeated
+  in Radar Issues 002 to 004 unless they have a new announcement). An NHS App entry was
+  drafted and then replaced when the owner set the geography focus. The update goes live only when its PR is merged.
 
 **Next edition due:** a **Clinical Frontier, Issue 036** (the last entry is a double-edition
 day, and the tie-break makes the Radar the latest). The next Radar will be Issue 002.
@@ -205,9 +225,13 @@ day, and the tie-break makes the Radar the latest). The next Radar will be Issue
 6. **Radar length.** Issue 001 v2 is about 5,000 words in total. A shorter per-entry
    template (or fewer lines per paper) is on the backlog.
 7. **PHR apps for later editions** (candidates only; each needs a fetched primary page
-   before it can be featured): Apple Health (Apple newsroom), Australia's My Health
-   Record, Epic MyChart, Microsoft's Copilot Health, Health in ChatGPT (OpenAI's own
-   pages are blocked here), other national apps. The owner asked for the spotlight "on a
+   before it can be featured; one per market each time, different from Issue 001's):
+   - India: the ABHA app itself, other ABDM-linked PHR apps.
+   - Middle East: UAE (Abu Dhabi's Malaffi Health and Sahatna; Dubai's NABIDH is provider
+     facing), Kuwait's Salem app, Qatar's HAKEEM (Qatar Red Crescent) and MyHealth portal,
+     Oman's e-health portal. Search results were only leads; none has been fetched.
+   - US: Apple Health, Epic MyChart, Microsoft's Copilot Health, Health in ChatGPT
+     (OpenAI's own pages are blocked here). The owner asked for the spotlight "on a
    daily basis": the Radar runs on alternate days, so it appears in every Radar edition.
    If the owner wants a PHR item every day, that is a separate daily item and needs a
    decision.
@@ -249,7 +273,7 @@ Observed on 2026-11-15; these change, so re-test before relying on them.
 | Hugging Face API (`/api/daily_papers?date=`, `/api/papers/<id>`) | `dyaniahealth.com` (403) |
 | `blogs.nvidia.com`, `blog.google`, `research.google`, `claude.com/blog`, `anthropic.com/news` | `ctri.nic.in`, `cdsco.gov.in` (unreachable) |
 | `pib.gov.in` press releases and `static.pib.gov.in` PDFs (GET works; HEAD returns 401) | `microsoft.com/en-us/research/blog` (403) |
-| `nhs.uk` (NHS App release notes), `gov.uk` press releases | |
+| `nhs.uk` (NHS App release notes), `gov.uk` press releases, `moh.gov.sa` (Saudi Ministry of Health pages) | |
 | `hl7.org/fhir`, `meity.gov.in` | `deepmind.google` blog index returned binary/unusable content |
 | `openai.com/news/rss.xml`, `community.openai.com` | |
 | `hcitexpert.com` and its `feed.xml` | |
@@ -264,4 +288,4 @@ retry with GET before counting a link as broken.
 | Date | What changed |
 |---|---|
 | 2026-11-15 | **Clinical Frontier Issue 035** published (PR #6). **Research Radar** built and Issue 001 published (PR #7): `scripts/research_radar.py`, `scripts/research-radar-runbook.md`, `_data/research_radar_covered.yml`, Step 0 alternation and tie-break in both runbooks. Scope filter tightened after a dry run (min relevance 3). Issue 001 needed more checker passes than the runbook allows; the owner authorised one extra pass. This `CLAUDE.md` created as the publisher memory. |
-| 2026-11-15 (later) | **Radar process version 2**: PHR spotlight added (`--track phr`, app research rules, three papers and three apps in Issue 001), methodology moved to the end of the article as an extensible "How this issue was made" section, process version history, maker pre-flight and extra checker items added to the runbook, ledger gained `version`, `phr_*` fields. Issue 001 updated accordingly. |
+| 2026-11-15 (later) | **Radar process version 2**: PHR spotlight added (`--track phr`, app research rules, three papers and three apps, one each from India, the Middle East and the US, in Issue 001), geography focus rule and `geo` tags, methodology moved to the end of the article as an extensible "How this issue was made" section, process version history, maker pre-flight and extra checker items added to the runbook, ledger gained `version`, `phr_*` fields. Issue 001 updated accordingly. |

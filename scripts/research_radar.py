@@ -93,6 +93,24 @@ PHR_ANCHOR_TERMS = [
 ]
 PHR_ANCHOR_RE = [re.compile(t, re.I) for t in PHR_ANCHOR_TERMS]
 
+# Geography annotation (near-term focus markets: India, Middle East, US). This only TAGS
+# a paper with the settings its title or abstract names; it never changes the ranking.
+GEO_PATTERNS = {
+    "India": [r"\bIndia\b", r"\bIndian\b", r"\bABDM\b", r"\bABHA\b", r"\bAyushman\b"],
+    "Middle East": [r"Saudi", r"\bUAE\b", r"United Arab Emirates", r"\bEmirates\b", r"\bQatar\b",
+                    r"\bKuwait\b", r"\bOman\b", r"\bBahrain\b", r"\bGCC\b", r"\bGulf\b",
+                    r"Middle East", r"\bArab(?:ic|ian)?\b"],
+    "US": [r"United States", r"\bU\.S\.", r"\bUS\b", r"\bUSA\b", r"\bAmerican\b", r"\bMedicare\b",
+           r"\bMedicaid\b", r"\bHIPAA\b"],
+}
+GEO_RE = {k: [re.compile(x) for x in v] for k, v in GEO_PATTERNS.items()}
+
+
+def detect_geo(title, abstract):
+    """Focus markets named in the title or abstract (case-sensitive acronyms)."""
+    text = f"{title} {abstract}"
+    return [k for k, rxs in GEO_RE.items() if any(rx.search(text) for rx in rxs)]
+
 
 def http_get(url, retries=3, pause=3.0):
     last = None
@@ -250,6 +268,7 @@ def build(days, top, reserve, cap, min_relevance=3, track="main", exclude=None):
             "hf_upvotes": h["upvotes"] if h else None,
             "hf_github_stars": h["github_stars"] if h else None,
             "relevance": relevance(p["title"], p["abstract"], track),
+            "geo": detect_geo(p["title"], p["abstract"]),
             "rank_basis": "hf_upvotes" if h else "keyword_relevance_fallback",
         })
 
@@ -290,6 +309,7 @@ def to_markdown(res):
             L += [f"### {r['rank']}. {r['title']}",
                   f"- {r['url']} | {r['published']} | HF upvotes: {up} | basis: {r['rank_basis']} | relevance: {r['relevance']}",
                   f"- Authors: {', '.join(r['authors'][:4])}{' et al.' if len(r['authors']) > 4 else ''}",
+                  f"- Settings named (India / Middle East / US): {', '.join(r.get('geo') or []) or 'none stated in title or abstract'}",
                   f"- Abstract: {r['abstract']}", ""]
     return "\n".join(L)
 

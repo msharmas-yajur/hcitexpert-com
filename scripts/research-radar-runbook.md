@@ -99,11 +99,10 @@ Apply the same reading rules to the three Track 2 papers.
 The spotlight also covers **three live PHR apps**. This is a researched section,
 held to the same primary-source rule as the Frontier.
 
-**Selection rule (state it in the article, never call it a ranking):** PHR or
-health-record apps from **different health-system contexts** (for example a consumer
-platform, a national health service, a national digital public good), each with a
-**recent update or announcement on the operator's or government's own pages in the
-current year**. We cannot verify app-store rankings or download counts, so the
+**Selection rule (state it in the article, never call it a ranking):** **one PHR or
+health-record app each from India, the Middle East and the US** (the owner's
+near-term geography focus, see below), each with a **recent update or announcement on
+the operator's or government's own pages in the current year**. We cannot verify app-store rankings or download counts, so the
 section is **not** a "top" or "trending" list and must never be worded as one.
 
 - **Find candidates** with WebSearch, then **fetch the operator's or government's own
@@ -116,11 +115,31 @@ section is **not** a "top" or "trending" list and must never be worded as one.
   documents), and label the latter.
 - **Never claim to have tested an app.** The article says "we have not tested them".
 - **Rotation:** do not repeat a featured app in the next three Radar issues unless
-  it has a new announcement; vary the regions. Record the three apps and their
+  it has a new announcement. Within each market, pick a different app each time. Record the three apps and their
   source URLs in the ledger.
 - Add one **"Our reading"** line per app and a short "across the three" list, all
   labelled as editorial. Each synthesis line must be literally true of every app or
   paper it names (see the pre-flight checklist).
+
+## Geography focus (near term, set by the owner on 2026-11-15)
+
+The owner tracks three markets for their solutions: **India, the Middle East and the
+US**. For now, research and examples should draw from all three, and articles should be
+publishable across them.
+
+- **PHR apps:** exactly one from each market (Step 3). Middle East means the GCC first
+  (Saudi Arabia, UAE, Qatar, Kuwait, Oman, Bahrain) and the wider region where a primary
+  source exists.
+- **Papers:** the script tags each paper with the focus markets its title or abstract
+  names (`geo` in the JSON, shown in the markdown). Say where a study was done **only**
+  when the abstract says so. **Never re-rank or substitute papers for geography.** The
+  criterion is the criterion.
+- **"Why it could matter" lines:** write them for India, and add the Middle East or US
+  where a real connection exists. Do not force one.
+- **Sources:** same primary-source rule everywhere. Check first that a Middle East source
+  is reachable (Saudi `moh.gov.sa` pages load from the sandbox; see `CLAUDE.md` for the
+  reachability table).
+- Do not tag or describe an item as being from a market unless its own source says so.
 
 ## Maker pre-flight (do this before sending any draft to a checker)
 
@@ -232,7 +251,7 @@ In addition to the Frontier checks, the checker must:
    as the editor's reading.
 6. Every outbound link returns 200 (GET if HEAD fails) and points where the text
    says.
-7. **Apps:** for each PHR app, fetch the operator's or government's own page and
+7. **Apps:** confirm there is one app each from India, the Middle East and the US. For each PHR app, fetch the operator's or government's own page and
    confirm every capability, date, version number and figure against it. Mark
    UNSUPPORTED any feature not on the page, and flag anything planned that is
    written as shipped. Confirm no sentence calls the apps ranked, top, trending or
@@ -257,7 +276,7 @@ changes (a new track, a new rule, a new check).
 | Version | Date | What changed |
 |---|---|---|
 | 1 | 2026-11-15 | Ten papers (Track 1). Method note at the top of the issue. |
-| 2 | 2026-11-15 | Method note moved to the end as "How this issue was made". Track 2 added: personal health records spotlight (three papers from a 90 day shortlist plus three PHR apps researched from primary sources). Maker pre-flight and extra checker items added. |
+| 2 | 2026-11-15 | Method note moved to the end as "How this issue was made". Track 2 added: personal health records spotlight (three papers from a 90 day shortlist plus three PHR apps, one each from India, the Middle East and the US, researched from primary sources). Geography focus rule, `geo` tags in the script, maker pre-flight and extra checker items added. |
 
 Backlog (not yet in the process): a biomedical-agents track (see `CLAUDE.md`).
 
