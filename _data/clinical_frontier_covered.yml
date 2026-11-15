@@ -342,4 +342,12 @@ covered:
       - https://gail.wharton.upenn.edu/primer/
       - https://gxl.ai/blog/introducing-paperclip-datasets/
 
+  - date: 2026-11-15
+    slug: 2026-11-15-nvidia-dyania-synapsis-ai-chart-review-clinical-trial-eligibility-india
+    angle: chart-review-trial-eligibility-india
+    models: ["Synapsis AI (Dyania Health)", "NVIDIA NeMo / TensorRT / TensorRT-LLM"]
+    sources:
+      - https://blogs.nvidia.com/blog/how-ai-is-helping-care-teams/
+      - https://www.pib.gov.in/PressReleasePage.aspx?PRID=2190014
+
 held: []
