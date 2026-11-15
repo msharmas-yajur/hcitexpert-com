@@ -26,6 +26,27 @@
 # Days with no publish go in `held:` with date and reason.
 # ---------------------------------------------------------------------------
 
-covered: []
+covered:
+  - date: 2026-11-15
+    slug: 2026-11-15-the-research-radar-issue-001-ten-digital-health-preprints-november-2026
+    issue: 001
+    window: {start: 2026-11-01, end: 2026-11-15}
+    as_of: "2026-11-15T09:28Z"
+    pool_size: 665
+    in_scope: 194
+    ranked_by_hf_upvotes: 6
+    papers:
+      - {rank: 2, url: "https://arxiv.org/abs/2611.08935", title: "SkinMind: Equipping Agentic RAG with Human-Inspired Graph Probing for Reliable Dermatology AI", rank_basis: hf_upvotes, hf_upvotes: 4}
+      - {rank: 3, url: "https://arxiv.org/abs/2611.08369", title: "NPCBench: A Clinical Apprenticeship Benchmark for Multimodal Care-Pathway Reasoning in Nasopharyngeal Carcinoma", rank_basis: hf_upvotes, hf_upvotes: 3}
+      - {rank: 4, url: "https://arxiv.org/abs/2611.13758", title: "Mixed Signals: Weight-Space Programming for EEG and ECG", rank_basis: hf_upvotes, hf_upvotes: 3}
+      - {rank: 5, url: "https://arxiv.org/abs/2611.08969", title: "PhysioWave-T: Token-Efficient Wavelet Foundation Models for Biosignals", rank_basis: hf_upvotes, hf_upvotes: 2}
+      - {rank: 6, url: "https://arxiv.org/abs/2611.03360", title: "Every Pixel Is an Option: A System One Model for Medical Ultrasound Biometry", rank_basis: hf_upvotes, hf_upvotes: 2}
+      - {rank: 7, url: "https://arxiv.org/abs/2611.15094", title: "A frontier machine intelligence for human neuroimaging", rank_basis: hf_upvotes, hf_upvotes: 1}
+      - {rank: 8, url: "https://arxiv.org/abs/2611.11726", title: "The Dark Matter of Clinical Data: An Identification Limit on Disentangling Physiology from Care Process in electronic health records", rank_basis: keyword_relevance_fallback, hf_upvotes: null}
+      - {rank: 9, url: "https://arxiv.org/abs/2611.08672", title: "Real-World Adoption, Use, and Governance of an LLM-Based Electronic Health Record Search and Synthesis Platform", rank_basis: keyword_relevance_fallback, hf_upvotes: null}
+      - {rank: 10, url: "https://arxiv.org/abs/2611.17053", title: "Evaluating Pretrained Language Semantics for Structured EHR Prediction Tasks", rank_basis: keyword_relevance_fallback, hf_upvotes: null}
+      - {rank: 11, url: "https://arxiv.org/abs/2611.16393", title: "TransXplainRRG: A Radiologist-Evaluated LVLM for Chest Radiograph Report Generation", rank_basis: keyword_relevance_fallback, hf_upvotes: null}
+    skipped:
+      - {url: "https://arxiv.org/abs/2611.01527", reason: "Audits biomedical research agents (SciFact claims, hERG assay allocation), not digital health or clinical care; skipped on reading. Shortlist rank 1, 10 upvotes at as_of."}
 
 held: []

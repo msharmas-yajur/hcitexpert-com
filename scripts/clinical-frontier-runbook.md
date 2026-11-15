@@ -27,6 +27,8 @@ run it identically.
    **Frontier** (every entry in `clinical_frontier_covered.yml` is one), today is a
    Research Radar: follow that runbook instead of this one and stop reading here.
    If it is a Radar, continue with this runbook.
+   If the two ledgers share the latest date (a double-edition day), the Radar
+   counts as the later edition, so the next day is a Frontier.
 4. Issue number = (number of entries in `covered`) + 1, zero-padded to 3 digits.
    Held days do not take an issue number.
 
