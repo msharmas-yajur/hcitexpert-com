@@ -156,6 +156,10 @@ Before any feature work, the morning added the machinery that judges it:
 
 Gates are much easier to start with than to retrofit onto a codebase that has learned to live without them.
 
+![McKinsey exhibit titled 'Enterprises deploying gen AI at scale follow a common reference architecture'. A layered diagram of a gen AI platform: a platform portal, solution automation, shared services such as an AI gateway, and governance and guardrails, alongside a shared data platform, solution and use-case layers, example IT systems, cloud foundation models and data science.](/assets/images/mckinsey-gen-ai-reference-architecture.png)
+
+*A reference architecture for enterprise gen AI platforms. Source: McKinsey & Company, ["Overcoming two issues that are sinking gen AI programs"](https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/overcoming-two-issues-that-are-sinking-gen-ai-programs).*
+
 ### 3.5 What merged on Day 0
 
 Fifteen pull requests merged on 28 October (189 commits). Among them:

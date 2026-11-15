@@ -276,6 +276,14 @@ day, and the tie-break makes the Radar the latest). The next Radar will be Issue
   ends "Next, Day 1 (29 October): the app stops talking to a mock and starts talking to
   ABDM." **No Day 1 source material exists in this repository or the sandbox.** Do not
   write Day 1 from imagination: ask the owner for the build log, plans or notes.
+- **Upcoming owner article: Caladrius Healthcare's architecture for building AI solutions.**
+  The owner said (2026-11-15) they will publish it soon. There is no source material for it
+  in this repository or the sandbox, so do not write it from imagination: wait for the owner's
+  text, or ask for their notes. The McKinsey gen AI reference architecture exhibit
+  (`assets/images/mckinsey-gen-ai-reference-architecture.png`) was added to the PHR series Day 0
+  post, section 3.4, as related background; the owner also said they edited that article
+  themselves to refer to it. That edit was not in the repository when last checked, so before
+  touching the Day 0 post again, look at its current text.
 - Sister repository `yajur-ai` (yajur.ai) has its own `CLAUDE.md` and posts. It is a
   separate site; do not mix its ledgers or branches with this one.
 
@@ -324,3 +332,4 @@ retry with GET before counting a link as broken.
 | 2026-11-15 (later) | **Radar process version 2**: PHR spotlight added (`--track phr`, app research rules, three papers and three apps, one each from India, the Middle East and the US, in Issue 001), geography focus rule and `geo` tags, methodology moved to the end of the article as an extensible "How this issue was made" section, process version history, maker pre-flight and extra checker items added to the runbook, ledger gained `version`, `phr_*` fields. Issue 001 updated accordingly. |
 | 2026-11-15 (final) | **PR #8 merged**: Issue 001 updated live to Radar process v2 (PHR spotlight with Aarogya Setu 2.0, Sehhaty and Google Health app; methodology at the end), geography focus, `CLAUDE.md` memory, runbook and script changes. Owner waived a re-check of the last deletion-only edit. |
 | 2026-11-15 (Track 3) | **Radar process v3**: biomedical research agents track added (`--track agents`, separate section of three papers from Issue 002, framing as research tools not clinical care), per-track exclusion of skipped papers (`covered_ids(track)`), `--exclude` accepts several files, `--allow` brings skipped papers back; runbook Track 3, article order, checker item 11, version history row 3; ledger `agents_*` fields and `track:` on skipped entries. The Issue 001 agent-audit paper is eligible again for this track. No published article changed. |
+| 2026-11-15 (image) | McKinsey gen AI reference architecture exhibit added to the PHR series Day 0 post (section 3.4) at the owner's request; credit caption linking McKinsey's "Overcoming two issues that are sinking gen AI programs" (link not verified from the sandbox). Owner plans a Caladrius Healthcare AI architecture article. |
