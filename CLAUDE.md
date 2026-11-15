@@ -27,7 +27,7 @@ Everything here is about process and state. It holds no secrets, and none should
     so geography has to come mostly from the apps and the Frontier. Never re-rank or
     substitute papers for geography.
   - Never describe something as from a market unless its own source says so.
-- Topics the owner wants considered later: biomedical research agents (see backlog).
+- **Biomedical research agents** (owner request, 2026-11-15) are now a Radar track (Track 3): a short separate section of three papers in every Radar edition from Issue 002 (Radar process v3). Never merged into the ten clinical papers.
 
 ## 1. Quick start: what do I do today?
 
@@ -56,7 +56,7 @@ Everything here is about process and state. It holds no secrets, and none should
 | `_data/research_radar_covered.yml` | Radar ledger: window, pool counts, the ten papers with rank basis, skipped candidates. Separate issue numbers. |
 | `scripts/clinical-frontier-runbook.md` | Frontier procedure, house style, checker procedure, publish steps. |
 | `scripts/research-radar-runbook.md` | Radar procedure, article format, paper-level checker procedure. |
-| `scripts/research_radar.py` | Deterministic Radar shortlist builder (stdlib only). `--track main` (default, the ten papers) and `--track phr` (personal health records and health apps), `--exclude <json>` to keep one track's papers out of another. |
+| `scripts/research_radar.py` | Deterministic Radar shortlist builder (stdlib only). `--track main` (default, the ten papers) and `--track phr` (personal health records and health apps), `--track agents` (biomedical research agents), `--exclude <json...>` (one or more files) to keep other tracks' papers out, `--allow <ids>` to bring back papers skipped on reading. |
 | `.github/workflows/jekyll.yml` | Deploys on **push to `main`**. A merge to `main` publishes. |
 | `DESIGN.md` | Visual design reference for the site (not editorial guidance). |
 
@@ -78,7 +78,7 @@ health-app preprints and three live PHR apps researched from primary sources. Th
 shortlists are produced by a script, not hand-picked. The **methodology goes at the end
 of the article** ("How this issue was made", opening with a process version line), so
 readers can review how it was made; any new concept or process added to the Radar gets
-its own entry there. Process version history lives in the Radar runbook.
+its own entry there. Process version history lives in the Radar runbook. From **Issue 002** (process v3) there is also a short **biomedical research agents** section (Track 3), three papers, ranked separately.
 
 Shared rules (full detail in the runbooks):
 - **No em dashes or en dashes anywhere**, including title and front matter. Ranges are
@@ -126,9 +126,24 @@ shipped vs planned kept apart, figures attributed, **never a "top" or "trending"
 and never a claim to have tested an app**, no repeat of a featured app within three Radar
 issues unless there is a new announcement.
 
-Known issue: `covered_ids()` excludes **every** arXiv id found anywhere in the ledger,
-including `skipped` entries, so a skipped paper can never be selected again, even by a
-different track. See the backlog (section 6).
+**Track 3 (biomedical research agents).** `--track agents --days 14 --top 3 --reserve 12
+--exclude <track 1 json> <track 2 json> [--allow <ids skipped on reading>]`. A paper must
+match **both** an agent term and a biomedical-science term (track relevance 4 or more);
+clinical terms do not count. It is a separate track because AI-for-science papers draw far
+more Hugging Face upvotes than clinical ones (the Issue 001 skipped paper had 10 upvotes vs
+4 for the next clinical one) and would crowd out the clinical ten. Framing is a hard rule:
+**research tools for biomedical science, not clinical care**; state data provenance and
+evaluation type (benchmark, simulation, in silico, wet lab) from the full text. A dry run on
+1 to 15 Nov 2026 gave 314 candidates and 19 to 20 in scope, with on-topic papers (a protein
+complex auto-research agent, an AI scientist for drug discovery, protein-ligand pose ranking
+agents, agent memory for biomedical LLMs).
+
+**Per-track exclusion (fixed 2026-11-15).** `covered_ids(track)` excludes every *featured*
+paper for all tracks, but a *skipped* paper (ledger lines with `reason:`) only for the
+track that skipped it (`track:` on the line, default main), so it can still be considered
+elsewhere. `--exclude` takes whole shortlists, so a paper you skipped on reading must be
+passed with `--allow` or it will be excluded again (this is how the Issue 001 agent-audit
+paper, arXiv:2611.01527, returns as rank 1 in Track 3).
 
 ## 5. The maker-checker gate, and the lessons from Issue 001
 
@@ -204,22 +219,20 @@ What actually went wrong (use this as a pre-flight list *before* sending a draft
   (Saudi Arabia, Middle East), Google Health app (US)**, so those three apps are not repeated
   in Radar Issues 002 to 004 unless they have a new announcement). An NHS App entry was
   drafted and then replaced when the owner set the geography focus. **Merged and live via PR #8.**
-  The live text equals the last text a checker saw, minus one deleted phrase (see section 5, item 7);
+  The live text equals the last text a checker saw, minus one deleted phrase (see section 5, item 8);
   the owner explicitly waived a re-check of that pure deletion.
+
+**Radar process v3 is defined** (Track 3, biomedical research agents). It has not yet appeared
+in a published issue; it first applies to Radar Issue 002.
 
 **Next edition due:** a **Clinical Frontier, Issue 036** (the last entry is a double-edition
 day, and the tie-break makes the Radar the latest). The next Radar will be Issue 002.
 
 **Backlog (not yet done; owner has seen these):**
-1. **Biomedical research agents track.** The owner wants these topics considered for the
-   Radar in future. Recommended design: a **separate track**, not a wider main scope
-   (AI-for-science papers draw more Hugging Face upvotes than clinical papers and would
-   crowd out the clinical ten; the skipped Issue 001 paper had 10 upvotes vs 4 for the next
-   clinical one). Add `--track biomedical-agents` to `research_radar.py` with its own term
-   list, a short labelled section (about 3 papers) in the Radar, ranked separately.
-   **Fix first:** make the covered-id exclusion per track so skipped papers (for example
-   arXiv:2611.01527, the biomedical-agents audit) remain eligible for that track.
-   Awaiting the owner's go-ahead.
+1. **Biomedical research agents track: done 2026-11-15** (owner approved). Implemented as
+   Track 3 (see section 4 and the Radar runbook); first used in Radar Issue 002. The
+   skipped-paper exclusion bug is fixed. Remaining: the first real edition will show whether
+   three papers and the framing rules work well in practice.
 2. **OpenAI sources for the Frontier.** The owner wants OpenAI's Meetings plugin, team
    features and any healthcare releases covered from primary sources. `openai.com/index/*`
    and `help.openai.com/*` return 403 to every fetch method available (see section 9).
@@ -310,3 +323,4 @@ retry with GET before counting a link as broken.
 | 2026-11-15 | **Clinical Frontier Issue 035** published (PR #6). **Research Radar** built and Issue 001 published (PR #7): `scripts/research_radar.py`, `scripts/research-radar-runbook.md`, `_data/research_radar_covered.yml`, Step 0 alternation and tie-break in both runbooks. Scope filter tightened after a dry run (min relevance 3). Issue 001 needed more checker passes than the runbook allows; the owner authorised one extra pass. This `CLAUDE.md` created as the publisher memory. |
 | 2026-11-15 (later) | **Radar process version 2**: PHR spotlight added (`--track phr`, app research rules, three papers and three apps, one each from India, the Middle East and the US, in Issue 001), geography focus rule and `geo` tags, methodology moved to the end of the article as an extensible "How this issue was made" section, process version history, maker pre-flight and extra checker items added to the runbook, ledger gained `version`, `phr_*` fields. Issue 001 updated accordingly. |
 | 2026-11-15 (final) | **PR #8 merged**: Issue 001 updated live to Radar process v2 (PHR spotlight with Aarogya Setu 2.0, Sehhaty and Google Health app; methodology at the end), geography focus, `CLAUDE.md` memory, runbook and script changes. Owner waived a re-check of the last deletion-only edit. |
+| 2026-11-15 (Track 3) | **Radar process v3**: biomedical research agents track added (`--track agents`, separate section of three papers from Issue 002, framing as research tools not clinical care), per-track exclusion of skipped papers (`covered_ids(track)`), `--exclude` accepts several files, `--allow` brings skipped papers back; runbook Track 3, article order, checker item 11, version history row 3; ledger `agents_*` fields and `track:` on skipped entries. The Issue 001 agent-audit paper is eligible again for this track. No published article changed. |
