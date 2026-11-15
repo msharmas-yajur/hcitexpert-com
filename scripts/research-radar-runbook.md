@@ -94,8 +94,10 @@ Take the `top` ten. For **each** paper:
    and the authors' own stated limitations. (Issue 001: a spotlight paper's abstract did
    not say its dataset was semi-synthetic, which a checker found in the full text; another
    study's cohort was English-speaking US adults on Android and 42.3% of conversations
-   ended before completion. Both belonged in the caveat.) Mark in the entry when a
-   caveat comes from the full text.
+   ended before completion. Both belonged in the caveat.) Mark in the entry **every** detail that comes from the full
+   text (caveats, methods, denominators), not only caveats, and keep the preprint notice,
+   the FAQ and the process section's wording about abstracts versus full texts consistent
+   with what the entries actually do.
 5. Read the arXiv `comment` and `journal_ref` fields for **every** paper (Track 1
    and Track 2). They can show acceptance at a venue; say so, and never write that
    a paper is not peer reviewed unless the record says so (say "the arXiv record
