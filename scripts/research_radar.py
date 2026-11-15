@@ -75,6 +75,24 @@ STRONG_TERMS = [
 ]
 STRONG_RE = [re.compile(t, re.I) for t in STRONG_TERMS]
 
+# --track phr: personal health records, patient-facing and mobile health apps.
+# A paper must match at least one ANCHOR term (title or abstract) AND reach a
+# general health relevance of at least 2, so a passing mention of "app" is not enough.
+PHR_QUERY_TERMS = [
+    "personal health record", "patient portal", "mobile health app", "health app",
+    "mHealth", "patient-facing", "consumer health", "health data sharing",
+    "patient-controlled", "digital health app",
+]
+PHR_ANCHOR_TERMS = [
+    r"personal health records?", r"\bphrs?\b", r"patient portals?",
+    r"mobile health app\w*", r"health apps?\b", r"\bmhealth\b", r"patient-facing",
+    r"consumer health", r"health data sharing", r"patient-controlled",
+    r"digital health apps?", r"health locker", r"patient-held",
+    r"patient access to (?:their )?(?:health )?(?:records?|data)",
+    r"smartphone app\w*", r"mobile app\w*",
+]
+PHR_ANCHOR_RE = [re.compile(t, re.I) for t in PHR_ANCHOR_TERMS]
+
 
 def http_get(url, retries=3, pause=3.0):
     last = None
@@ -98,30 +116,43 @@ def bare_id(arxiv_id):
     return re.sub(r"v\d+$", "", arxiv_id.strip())
 
 
-def relevance(title, abstract):
-    """Distinct strong terms matched; title matches count double."""
+def relevance(title, abstract, track="main"):
+    """Distinct strong terms matched; title matches count double. In the phr
+    track, distinct anchor terms add double the weight on top."""
     score = 0
     for rx in STRONG_RE:
         if rx.search(title):
             score += 2
         elif rx.search(abstract):
             score += 1
+    if track == "phr":
+        for rx in PHR_ANCHOR_RE:
+            if rx.search(title):
+                score += 4
+            elif rx.search(abstract):
+                score += 2
     return score
 
 
-def in_scope(title, abstract, min_relevance=3):
+def in_scope(title, abstract, min_relevance=3, track="main"):
     """A single generic word ("diagnostic", "clinical") is not enough: require
-    several distinct health terms (title matches count double)."""
+    several distinct health terms (title matches count double). The phr track also
+    requires at least one PHR/app anchor term and a general health score of 2."""
+    if track == "phr":
+        text = f"{title} {abstract}"
+        return (any(rx.search(text) for rx in PHR_ANCHOR_RE)
+                and relevance(title, abstract, "main") >= 2)
     return relevance(title, abstract) >= min_relevance
 
 
-def arxiv_pool(start, end, cap):
+def arxiv_pool(start, end, cap, track="main"):
     cats = " OR ".join(f"cat:{c}" for c in CATEGORIES)
-    terms = " OR ".join(f'abs:"{t}"' for t in QUERY_TERMS)
+    terms = " OR ".join(f'abs:"{t}"' for t in (PHR_QUERY_TERMS if track == "phr" else QUERY_TERMS))
     date = f"submittedDate:[{start:%Y%m%d}0000 TO {end:%Y%m%d}2359]"
     queries = [
         f"({cats}) AND ({terms}) AND {date}",
-        f'abs:"digital health" AND {date}',  # any category
+        (f'(abs:"personal health record" OR abs:"patient portal" OR abs:"mHealth") AND {date}'
+         if track == "phr" else f'abs:"digital health" AND {date}'),  # any category
     ]
     out = {}
     for q in queries:
@@ -195,10 +226,10 @@ def covered_ids(path=LEDGER):
     return {bare_id(m) for m in re.findall(r"arxiv\.org/abs/([^\s\"'>]+)", text)}
 
 
-def build(days, top, reserve, cap, min_relevance=3):
+def build(days, top, reserve, cap, min_relevance=3, track="main", exclude=None):
     end = dt.date.today()
     start = end - dt.timedelta(days=days)
-    pool = arxiv_pool(start, end, cap)
+    pool = arxiv_pool(start, end, cap, track)
     hf = hf_feed(start, end)
 
     # HF-only additions (keeps papers the arXiv query may have truncated).
@@ -207,10 +238,10 @@ def build(days, top, reserve, cap, min_relevance=3):
             pool[pid] = {"id": pid, "title": h["title"], "abstract": h["abstract"], "authors": [],
                          "published": h["published"], "primary_category": "", "source": "hf-daily"}
 
-    skip = covered_ids()
+    skip = covered_ids() | set(exclude or [])
     rows = []
     for pid, p in pool.items():
-        if pid in skip or not in_scope(p["title"], p["abstract"], min_relevance):
+        if pid in skip or not in_scope(p["title"], p["abstract"], min_relevance, track):
             continue
         h = hf.get(pid)
         rows.append({
@@ -218,7 +249,7 @@ def build(days, top, reserve, cap, min_relevance=3):
             "url": f"https://arxiv.org/abs/{pid}",
             "hf_upvotes": h["upvotes"] if h else None,
             "hf_github_stars": h["github_stars"] if h else None,
-            "relevance": relevance(p["title"], p["abstract"]),
+            "relevance": relevance(p["title"], p["abstract"], track),
             "rank_basis": "hf_upvotes" if h else "keyword_relevance_fallback",
         })
 
@@ -234,6 +265,7 @@ def build(days, top, reserve, cap, min_relevance=3):
     return {
         "as_of": f"{dt.datetime.now(dt.timezone.utc):%Y-%m-%dT%H:%MZ}",
         "window": {"start": f"{start:%Y-%m-%d}", "end": f"{end:%Y-%m-%d}", "days": days},
+        "track": track,
         "categories": CATEGORIES,
         "min_relevance": min_relevance,
         "pool_size_before_filters": len(pool),
@@ -270,10 +302,18 @@ if __name__ == "__main__":
     ap.add_argument("--cap", type=int, default=600, help="max arXiv results fetched per query")
     ap.add_argument("--min-relevance", type=int, default=3,
                     help="min distinct health terms (title match counts 2) to be in scope")
+    ap.add_argument("--track", choices=["main", "phr"], default="main",
+                    help="main = digital health and clinical AI; phr = personal health records and health apps")
+    ap.add_argument("--exclude", default=None,
+                    help="JSON file from another track; its top and reserve ids are never selected here")
     ap.add_argument("--out", default="research_radar.json")
     ap.add_argument("--md", default=None)
     a = ap.parse_args()
-    res = build(a.days, a.top, a.reserve, a.cap, a.min_relevance)
+    excl = []
+    if a.exclude:
+        prev = json.load(open(a.exclude, encoding="utf-8"))
+        excl = [r["id"] for r in prev.get("top", []) + prev.get("reserve", [])]
+    res = build(a.days, a.top, a.reserve, a.cap, a.min_relevance, a.track, excl)
     json.dump(res, open(a.out, "w", encoding="utf-8"), indent=2, ensure_ascii=False)
     if a.md:
         open(a.md, "w", encoding="utf-8").write(to_markdown(res))

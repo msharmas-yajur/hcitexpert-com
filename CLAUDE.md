@@ -37,7 +37,7 @@ Everything here is about process and state. It holds no secrets, and none should
 | `_data/research_radar_covered.yml` | Radar ledger: window, pool counts, the ten papers with rank basis, skipped candidates. Separate issue numbers. |
 | `scripts/clinical-frontier-runbook.md` | Frontier procedure, house style, checker procedure, publish steps. |
 | `scripts/research-radar-runbook.md` | Radar procedure, article format, paper-level checker procedure. |
-| `scripts/research_radar.py` | Deterministic Radar shortlist builder (stdlib only). |
+| `scripts/research_radar.py` | Deterministic Radar shortlist builder (stdlib only). `--track main` (default, the ten papers) and `--track phr` (personal health records and health apps), `--exclude <json>` to keep one track's papers out of another. |
 | `.github/workflows/jekyll.yml` | Deploys on **push to `main`**. A merge to `main` publishes. |
 | `DESIGN.md` | Visual design reference for the site (not editorial guidance). |
 
@@ -54,7 +54,12 @@ issue, never repeated (it is the ledger key).
 
 **The Research Radar** (alternate days, its own issue numbers = Radar ledger count + 1):
 a review of the ten highest-ranked recent arXiv preprints on digital health and clinical
-AI. The shortlist is produced by a script, not hand-picked.
+AI, plus a **personal health records (PHR) spotlight in every edition**: three PHR and
+health-app preprints and three live PHR apps researched from primary sources. The
+shortlists are produced by a script, not hand-picked. The **methodology goes at the end
+of the article** ("How this issue was made", opening with a process version line), so
+readers can review how it was made; any new concept or process added to the Radar gets
+its own entry there. Process version history lives in the Radar runbook.
 
 Shared rules (full detail in the runbooks):
 - **No em dashes or en dashes anywhere**, including title and front matter. Ranges are
@@ -90,6 +95,17 @@ Shared rules (full detail in the runbooks):
    does not). Substitute from the `reserve` if a paper is out of scope on reading; record
    it under `skipped` in the ledger and say so in the method note. Also read the arXiv
    `comment` field: it can show acceptance at a venue (Issue 001 had two such papers).
+
+**Track 2 (PHR spotlight).** `--track phr --days 90 --top 3 --reserve 10 --exclude <track 1 json>`.
+The window is 90 days because very few preprints a fortnight mention PHRs or health apps
+(a 15-day window returned 0 or 1 per phrase). A paper needs a PHR/health-app anchor term
+and a general health score of 2. In Issue 001 all nine in-scope papers were fallback-ranked
+(none on Hugging Face), and the article says so. The runbook (Steps 1 and 3) also sets the
+rules for **researching the three apps**: different health-system contexts, a recent update
+or announcement on the operator's or government's **own pages**, described only from them,
+shipped vs planned kept apart, figures attributed, **never a "top" or "trending" ranking
+and never a claim to have tested an app**, no repeat of a featured app within three Radar
+issues unless there is a new announcement.
 
 Known issue: `covered_ids()` excludes **every** arXiv id found anywhere in the ledger,
 including `skipped` entries, so a skipped paper can never be selected again, even by a
@@ -145,6 +161,11 @@ What actually went wrong (use this as a pre-flight list *before* sending a draft
 - Research Radar Issue 001, window 1 to 15 Nov 2026, pool 665, in scope 194, six of ten
   ranked by upvotes and four by fallback, one candidate skipped on reading. Radar ledger:
   1 entry, none held.
+- **Issue 001 was then updated to Radar process version 2** (at the owner's request): the
+  method note moved to the end ("How this issue was made") and a PHR spotlight was added
+  (papers 2610.41437, 2610.23851, 2610.31467; apps **Google Health app, NHS App, Aarogya
+  Setu 2.0**, so those three apps are not repeated in Radar Issues 002 to 004 unless they
+  have a new announcement). The update goes live only when its PR is merged.
 
 **Next edition due:** a **Clinical Frontier, Issue 036** (the last entry is a double-edition
 day, and the tie-break makes the Radar the latest). The next Radar will be Issue 002.
@@ -179,8 +200,17 @@ day, and the tie-break makes the Radar the latest). The next Radar will be Issue
 4. **Scheduled routine:** the daily cloud routine (15:00 IST) was not inspected in the
    session that built the Radar. Confirm its prompt follows the runbooks. If it hard-codes
    the Frontier steps, it needs one line to follow the Step 0 alternation.
-5. **Maker pre-flight:** add the synthesis-sentence checklist (section 5, item 3) to the
-   runbooks' maker step so these are caught before the checker sees the draft.
+5. **Maker pre-flight** is now in the Radar runbook ("Maker pre-flight"). Add the same
+   checklist to the Frontier runbook's maker step.
+6. **Radar length.** Issue 001 v2 is about 5,000 words in total. A shorter per-entry
+   template (or fewer lines per paper) is on the backlog.
+7. **PHR apps for later editions** (candidates only; each needs a fetched primary page
+   before it can be featured): Apple Health (Apple newsroom), Australia's My Health
+   Record, Epic MyChart, Microsoft's Copilot Health, Health in ChatGPT (OpenAI's own
+   pages are blocked here), other national apps. The owner asked for the spotlight "on a
+   daily basis": the Radar runs on alternate days, so it appears in every Radar edition.
+   If the owner wants a PHR item every day, that is a separate daily item and needs a
+   decision.
 
 ## 7. Other content you may be asked about
 
@@ -218,7 +248,8 @@ Observed on 2026-11-15; these change, so re-test before relying on them.
 | arXiv API (`export.arxiv.org`, id_list and search) | `openai.com/index/*`, `help.openai.com/*` (403) |
 | Hugging Face API (`/api/daily_papers?date=`, `/api/papers/<id>`) | `dyaniahealth.com` (403) |
 | `blogs.nvidia.com`, `blog.google`, `research.google`, `claude.com/blog`, `anthropic.com/news` | `ctri.nic.in`, `cdsco.gov.in` (unreachable) |
-| `pib.gov.in` press releases (GET works; HEAD returns 401) | `microsoft.com/en-us/research/blog` (403) |
+| `pib.gov.in` press releases and `static.pib.gov.in` PDFs (GET works; HEAD returns 401) | `microsoft.com/en-us/research/blog` (403) |
+| `nhs.uk` (NHS App release notes), `gov.uk` press releases | |
 | `hl7.org/fhir`, `meity.gov.in` | `deepmind.google` blog index returned binary/unusable content |
 | `openai.com/news/rss.xml`, `community.openai.com` | |
 | `hcitexpert.com` and its `feed.xml` | |
@@ -233,3 +264,4 @@ retry with GET before counting a link as broken.
 | Date | What changed |
 |---|---|
 | 2026-11-15 | **Clinical Frontier Issue 035** published (PR #6). **Research Radar** built and Issue 001 published (PR #7): `scripts/research_radar.py`, `scripts/research-radar-runbook.md`, `_data/research_radar_covered.yml`, Step 0 alternation and tie-break in both runbooks. Scope filter tightened after a dry run (min relevance 3). Issue 001 needed more checker passes than the runbook allows; the owner authorised one extra pass. This `CLAUDE.md` created as the publisher memory. |
+| 2026-11-15 (later) | **Radar process version 2**: PHR spotlight added (`--track phr`, app research rules, three papers and three apps in Issue 001), methodology moved to the end of the article as an extensible "How this issue was made" section, process version history, maker pre-flight and extra checker items added to the runbook, ledger gained `version`, `phr_*` fields. Issue 001 updated accordingly. |

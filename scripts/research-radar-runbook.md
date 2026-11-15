@@ -50,6 +50,28 @@ If the script fails (arXiv or Hugging Face unreachable), retry once; if it still
 fails, record the day in `held` with the reason. Do not substitute a hand-picked
 list.
 
+### Track 2: personal health records (PHR) spotlight, papers
+
+Every Radar edition includes a PHR spotlight (see Article format). Its three papers
+come from a second run of the same script:
+
+```bash
+python3 scripts/research_radar.py --track phr --days 90 --top 3 --reserve 10 \
+    --exclude /tmp/radar.json --out /tmp/radar_phr.json --md /tmp/radar_phr.md
+```
+
+- **Window is 90 days, not 14.** Very few preprints a fortnight mention personal
+  health records or health apps (a 15-day window returned 0 or 1 per search phrase).
+  The article must state the window.
+- **Scope:** a paper needs at least one PHR or health-app anchor term (for example
+  "personal health record", "patient portal", "mobile health app", "mHealth",
+  "patient-facing") **and** a general health relevance of at least 2.
+- `--exclude` keeps papers already on the Track 1 shortlist (top and reserve) out of
+  the spotlight. Ranking is the same rule as Track 1 (Hugging Face upvotes first,
+  keyword relevance for papers not featured there); expect all three to be
+  fallback-ranked, and say so.
+- If fewer than three papers are in scope, show what exists and say so. Never pad.
+
 ## Step 2: read every paper (MAKER)
 
 Take the `top` ten. For **each** paper:
@@ -65,6 +87,57 @@ Take the `top` ten. For **each** paper:
    article's method note how many candidates were skipped on reading.
 3. Never choose or drop a paper because you like or dislike it. The criterion
    is the criterion.
+4. Read the arXiv `comment` and `journal_ref` fields for **every** paper (Track 1
+   and Track 2). They can show acceptance at a venue; say so, and never write that
+   a paper is not peer reviewed unless the record says so (say "the arXiv record
+   gives no peer-review status" instead).
+
+Apply the same reading rules to the three Track 2 papers.
+
+## Step 3: research the PHR apps (MAKER)
+
+The spotlight also covers **three live PHR apps**. This is a researched section,
+held to the same primary-source rule as the Frontier.
+
+**Selection rule (state it in the article, never call it a ranking):** PHR or
+health-record apps from **different health-system contexts** (for example a consumer
+platform, a national health service, a national digital public good), each with a
+**recent update or announcement on the operator's or government's own pages in the
+current year**. We cannot verify app-store rankings or download counts, so the
+section is **not** a "top" or "trending" list and must never be worded as one.
+
+- **Find candidates** with WebSearch, then **fetch the operator's or government's own
+  pages** and read them. Search-result summaries and news write-ups are leads, not
+  sources. If the primary page cannot be fetched, the app cannot be featured.
+- Describe an app **only** from those pages: what it is, the capabilities **as the
+  operator describes them**, and scale figures **attributed** ("PIB says",
+  "Google says"). Dates and version numbers must match the page. Distinguish what
+  has **shipped** (release notes, launch posts) from what is **planned** (policy
+  documents), and label the latter.
+- **Never claim to have tested an app.** The article says "we have not tested them".
+- **Rotation:** do not repeat a featured app in the next three Radar issues unless
+  it has a new announcement; vary the regions. Record the three apps and their
+  source URLs in the ledger.
+- Add one **"Our reading"** line per app and a short "across the three" list, all
+  labelled as editorial. Each synthesis line must be literally true of every app or
+  paper it names (see the pre-flight checklist).
+
+## Maker pre-flight (do this before sending any draft to a checker)
+
+Every checker round on Issue 001 failed on the maker's own synthesis sentences, not
+on facts. Before the gate, read every "In this issue" bullet, "Patterns" or "across
+the three" bullet, takeaway, FAQ answer and the description, and check each for:
+
+1. A claim about **more than one** paper or app: is it literally true of **each**
+   one named?
+2. Words the sources do not literally support ("efficiency", "edge", "benchmark",
+   "peer reviewed", "validated", "trend", "keep", "most", "popular", "trending").
+3. **Timing words** ("this week", "recently") against each source's real date.
+4. A vendor or government claim stated as fact instead of attributed.
+5. Absence claims ("the abstract gives no figures", "the release notes do not
+   mention X"): confirm against the **whole** source before writing them, or drop them.
+6. Rewrite generalisations as strictly attributable statements ("NPCBench
+   reports...", "PIB says...") and drop counts and trends.
 
 ## Article format
 
@@ -73,34 +146,60 @@ Front matter as in the Frontier runbook, with these differences:
 ```yaml
 description: "The Research Radar, Issue NNN. <1-2 sentences: the window, the criterion, and the headline themes>"
 tags: [ ... , Research Radar, arXiv, Preprints, ... ]
-mentions:          # one entry per paper: {name: "<paper title>", description: "<authors, arXiv id, date>", url: "https://arxiv.org/abs/<id>"}
+mentions:          # one entry per paper (all 13) and one per app source: {name, description (authors, arXiv id, date), url}
 ```
 
-Body, as a newsletter (no dashes anywhere, see the Frontier runbook):
+Body, as a newsletter (no dashes anywhere, see the Frontier runbook). **Order matters:**
+the issue leads with the content and puts the methodology **at the end**, so readers
+can review how it was made after they have read it.
 
-- Masthead: `> **The Research Radar** · <Day Month Year> · Issue NNN`, plus the
-  one-line tagline.
-- **In this issue**: 2 to 4 bullets (the themes, not a list of titles).
-- **How these ten were chosen** (always included): window dates, pool size, how
-  many in scope, the criterion, how many were ranked by Hugging Face upvotes vs
-  the keyword fallback, the `as_of` time for upvote counts, and how many
-  candidates were skipped on reading.
-- **Preprint notice** (always included): "These are arXiv preprints. They have
-  not necessarily been peer reviewed, and results may change. None of this is
-  clinical guidance."
-- **The ten papers**, numbered in rank order. Each entry has: title linked to
-  `arxiv.org/abs/<id>`; authors (first three, then "et al."); submitted date;
-  `Rank basis:` Hugging Face upvotes (count, as of date) **or** "not featured on
-  Hugging Face, ranked by keyword relevance"; then three short lines:
-  **What it does** (from the paper), **What it reports** (only what the abstract
-  or full text states, attributed to the authors), **Caveat** (a limitation the
-  paper states, or "preprint, not peer reviewed").
-  After each entry, optionally one line headed **Why it could matter in India**,
-  clearly labelled as our reading, never as a claim about the paper.
-- **Patterns across the ten**: 2 to 3 bullets on what the set shows together.
-- **Takeaway** and the sign-off linking back to HCITExperts, as in the Frontier.
+1. Masthead: `> **The Research Radar** · <Day Month Year> · Issue NNN`, plus the
+   one-line tagline.
+2. **In this issue**: 2 to 4 bullets (the themes, not a list of titles).
+3. **Preprint notice** (always included, near the top): "These are arXiv preprints.
+   They have not necessarily been peer reviewed, and results may change. We report
+   what the authors state in their abstracts. None of this is clinical guidance."
+4. **The ten papers**, numbered by shortlist rank. If a candidate was skipped on
+   reading, the numbers start above 1: add one line under the heading saying why and
+   pointing to the process section. Each entry has: title linked to
+   `arxiv.org/abs/<id>`; authors (first three, then "et al."); submitted date;
+   `Rank basis:` Hugging Face upvotes (count) **or** "not featured on Hugging Face,
+   ranked by keyword relevance"; then three short lines:
+   **What it does** (from the paper), **What it reports** (only what the abstract
+   or full text states, attributed to the authors), **Caveat** (a limitation the
+   paper states, or "preprint, not peer reviewed"). After each entry, optionally
+   one line headed **Why it could matter in India**, clearly labelled as our
+   reading, never as a claim about the paper.
+5. **Patterns across the ten**: 2 to 3 bullets, each strictly attributable.
+6. **Personal health records spotlight**: a one-paragraph intro; **three preprints**
+   on PHRs and health apps (same entry template as step 4, with the Track 2 rank
+   basis); **three PHR apps in the wild** (for each: context, sources linked,
+   what it is, capabilities as the operator describes them or what has shipped vs
+   what is planned, and an "Our reading" line); and a short "across the three apps
+   and three papers (our reading)" list.
+7. **Takeaway.**
+8. **How this issue was made** (always last before the sign-off). Begin with the
+   italic **process version line** (see Process version history). Then:
+   - *Track 1, the ten papers:* window, pool size, how many in scope, the criterion,
+     the upvote vs fallback split and the `as_of` time, and how many candidates were
+     skipped on reading and why.
+   - *Track 2, the PHR spotlight:* the 90 day window, pool, in scope, that papers on
+     the Track 1 shortlist were excluded, the ranking basis and `as_of`; and the app
+     selection rule (not a ranking; contexts; sources; rotation).
+   - *Checking:* the independent reviewer (separate agent, sees only the draft and
+     the written procedure, re-derives claims from primary sources, approves or
+     lists fixes, extra rounds need the human editor); what is and is not read
+     (abstracts only unless said; apps not tested); "our reading" is opinion; an AI
+     reviewer can miss errors.
+   - Any **new concept or process added to the Radar** gets its own bullet or
+     sub-heading here, so readers can see how the Radar is made as it evolves.
+9. Sign-off linking back to HCITExperts, as in the Frontier.
 
-About 1,200 to 1,800 words of body. Prefer tight bullets over paragraphs. No
+**Updating a published issue.** Only when the owner asks. Keep the `date`, add a
+one-line blockquote near the top: `> **Updated <date>.** <what changed>`, say whether
+the rest is unchanged, and re-run the checker gate on the updated text.
+
+About 1,200 to 1,800 words for the ten papers' part; the spotlight and process section add to that (Issue 001 v2 is about 5,000 words in total, and a shorter template is on the backlog). Prefer tight bullets over paragraphs. No
 claim of clinical validation, regulatory approval or deployment unless the paper
 says so, and then attributed to the authors.
 
@@ -133,13 +232,41 @@ In addition to the Frontier checks, the checker must:
    as the editor's reading.
 6. Every outbound link returns 200 (GET if HEAD fails) and points where the text
    says.
+7. **Apps:** for each PHR app, fetch the operator's or government's own page and
+   confirm every capability, date, version number and figure against it. Mark
+   UNSUPPORTED any feature not on the page, and flag anything planned that is
+   written as shipped. Confirm no sentence calls the apps ranked, top, trending or
+   popular, that scale figures are attributed, and that the article says the apps
+   were not tested.
+8. **Track 2:** confirm the PHR papers as in checks 1, 2 and 4, the stated window,
+   pool and in-scope numbers against `radar_phr.json`, and that no paper is called
+   "not peer reviewed" unless the record says so (check `comment` and `journal_ref`).
+9. **Process section:** confirm "How this issue was made" matches this runbook and
+   the ledger (tracks, windows, counts, selection rule, rotation rule, checking
+   description, process version line) and makes no claim about the process that is
+   not true.
+10. **Synthesis sentences:** check every "In this issue", "Patterns", "across the
+    three" and takeaway line word by word against the sources (see Maker pre-flight).
+
+## Process version history
+
+The article's process section opens with a version line. **Bump the version, add a
+row here, and say what changed in the article** whenever the way the Radar is made
+changes (a new track, a new rule, a new check).
+
+| Version | Date | What changed |
+|---|---|---|
+| 1 | 2026-11-15 | Ten papers (Track 1). Method note at the top of the issue. |
+| 2 | 2026-11-15 | Method note moved to the end as "How this issue was made". Track 2 added: personal health records spotlight (three papers from a 90 day shortlist plus three PHR apps researched from primary sources). Maker pre-flight and extra checker items added. |
+
+Backlog (not yet in the process): a biomedical-agents track (see `CLAUDE.md`).
 
 ## Publish and ledger
 
 Identical to the Frontier's Publish step (set the front matter `date` to the
 current IST time immediately before committing; push; verify the live URL and
 feed). Append the entry to `_data/research_radar_covered.yml` in the same commit,
-with the shape documented at the top of that file. A held day goes in `held`.
+with the shape documented at the top of that file (including `phr_papers`, `phr_apps` and the process `version`). A held day goes in `held`.
 
 ## Guardrails
 

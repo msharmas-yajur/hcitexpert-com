@@ -20,6 +20,10 @@
 #     ranked_by_hf_upvotes: <how many of the ten were ranked by upvotes>
 #     papers:
 #       - {rank: 1, url: "https://arxiv.org/abs/<id>", title: "...", rank_basis: hf_upvotes|keyword_relevance_fallback, hf_upvotes: N|null}
+#     version: <process version of the Radar when this issue was made, see the runbook>
+#     phr_window / phr_as_of / phr_pool_size / phr_in_scope: Track 2 (PHR spotlight) shortlist numbers
+#     phr_papers:         # the three PHR spotlight papers (same fields as `papers`); never selected again
+#     phr_apps:           # the three PHR apps featured: {name, context, sources: [primary URLs]}; do not repeat within the next three Radar issues
 #     skipped:            # candidates dropped after reading, with the reason
 #       - {url: "https://arxiv.org/abs/<id>", reason: "..."}
 #
@@ -46,6 +50,19 @@ covered:
       - {rank: 9, url: "https://arxiv.org/abs/2611.08672", title: "Real-World Adoption, Use, and Governance of an LLM-Based Electronic Health Record Search and Synthesis Platform", rank_basis: keyword_relevance_fallback, hf_upvotes: null}
       - {rank: 10, url: "https://arxiv.org/abs/2611.17053", title: "Evaluating Pretrained Language Semantics for Structured EHR Prediction Tasks", rank_basis: keyword_relevance_fallback, hf_upvotes: null}
       - {rank: 11, url: "https://arxiv.org/abs/2611.16393", title: "TransXplainRRG: A Radiologist-Evaluated LVLM for Chest Radiograph Report Generation", rank_basis: keyword_relevance_fallback, hf_upvotes: null}
+    version: 2
+    phr_window: {start: 2026-08-17, end: 2026-11-15}
+    phr_as_of: "2026-11-15T10:02Z"
+    phr_pool_size: 2325
+    phr_in_scope: 9
+    phr_papers:
+      - {rank: 1, url: "https://arxiv.org/abs/2610.41437", title: "A prospective randomized study of patient-centered AI for clinical visit preparation", rank_basis: keyword_relevance_fallback, hf_upvotes: null}
+      - {rank: 2, url: "https://arxiv.org/abs/2610.23851", title: "Bad Diagnosis: Analyzing Consent and Data Collection Practices of Mobile Medical Apps", rank_basis: keyword_relevance_fallback, hf_upvotes: null}
+      - {rank: 3, url: "https://arxiv.org/abs/2610.31467", title: "From Structured Records to Patient Narratives: Preserving Clinical Alignment in LLM-Generated Health Summaries", rank_basis: keyword_relevance_fallback, hf_upvotes: null}
+    phr_apps:
+      - {name: "Google Health app", context: "consumer platform, US and global", sources: ["https://blog.google/products-and-platforms/products/google-health/google-health-app/", "https://blog.google/products-and-platforms/products/google-health/google-health-coach"]}
+      - {name: "NHS App", context: "national health service, England", sources: ["https://www.nhs.uk/nhs-app/nhs-app-help-and-support/nhs-app-technical-information/nhs-app-release-notes/", "https://www.gov.uk/government/news/managing-healthcare-easy-as-online-banking-with-revamped-nhs-app"]}
+      - {name: "Aarogya Setu 2.0", context: "national digital public good, India (ABDM)", sources: ["https://www.pib.gov.in/PressReleasePage.aspx?PRID=2278988&reg=48&lang=1", "https://static.pib.gov.in/WriteReadData/specificdocs/documents/2026/jul/doc202676912801.pdf"]}
     skipped:
       - {url: "https://arxiv.org/abs/2611.01527", reason: "Audits biomedical research agents (SciFact claims, hERG assay allocation), not digital health or clinical care; skipped on reading. Shortlist rank 1, 10 upvotes at as_of."}
 
