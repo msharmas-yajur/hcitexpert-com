@@ -18,6 +18,8 @@ claim checks differ, and they are set out here.
    is a **Research Radar**, today is a **Clinical Frontier** (follow the Frontier
    runbook instead). Frontier entries carry no `series` marker; every entry in
    `clinical_frontier_covered.yml` is a Frontier.
+   If the two ledgers share the latest date (a double-edition day), the Radar
+   counts as the later edition, so the next day is a Frontier.
 4. Radar issue number = (entries in `research_radar_covered.yml` `covered`) + 1,
    zero-padded to 3 digits.
 
