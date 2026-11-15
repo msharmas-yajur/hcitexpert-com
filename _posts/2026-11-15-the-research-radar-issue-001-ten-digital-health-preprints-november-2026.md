@@ -283,7 +283,7 @@ Sources: Google's posts of 7 May 2026 on the [Google Health app](https://blog.go
 - Google and India's Aarogya Setu 2.0 both build on an app that already had users: Google updated the existing Fitbit app, and PIB cites nearly 20 crore downloads for Aarogya Setu.
 - Each app's source pages mention AI features: Google's Coach is a Premium subscription feature, Aarogya Setu 2.0 lists AI digitisation of uploaded records among its features, and the Saudi Ministry describes Sehhaty's digital twin and smart assistant.
 - Google appears in all three sources: it operates the Google Health app, PIB says Aarogya Setu 2.0's AI document digitisation uses Google's open-source Medical Data Toolkit, and the Saudi Ministry says the Sehhaty Smart Health Coach was launched in collaboration with Google.
-- The three preprints each address a different question relevant to patient-facing health data and apps: whether permissions and consent match purpose (mHealth apps on Google Play), whether a structured workflow helps patients prepare for a visit (in the Google Health app), and whether LLM-written summaries of structured health records stay faithful (tested on semi-synthetic menstrual health records).
+- The three preprints each address a different question relevant to patient-facing health data and apps: whether permissions and consent match purpose (mHealth apps on Google Play), whether a structured workflow helps patients prepare for a visit (in the Google Health app), and whether LLM-written summaries of structured health records stay faithful.
 
 ## The takeaway
 
