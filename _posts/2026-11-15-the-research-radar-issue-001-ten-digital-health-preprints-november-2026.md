@@ -2,7 +2,7 @@
 title: "The Research Radar, Issue 001: Ten Digital Health and Clinical AI Preprints from 1 to 15 November 2026, Plus a Personal Health Records Spotlight"
 date: 2026-11-15 15:14:18 +0530
 author: Manish Sharma
-description: "The Research Radar, Issue 001. Ten recent arXiv preprints on digital health and clinical AI, chosen by a stated method, from dermatology RAG and a cancer care-pathway benchmark to biosignal foundation models and a real-world study of an LLM record-search tool. Plus a personal health records spotlight: three preprints on PHRs and health apps, and three live PHR apps, one each from India (Aarogya Setu 2.0), the Middle East (Sehhaty, Saudi Arabia) and the US (Google Health app), described from their operators' own pages. All papers are arXiv preprints, not clinical guidance."
+description: "The Research Radar, Issue 001. Ten recent arXiv preprints on digital health and clinical AI, chosen by a stated method, from dermatology RAG and a cancer care-pathway benchmark to biosignal foundation models and a real-world study of an LLM record-search tool. Plus a personal health records spotlight: three preprints on PHRs and health apps, and three live PHR or health-record apps, one each from India (Aarogya Setu 2.0), the Middle East (Sehhaty, Saudi Arabia) and the US (Google Health app), described from their operators' own pages. All papers are arXiv preprints, not clinical guidance."
 keywords: "personal health record apps, PHR app comparison, Google Health app, Sehhaty Saudi Arabia, Aarogya Setu 2.0, PHR apps India Middle East US, mobile health app privacy, digital health preprints, clinical AI arXiv, EHR large language model, medical vision-language model, biosignal foundation model EEG ECG, radiology report generation, nasopharyngeal carcinoma benchmark, dermatology RAG, LLM electronic health record adoption, research radar healthcare AI"
 image: /assets/images/logo.png
 reading_time: "13 min read"
@@ -92,7 +92,7 @@ faq:
   - q: "Are these papers peer reviewed?"
     a: "They are arXiv preprints. For eight of the ten, the arXiv record gives no peer-review status, so we cannot say whether they have been reviewed. Two note acceptance in their arXiv comments (NPCBench at the NeurIPS 2026 Evaluations and Datasets Track, and tEHR in Proceedings of Machine Learning Research, volume 346), but we read only the preprint abstracts, and results can change. Everything described here is what the authors report in their own abstracts. None of it is clinical guidance, and none of it establishes that a tool is safe or effective in a clinic."
   - q: "How were the personal health records papers and apps chosen?"
-    a: "The three papers came from a second shortlist run over a 90 day window (17 August to 15 November 2026) for papers mentioning personal health records, patient portals or health apps, ranked the same way as the main ten. None of the nine in-scope papers was featured on Hugging Face daily papers, so all were ranked by keyword relevance. The three apps are not a popularity or download ranking. They are one PHR app each from India, the Middle East and the US, the three markets we are tracking in the near term, each with a recent update or announcement on the operator's or government's own pages in 2026, described only from those pages. We have not tested the apps."
+    a: "The three papers came from a second shortlist run over a 90 day window (17 August to 15 November 2026) for papers mentioning personal health records, patient portals or health apps, ranked the same way as the main ten. None of the nine in-scope papers was featured on Hugging Face daily papers, so all were ranked by keyword relevance. The three apps are not a popularity or download ranking. They are one PHR or health-record app each from India, the Middle East and the US, the three markets we are tracking in the near term, each with a recent update or announcement on the operator's or government's own pages in 2026, described only from those pages. We have not tested the apps."
   - q: "Does a higher Hugging Face upvote count mean a better paper?"
     a: "No. Upvotes are a rough signal of attention among Hugging Face readers, not of quality, and the counts here are small (between 1 and 4 for the six papers ranked by them). The other four papers were not featured on Hugging Face and were ranked by keyword relevance, which says nothing about popularity or quality."
   - q: "What is the most practically useful paper in this set for a hospital IT team?"
@@ -107,9 +107,9 @@ faq:
 - One benchmark (NPCBench) reports a **composition gap**: strong performance on individual tasks does not ensure jointly correct diagnostic and care answers for the same patient.
 - **Three EHR papers take three angles**: what the record actually encodes, how clinicians used a record-search assistant in one health system, and how a language model can be adapted to EHR event text.
 - **Two papers flag their own limits.** TransXplainRRG describes its radiologist evaluation of 100 reports as preliminary, and the Mixed Signals authors say their approach needs further investigation before practical use.
-- **A personal health records spotlight**: three preprints on PHRs and health apps, and three live PHR apps, one each from India (Aarogya Setu 2.0), the Middle East (Sehhaty, Saudi Arabia) and the US (Google Health app), each described from its operator's own pages.
+- **A personal health records spotlight**: three preprints on PHRs and health apps, and three live PHR or health-record apps, one each from India (Aarogya Setu 2.0), the Middle East (Sehhaty, Saudi Arabia) and the US (Google Health app), each described from its operator's own pages.
 
-> **Updated 15 November 2026.** The method note that opened this issue now sits at the end, under "How this issue was made", and the personal health records spotlight is new. The ten papers are unchanged.
+> **Updated 15 November 2026.** The method note that opened this issue now sits at the end, under "How this issue was made", and the personal health records spotlight is new. The ten papers and the patterns section are unchanged. The front matter, tagline, FAQ and "In this issue" were updated to match.
 
 **Preprint notice.** These are arXiv preprints. They have not necessarily been peer reviewed, and results may change. We report what the authors state in their abstracts. None of this is clinical guidance.
 
@@ -215,7 +215,7 @@ Chayan Mondal, Duc-Son Pham, Tele Tan et al. · arXiv:2611.16393 · 12 November 
 
 ## Personal health records spotlight
 
-Personal health records (PHRs) and the apps that carry them are where patients meet their own health data. This section pairs three recent preprints with three live PHR apps, one each from India, the Middle East and the US, the three markets we are tracking in the near term. The apps are described from their operators' own pages. We have not tested them.
+Personal health records (PHRs) and the apps that carry them are where patients meet their own health data. This section pairs three recent preprints with three live PHR or health-record apps, one each from India, the Middle East and the US, the three markets we are tracking in the near term. The apps are described from their operators' own pages. We have not tested them.
 
 ### Three preprints on PHRs and health apps
 
@@ -248,9 +248,9 @@ Bayram Ayadi, Florian Geissler, Johanna Schmidhuber · arXiv:2610.31467 · 22 Oc
 - **Caveat:** one use case, menstrual health monitoring. Preprint.
 - **Why it could matter in India (our reading):** the trade-off the authors report between clinical alignment and readability is worth testing in any PHR feature that rewrites records in plain language.
 
-### Three PHR apps in the wild
+### Three PHR and health-record apps in the wild
 
-These are not ranked and are not a popularity measure. Each is a PHR app from one of our three tracked markets, with an update or announcement on the operator's or government's own pages in 2026.
+These are not ranked and are not a popularity measure. Each is a PHR or health-record app from one of our three tracked markets, with an update or announcement on the operator's or government's own pages in 2026.
 
 #### Aarogya Setu 2.0: a national digital public good, India
 
@@ -265,23 +265,23 @@ Sources: PIB's [release of 29 June 2026](https://www.pib.gov.in/PressReleasePage
 
 Sources: the Saudi Ministry of Health's news item of [9 August 2026](https://www.moh.gov.sa/en/Ministry/MediaCenter/News/Pages/news-2026-08-09-001.aspx) and its announcements of [15 August 2026](https://www.moh.gov.sa/en/Ministry/MediaCenter/Ads/Pages/ads-2026-08-15-001.aspx) and [10 June 2026](https://www.moh.gov.sa/en/Ministry/MediaCenter/Ads/Pages/ads-2026-06-10-001.aspx).
 
-- **What it is:** the Ministry says virtual care extends to beneficiaries at home through the Sehhaty app, which exceeded 31 million users in 2025.
+- **What it is:** the Ministry says virtual care extends to beneficiaries at home through the Sehhaty app, which exceeded 31 million users in 2025. The Ministry's pages do not call Sehhaty a personal health record. They describe prescription viewing and a smart assistant integrated with the beneficiary's health record.
 - **Capabilities, as the Ministry describes them (9 August 2026):** appointment booking, viewing prescriptions, searching for medications and issuing sick leaves. It also incorporates AI technologies: a digital twin that analyses health status and gives personalised preventive recommendations, and a smart assistant that helps interpret medical results and provides medication and appointment reminders through integration with the beneficiary's health record. The Ministry also says the Smart Health Coach, launched in collaboration with Google through the Sehhaty app at the Global Health Exhibition 2025, gives personalised health guidance and preventive recommendations based on beneficiaries' data and health indicators.
 - **How it is being extended:** on 10 June 2026 the Ministry launched an e-consultation to enhance medical report services in the app, covering residency, weapons licensing and driving fitness medical examination reports. On 15 August 2026 it launched an e-consultation on proposed features, including appointment attendance confirmation and a child autism screening questionnaire, or both. These pages describe proposed features, not shipped ones.
-- **Our reading:** the Ministry asks the public for feedback before adding features, and the app carries transactional services such as sick leaves and medical reports alongside its AI features.
+- **Our reading:** the Ministry opened e-consultations on proposed features on 10 June and 15 August 2026, and the app carries transactional services such as sick leaves alongside its AI features.
 
-#### Google Health app: a consumer platform, United States
+#### Google Health app: a consumer platform, United States (medical records sync)
 
 Sources: Google's posts of 7 May 2026 on the [Google Health app](https://blog.google/products-and-platforms/products/google-health/google-health-app/) and the [Google Health Coach](https://blog.google/products-and-platforms/products/google-health/google-health-coach).
 
-- **What it is:** the Fitbit app becoming the Google Health app, which Google describes as a centralized place for health and wellness data. It starts rolling out to all users on 19 May 2026 as an update to existing Fitbit users, with four tabs: Today, Fitness, Sleep and Health.
+- **What it is:** the Fitbit app becoming the Google Health app, which Google describes as a centralized place for health and wellness data. It starts rolling out to all users on 19 May 2026 as an update to existing Fitbit users, with four tabs: Today, Fitness, Sleep and Health. Google describes the app as rolling out to all users and the Coach as globally available. The medical records sync it describes is for the US, which is why this is our US entry.
 - **Capabilities, as Google describes them:** it works with hundreds of apps and devices through Health Connect, Apple Health or the Google Health APIs. In the US, users can sync medical records to view lab results, vitals and medications and how they change over time, with records stored in the app and under the user's control. The Google Health Coach, built with Gemini, is available through a Google Health Premium subscription and can give summaries of medical records on the Health tab. Google says it committed to not using Fitbit user health and wellness data for Google Ads.
 - **Our reading:** Google updated an existing app rather than launching a new one. Records sync is described for the US, and the AI coach sits behind a subscription.
 
 ### Across the three apps and three papers (our reading)
 
 - Google and India's Aarogya Setu 2.0 both build on an app that already had users: Google updated the existing Fitbit app, and PIB cites nearly 20 crore downloads for Aarogya Setu.
-- Each app's own pages mention AI features: Google's Coach is a Premium subscription feature, Aarogya Setu 2.0 lists AI digitisation of uploaded records among its features, and the Saudi Ministry describes Sehhaty's digital twin and smart assistant.
+- Each app's source pages mention AI features: Google's Coach is a Premium subscription feature, Aarogya Setu 2.0 lists AI digitisation of uploaded records among its features, and the Saudi Ministry describes Sehhaty's digital twin and smart assistant.
 - Google appears in all three sources: it operates the Google Health app, Aarogya Setu 2.0's AI document digitisation uses Google's open-source Medical Data Toolkit, and the Saudi Ministry says the Sehhaty Smart Health Coach was launched in collaboration with Google.
 - The three preprints each address a different question relevant to patient-facing health data and apps: whether permissions and consent match purpose (mHealth apps on Google Play), whether a structured workflow helps patients prepare for a visit (in the Google Health app), and whether LLM-written summaries of records from wearables and digital health systems stay faithful.
 
@@ -304,7 +304,7 @@ Read these as a sample of recent preprints chosen by a stated method, not as evi
 **Track 2: the personal health records spotlight**
 
 - **Papers:** a second shortlist run over a longer window, 17 August to 15 November 2026 (90 days), because few preprints in a fortnight mention personal health records or health apps. The pool was 2,325 candidates (arXiv results plus Hugging Face daily papers, before the scope filter). **9** were in scope: a paper needed a PHR or health-app term such as "personal health record", "patient portal" or "mobile health app", plus general health terms. Papers already in Track 1 were excluded. None of the nine was featured on Hugging Face daily papers, so all were ranked by keyword relevance and the top three are shown. Run as of 15 November 2026, 10:02 UTC.
-- **Apps:** not a popularity or download ranking, because we cannot verify app-store data. The rule is: one PHR or health-record app from each of India, the Middle East and the US, each with a recent update or announcement on the operator's or government's own pages in 2026, described only from those pages. This issue picked one app each from India (Aarogya Setu 2.0), the Middle East (Sehhaty, Saudi Arabia) and the US (Google Health app), the three markets we are tracking in the near term. A featured app is not repeated in the next three Radar issues unless it has a new announcement.
+- **Apps:** not a popularity or download ranking, because we cannot verify app-store data. The rule is: one PHR or health-record app from each of India, the Middle East and the US, each with a recent update or announcement on the operator's or government's own pages in 2026, described only from those pages. This issue picked one app each from India (Aarogya Setu 2.0), the Middle East (Sehhaty, Saudi Arabia) and the US (Google Health app, whose medical records sync Google describes for the US), the three markets we are tracking in the near term. A featured app is not repeated in the next three Radar issues unless it has a new announcement.
 
 **Checking**
 
