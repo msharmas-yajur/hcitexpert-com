@@ -189,7 +189,8 @@ can review how it was made after they have read it.
 2. **In this issue**: 2 to 4 bullets (the themes, not a list of titles).
 3. **Preprint notice** (always included, near the top): "These are arXiv preprints.
    They have not necessarily been peer reviewed, and results may change. We report
-   what the authors state in their abstracts. None of this is clinical guidance."
+   what the authors state in their abstracts and, where marked, in their full texts. None
+   of this is clinical guidance."
 4. **The ten papers**, numbered by shortlist rank. If a candidate was skipped on
    reading, the numbers start above 1: add one line under the heading saying why and
    pointing to the process section. Each entry has: title linked to
