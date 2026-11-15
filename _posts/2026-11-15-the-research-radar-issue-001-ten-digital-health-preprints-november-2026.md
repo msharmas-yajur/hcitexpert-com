@@ -109,7 +109,7 @@ faq:
 - **TransXplainRRG and Mixed Signals flag their own limits.** TransXplainRRG describes its radiologist evaluation of 100 reports as preliminary, and the Mixed Signals authors say their approach needs further investigation before practical use.
 - **A personal health records spotlight**: three preprints on PHRs and health apps, and three live PHR or health-record apps, one each from India (Aarogya Setu 2.0), the Middle East (Sehhaty, Saudi Arabia) and the US (Google Health app), each described from its operator's or government's own pages.
 
-> **Updated 15 November 2026.** The method note that opened this issue now sits at the end, under "How this issue was made", and the personal health records spotlight is new. The patterns section is unchanged, and the ten papers are unchanged apart from one caveat wording fix (Neuro-VL). The front matter, tagline, numbering note, FAQ, "In this issue" and sign-off were updated to match.
+> **Updated 15 November 2026.** The method note that opened this issue now sits at the end, under "How this issue was made", and the personal health records spotlight is new. The patterns section is unchanged, and the ten papers are unchanged apart from one caveat wording fix (Neuro-VL). The front matter, tagline, preprint notice, numbering note, FAQ, "In this issue" and sign-off were updated to match.
 
 **Preprint notice.** These are arXiv preprints. They have not necessarily been peer reviewed, and results may change. We report what the authors state in their abstracts and, where marked, in their full texts. None of this is clinical guidance.
 
