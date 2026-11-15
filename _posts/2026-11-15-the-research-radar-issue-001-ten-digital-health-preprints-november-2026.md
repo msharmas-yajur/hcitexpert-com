@@ -1,6 +1,6 @@
 ---
 title: "The Research Radar, Issue 001: Ten Digital Health and Clinical AI Preprints from 1 to 15 November 2026"
-date: 2026-11-15 15:00:00 +0530
+date: 2026-11-15 15:14:18 +0530
 author: Manish Sharma
 description: "The Research Radar, Issue 001. Ten recent arXiv preprints on digital health and clinical AI, chosen by a stated method: Hugging Face daily-paper upvotes first, keyword relevance for papers not featured there. From dermatology RAG and a cancer care-pathway benchmark to biosignal foundation models, a neuroimaging vision-language model and a real-world study of an LLM record-search tool in a hospital system. All are arXiv preprints, not clinical guidance."
 keywords: "digital health preprints, clinical AI arXiv, EHR large language model, medical vision-language model, biosignal foundation model EEG ECG, radiology report generation, nasopharyngeal carcinoma benchmark, dermatology RAG, LLM electronic health record adoption, research radar healthcare AI"
