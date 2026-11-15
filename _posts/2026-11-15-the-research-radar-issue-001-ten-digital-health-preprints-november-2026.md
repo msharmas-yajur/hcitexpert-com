@@ -19,7 +19,7 @@ tags:
   - Medical Imaging
   - Biosignals
   - Personal Health Records
-  - PHR Apps
+  - PHR and Health Record Apps
   - Aarogya Setu
   - Sehhaty
   - India
@@ -106,10 +106,10 @@ faq:
 
 - One benchmark (NPCBench) reports a **composition gap**: strong performance on individual tasks does not ensure jointly correct diagnostic and care answers for the same patient.
 - **Three EHR papers take three angles**: what the record actually encodes, how clinicians used a record-search assistant in one health system, and how a language model can be adapted to EHR event text.
-- **Two papers flag their own limits.** TransXplainRRG describes its radiologist evaluation of 100 reports as preliminary, and the Mixed Signals authors say their approach needs further investigation before practical use.
+- **TransXplainRRG and Mixed Signals flag their own limits.** TransXplainRRG describes its radiologist evaluation of 100 reports as preliminary, and the Mixed Signals authors say their approach needs further investigation before practical use.
 - **A personal health records spotlight**: three preprints on PHRs and health apps, and three live PHR or health-record apps, one each from India (Aarogya Setu 2.0), the Middle East (Sehhaty, Saudi Arabia) and the US (Google Health app), each described from its operator's own pages.
 
-> **Updated 15 November 2026.** The method note that opened this issue now sits at the end, under "How this issue was made", and the personal health records spotlight is new. The ten papers and the patterns section are unchanged. The front matter, tagline, FAQ and "In this issue" were updated to match.
+> **Updated 15 November 2026.** The method note that opened this issue now sits at the end, under "How this issue was made", and the personal health records spotlight is new. The patterns section is unchanged, and the ten papers are unchanged apart from one caveat wording fix (Neuro-VL). The front matter, tagline, numbering note, FAQ, "In this issue" and sign-off were updated to match.
 
 **Preprint notice.** These are arXiv preprints. They have not necessarily been peer reviewed, and results may change. We report what the authors state in their abstracts. None of this is clinical guidance.
 
@@ -168,7 +168,7 @@ Chenhui Zhao, Akshay Rao, Akhil Kondepudi et al. · arXiv:2611.15094 · 11 Novem
 
 - **What it does:** Neuro-VL, a vision-language model trained on nearly one million neuroimaging studies from routine clinical care, which the authors say can interpret complete examinations and discuss findings in natural language.
 - **What it reports:** across internal and international datasets, the authors say it outperformed frontier general-purpose and specialised medical models at diagnosing, localising and describing abnormalities and at generating radiology reports. They also report that it compared serial examinations to assess progression and more reliably resisted misleading clinical assumptions than leading frontier models from OpenAI and Google.
-- **Caveat:** these are the authors' own comparisons, and the abstract gives no figures. Preprint.
+- **Caveat:** these are the authors' own comparisons, and the abstract gives no performance figures. Preprint.
 - **Why it could matter in India (our reading):** the training data came from health systems' routine care, which raises the question of what comparable Indian multi-hospital data collaborations would need.
 
 ### 8. [The Dark Matter of Clinical Data: An Identification Limit on Disentangling Physiology from Care Process in electronic health records](https://arxiv.org/abs/2611.11726)
@@ -227,7 +227,7 @@ Xincheng Tan, Matthew Thompson, Xiang Ji et al. · arXiv:2610.41437 · 30 Octobe
 
 - **What it does:** an LLM-based visit preparation agent that guides patients before an appointment by gathering clinical context, setting visit expectations, providing relevant health information, building a prioritised list of questions for their clinician and generating a summary.
 - **What it reports:** in a prospective consented randomized study in the Google Health app, 802 U.S. adults held 866 health-related conversations with the agent (standard or concise variant) or a minimally prompted control chatbot built on the same LLM. In clinician reviews of completed sessions (n = 272), comprehensive preparation was 67.2% against 50.6% (P < 0.05) and alignment with patients' health context was 98.9% against 90.4% (P < 0.01). In patient post-surveys (n = 460), visit preparedness was 73.8% against 57.0% (P < 0.01). The authors report high medical safety and appropriateness across all study arms, and that clinician and participant metrics were not significantly correlated.
-- **Caveat:** U.S. adults in one app. The abstract reports no clinical outcomes, and the authors say future studies should look at in-visit communication and clinical outcomes. Preprint.
+- **Caveat:** per the full text, participants were English-speaking U.S. adults using the Google Health app on an Android phone. The authors report that 42.3% of included conversations ended before completion, and clinical evaluation covered completed sessions only. The abstract reports no clinical outcomes, and the authors say future studies should look at in-visit communication and clinical outcomes. Preprint.
 - **Why it could matter in India (our reading):** a pre-visit workflow that ends in a question list for the clinician is a pattern that ABDM-connected PHR apps could test with their own users.
 
 #### [Bad Diagnosis: Analyzing Consent and Data Collection Practices of Mobile Medical Apps](https://arxiv.org/abs/2610.23851)
@@ -237,22 +237,22 @@ Ethan Myers, Lorenzo De Carli, Shantanu Sharma et al. · arXiv:2610.23851 · 16 
 - **What it does:** a measurement study of consent and data collection practices across 10,000+ mHealth apps on the Google Play Store, combining static analysis and privacy policy examination, with an operational definition that separates health apps from general wellness programs.
 - **What it reports:** 69.15% of apps request at least one permission unrelated to their stated purpose. Over 52.9% request location data, and 50.5% and 34.9% request camera and microphone access, despite no functional justification based on app descriptions and stated purposes. Nearly 93% fail to provide users with a consent form, which the authors say directly violates regulatory requirements such as GDPR, and among the remaining 7%, 1 in 14 show a gap between the consent obtained and the personally identifiable information collected. The authors plan to release their dataset and measurement tools.
 - **Caveat:** Google Play apps only, with findings from static analysis and privacy policy examination. Preprint.
-- **Why it could matter in India (our reading):** PIB says every new app must be tested in a sandbox and pass a security audit that checks how the app handles and protects patient data before it can connect to ABDM. This paper does not study ABDM apps, but it shows what such checks are meant to catch.
+- **Why it could matter in India (our reading):** PIB says every new app must be tested in a sandbox and pass a security audit that checks how the app handles and protects patient data before it can connect to ABDM. This paper does not study ABDM apps, but it examines the kind of permission and consent practices such checks bear on.
 
 #### [From Structured Records to Patient Narratives: Preserving Clinical Alignment in LLM-Generated Health Summaries](https://arxiv.org/abs/2610.31467)
 
 Bayram Ayadi, Florian Geissler, Johanna Schmidhuber · arXiv:2610.31467 · 22 October 2026 · **Rank basis:** not featured on Hugging Face, ranked by keyword relevance
 
-- **What it does:** investigates evidence-grounded health summarisation for menstrual health monitoring. LLMs turn structured records from wearable and digital health systems into patient-accessible narratives, using a constrained generation framework that combines structured evidence conditioning with retrieval-augmented generation.
+- **What it does:** investigates evidence-grounded health summarisation for menstrual health monitoring. LLMs turn structured records into patient-accessible narratives, using a constrained generation framework that combines structured evidence conditioning with retrieval-augmented generation. The authors motivate this by wearable and digital health systems generating longitudinal physiological records.
 - **What it reports:** evaluated with natural language inference, atomic factuality and readability measures across three LLMs and 4,500 generated summaries, explicit grounding constraints consistently improve clinical alignment, particularly uncertainty preservation. Effects on omission are model-dependent, and the improved alignment comes at the cost of increased reading difficulty and medical terminology.
-- **Caveat:** one use case, menstrual health monitoring. Preprint.
+- **Caveat:** one use case, menstrual health monitoring, on a semi-synthetic dataset that the authors generated from a causal model. The full text says no real patient records or wearable device data were used, that neither the generated records nor the ground truth were reviewed by a clinician, and that the findings should not be taken as validated on real-world data distributions. Preprint.
 - **Why it could matter in India (our reading):** the trade-off the authors report between clinical alignment and readability is worth testing in any PHR feature that rewrites records in plain language.
 
 ### Three PHR and health-record apps in the wild
 
 These are not ranked and are not a popularity measure. Each is a PHR or health-record app from one of our three tracked markets, with an update or announcement on the operator's or government's own pages in 2026.
 
-#### Aarogya Setu 2.0: a national digital public good, India
+#### Aarogya Setu 2.0: a national health app, India
 
 Sources: PIB's [release of 29 June 2026](https://www.pib.gov.in/PressReleasePage.aspx?PRID=2278988&reg=48&lang=1) and its [ABDM document of 6 July 2026](https://static.pib.gov.in/WriteReadData/specificdocs/documents/2026/jul/doc202676912801.pdf).
 
@@ -283,7 +283,7 @@ Sources: Google's posts of 7 May 2026 on the [Google Health app](https://blog.go
 - Google and India's Aarogya Setu 2.0 both build on an app that already had users: Google updated the existing Fitbit app, and PIB cites nearly 20 crore downloads for Aarogya Setu.
 - Each app's source pages mention AI features: Google's Coach is a Premium subscription feature, Aarogya Setu 2.0 lists AI digitisation of uploaded records among its features, and the Saudi Ministry describes Sehhaty's digital twin and smart assistant.
 - Google appears in all three sources: it operates the Google Health app, Aarogya Setu 2.0's AI document digitisation uses Google's open-source Medical Data Toolkit, and the Saudi Ministry says the Sehhaty Smart Health Coach was launched in collaboration with Google.
-- The three preprints each address a different question relevant to patient-facing health data and apps: whether permissions and consent match purpose (mHealth apps on Google Play), whether a structured workflow helps patients prepare for a visit (in the Google Health app), and whether LLM-written summaries of records from wearables and digital health systems stay faithful.
+- The three preprints each address a different question relevant to patient-facing health data and apps: whether permissions and consent match purpose (mHealth apps on Google Play), whether a structured workflow helps patients prepare for a visit (in the Google Health app), and whether LLM-written summaries of structured health records stay faithful (tested on semi-synthetic menstrual health records).
 
 ## The takeaway
 
@@ -309,7 +309,7 @@ Read these as a sample of recent preprints chosen by a stated method, not as evi
 **Checking**
 
 - An independent reviewer, a separate AI agent that sees only the draft and our written procedure and not our research notes, re-derives each factual claim from the primary source (arXiv for papers, the operator's or government's own page for apps), and checks links, upvote counts and the numbers in this section. It approves the text or lists fixes. There are up to three review rounds, and an issue that is not approved by then is not published unless the human editor authorises more.
-- Papers are described only from their abstracts and arXiv records, and results are reported as the authors' own. Anything labelled "our reading" is editorial opinion, not a finding. Apps are described as their operators describe them, and we have not tested them.
+- Papers are described from their abstracts and arXiv records, and results are reported as the authors' own. Where a caveat comes from a paper's full text, as for two of the spotlight papers, the entry says so. Anything labelled "our reading" is editorial opinion, not a finding. Apps are described as their operators describe them, and we have not tested them.
 - An AI reviewer can miss errors.
 
 ---

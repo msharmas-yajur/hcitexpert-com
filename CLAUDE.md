@@ -167,7 +167,16 @@ What actually went wrong (use this as a pre-flight list *before* sending a draft
    checker notes were not applied afterwards, because any edit after approval means the
    shipped text is not the approved text). Never extend the pass limit on your own
    authority; ask the owner.
-7. Length: the Radar body ran about 2,300 words against the runbook's 1,200 to 1,800
+7. **Abstracts omit data provenance (found while updating Issue 001 to v2).** A spotlight
+   paper's abstract did not say its dataset was semi-synthetic (the full text's ethics
+   section says no real patient or wearable data were used and findings should not be
+   taken as validated on real-world data), and another study's full text limited its cohort
+   to English-speaking US adults on Android with 42.3% of conversations ending before
+   completion. Always read the methods and limitations or ethics sections of the full text
+   for every spotlight paper, and say when a caveat comes from the full text. I also
+   wrote "wearable" data into a summary of a paper from its abstract's framing; a checker
+   caught it by reading the PDF.
+8. Length: the Radar body ran about 2,300 words against the runbook's 1,200 to 1,800
    target. The checker treats length as advisory. Consider tightening the entry template.
 
 ## 6. State and backlog (as of 2026-11-15)

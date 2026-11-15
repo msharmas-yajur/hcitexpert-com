@@ -87,7 +87,16 @@ Take the `top` ten. For **each** paper:
    article's method note how many candidates were skipped on reading.
 3. Never choose or drop a paper because you like or dislike it. The criterion
    is the criterion.
-4. Read the arXiv `comment` and `journal_ref` fields for **every** paper (Track 1
+4. **Read the methods and the limitations or ethics sections of the full text
+   (`https://arxiv.org/pdf/<id>`, `pdftotext`) for every Track 2 spotlight paper, and for
+   any Track 1 paper where you write a caveat.** Abstracts leave out data provenance.
+   State whether the data are real, synthetic or simulated, who the participants were
+   and the authors' own stated limitations. (Issue 001: a spotlight paper's abstract did
+   not say its dataset was semi-synthetic, which a checker found in the full text; another
+   study's cohort was English-speaking US adults on Android and 42.3% of conversations
+   ended before completion. Both belonged in the caveat.) Mark in the entry when a
+   caveat comes from the full text.
+5. Read the arXiv `comment` and `journal_ref` fields for **every** paper (Track 1
    and Track 2). They can show acceptance at a venue; say so, and never write that
    a paper is not peer reviewed unless the record says so (say "the arXiv record
    gives no peer-review status" instead).
@@ -155,7 +164,10 @@ the three" bullet, takeaway, FAQ answer and the description, and check each for:
 4. A vendor or government claim stated as fact instead of attributed.
 5. Absence claims ("the abstract gives no figures", "the release notes do not
    mention X"): confirm against the **whole** source before writing them, or drop them.
-6. Rewrite generalisations as strictly attributable statements ("NPCBench
+6. Data provenance: for every paper entry, is the data's nature (real, synthetic,
+   simulated) and the cohort stated where the paper says it, and does any sentence imply
+   real-world data the paper did not use?
+7. Rewrite generalisations as strictly attributable statements ("NPCBench
    reports...", "PIB says...") and drop counts and trends.
 
 ## Article format
