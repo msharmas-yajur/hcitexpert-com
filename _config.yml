@@ -71,3 +71,5 @@ exclude:
   - scripts/
   - "*.py"
   - README.md
+  - CLAUDE.md
+  - AGENTS.md
