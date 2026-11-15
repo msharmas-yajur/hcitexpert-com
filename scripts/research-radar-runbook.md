@@ -72,6 +72,45 @@ python3 scripts/research_radar.py --track phr --days 90 --top 3 --reserve 10 \
   fallback-ranked, and say so.
 - If fewer than three papers are in scope, show what exists and say so. Never pad.
 
+### Track 3: biomedical research agents (papers)
+
+Every Radar edition from **Issue 002** also has a short, separately labelled section on
+**biomedical research agents**: AI agents doing biomedical science (drug discovery,
+protein and genomics work, lab automation, scientific-claim verification). Three papers,
+from a third run of the same script:
+
+```bash
+python3 scripts/research_radar.py --track agents --days 14 --top 3 --reserve 12 \
+    --exclude /tmp/radar.json /tmp/radar_phr.json [--allow <ids skipped on reading>] \
+    --out /tmp/radar_agents.json --md /tmp/radar_agents.md
+```
+
+- **Scope:** a paper must match **both** an agent term (agent, agentic, AI scientist,
+  autonomous or self-driving lab) and a biomedical-science term (biomedical, biology,
+  protein, genomics, drug discovery, molecular, laboratory, assay...), with a track
+  relevance of at least 4. Clinical terms do not count, so generic AI-agent papers and
+  purely clinical papers do not qualify. Window 14 days.
+- **Why a separate track, never merged into the ten:** AI-for-science papers draw far
+  more Hugging Face upvotes than clinical ones and would crowd out the clinical ten. Same
+  ranking rule (upvotes first, keyword relevance for papers not featured on Hugging Face),
+  and the split must be stated.
+- `--exclude` keeps the Track 1 and Track 2 shortlists out of this section. **If you
+  skipped a Track 1 paper on reading** (for example because it is about research agents,
+  not clinical care), pass its id with `--allow` so this track can still consider it. In
+  Issue 001, the skipped paper audited biomedical research agents and had the most
+  upvotes of any candidate.
+- **Reading rules are the same as Step 2**: abstract, then the methods and limitations
+  of the full text for every one of the three, the arXiv `comment` field, and mark every
+  full-text detail.
+- **Framing (hard rule):** these are research tools for biomedical science, not clinical
+  care. Say what the agent does and what the authors report, and state the data
+  provenance and evaluation type from the full text (benchmark, simulation, in silico
+  only, or wet-lab validation). Never imply clinical use, patient benefit, regulatory
+  status or validation the paper does not claim.
+- If fewer than three papers are in scope, show what exists and say so. Never pad.
+- Ledger: `agents_papers`, `agents_window`, `agents_as_of`, `agents_pool_size`,
+  `agents_in_scope`; papers skipped on reading go under `skipped` with `track: agents`.
+
 ## Step 2: read every paper (MAKER)
 
 Take the `top` ten. For **each** paper:
@@ -211,8 +250,12 @@ can review how it was made after they have read it.
    what it is, capabilities as the operator describes them or what has shipped vs
    what is planned, and an "Our reading" line); and a short "across the three apps
    and three papers (our reading)" list.
-7. **Takeaway.**
-8. **How this issue was made** (always last before the sign-off). Begin with the
+7. **Biomedical research agents** (from Issue 002): a one-paragraph intro that these are
+   research tools for biomedical science, not clinical care, then **three papers** in the
+   same entry template as step 4 (Track 3 rank basis, full-text details marked, an
+   optional "Why it could matter" line labelled as our reading).
+8. **Takeaway.**
+9. **How this issue was made** (always last before the sign-off). Begin with the
    italic **process version line** (see Process version history). Then:
    - *Track 1, the ten papers:* window, pool size, how many in scope, the criterion,
      the upvote vs fallback split and the `as_of` time, and how many candidates were
@@ -220,6 +263,9 @@ can review how it was made after they have read it.
    - *Track 2, the PHR spotlight:* the 90 day window, pool, in scope, that papers on
      the Track 1 shortlist were excluded, the ranking basis and `as_of`; and the app
      selection rule (not a ranking; contexts; sources; rotation).
+   - *Track 3, biomedical research agents:* window, pool, in scope, the scope rule (agent
+     term and biomedical-science term), ranking basis and `as_of`, the Track 1 and
+     Track 2 exclusions, and any paper brought back with `--allow`.
    - *Checking:* the independent reviewer (separate agent, sees only the draft and
      the written procedure, re-derives claims from primary sources, approves or
      lists fixes, extra rounds need the human editor); what is and is not read
@@ -227,7 +273,7 @@ can review how it was made after they have read it.
      reviewer can miss errors.
    - Any **new concept or process added to the Radar** gets its own bullet or
      sub-heading here, so readers can see how the Radar is made as it evolves.
-9. Sign-off linking back to HCITExperts, as in the Frontier.
+10. Sign-off linking back to HCITExperts, as in the Frontier.
 
 **Updating a published issue.** Only when the owner asks. Keep the `date`, add a
 one-line blockquote near the top: `> **Updated <date>.** <what changed>`, say whether
@@ -281,6 +327,12 @@ In addition to the Frontier checks, the checker must:
    not true.
 10. **Synthesis sentences:** check every "In this issue", "Patterns", "across the
     three" and takeaway line word by word against the sources (see Maker pre-flight).
+11. **Track 3 (from Issue 002):** confirm each agents paper as in checks 1, 2 and 4, the
+    stated window, pool and in-scope numbers against `radar_agents.json`, that both an
+    agent and a biomedical-science term are present, and that the framing is research
+    tools, never clinical care or validation. Confirm every data-provenance and
+    evaluation-type statement (benchmark, simulation, in silico only, wet-lab) against the
+    full text.
 
 ## Process version history
 
@@ -292,8 +344,8 @@ changes (a new track, a new rule, a new check).
 |---|---|---|
 | 1 | 2026-11-15 | Ten papers (Track 1). Method note at the top of the issue. |
 | 2 | 2026-11-15 | Method note moved to the end as "How this issue was made". Track 2 added: personal health records spotlight (three papers from a 90 day shortlist plus three PHR apps, one each from India, the Middle East and the US, researched from primary sources). Geography focus rule, `geo` tags in the script, maker pre-flight and extra checker items added. |
+| 3 | 2026-11-15 | Track 3 added: biomedical research agents (three papers in their own labelled section, separate ranking, never merged into the ten). Per-track exclusion of skipped papers (`covered_ids(track)`), `--exclude` takes several files, `--allow` brings skipped papers back. First applies to Radar Issue 002 (its process line says version 3). |
 
-Backlog (not yet in the process): a biomedical-agents track (see `CLAUDE.md`).
 
 ## Publish and ledger
 

@@ -93,6 +93,27 @@ PHR_ANCHOR_TERMS = [
 ]
 PHR_ANCHOR_RE = [re.compile(t, re.I) for t in PHR_ANCHOR_TERMS]
 
+# --track agents: biomedical research agents (AI agents doing biomedical science: drug
+# discovery, protein and genomics work, lab automation, scientific-claim verification).
+# A paper must match BOTH an agent term and a biomedical-science term, so generic AI-agent
+# papers and purely clinical papers do not qualify. Kept as its own track because these
+# papers draw far more Hugging Face upvotes than clinical ones and would crowd out the
+# clinical ten if mixed in.
+AGENT_QUERY_A = ['abs:agent', 'abs:agents', 'abs:agentic', 'abs:"AI scientist"',
+                 'abs:"autonomous laboratory"', 'abs:"self-driving lab"']
+AGENT_QUERY_B = ['abs:biomedical', 'abs:biology', 'abs:biological', 'abs:"drug discovery"',
+                 'abs:protein', 'abs:genomic', 'abs:genomics', 'abs:bioinformatics',
+                 'abs:molecular', 'abs:laboratory', 'abs:"single-cell"', 'abs:assay']
+AGENT_TERMS = [r"\bagents?\b", r"\bagentic\b", r"AI scientists?", r"autonomous (?:laborator\w*|discovery|research)",
+               r"self-driving lab\w*"]
+AGENT_BIO_TERMS = [r"biomedical", r"biolog\w*", r"drug discovery", r"drug development", r"protein\w*",
+                   r"genom\w*", r"bioinformatic\w*", r"molecul\w*", r"cheminformatic\w*",
+                   r"laborator\w*", r"single-cell", r"\bassays?\b", r"pharmacolog\w*"]
+AGENT_RE = [re.compile(x, re.I) for x in AGENT_TERMS]
+AGENT_BIO_RE = [re.compile(x, re.I) for x in AGENT_BIO_TERMS]
+AGENT_MIN_RELEVANCE = 4
+AGENT_EXTRA_CATEGORIES = ["q-bio.BM", "q-bio.GN", "q-bio.MN", "q-bio.CB", "physics.chem-ph"]
+
 # Geography annotation (near-term focus markets: India, Middle East, US). This only TAGS
 # a paper with the settings its title or abstract names; it never changes the ranking.
 GEO_PATTERNS = {
@@ -149,6 +170,13 @@ def relevance(title, abstract, track="main"):
                 score += 4
             elif rx.search(abstract):
                 score += 2
+    if track == "agents":  # agent and biomedical-science terms only; clinical terms do not count
+        score = 0
+        for rx in AGENT_RE + AGENT_BIO_RE:
+            if rx.search(title):
+                score += 2
+            elif rx.search(abstract):
+                score += 1
     return score
 
 
@@ -160,18 +188,33 @@ def in_scope(title, abstract, min_relevance=3, track="main"):
         text = f"{title} {abstract}"
         return (any(rx.search(text) for rx in PHR_ANCHOR_RE)
                 and relevance(title, abstract, "main") >= 2)
+    if track == "agents":
+        text = f"{title} {abstract}"
+        return (any(rx.search(text) for rx in AGENT_RE)
+                and any(rx.search(text) for rx in AGENT_BIO_RE)
+                and relevance(title, abstract, "agents") >= AGENT_MIN_RELEVANCE)
     return relevance(title, abstract) >= min_relevance
 
 
 def arxiv_pool(start, end, cap, track="main"):
-    cats = " OR ".join(f"cat:{c}" for c in CATEGORIES)
-    terms = " OR ".join(f'abs:"{t}"' for t in (PHR_QUERY_TERMS if track == "phr" else QUERY_TERMS))
     date = f"submittedDate:[{start:%Y%m%d}0000 TO {end:%Y%m%d}2359]"
-    queries = [
-        f"({cats}) AND ({terms}) AND {date}",
-        (f'(abs:"personal health record" OR abs:"patient portal" OR abs:"mHealth") AND {date}'
-         if track == "phr" else f'abs:"digital health" AND {date}'),  # any category
-    ]
+    if track == "agents":
+        cats = " OR ".join(f"cat:{c}" for c in CATEGORIES + AGENT_EXTRA_CATEGORIES)
+        a, b = " OR ".join(AGENT_QUERY_A), " OR ".join(AGENT_QUERY_B)
+        queries = [
+            f"({cats}) AND ({a}) AND ({b}) AND {date}",
+            # any category, only the distinctive agent phrases
+            ('(abs:"AI scientist" OR abs:"autonomous laboratory" OR abs:"self-driving lab" '
+             f'OR abs:"scientific agent" OR abs:"research agent") AND ({b}) AND {date}'),
+        ]
+    else:
+        cats = " OR ".join(f"cat:{c}" for c in CATEGORIES)
+        terms = " OR ".join(f'abs:"{t}"' for t in (PHR_QUERY_TERMS if track == "phr" else QUERY_TERMS))
+        queries = [
+            f"({cats}) AND ({terms}) AND {date}",
+            (f'(abs:"personal health record" OR abs:"patient portal" OR abs:"mHealth") AND {date}'
+             if track == "phr" else f'abs:"digital health" AND {date}'),  # any category
+        ]
     out = {}
     for q in queries:
         got = 0
@@ -236,15 +279,34 @@ def hf_feed(start, end):
     return feed
 
 
-def covered_ids(path=LEDGER):
+def covered_ids(path=LEDGER, track="main"):
+    """arXiv ids the ledger says must not be selected again.
+
+    Every FEATURED paper (the ten, the PHR papers, the agent papers) is excluded for all
+    tracks. A SKIPPED paper (a line with `reason:`) is excluded only for the track that
+    skipped it (`track:` on that line, default main), so a paper dropped from one track
+    can still be considered by another. Comment lines are ignored.
+    """
     try:
         text = open(path, encoding="utf-8").read()
     except FileNotFoundError:
         return set()
-    return {bare_id(m) for m in re.findall(r"arxiv\.org/abs/([^\s\"'>]+)", text)}
+    ids = set()
+    for line in text.splitlines():
+        if line.lstrip().startswith("#"):
+            continue
+        found = [bare_id(m) for m in re.findall(r"arxiv\.org/abs/([^\s\"'>},]+)", line)]
+        if not found:
+            continue
+        if "reason:" in line:
+            m = re.search(r"\btrack:\s*\"?([\w-]+)", line)
+            if (m.group(1) if m else "main") != track:
+                continue
+        ids.update(found)
+    return ids
 
 
-def build(days, top, reserve, cap, min_relevance=3, track="main", exclude=None):
+def build(days, top, reserve, cap, min_relevance=3, track="main", exclude=None, allow=None):
     end = dt.date.today()
     start = end - dt.timedelta(days=days)
     pool = arxiv_pool(start, end, cap, track)
@@ -256,7 +318,7 @@ def build(days, top, reserve, cap, min_relevance=3, track="main", exclude=None):
             pool[pid] = {"id": pid, "title": h["title"], "abstract": h["abstract"], "authors": [],
                          "published": h["published"], "primary_category": "", "source": "hf-daily"}
 
-    skip = covered_ids() | set(exclude or [])
+    skip = (covered_ids(track=track) | set(exclude or [])) - set(allow or [])
     rows = []
     for pid, p in pool.items():
         if pid in skip or not in_scope(p["title"], p["abstract"], min_relevance, track):
@@ -322,18 +384,22 @@ if __name__ == "__main__":
     ap.add_argument("--cap", type=int, default=600, help="max arXiv results fetched per query")
     ap.add_argument("--min-relevance", type=int, default=3,
                     help="min distinct health terms (title match counts 2) to be in scope")
-    ap.add_argument("--track", choices=["main", "phr"], default="main",
-                    help="main = digital health and clinical AI; phr = personal health records and health apps")
-    ap.add_argument("--exclude", default=None,
-                    help="JSON file from another track; its top and reserve ids are never selected here")
+    ap.add_argument("--track", choices=["main", "phr", "agents"], default="main",
+                    help="main = digital health and clinical AI; phr = personal health records and health apps; "
+                         "agents = biomedical research agents")
+    ap.add_argument("--exclude", nargs="*", default=[],
+                    help="one or more JSON files from other tracks; their top and reserve ids are never selected here")
+    ap.add_argument("--allow", nargs="*", default=[],
+                    help="arXiv ids to take back out of the exclusion set, e.g. papers skipped on reading from "
+                         "another track's shortlist that this track should still consider")
     ap.add_argument("--out", default="research_radar.json")
     ap.add_argument("--md", default=None)
     a = ap.parse_args()
     excl = []
-    if a.exclude:
-        prev = json.load(open(a.exclude, encoding="utf-8"))
-        excl = [r["id"] for r in prev.get("top", []) + prev.get("reserve", [])]
-    res = build(a.days, a.top, a.reserve, a.cap, a.min_relevance, a.track, excl)
+    for path in a.exclude:
+        prev = json.load(open(path, encoding="utf-8"))
+        excl += [r["id"] for r in prev.get("top", []) + prev.get("reserve", [])]
+    res = build(a.days, a.top, a.reserve, a.cap, a.min_relevance, a.track, excl, a.allow)
     json.dump(res, open(a.out, "w", encoding="utf-8"), indent=2, ensure_ascii=False)
     if a.md:
         open(a.md, "w", encoding="utf-8").write(to_markdown(res))
