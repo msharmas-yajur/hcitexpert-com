@@ -176,7 +176,16 @@ What actually went wrong (use this as a pre-flight list *before* sending a draft
    for every spotlight paper, and say when a caveat comes from the full text. I also
    wrote "wearable" data into a summary of a paper from its abstract's framing; a checker
    caught it by reading the PDF.
-8. Length: the Radar body ran about 2,300 words against the runbook's 1,200 to 1,800
+8. **The Issue 001 v2 update also exceeded the pass limit.** Three passes, then the one
+   permitted restart (three more), then one extra pass the owner authorised: seven checkers
+   in all. Paper content, app facts, numbers, upvotes and links verified every time. What
+   failed was marking: details taken from full texts and how the article described them
+   (see item 7). The last pass flagged one unmarked "semi-synthetic" parenthetical in a
+   synthesis line; I deleted it (a pure deletion, diff-verified) and the owner chose to merge
+   without a further pass. So the shipped text differs from the last checked text by that one
+   deletion. Lesson: when the full text supplies a detail, mark it where it first appears and
+   keep every synthesis line free of unmarked full-text details, or leave the detail out.
+9. Length: the Radar body ran about 2,300 words against the runbook's 1,200 to 1,800
    target. The checker treats length as advisory. Consider tightening the entry template.
 
 ## 6. State and backlog (as of 2026-11-15)
@@ -194,7 +203,9 @@ What actually went wrong (use this as a pre-flight list *before* sending a draft
   (papers 2610.41437, 2610.23851, 2610.31467; apps **Aarogya Setu 2.0 (India), Sehhaty
   (Saudi Arabia, Middle East), Google Health app (US)**, so those three apps are not repeated
   in Radar Issues 002 to 004 unless they have a new announcement). An NHS App entry was
-  drafted and then replaced when the owner set the geography focus. The update goes live only when its PR is merged.
+  drafted and then replaced when the owner set the geography focus. **Merged and live via PR #8.**
+  The live text equals the last text a checker saw, minus one deleted phrase (see section 5, item 7);
+  the owner explicitly waived a re-check of that pure deletion.
 
 **Next edition due:** a **Clinical Frontier, Issue 036** (the last entry is a double-edition
 day, and the tie-break makes the Radar the latest). The next Radar will be Issue 002.
@@ -298,3 +309,4 @@ retry with GET before counting a link as broken.
 |---|---|
 | 2026-11-15 | **Clinical Frontier Issue 035** published (PR #6). **Research Radar** built and Issue 001 published (PR #7): `scripts/research_radar.py`, `scripts/research-radar-runbook.md`, `_data/research_radar_covered.yml`, Step 0 alternation and tie-break in both runbooks. Scope filter tightened after a dry run (min relevance 3). Issue 001 needed more checker passes than the runbook allows; the owner authorised one extra pass. This `CLAUDE.md` created as the publisher memory. |
 | 2026-11-15 (later) | **Radar process version 2**: PHR spotlight added (`--track phr`, app research rules, three papers and three apps, one each from India, the Middle East and the US, in Issue 001), geography focus rule and `geo` tags, methodology moved to the end of the article as an extensible "How this issue was made" section, process version history, maker pre-flight and extra checker items added to the runbook, ledger gained `version`, `phr_*` fields. Issue 001 updated accordingly. |
+| 2026-11-15 (final) | **PR #8 merged**: Issue 001 updated live to Radar process v2 (PHR spotlight with Aarogya Setu 2.0, Sehhaty and Google Health app; methodology at the end), geography focus, `CLAUDE.md` memory, runbook and script changes. Owner waived a re-check of the last deletion-only edit. |
