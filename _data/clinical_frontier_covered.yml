@@ -354,4 +354,19 @@ covered:
       - https://hl7.org/fhir/composition.html
       - https://www.pib.gov.in/PressReleasePage.aspx?PRID=2190014
 
+  - date: 2026-11-16
+    slug: 2026-11-16-google-mka-benchmark-nvidia-openshell-scanned-paper-medical-records-india
+    angle: scanned-paper-records-multimodal-agents-india
+    regions: [India]
+    models: ["Multimodal Knowledge Agent (MKA) benchmark (Google DeepMind, Artificial Analysis)", "Gemini 4 Carbon (Google)", "NVIDIA OpenShell", "Agent Substrate"]
+    sources:
+      - https://blog.google/innovation-and-ai/models-and-research/gemini-models/multimodal-knowledge-agent-benchmark/
+      - https://huggingface.co/datasets/google/multimodal-knowledge-agent
+      - https://artificialanalysis.ai/evaluations/mka
+      - https://blogs.nvidia.com/blog/open-source-openshell-infrastructure/
+      - https://www.pib.gov.in/PressReleasePage.aspx?PRID=2190014
+      - https://hl7.org/fhir/diagnosticreport.html
+      - https://hl7.org/fhir/provenance.html
+      - https://hl7.org/fhir/documentreference.html
+
 held: []
