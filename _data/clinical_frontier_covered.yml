@@ -369,4 +369,15 @@ covered:
       - https://hl7.org/fhir/provenance.html
       - https://hl7.org/fhir/documentreference.html
 
+  - date: 2026-11-17
+    slug: 2026-11-17-nvidia-dgx-spark-hpc-kit-cuspa-rapids-singlecell-research-computing-india
+    angle: hospital-research-computing-omics-india
+    regions: [India, US]
+    models: ["NVIDIA DGX Spark HPC Developer Kit", "NVIDIA CUDA-X (cuSpa, rapids-singlecell, GPU HMMER)", "Evo 2", "OpenFold3", "Boltz-2", "Nemotron 3.5 Super VL"]
+    sources:
+      - https://blogs.nvidia.com/blog/dgx-spark-hpc-developer-kit-sc26/
+      - https://blogs.nvidia.com/blog/cuda-x-libraries-agents-accelerate-scientific-discovery/
+      - https://www.pib.gov.in/PressReleasePage.aspx?PRID=2091577&reg=48&lang=2
+      - https://www.pib.gov.in/PressReleasePage.aspx?PRID=2190014
+
 held: []
