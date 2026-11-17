@@ -68,5 +68,45 @@ covered:
       - {name: "Google Health app", market: US, context: "consumer platform", sources: ["https://blog.google/products-and-platforms/products/google-health/google-health-app/", "https://blog.google/products-and-platforms/products/google-health/google-health-coach"]}
     skipped:
       - {url: "https://arxiv.org/abs/2611.01527", track: main, reason: "Audits biomedical research agents (SciFact claims, hERG assay allocation), not digital health or clinical care; skipped on reading. Shortlist rank 1, 10 upvotes at as_of."}
+  - date: 2026-11-17
+    slug: 2026-11-17-the-research-radar-issue-002-ten-digital-health-preprints-november-2026
+    issue: 002
+    window: {start: 2026-11-03, end: 2026-11-17}
+    as_of: "2026-11-17T15:23Z"
+    pool_size: 791
+    in_scope: 233
+    ranked_by_hf_upvotes: 1
+    papers:
+      - {rank: 1, url: "https://arxiv.org/abs/2611.21218", title: "InclusionMed: Benchmarking AI for Inclusive Healthcare", rank_basis: hf_upvotes, hf_upvotes: 58}
+      - {rank: 2, url: "https://arxiv.org/abs/2611.19546", title: "Evidence-Conditioned Completion and Synthesis of Electronic Health Records", rank_basis: keyword_relevance_fallback, hf_upvotes: null}
+      - {rank: 3, url: "https://arxiv.org/abs/2611.19082", title: "CONTEXT-PCa: Evaluating the role of clinical context in MRI-based AI for detecting clinically significant prostate cancer (study protocol)", rank_basis: keyword_relevance_fallback, hf_upvotes: null}
+      - {rank: 4, url: "https://arxiv.org/abs/2611.18793", title: "Multimodal Fusion: A Review of Breast Cancer Advanced and Traditional Modalities", rank_basis: keyword_relevance_fallback, hf_upvotes: null}
+      - {rank: 5, url: "https://arxiv.org/abs/2611.20223", title: "Understanding Users' Security, Privacy, and Trust Concerns in Healthcare AI Systems", rank_basis: keyword_relevance_fallback, hf_upvotes: null}
+      - {rank: 6, url: "https://arxiv.org/abs/2611.18484", title: "From AI-Enabled Remote Patient Monitoring Toward Agentic Robotics: Embodiment, Governance, and Care Integration", rank_basis: keyword_relevance_fallback, hf_upvotes: null}
+      - {rank: 7, url: "https://arxiv.org/abs/2611.12814", title: "Curbside Chatbots: Auditing the Mental Health Interventions Large Language Models Recommend to Clinicians, Caregivers, and Patients", rank_basis: keyword_relevance_fallback, hf_upvotes: null}
+      - {rank: 8, url: "https://arxiv.org/abs/2611.11063", title: "Target Recoverability under Selective Labels: A Failure Mode in ECG-Based Acute Coronary Syndrome Prediction", rank_basis: keyword_relevance_fallback, hf_upvotes: null}
+      - {rank: 9, url: "https://arxiv.org/abs/2611.07950", title: "Leakage- and Label-Aware Benchmarking of Class-Imbalance Strategies for Multimodal Chest X-Ray and EHR Classification", rank_basis: keyword_relevance_fallback, hf_upvotes: null}
+      - {rank: 10, url: "https://arxiv.org/abs/2611.07265", title: "How Deep is the Signal? Time-Context up to 30 Years for Colorectal Cancer Prediction in a Primary-Care EHR Model", rank_basis: keyword_relevance_fallback, hf_upvotes: null}
+    version: 3
+    phr_window: {start: 2026-08-19, end: 2026-11-17}
+    phr_as_of: "2026-11-17T15:24Z"
+    phr_pool_size: 2341
+    phr_in_scope: 7
+    phr_papers:
+      - {rank: 1, url: "https://arxiv.org/abs/2610.24807", title: "Medical Fine-Tuning Reshapes, Not Reduces, Patient-Facing AI Risk: A Rubric-Based, LLM-Judge Evaluation Framework", rank_basis: keyword_relevance_fallback, hf_upvotes: null}
+      - {rank: 2, url: "https://arxiv.org/abs/2609.31062", title: "CG-Probes: Recovering Guardrail Directions from Patient Query Embeddings", rank_basis: keyword_relevance_fallback, hf_upvotes: null}
+      - {rank: 3, url: "https://arxiv.org/abs/2608.29965", title: "Review Before Trust: Source-Grounded Integrity Gates for AI-Assisted Personal Health Records", rank_basis: keyword_relevance_fallback, hf_upvotes: null}
+    phr_apps:
+      - {name: "Eka PHR (Eka Care)", market: India, context: "private company records app; the 2026 post mentions the PHR only in passing and the features page shows no content date", sources: ["https://info.eka.care/services/how-ekacare-is-building-agentic-multimodal-healthcare-for-india-scale-patient-care-with-nvidia-nemotron-3-nano-omni", "https://www.eka.care/s/for-patients/medical-records-features"]}
+      - {name: "Shifa app", market: "Middle East (Oman)", context: "Ministry of Health app; page footer shows Last updated Mar 12, 2026 and no content date", sources: ["https://www.moh.gov.om/en/other/shifa-app/"]}
+      - {name: "Apple Health app", market: US, context: "consumer platform", sources: ["https://apple.com/newsroom/2026/09/apple-advances-health-and-fitness-capabilities-using-apple-intelligence/", "https://www.apple.com/newsroom/2026/11/redesigned-health-app-expands-language-support/", "https://www.cms.gov/initiatives/health-technology-ecosystem/overview/early-adopters-all-pledgees/health-care-keeps-up-you/apple"]}
+    agents_window: {start: 2026-11-03, end: 2026-11-17}
+    agents_as_of: "2026-11-17T15:25Z"
+    agents_pool_size: 320
+    agents_in_scope: 21
+    agents_papers:
+      - {rank: 1, url: "https://arxiv.org/abs/2611.17015", title: "AI for Biologists: The Knowledge Boundaries of Foundation Models in the Age of Agentic Systems", rank_basis: keyword_relevance_fallback, hf_upvotes: null}
+      - {rank: 2, url: "https://arxiv.org/abs/2611.18772", title: "Vibe synthesis: hierarchical agentic decision-making for intent-driven multistep molecule synthesis", rank_basis: keyword_relevance_fallback, hf_upvotes: null}
+      - {rank: 3, url: "https://arxiv.org/abs/2611.14511", title: "Pyrite: Building and Benchmarking Protein-Ligand Pose Ranking Agents", rank_basis: keyword_relevance_fallback, hf_upvotes: null}
 
 held: []
