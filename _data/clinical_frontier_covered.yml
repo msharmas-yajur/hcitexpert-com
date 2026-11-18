@@ -380,4 +380,17 @@ covered:
       - https://www.pib.gov.in/PressReleasePage.aspx?PRID=2091577&reg=48&lang=2
       - https://www.pib.gov.in/PressReleasePage.aspx?PRID=2190014
 
+  - date: 2026-11-18
+    slug: 2026-11-18-nvidia-artisight-jetson-orin-nx-bedside-fall-prevention-edge-ai-india
+    angle: inpatient-fall-prevention-bedside-edge-ai-india
+    regions: [India, US]
+    models: ["Artisight All-in-One device", "NVIDIA Jetson Orin NX", "NVIDIA CUDA, TensorRT and Dynamo-Triton"]
+    sources:
+      - https://blogs.nvidia.com/blog/how-ai-is-helping-care-teams/
+      - https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/
+      - https://portal.nabh.co/images/Standards/NABH%20Hospital%20Accreditation%20Standard%206th%20Edition%20January%202025.pdf
+      - https://www.cms.gov/medicare/quality/value-based-programs/hospital-acquired-conditions
+      - https://www.pib.gov.in/PressReleasePage.aspx?PRID=2190014
+      - https://hl7.org/fhir/observation.html
+
 held: []
