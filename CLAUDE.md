@@ -70,6 +70,10 @@ earlier posts. See section 7 for that series.
 fresh frontier-lab or AI-hardware update applies to one healthcare scenario, for an Indian
 health-IT audience. Sources are primary lab announcements. One `angle` (scenario) per
 issue, never repeated (it is the ledger key).
+**Length and research standard (owner, 2026-11-19):** body about 2,000 words (1,800 to 2,200), built
+from research across the world, not one lab post: at least three sources from outside the lab
+announcement, from at least two countries, one of them not the vendor's. See the Frontier runbook,
+"Look around the world".
 
 **The Research Radar** (alternate days, its own issue numbers = Radar ledger count + 1):
 a review of the ten highest-ranked recent arXiv preprints on digital health and clinical
@@ -334,3 +338,4 @@ retry with GET before counting a link as broken.
 | 2026-11-15 (Track 3) | **Radar process v3**: biomedical research agents track added (`--track agents`, separate section of three papers from Issue 002, framing as research tools not clinical care), per-track exclusion of skipped papers (`covered_ids(track)`), `--exclude` accepts several files, `--allow` brings skipped papers back; runbook Track 3, article order, checker item 11, version history row 3; ledger `agents_*` fields and `track:` on skipped entries. The Issue 001 agent-audit paper is eligible again for this track. No published article changed. |
 | 2026-11-15 (image) | McKinsey gen AI reference architecture exhibit added to the PHR series Day 0 post (section 3.4) at the owner's request; credit caption linking McKinsey's "Overcoming two issues that are sinking gen AI programs" (link not verified from the sandbox). Owner plans a Caladrius Healthcare AI architecture article. |
 | 2026-11-18 | **Clinical Frontier Issue 038** published (PR #14): NVIDIA's Artisight bedside fall-prevention example (Jetson Orin NX) against NABH 6th edition COP.16 and falls indicator, CMS PSI 08; angle `inpatient-fall-prevention-bedside-edge-ai-india`, regions India and US. One checker pass, APPROVED, no changes. Verified live (200) and in the feed. OpenAI's 16 Nov healthcare posts were skipped: pages return 403 and a headless-browser workaround was denied, so they remain uncovered (backlog item 2). Frontier ledger: 38 entries, none held. Next edition due: Research Radar Issue 003. |
+| 2026-11-19 | **Frontier length and research standard** set by the owner after Issue 038 was judged too short (about 1,000 words): runbook step 4 "Look around the world" and a 2,000-word target added. An expanded Issue 038 (US, UK, Germany, Australia, WHO, NABH) went through three checker passes, none APPROVED (each found small wording errors, the last three fixed afterwards), so under the hold rule it is **not published** and the live Issue 038 is still the shorter, approved text. The owner decides whether to authorise one more pass. |

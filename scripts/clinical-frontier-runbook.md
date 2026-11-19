@@ -150,11 +150,27 @@ Focus on the **last 7 days**. Prefer items not already cited in `covered.sources
    hospital inference; an agentic release to EHR or claims workflows). If the
    week is quiet, write an evergreen scenario piece grounded in already-announced
    capabilities. **Never invent an announcement.**
-4. **Write the article** (MAKER; format below), about 800 to 1,200 words of
-   body, healthcare-first.
-5. **Check it** (CHECKER subagent; loop as above).
-6. **Publish** (below), then verify.
-7. **Report** (below).
+4. **Look around the world (owner standard, set 2026-11-19).** The lab update is
+   the hook, not the whole article. Before writing, search beyond it for what
+   people in other countries are building, deploying and measuring on the same
+   scenario: peer-reviewed papers and arXiv preprints, hospital and health-system
+   press releases, regulator and accreditation documents, national audits, WHO and
+   other international bodies. Aim for **at least three sources from outside the
+   lab announcement, from at least two countries**, and include **one source that
+   is not the vendor's** (an independent study, a regulator or an audit). State
+   each source's maturity (product claim, vendor-affiliated study, hospital
+   announcement, laboratory benchmark, national audit) and, for any study, its
+   sample size, setting, author affiliation and stated limitations. Prefer
+   interesting findings (a measurement problem, a failure mode, a design choice)
+   over a list of products. If a primary page cannot be fetched, drop the claim;
+   never work around an access block.
+5. **Write the article** (MAKER; format below), **about 2,000 words of body**
+   (1,800 to 2,200), healthcare-first. Lead with the update, then spend most of
+   the length on the global picture, the lessons and the India section (including
+   Middle East and US examples where the scenario allows).
+6. **Check it** (CHECKER subagent; loop as above).
+7. **Publish** (below), then verify.
+8. **Report** (below).
 
 ## Style: publish as a NEWSLETTER, with no dashes
 
