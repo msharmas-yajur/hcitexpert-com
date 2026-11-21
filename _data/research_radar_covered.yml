@@ -109,4 +109,6 @@ covered:
       - {rank: 2, url: "https://arxiv.org/abs/2611.18772", title: "Vibe synthesis: hierarchical agentic decision-making for intent-driven multistep molecule synthesis", rank_basis: keyword_relevance_fallback, hf_upvotes: null}
       - {rank: 3, url: "https://arxiv.org/abs/2611.14511", title: "Pyrite: Building and Benchmarking Protein-Ligand Pose Ranking Agents", rank_basis: keyword_relevance_fallback, hf_upvotes: null}
 
-held: []
+held:
+  - date: 2026-11-21
+    reason: "arXiv API unreachable after two attempts (DNS resolution failed: Name or service not known). Do not substitute a hand-picked list."
