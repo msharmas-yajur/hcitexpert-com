@@ -116,3 +116,5 @@ held:
     reason: "arXiv API unreachable after two attempts (DNS resolution failed: Name or service not known). Do not substitute a hand-picked list."
   - date: 2026-11-24
     reason: "arXiv API unreachable after two attempts (DNS resolution failed: Name or service not known). Do not substitute a hand-picked list."
+  - date: 2026-11-25
+    reason: "arXiv API unreachable after two attempts (proxy 403 Forbidden: export.arxiv.org blocked by network policy). Do not substitute a hand-picked list."
