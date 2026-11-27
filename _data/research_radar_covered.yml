@@ -120,3 +120,5 @@ held:
     reason: "arXiv API unreachable after two attempts (proxy 403 Forbidden: export.arxiv.org blocked by network policy). Do not substitute a hand-picked list."
   - date: 2026-11-26
     reason: "arXiv API unreachable after two attempts (proxy 403 Forbidden: export.arxiv.org blocked by network policy). Do not substitute a hand-picked list."
+  - date: 2026-11-27
+    reason: "arXiv API unreachable (proxy 403 Forbidden: export.arxiv.org blocked by network policy). Sixth consecutive Radar hold. Last Frontier published 2026-11-18. No article published since."
